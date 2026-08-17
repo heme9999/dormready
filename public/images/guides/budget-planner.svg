@@ -1,0 +1,34 @@
+<svg width="640" height="360" viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="360" fill="#FFFBEA"/>
+  <circle cx="500" cy="120" r="100" fill="#FEF3C7" fill-opacity="0.8"/>
+  <!-- Three Tier Blocks -->
+  <g transform="translate(140, 90)">
+    <!-- $300 Tier -->
+    <rect x="0" y="70" width="95" height="140" rx="10" fill="#FFFFFF" stroke="#42C6A5" stroke-width="2"/>
+    <rect x="10" y="80" width="75" height="30" rx="6" fill="#ECFAF5"/>
+    <text x="25" y="100" font-family="system-ui, sans-serif" font-size="14" font-weight="900" fill="#1E876E">$300</text>
+    <line x1="15" y1="130" x2="80" y2="130" stroke="#D4E3F7" stroke-width="3"/>
+    <line x1="15" y1="150" x2="65" y2="150" stroke="#D4E3F7" stroke-width="3"/>
+    <line x1="15" y1="170" x2="75" y2="170" stroke="#D4E3F7" stroke-width="3"/>
+
+    <!-- $500 Tier -->
+    <rect x="115" y="30" width="110" height="180" rx="12" fill="#FFFFFF" stroke="#3772FF" stroke-width="3" filter="drop-shadow(0 4px 12px rgba(55,114,255,0.15))"/>
+    <rect x="125" y="42" width="90" height="34" rx="6" fill="#EEF5FF"/>
+    <text x="145" y="65" font-family="system-ui, sans-serif" font-size="16" font-weight="900" fill="#3772FF">$500</text>
+    <line x1="130" y1="95" x2="205" y2="95" stroke="#3772FF" stroke-width="3"/>
+    <line x1="130" y1="115" x2="195" y2="115" stroke="#DBEAFF" stroke-width="3"/>
+    <line x1="130" y1="135" x2="205" y2="135" stroke="#DBEAFF" stroke-width="3"/>
+    <line x1="130" y1="155" x2="185" y2="155" stroke="#DBEAFF" stroke-width="3"/>
+
+    <!-- $1,000 Tier -->
+    <rect x="245" y="0" width="105" height="210" rx="10" fill="#FFFFFF" stroke="#FF6B5E" stroke-width="2"/>
+    <rect x="255" y="10" width="85" height="30" rx="6" fill="#FFF1EE"/>
+    <text x="270" y="30" font-family="system-ui, sans-serif" font-size="14" font-weight="900" fill="#FF6B5E">$1,000</text>
+    <line x1="260" y1="60" x2="325" y2="60" stroke="#FFE2DE" stroke-width="3"/>
+    <line x1="260" y1="80" x2="310" y2="80" stroke="#FFE2DE" stroke-width="3"/>
+    <line x1="260" y1="100" x2="325" y2="100" stroke="#FFE2DE" stroke-width="3"/>
+  </g>
+  <!-- Badge -->
+  <rect x="40" y="40" width="160" height="36" rx="18" fill="#FFD166"/>
+  <text x="58" y="63" font-family="system-ui, sans-serif" font-size="13" font-weight="900" fill="#14213D">REALISTIC TIERS</text>
+</svg>

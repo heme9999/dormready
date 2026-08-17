@@ -1,0 +1,51 @@
+<svg width="600" height="380" viewBox="0 0 600 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="380" rx="16" fill="#EEF5FF"/>
+  <!-- Central Carry-On Backpack -->
+  <rect x="220" y="90" width="160" height="230" rx="24" fill="#3772FF" stroke="#1D4CC4" stroke-width="3"/>
+  <rect x="245" y="160" width="110" height="120" rx="14" fill="#255DE0"/>
+  <path d="M260 90C260 55 340 55 340 90" stroke="#14213D" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Left Callouts: Day 1 Essentials -->
+  <g transform="translate(30, 70)">
+    <rect width="160" height="60" rx="10" fill="#FFFFFF" stroke="#3772FF" stroke-width="1.5"/>
+    <text x="12" y="25" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#14213D">📄 Important Docs</text>
+    <text x="12" y="45" font-family="system-ui, sans-serif" font-size="11" fill="#4E618B">ID, Health Card, Housing Pass</text>
+    <path d="M160 30L215 70" stroke="#3772FF" stroke-width="2" stroke-dasharray="3 3"/>
+  </g>
+
+  <g transform="translate(30, 155)">
+    <rect width="160" height="60" rx="10" fill="#FFFFFF" stroke="#FF6B5E" stroke-width="1.5"/>
+    <text x="12" y="25" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#14213D">💊 Daily Rx &amp; Meds</text>
+    <text x="12" y="45" font-family="system-ui, sans-serif" font-size="11" fill="#4E618B">Never pack meds in trunk</text>
+    <path d="M160 30L215 30" stroke="#FF6B5E" stroke-width="2" stroke-dasharray="3 3"/>
+  </g>
+
+  <g transform="translate(30, 240)">
+    <rect width="160" height="60" rx="10" fill="#FFFFFF" stroke="#42C6A5" stroke-width="1.5"/>
+    <text x="12" y="25" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#14213D">⚡ Chargers &amp; Phone</text>
+    <text x="12" y="45" font-family="system-ui, sans-serif" font-size="11" fill="#4E618B">Wall block &amp; 10ft cable</text>
+    <path d="M160 30L215 -10" stroke="#42C6A5" stroke-width="2" stroke-dasharray="3 3"/>
+  </g>
+
+  <!-- Right Callouts: Night 1 Survival -->
+  <g transform="translate(410, 70)">
+    <rect width="160" height="60" rx="10" fill="#FFFFFF" stroke="#FFD166" stroke-width="1.5"/>
+    <text x="12" y="25" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#14213D">🛏️ Twin XL Sheet Set</text>
+    <text x="12" y="45" font-family="system-ui, sans-serif" font-size="11" fill="#4E618B">Make bed before unboxing</text>
+    <path d="M0 30L-40 70" stroke="#FFD166" stroke-width="2" stroke-dasharray="3 3"/>
+  </g>
+
+  <g transform="translate(410, 155)">
+    <rect width="160" height="60" rx="10" fill="#FFFFFF" stroke="#3772FF" stroke-width="1.5"/>
+    <text x="12" y="25" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#14213D">🚿 Shower Shoes &amp; Caddy</text>
+    <text x="12" y="45" font-family="system-ui, sans-serif" font-size="11" fill="#4E618B">Quick-dry towel + slides</text>
+    <path d="M0 30L-40 30" stroke="#3772FF" stroke-width="2" stroke-dasharray="3 3"/>
+  </g>
+
+  <g transform="translate(410, 240)">
+    <rect width="160" height="60" rx="10" fill="#FFFFFF" stroke="#FF6B5E" stroke-width="1.5"/>
+    <text x="12" y="25" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#14213D">👕 Change of Clothes</text>
+    <text x="12" y="45" font-family="system-ui, sans-serif" font-size="11" fill="#4E618B">Move-in day gets sweaty</text>
+    <path d="M0 30L-40 -10" stroke="#FF6B5E" stroke-width="2" stroke-dasharray="3 3"/>
+  </g>
+</svg>

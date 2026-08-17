@@ -3,25 +3,10 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --bg-page: #FAF8F5;
-    --bg-surface: #FFFFFF;
-    --bg-surface-subtle: #F4EFEA;
-    --text-primary: #0F172A;
-    --text-secondary: #475569;
-    --text-muted: #64748B;
-    --border-color: #E2D9CE;
-    --border-color-light: #ECE5DC;
-    --accent-green: #0D5C3E;
-    --accent-green-hover: #09452E;
-    --accent-amber: #B45309;
-    --accent-amber-light: #FEF3C7;
-  }
-
   html {
-    background-color: var(--bg-page);
-    color: var(--text-primary);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #FFFDFC;
+    color: #14213D;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -31,75 +16,62 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: var(--bg-page);
-    color: var(--text-primary);
+    overflow-x: hidden;
   }
 
-  /* Accessible focus indicators */
-  a:focus-visible,
-  button:focus-visible,
-  input:focus-visible,
-  select:focus-visible,
-  textarea:focus-visible {
-    outline: 2px solid #0D5C3E;
-    outline-offset: 2px;
+  ::selection {
+    background-color: #DBEAFF;
+    color: #14213D;
   }
 }
 
-/* Custom scrollbar and utility classes */
-.container-custom {
-  max-width: 72rem;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-@media (min-width: 640px) {
+@layer components {
   .container-custom {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .prose-editorial {
+    @apply max-w-none text-navy-800 leading-relaxed;
+  }
+
+  .card-hover-effect {
+    @apply transition-all duration-200 hover:-translate-y-0.5 hover:shadow-soft-hover;
+  }
+
+  .badge-blue {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-blue-50 text-brand-blue-700 border border-brand-blue-200;
+  }
+
+  .badge-coral {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-coral-50 text-brand-coral-700 border border-brand-coral-200;
+  }
+
+  .badge-mint {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-mint-50 text-brand-mint-700 border border-brand-mint-200;
+  }
+
+  .badge-yellow {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-brand-yellow-50 text-amber-800 border border-brand-yellow-200;
   }
 }
 
-@media (min-width: 1024px) {
-  .container-custom {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-}
-
-/* Print specific stylesheet for Checklist and Guides */
+/* Print Stylesheet for Checklist & Summaries */
 @media print {
-  header,
-  footer,
-  .no-print,
-  #mobile-menu,
-  .email-signup-section,
-  .sticky-filter-bar {
+  header, footer, nav, button, .no-print {
     display: none !important;
   }
 
   body {
-    background: #ffffff !important;
+    background-color: #ffffff !important;
     color: #000000 !important;
-    font-size: 11pt;
-  }
-
-  .print-only {
-    display: block !important;
-  }
-
-  .checklist-item {
-    break-inside: avoid;
-    border-bottom: 1px solid #ddd !important;
-    padding-top: 6px !important;
-    padding-bottom: 6px !important;
   }
 
   .container-custom {
     max-width: 100% !important;
     padding: 0 !important;
-    margin: 0 !important;
+  }
+
+  .print-only {
+    display: block !important;
   }
 }

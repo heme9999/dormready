@@ -2,10 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
-
-
-
-
+import BudgetComparison from '../../components/BudgetComparison.astro';
 
 const breadcrumbs = [
   { name: 'Budget Setups', url: '/budget/' },
@@ -17,125 +14,75 @@ const breadcrumbs = [
   description="Practical, realistic dorm room equipment breakdowns organized by budget tier. Line-item spending plans for $300, $500, and $1,000 total outlays."
   breadcrumbs={breadcrumbs}
 >
-  <div class="bg-cream-100 border-b border-cream-300 py-8 sm:py-12">
+  <div class="bg-gradient-to-b from-brand-yellow-50 via-brand-yellow-50/50 to-white border-b border-slate-200 py-10 sm:py-14">
     <div class="container-custom">
       <Breadcrumbs items={breadcrumbs} />
 
-      <span class="mt-4 inline-block px-2.5 py-1 rounded-full text-xs font-semibold bg-forest-50 text-forest-800 border border-forest-100">
-        Budget Frameworks
-      </span>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mt-6">
+        <div class="lg:col-span-8 space-y-4">
+          <div class="flex flex-wrap items-center gap-2.5 text-xs font-bold text-navy-600">
+            <span class="badge-yellow">
+              Spending Blueprints
+            </span>
+            <span>•</span>
+            <span class="text-brand-navy">3 Transparent Tiers</span>
+            <span>•</span>
+            <span>Last audited: <time datetime="2026-08-17" class="text-brand-blue">August 17, 2026</time></span>
+          </div>
 
-      <h1 class="mt-4 text-3xl sm:text-5xl font-bold font-serif text-navy-900 leading-tight">
-        Dorm Room Budget Blueprints
-      </h1>
+          <h1 class="text-3xl sm:text-5xl font-black text-brand-navy leading-tight">
+            Dorm Room Budget Blueprints
+          </h1>
 
-      <p class="mt-4 text-base sm:text-lg text-navy-700 max-w-3xl leading-relaxed">
-        You don't need a $2,000 budget to create a comfortable, organized, and hygienic dorm space. Choose the spending tier that matches your family's plan for comprehensive line-item breakdowns.
-      </p>
+          <p class="text-base sm:text-lg text-navy-700 max-w-2xl leading-relaxed">
+            You don't need a $2,000 budget to create a comfortable, organized, and hygienic dorm space. Choose the spending tier that matches your family's plan for comprehensive line-item breakdowns.
+          </p>
+        </div>
+
+        <div class="lg:col-span-4 hidden lg:block">
+          <img
+            src="/images/guides/budget-planner.svg"
+            alt="Dorm budget blueprints comparison visual"
+            width="640"
+            height="360"
+            class="w-full h-auto rounded-3xl border-2 border-brand-yellow-200 shadow-soft"
+          />
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="container-custom py-8 sm:py-12 space-y-12">
     <AffiliateDisclosure compact={true} />
 
-    <!-- Tier Overview Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {/* Tier 1 */}
-      <div class="bg-white border border-cream-300 rounded-2xl p-6 sm:p-7 flex flex-col justify-between shadow-sm">
-        <div>
-          <div class="flex items-center justify-between mb-2">
-            <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-cream-200 text-navy-800">Tier 1</span>
-            <span class="text-xs font-semibold text-navy-500">Max $300</span>
-          </div>
-          <h2 class="text-2xl font-bold text-navy-900 font-serif mb-2">Under $300 Setup</h2>
-          <p class="text-sm text-navy-600 leading-relaxed mb-4">
-            The strict survival baseline: maximum sleep comfort, communal hygiene, and electrical safety without spending a cent on aesthetic clutter.
-          </p>
-          <div class="text-xs text-navy-500 space-y-1 py-3 border-t border-cream-200">
-            <p><strong>Primary Allocation:</strong> High-density topper & bedding</p>
-            <p><strong>Estimated Total:</strong> ~$265</p>
-          </div>
-        </div>
-        <a
-          href="/budget/under-300-dorm-setup/"
-          class="w-full py-2.5 px-4 rounded-lg bg-forest-800 text-cream-50 text-center text-sm font-semibold hover:bg-forest-900 transition-colors mt-4"
-        >
-          View $300 Guide &rarr;
-        </a>
-      </div>
-
-      {/* Tier 2 */}
-      <div class="bg-white border-2 border-forest-800 rounded-2xl p-6 sm:p-7 flex flex-col justify-between shadow-md relative">
-        <div class="absolute -top-3 right-6 bg-forest-800 text-cream-50 text-[11px] font-bold uppercase tracking-wider px-3 py-0.5 rounded-full">
-          Recommended
-        </div>
-        <div>
-          <div class="flex items-center justify-between mb-2">
-            <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-forest-50 text-forest-800">Tier 2</span>
-            <span class="text-xs font-semibold text-forest-800 font-bold">Max $500</span>
-          </div>
-          <h2 class="text-2xl font-bold text-navy-900 font-serif mb-2">Under $500 Setup</h2>
-          <p class="text-sm text-navy-600 leading-relaxed mb-4">
-            The ideal balance of comfort, daily convenience, and multi-year durability. Adds under-bed organization, multi-port fast charging, and laundry upgrades.
-          </p>
-          <div class="text-xs text-navy-500 space-y-1 py-3 border-t border-cream-200">
-            <p><strong>Primary Allocation:</strong> Premium topper, storage & charging</p>
-            <p><strong>Estimated Total:</strong> ~$485</p>
-          </div>
-        </div>
-        <a
-          href="/budget/under-500-dorm-setup/"
-          class="w-full py-2.5 px-4 rounded-lg bg-forest-800 text-cream-50 text-center text-sm font-semibold hover:bg-forest-900 transition-colors mt-4"
-        >
-          View $500 Guide &rarr;
-        </a>
-      </div>
-
-      {/* Tier 3 */}
-      <div class="bg-white border border-cream-300 rounded-2xl p-6 sm:p-7 flex flex-col justify-between shadow-sm">
-        <div>
-          <div class="flex items-center justify-between mb-2">
-            <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-cream-200 text-navy-800">Tier 3</span>
-            <span class="text-xs font-semibold text-navy-500">Max $1,000</span>
-          </div>
-          <h2 class="text-2xl font-bold text-navy-900 font-serif mb-2">Under $1,000 Setup</h2>
-          <p class="text-sm text-navy-600 leading-relaxed mb-4">
-            Comprehensive all-inclusive dorm investment. Includes roommate appliance splits, active noise cancellation, climate control, and desk ergonomics.
-          </p>
-          <div class="text-xs text-navy-500 space-y-1 py-3 border-t border-cream-200">
-            <p><strong>Primary Allocation:</strong> Appliances, ANC audio & desk setup</p>
-            <p><strong>Estimated Total:</strong> ~$940</p>
-          </div>
-        </div>
-        <a
-          href="/budget/under-1000-complete-setup/"
-          class="w-full py-2.5 px-4 rounded-lg bg-forest-800 text-cream-50 text-center text-sm font-semibold hover:bg-forest-900 transition-colors mt-4"
-        >
-          View $1,000 Guide &rarr;
-        </a>
-      </div>
-    </div>
+    <!-- Side-by-Side Comparison Matrix -->
+    <section class="space-y-6">
+      <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
+        Side-by-Side Tier Comparison
+      </h2>
+      <BudgetComparison />
+    </section>
 
     <!-- Guiding Philosophy -->
-    <div class="p-8 bg-cream-100 border border-cream-300 rounded-2xl space-y-4 max-w-4xl">
-      <h3 class="text-xl font-bold text-navy-900 font-serif">
-        The DormReady 60/30/10 Budget Rule
+    <div class="p-8 bg-brand-blue-50/50 border-2 border-brand-blue-100 rounded-3xl space-y-4 max-w-5xl shadow-soft">
+      <h3 class="text-xl font-black text-brand-navy">
+        The DormReady 60/30/10 Budget Allocation Rule
       </h3>
-      <p class="text-sm text-navy-700 leading-relaxed">
-        When allocating funds for college living, we recommend distributing your budget according to real daily utility:
+      <p class="text-xs sm:text-sm text-navy-700 leading-relaxed">
+        When allocating funds for college living, distribute your budget according to real daily utility rather than aesthetic impulse buys:
       </p>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs sm:text-sm pt-2">
-        <div class="p-4 bg-white rounded-xl border border-cream-200">
-          <span class="font-bold text-forest-800 text-base block mb-1">60% Sleep & Health</span>
-          <p class="text-navy-600">Mattress topper, zippered encasement, sheets, pillows, shower caddy, and first aid.</p>
+        <div class="p-5 bg-white rounded-2xl border-2 border-brand-blue-100 shadow-sm">
+          <span class="font-black text-brand-blue text-base block mb-1">60% Sleep &amp; Hygiene</span>
+          <p class="text-navy-600 text-xs">High-density mattress topper, zippered encasement, 2 sheet sets, shower shoes, and medical kit.</p>
         </div>
-        <div class="p-4 bg-white rounded-xl border border-cream-200">
-          <span class="font-bold text-forest-800 text-base block mb-1">30% Study & Tech</span>
-          <p class="text-navy-600">Heavy-duty surge protectors, long charging cables, desk lighting, and ergonomic backpacks.</p>
+        <div class="p-5 bg-white rounded-2xl border-2 border-brand-coral-100 shadow-sm">
+          <span class="font-black text-brand-coral text-base block mb-1">30% Study &amp; Power</span>
+          <p class="text-navy-600 text-xs">UL-listed surge protectors, 10ft cables, task lighting, and ergonomic seating cushions.</p>
         </div>
-        <div class="p-4 bg-white rounded-xl border border-cream-200">
-          <span class="font-bold text-forest-800 text-base block mb-1">10% Storage & Comfort</span>
-          <p class="text-navy-600">Under-bed fabric totes, over-door hooks, compact floor rugs, and laundry hampers.</p>
+        <div class="p-5 bg-white rounded-2xl border-2 border-brand-mint-100 shadow-sm">
+          <span class="font-black text-brand-mint text-base block mb-1">10% Storage &amp; Decor</span>
+          <p class="text-navy-600 text-xs">Under-bed clear totes, over-door hooks, compact floor rugs, and hanging shoe organizers.</p>
         </div>
       </div>
     </div>

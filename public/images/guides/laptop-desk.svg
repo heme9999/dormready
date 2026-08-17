@@ -1,0 +1,22 @@
+<svg width="640" height="360" viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="360" fill="#EEF5FF"/>
+  <circle cx="160" cy="120" r="80" fill="#DBEAFF" fill-opacity="0.8"/>
+  <!-- Desk Base -->
+  <rect x="140" y="260" width="360" height="14" rx="4" fill="#14213D"/>
+  <!-- Laptop -->
+  <rect x="230" y="110" width="180" height="120" rx="8" fill="#14213D"/>
+  <rect x="242" y="122" width="156" height="96" rx="4" fill="#3772FF"/>
+  <!-- Code / Lines on screen -->
+  <line x1="255" y1="140" x2="310" y2="140" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+  <line x1="255" y1="155" x2="340" y2="155" stroke="#FFD166" stroke-width="4" stroke-linecap="round"/>
+  <line x1="255" y1="170" x2="290" y2="170" stroke="#42C6A5" stroke-width="4" stroke-linecap="round"/>
+  <line x1="255" y1="185" x2="360" y2="185" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M200 230H440L420 260H220L200 230Z" fill="#CFC2B4"/>
+  <!-- Headphones -->
+  <path d="M460 210C460 170 510 170 510 210" stroke="#FF6B5E" stroke-width="5" stroke-linecap="round"/>
+  <rect x="450" y="205" width="15" height="30" rx="6" fill="#14213D"/>
+  <rect x="505" y="205" width="15" height="30" rx="6" fill="#14213D"/>
+  <!-- Badge -->
+  <rect x="40" y="40" width="150" height="36" rx="18" fill="#3772FF"/>
+  <text x="58" y="63" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#FFFFFF">BY MAJOR &amp; OS</text>
+</svg>

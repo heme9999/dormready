@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
 import ChecklistApp from '../components/ChecklistApp';
+import VisualCallout from '../components/VisualCallout.astro';
 import { CHECKLIST_ITEMS } from '../data/checklist';
 
 const breadcrumbs = [
@@ -28,33 +29,48 @@ const faqs = [
 
 <BaseLayout
   title="The Ultimate College Dorm Checklist (Interactive & Printable)"
-  description="Free interactive college dorm checklist for freshmen. 9 essential categories, local browser saving, essentials-only filter, and print-ready shopping format."
+  description="Free interactive college dorm checklist for freshmen. 10 essential categories, local browser saving, essentials-only filter, and print-ready shopping format."
   breadcrumbs={breadcrumbs}
   faqs={faqs}
   ogType="article"
-  modifiedTime="2026-08-15"
+  modifiedTime="2026-08-17"
 >
-  <div class="bg-cream-100 border-b border-cream-300 py-8 sm:py-12">
+  <!-- Colorful Header Banner -->
+  <div class="bg-gradient-to-b from-brand-blue-50 via-brand-blue-50/50 to-white border-b border-slate-200 py-10 sm:py-14">
     <div class="container-custom">
       <Breadcrumbs items={breadcrumbs} />
 
-      <div class="mt-4 flex flex-wrap items-center gap-3 text-xs sm:text-sm text-navy-600">
-        <span class="px-2.5 py-1 rounded-full font-semibold bg-forest-50 text-forest-800 border border-forest-100">
-          Interactive Tool
-        </span>
-        <span>•</span>
-        <span>{CHECKLIST_ITEMS.length} Total Items</span>
-        <span>•</span>
-        <span>Last updated: <time datetime="2026-08-15" class="font-semibold text-navy-800">August 15, 2026</time></span>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mt-6">
+        <div class="lg:col-span-8 space-y-4">
+          <div class="flex flex-wrap items-center gap-2.5 text-xs font-bold text-navy-600">
+            <span class="badge-blue">
+              Interactive Packing Tool
+            </span>
+            <span>•</span>
+            <span class="text-brand-navy">{CHECKLIST_ITEMS.length} Audited Items</span>
+            <span>•</span>
+            <span>Last audited: <time datetime="2026-08-17" class="text-brand-blue">August 17, 2026</time></span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl font-black text-brand-navy leading-tight">
+            Master College Dorm Checklist
+          </h1>
+
+          <p class="text-base sm:text-lg text-navy-700 max-w-2xl leading-relaxed">
+            Everything you genuinely need for your first year in a residence hall. Check off items as you pack or shop—your progress is automatically preserved in your browser.
+          </p>
+        </div>
+
+        <div class="lg:col-span-4 hidden lg:block">
+          <img
+            src="/images/guides/checklist-box.svg"
+            alt="Checklist illustration with moving box and clipboard"
+            width="640"
+            height="360"
+            class="w-full h-auto rounded-3xl border-2 border-brand-blue-100 shadow-soft"
+          />
+        </div>
       </div>
-
-      <h1 class="mt-4 text-3xl sm:text-5xl font-bold font-serif text-navy-900 leading-tight">
-        Master College Dorm Checklist
-      </h1>
-
-      <p class="mt-4 text-base sm:text-lg text-navy-700 max-w-3xl leading-relaxed">
-        Everything you genuinely need for your first year in a residence hall. Check off items as you pack or shop—your progress is automatically preserved in your browser.
-      </p>
     </div>
   </div>
 
@@ -65,36 +81,36 @@ const faqs = [
     <ChecklistApp client:load />
 
     <!-- Static Educational Content for SEO and Fallback -->
-    <div class="mt-16 pt-12 border-t border-cream-300 space-y-12">
-      <section class="max-w-4xl space-y-4">
-        <h2 class="text-2xl font-bold font-serif text-navy-900">
+    <div class="mt-16 pt-12 border-t border-slate-200 space-y-12">
+      <section class="max-w-4xl space-y-6">
+        <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
           How to Use This Checklist Strategically
         </h2>
-        <div class="prose prose-slate text-sm sm:text-base text-navy-700 leading-relaxed space-y-3">
+        <div class="text-xs sm:text-sm text-navy-700 leading-relaxed space-y-4">
           <p>
             The biggest mistake incoming freshmen make is treating dorm shopping as a retail splurge. Residence hall double rooms average approximately <strong>130 to 180 square feet</strong> shared between two adults. Every item you bring consumes physical space, air circulation, and cognitive energy.
           </p>
-          <p>
-            We recommend adopting the <strong>3-Wave Purchase Strategy</strong>:
-          </p>
-          <ol class="list-decimal list-inside space-y-2 font-medium text-navy-800">
-            <li><strong>Wave 1 (Before Arrival):</strong> Twin XL mattress topper, bedding, shower caddy, shower shoes, surge protector, and prescription medical essentials.</li>
-            <li><strong>Wave 2 (Move-in Day Aftermath):</strong> Cleaning supplies, floor rug, trash bin liners, and hanging hooks once you evaluate room dimensions and closet bar height.</li>
-            <li><strong>Wave 3 (Month Two):</strong> Specialized organizers, study accessories, and additional storage after experiencing your real academic schedule.</li>
-          </ol>
+
+          <VisualCallout type="action" title="Adopt the 3-Wave Purchase Strategy">
+            <ol class="list-decimal list-inside space-y-2 font-medium text-navy-800">
+              <li><strong>Wave 1 (Before Arrival):</strong> Twin XL mattress topper, bedding, shower caddy, shower shoes, surge protector, and prescription medical essentials.</li>
+              <li><strong>Wave 2 (Move-in Day Aftermath):</strong> Cleaning supplies, floor rug, trash bin liners, and hanging hooks once you evaluate room dimensions and closet bar height.</li>
+              <li><strong>Wave 3 (Month Two):</strong> Specialized organizers, study accessories, and additional storage after experiencing your real academic schedule.</li>
+            </ol>
+          </VisualCallout>
         </div>
       </section>
 
       <!-- Frequently Asked Questions -->
       <section class="max-w-4xl space-y-6">
-        <h2 class="text-2xl font-bold font-serif text-navy-900">
+        <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
           Dorm Packing Frequently Asked Questions
         </h2>
         <div class="space-y-4">
           {faqs.map((faq) => (
-            <div class="p-5 bg-white border border-cream-300 rounded-xl">
-              <h3 class="font-bold text-navy-900 text-base mb-2">{faq.question}</h3>
-              <p class="text-sm text-navy-700 leading-relaxed">{faq.answer}</p>
+            <div class="p-6 bg-white border-2 border-slate-200 rounded-2xl shadow-soft">
+              <h3 class="font-bold text-brand-navy text-base mb-2">{faq.question}</h3>
+              <p class="text-xs sm:text-sm text-navy-700 leading-relaxed">{faq.answer}</p>
             </div>
           ))}
         </div>

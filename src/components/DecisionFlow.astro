@@ -1,0 +1,84 @@
+---
+interface DecisionNode {
+  step: string;
+  title: string;
+  badge: string;
+  icon: string;
+  color: string;
+  question: string;
+  guidance: string;
+}
+
+const decisionSteps: DecisionNode[] = [
+  {
+    step: 'Step 1',
+    title: 'Academic Major Requirements',
+    badge: 'Department Rules',
+    icon: '🎓',
+    color: 'bg-brand-blue-50 border-brand-blue-200 text-brand-blue-700',
+    question: 'Does your specific engineering or architecture department mandate Windows x86?',
+    guidance: 'SolidWorks, Revit, and specialized CAD packages frequently fail on macOS/ARM without lab virtualization.',
+  },
+  {
+    step: 'Step 2',
+    title: 'Software Stack Check',
+    badge: 'Course Catalog',
+    icon: '💻',
+    color: 'bg-brand-coral-50 border-brand-coral-200 text-brand-coral-700',
+    question: 'Are you running browser-based apps, code compilers, or heavy 3D rendering engines?',
+    guidance: 'General business, humanities, and biology majors thrive on lightweight ultrabooks with 15+ hr battery life.',
+  },
+  {
+    step: 'Step 3',
+    title: 'Operating System Choice',
+    badge: 'macOS vs. Windows',
+    icon: '⚙️',
+    color: 'bg-brand-mint-50 border-brand-mint-200 text-brand-mint-700',
+    question: 'MacBook Air (Apple Silicon) or Windows 11 x86/ARM ultrabook?',
+    guidance: 'M2/M3 MacBook Air provides the best battery and thermal efficiency; Windows offers broad hardware legacy support.',
+  },
+  {
+    step: 'Step 4',
+    title: 'Minimum Spec Floor',
+    badge: 'Longevity Floor',
+    icon: '⚡',
+    color: 'bg-brand-yellow-50 border-brand-yellow-200 text-amber-800',
+    question: '16GB RAM unified memory & 512GB SSD minimum for 4-year longevity.',
+    guidance: 'Do not buy 8GB RAM laptops in 2026 for college. Multitasking between 30 tabs and Zoom causes severe paging.',
+  },
+  {
+    step: 'Step 5',
+    title: 'Education Discount Stacking',
+    badge: 'Student Verification',
+    icon: '🏷️',
+    color: 'bg-slate-50 border-slate-300 text-brand-navy',
+    question: 'Apple Education Store ($100 gift card), Dell University, or Lenovo Student Portal?',
+    guidance: 'Always verify student status with UNiDAYS or SheerID before checking out to save an average of 10–15%.',
+  },
+];
+---
+
+<div class="space-y-4">
+  <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-stretch">
+    {decisionSteps.map((node) => (
+      <div class={`flex flex-col justify-between p-5 rounded-2xl border-2 shadow-soft ${node.color} bg-white`}>
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-navy-500">{node.step}</span>
+            <span class="text-xl select-none" aria-hidden="true">{node.icon}</span>
+          </div>
+          <span class="inline-block text-[11px] font-bold px-2 py-0.5 rounded-md bg-slate-100 text-navy-800 mb-2">
+            {node.badge}
+          </span>
+          <h4 class="text-sm font-black text-brand-navy mb-2">{node.title}</h4>
+          <p class="text-xs text-navy-700 font-medium mb-3">
+            {node.question}
+          </p>
+        </div>
+        <p class="text-[11px] text-navy-600 italic border-t border-slate-100 pt-2">
+          {node.guidance}
+        </p>
+      </div>
+    ))}
+  </div>
+</div>

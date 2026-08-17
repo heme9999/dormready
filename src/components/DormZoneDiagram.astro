@@ -1,0 +1,166 @@
+---
+interface Zone {
+  id: string;
+  name: string;
+  badge: string;
+  color: {
+    bg: string;
+    border: string;
+    badgeBg: string;
+    text: string;
+  };
+  icon: string;
+  essentials: string[];
+  rules: string;
+}
+
+const zones: Zone[] = [
+  {
+    id: 'sleep',
+    name: 'Sleep & Recovery Zone',
+    badge: 'Zone 1 (Priority)',
+    color: {
+      bg: 'bg-brand-blue-50',
+      border: 'border-brand-blue-200',
+      badgeBg: 'bg-brand-blue text-white',
+      text: 'text-brand-blue-900',
+    },
+    icon: '🛏️',
+    essentials: [
+      'Twin XL mattress topper (minimum 2–3" high-density foam)',
+      '2 fitted Twin XL sheet sets (rotate weekly on wash day)',
+      'Breathable, washable comforter or duvet',
+      'Memory foam or cooling pillow + protective zip encasement',
+    ],
+    rules: 'Verify lofting height clearance before purchasing tall headboard shelves.',
+  },
+  {
+    id: 'study',
+    name: 'Ergonomic Study Zone',
+    badge: 'Zone 2',
+    color: {
+      bg: 'bg-brand-coral-50',
+      border: 'border-brand-coral-200',
+      badgeBg: 'bg-brand-coral text-white',
+      text: 'text-rose-950',
+    },
+    icon: '📚',
+    essentials: [
+      'Adjustable LED desk lamp (with warm/cool reading modes)',
+      'Ergonomic memory foam seat cushion for standard wooden chair',
+      'Laptop stand or riser to align screen with eye level',
+      'Desk drawer organizer tray for pens, sticky notes, and USB drives',
+    ],
+    rules: 'Avoid floor lamps that lack UL listing or exceed maximum incandescent wattage caps.',
+  },
+  {
+    id: 'storage',
+    name: 'Vertical Storage & Closet',
+    badge: 'Zone 3',
+    color: {
+      bg: 'bg-brand-yellow-50',
+      border: 'border-brand-yellow-200',
+      badgeBg: 'bg-amber-500 text-white',
+      text: 'text-amber-950',
+    },
+    icon: '📦',
+    essentials: [
+      'Translucent under-bed latching storage containers (max 7–9" height if low bed)',
+      'Heavy-duty non-slip velvet hangers (50-pack saves 40% closet rod space)',
+      'Over-the-door hanging shoe organizer (also holds snacks & chargers)',
+      'Collapsible laundry hamper bag with reinforced shoulder straps',
+    ],
+    rules: 'Do not drill or nail into walls; use heavy-duty removable adhesive strips where approved.',
+  },
+  {
+    id: 'hygiene',
+    name: 'Community Hygiene Zone',
+    badge: 'Zone 4',
+    color: {
+      bg: 'bg-brand-mint-50',
+      border: 'border-brand-mint-200',
+      badgeBg: 'bg-brand-mint text-white',
+      text: 'text-emerald-950',
+    },
+    icon: '🚿',
+    essentials: [
+      'Mesh, quick-drain shower caddy with handle (dries faster than solid plastic)',
+      'Rubber non-slip shower slides (essential for hall bathroom hygiene)',
+      '2 quick-drying waffle-weave or Turkish bath towel sets',
+      'Personal toilet paper roll & toiletry pouch for shared suite bathrooms',
+    ],
+    rules: 'Never leave personal toiletries in community stalls overnight.',
+  },
+  {
+    id: 'power',
+    name: 'Safe Power & Connectivity',
+    badge: 'Zone 5 (Critical)',
+    color: {
+      bg: 'bg-slate-50',
+      border: 'border-slate-300',
+      badgeBg: 'bg-brand-navy text-white',
+      text: 'text-brand-navy',
+    },
+    icon: '⚡',
+    essentials: [
+      'UL-listed surge protector power strip with 10–12ft heavy-duty cord',
+      'Braided 10ft USB-C fast charging cables for bed-to-wall reach',
+      'GaN 65W+ multi-port wall charger for phone, laptop, and earbuds',
+      'Ethernet cable (Cat 6, 15ft) for high-speed dorm gaming & exams',
+    ],
+    rules: 'Household daisy-chained multi-taps and ungrounded extension cords are confiscated by safety inspectors.',
+  },
+];
+---
+
+<div class="space-y-6">
+  <div class="p-6 rounded-3xl bg-brand-blue-50/50 border-2 border-brand-blue-100 mb-8">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="space-y-2 max-w-xl">
+        <span class="badge-blue">Spatial Blueprint</span>
+        <h3 class="text-xl font-black text-brand-navy">The 5 Functional Dorm Zones</h3>
+        <p class="text-xs text-navy-700 leading-relaxed">
+          Most U.S. college double rooms range between <strong>130 and 180 square feet</strong>. Dividing your side into five distinct zones prevents clutter overflow and eliminates unnecessary purchases.
+        </p>
+      </div>
+      <div class="shrink-0 w-full md:w-64">
+        <img
+          src="/images/guides/dorm-essentials.svg"
+          alt="5-zone dorm layout diagram"
+          width="640"
+          height="360"
+          class="w-full h-auto rounded-xl border border-brand-blue-200 shadow-sm"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {zones.map((zone) => (
+      <div class={`flex flex-col justify-between p-6 rounded-2xl border-2 shadow-soft ${zone.color.bg} ${zone.color.border}`}>
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-2xl" aria-hidden="true">{zone.icon}</span>
+            <span class={`text-xs font-bold px-2.5 py-0.5 rounded-full shadow-sm ${zone.color.badgeBg}`}>
+              {zone.badge}
+            </span>
+          </div>
+          <h4 class={`text-base font-black mb-3 ${zone.color.text}`}>{zone.name}</h4>
+
+          <ul class="space-y-2 mb-4">
+            {zone.essentials.map((item) => (
+              <li class="flex items-start gap-2 text-xs text-navy-700">
+                <span class="text-brand-blue font-bold mt-0.5">✓</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="pt-3 border-t border-black/5 text-xs text-navy-600 italic">
+          <strong class="font-bold text-navy-900 not-italic">Campus Rule:</strong> {zone.rules}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

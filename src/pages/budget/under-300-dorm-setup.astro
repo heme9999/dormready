@@ -1,12 +1,13 @@
 ---
 import GuideLayout from '../../layouts/GuideLayout.astro';
+import VisualCallout from '../../components/VisualCallout.astro';
 
 const guide = {
   title: 'The Under $300 Budget Dorm Setup: Survival Essentials on a Strict Budget',
   description: 'How to get genuine sleep comfort, basic hygiene, and reliable power while spending under $300 total for the entire semester.',
   category: 'Budget Guide',
   categoryUrl: '/budget/',
-  lastUpdated: '2026-08-10',
+  lastUpdated: '2026-08-17',
   readingTimeMinutes: 7,
   currentSlug: 'under-300-dorm-setup',
 };
@@ -31,33 +32,33 @@ const items = [
 <GuideLayout {...guide}>
   <div class="space-y-8 text-base leading-relaxed">
     <!-- Intro box -->
-    <div class="p-6 bg-cream-100 border border-cream-300 rounded-2xl">
-      <h2 class="text-lg font-bold text-navy-900 mb-2">The $300 Philosophy: Focus on Physical Biology</h2>
-      <p class="text-sm text-navy-700 leading-relaxed">
+    <div class="p-6 bg-brand-mint-50 border-2 border-brand-mint-200 rounded-3xl shadow-soft">
+      <h2 class="text-lg font-black text-emerald-950 mb-2">The $300 Philosophy: Focus on Physical Biology</h2>
+      <p class="text-xs sm:text-sm text-navy-700 leading-relaxed">
         When your budget is capped at $300, <strong>80% of your dollars must go toward sleep, hygiene, and fire safety</strong>. Cut all aesthetic tapestries, decorative throw pillows, and novelty appliances. Every dollar below is allocated to items that directly impact your health and academic stamina.
       </p>
     </div>
 
     <!-- Line Item Breakdown Table -->
     <section class="space-y-4">
-      <h2 class="text-2xl font-bold font-serif text-navy-900">Line-Item Spending Breakdown (Target Total: ~$265)</h2>
-      <div class="overflow-x-auto my-4">
-        <table class="w-full text-left text-xs sm:text-sm border border-cream-300 rounded-xl overflow-hidden">
-          <thead class="bg-cream-200 text-navy-900 font-bold">
+      <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">Line-Item Spending Breakdown (Target Total: ~$265)</h2>
+      <div class="overflow-x-auto my-4 rounded-2xl border-2 border-slate-200 shadow-soft">
+        <table class="w-full text-left text-xs sm:text-sm">
+          <thead class="bg-slate-100 text-brand-navy font-black">
             <tr>
-              <th class="p-3 border-b border-cream-300">Category</th>
-              <th class="p-3 border-b border-cream-300">Item</th>
-              <th class="p-3 border-b border-cream-300">Estimated Cost</th>
-              <th class="p-3 border-b border-cream-300">Why It's Non-Negotiable</th>
+              <th class="p-3.5 border-b border-slate-200">Category</th>
+              <th class="p-3.5 border-b border-slate-200">Item</th>
+              <th class="p-3.5 border-b border-slate-200">Estimated Cost</th>
+              <th class="p-3.5 border-b border-slate-200">Why It's Non-Negotiable</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-cream-200 bg-white">
+          <tbody class="divide-y divide-slate-100 bg-white">
             {items.map((item) => (
-              <tr>
-                <td class="p-3 font-semibold text-navy-900 text-xs">{item.category}</td>
-                <td class="p-3 font-medium text-navy-900">{item.name}</td>
-                <td class="p-3 text-forest-800 font-bold whitespace-nowrap">{item.cost}</td>
-                <td class="p-3 text-navy-600 text-xs">{item.why}</td>
+              <tr class="hover:bg-slate-50 transition-colors">
+                <td class="p-3.5 font-black text-brand-navy text-xs">{item.category}</td>
+                <td class="p-3.5 font-semibold text-navy-900">{item.name}</td>
+                <td class="p-3.5 text-brand-mint-700 font-black whitespace-nowrap">{item.cost}</td>
+                <td class="p-3.5 text-navy-600 text-xs">{item.why}</td>
               </tr>
             ))}
           </tbody>
@@ -65,37 +66,11 @@ const items = [
       </div>
     </section>
 
-    <!-- Where to Save Money -->
-    <section class="space-y-4">
-      <h2 class="text-2xl font-bold font-serif text-navy-900">How to Keep Your Spend Under $300</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="p-4 bg-white border border-cream-300 rounded-xl">
-          <h3 class="font-bold text-navy-900 text-sm mb-1.5">1. Use Campus Resources Instead of Buying</h3>
-          <p class="text-xs text-navy-600 leading-relaxed">
-            Do not buy an electric kettle, iron, or printer. University libraries offer free printing credits, floor lounges feature microwave stations, and campus recreation centers provide iron lending.
-          </p>
-        </div>
-        <div class="p-4 bg-white border border-cream-300 rounded-xl">
-          <h3 class="font-bold text-navy-900 text-sm mb-1.5">2. Take Advantage of Student Discount Portals</h3>
-          <p class="text-xs text-navy-600 leading-relaxed">
-            Use your active .edu email on our <a href="/student-discounts/" class="underline text-forest-800 font-semibold">Student Discounts</a> directory to save 10%–20% on retail bedding and storage during summer promos.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Next steps -->
-    <div class="p-6 bg-cream-100 border border-cream-300 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div>
-        <h3 class="text-base font-bold text-navy-900">Compare With Other Spending Tiers</h3>
-        <p class="text-xs text-navy-600 mt-0.5">Explore our balanced $500 setup and all-inclusive $1,000 setup.</p>
-      </div>
-      <a
-        href="/budget/"
-        class="px-5 py-2.5 rounded-lg bg-forest-800 text-cream-50 text-sm font-semibold hover:bg-forest-900 transition-colors shrink-0"
-      >
-        View All Budget Setups &rarr;
-      </a>
-    </div>
+    <!-- Visual Callout -->
+    <VisualCallout type="tip" title="Where to Cut Costs Without Risking Comfort">
+      <p>
+        Never skimp on the mattress topper or surge protector. Instead, save $50+ by packing hangers and bath towels from home, and buying laundry detergent at local discount grocery stores rather than campus convenience stores.
+      </p>
+    </VisualCallout>
   </div>
 </GuideLayout>

@@ -1,12 +1,14 @@
 ---
 import GuideLayout from '../layouts/GuideLayout.astro';
+import DormZoneDiagram from '../components/DormZoneDiagram.astro';
+import VisualCallout from '../components/VisualCallout.astro';
 
 const guide = {
   title: 'Dorm Room Essentials Organized by Real Daily Need',
   description: 'A realistic, practical room setup guide focusing on sleep hygiene, study ergonomics, and functional storage rather than aesthetic clutter.',
   category: 'Essentials Guide',
   categoryUrl: '/dorm-room-essentials/',
-  lastUpdated: '2026-08-12',
+  lastUpdated: '2026-08-17',
   readingTimeMinutes: 9,
   currentSlug: 'dorm-room-essentials',
 };
@@ -26,112 +28,39 @@ const faqs = [
 <GuideLayout {...guide} faqs={faqs}>
   <div class="space-y-10 text-base leading-relaxed">
     <!-- Intro block -->
-    <div class="p-6 bg-cream-100 border border-cream-300 rounded-2xl">
-      <h2 class="text-lg font-bold text-navy-900 mb-2">
+    <div class="p-6 bg-brand-mint-50 border-2 border-brand-mint-200 rounded-3xl shadow-soft">
+      <h2 class="text-lg font-black text-emerald-950 mb-2">
         Why Most "Dorm Essentials" Lists Fail Students
       </h2>
-      <p class="text-sm text-navy-700 leading-relaxed">
-        Typical affiliate blogs publish bloated 150-item lists packed with novelty gadgets that end up in campus dumpsters by December. Our guide prioritizes items that solve four non-negotiable physical constraints: <strong>mattress hardness, communal bathroom hygiene, electrical outlet scarcity, and tight closet dimensions</strong>.
+      <p class="text-xs sm:text-sm text-navy-700 leading-relaxed">
+        Typical retail blogs publish bloated 150-item lists packed with novelty gadgets that end up in campus dumpsters by December. Our guide prioritizes items that solve five non-negotiable physical constraints: <strong>mattress hardness, communal bathroom hygiene, electrical outlet scarcity, tight closet space, and study noise</strong>.
       </p>
     </div>
 
-    <!-- Zone 1: Sleep Sanctuary -->
-    <section class="space-y-4">
-      <h2 class="text-2xl font-bold font-serif text-navy-900">
-        Zone 1: Sleep Sanctuary (Where Your Academic Focus Begins)
+    <!-- 5 Functional Dorm Zones Blueprint -->
+    <section class="space-y-6">
+      <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
+        The 5 Functional Dorm Zones Blueprint
       </h2>
-      <p>
-        University dorm mattresses are institutional-grade, waterproof vinyl slabs designed for durability, not spinal support. Proper bedding is the single highest-ROI investment for your health and grades.
+      <p class="text-xs sm:text-sm text-navy-700">
+        Review the five core functional zones that every standard double dorm room requires for productive living:
       </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
-        <div class="p-5 bg-white border border-cream-300 rounded-xl space-y-2">
-          <span class="text-xs font-bold uppercase tracking-wider text-forest-800">Priority 1</span>
-          <h3 class="font-bold text-navy-900 text-base">2–3 Inch Mattress Topper</h3>
-          <p class="text-xs text-navy-600 leading-relaxed">
-            High-density memory foam or latex. A 2-inch topper provides adequate cushion; 3 inches offers hotel-like plushness for side sleepers.
-          </p>
-        </div>
-
-        <div class="p-5 bg-white border border-cream-300 rounded-xl space-y-2">
-          <span class="text-xs font-bold uppercase tracking-wider text-forest-800">Priority 2</span>
-          <h3 class="font-bold text-navy-900 text-base">Zippered Encasement</h3>
-          <p class="text-xs text-navy-600 leading-relaxed">
-            A 6-sided zippered mattress protector creates an impenetrable hygiene seal over the provided institutional mattress.
-          </p>
-        </div>
-
-        <div class="p-5 bg-white border border-cream-300 rounded-xl space-y-2">
-          <span class="text-xs font-bold uppercase tracking-wider text-forest-800">Priority 3</span>
-          <h3 class="font-bold text-navy-900 text-base">Two Twin XL Sheet Sets</h3>
-          <p class="text-xs text-navy-600 leading-relaxed">
-            Breathable 100% cotton or percale sheets prevent overheating. Having two sets ensures you have fresh bedding on laundry day.
-          </p>
-        </div>
-      </div>
+      <DormZoneDiagram />
     </section>
 
-    <!-- Zone 2: Communal Bathroom & Hygiene Logistics -->
-    <section class="space-y-4">
-      <h2 class="text-2xl font-bold font-serif text-navy-900">
-        Zone 2: Communal Bathroom Logistics
-      </h2>
+    <!-- Visual Callout: Bedding Rule -->
+    <VisualCallout type="tip" title="Mattress Topper Selection: 2-Inch vs. 3-Inch Foam">
       <p>
-        Sharing a bathroom down the hall with 20–40 floormates requires quick, hygienic routines:
+        University dorm mattresses are institutional-grade, waterproof vinyl slabs designed for durability, not spinal support. A <strong>2-inch topper</strong> provides adequate cushion for back sleepers; a <strong>3-inch high-density topper</strong> is recommended for side sleepers to relieve shoulder and hip pressure points.
       </p>
-      <ul class="space-y-2 list-disc list-inside text-sm sm:text-base text-navy-700">
-        <li><strong>Quick-Drying Mesh Shower Caddy:</strong> Rigid plastic tubs trap standing water and grow mildew within weeks. Mesh caddies drain water instantly and can be hung on hooks.</li>
-        <li><strong>Anti-Microbial Shower Shoes:</strong> Non-negotiable protection against communal floor infections. Look for textured rubber slides with drainage holes.</li>
-        <li><strong>Waffle-Weave or Turkish Bath Towels:</strong> Thick luxury bath sheets take 12+ hours to dry in damp dorm rooms. Lightweight waffle towels dry in under 2 hours on a bedpost.</li>
-      </ul>
-    </section>
+    </VisualCallout>
 
-    <!-- Zone 3: Power & Workspace Ergonomics -->
-    <section class="space-y-4">
-      <h2 class="text-2xl font-bold font-serif text-navy-900">
-        Zone 3: Power Distribution & Desk Ergonomics
-      </h2>
+    <!-- Visual Callout: Electrical Safety Rule -->
+    <VisualCallout type="safety" title="Power Strip &amp; Surge Protection Requirements">
       <p>
-        Most dorm rooms have only 2–3 duplex electrical wall receptacles for two students with laptops, tablets, phones, desk lamps, and chargers.
+        Most residence hall rooms offer only 2 or 4 wall outlets, often positioned behind the bed or heavy desk. Never use ungrounded household extension cords. Purchase a <strong>UL-listed 14-gauge surge protector with a 10–12 foot cord</strong> and built-in circuit breaker reset switch.
       </p>
-      <div class="p-5 bg-amber-50 border border-amber-300 rounded-xl text-xs sm:text-sm text-navy-900 space-y-2">
-        <h3 class="font-bold text-amber-950 flex items-center gap-1.5">
-          <span>⚡</span>
-          <span>Surge Protector vs Extension Cord Rules</span>
-        </h3>
-        <p>
-          Never buy standard 2-prong extension cords or ungrounded cubes. Residence Life inspects rooms for fire compliance: you must use <strong>UL-listed, grounded surge protectors with built-in circuit breakers</strong>. Look for heavy-duty 8-to-10-foot cables.
-        </p>
-      </div>
-    </section>
-
-    <!-- Zone 4: Vertical & Under-Bed Storage Optimization -->
-    <section class="space-y-4">
-      <h2 class="text-2xl font-bold font-serif text-navy-900">
-        Zone 4: Maximizing Limited Floor Space
-      </h2>
-      <p>
-        When square footage is constrained, utilize vertical height:
-      </p>
-      <ul class="space-y-2 list-disc list-inside text-sm sm:text-base text-navy-700">
-        <li><strong>Velvet Slim Hangers (30-Pack):</strong> Slim hangers increase closet hanging capacity by up to 50% compared to thick plastic tubing.</li>
-        <li><strong>Under-Bed Fabric Storage Bags:</strong> Flexible zippered containers protect out-of-season clothing, extra bedding, and winter coats from floor dust.</li>
-        <li><strong>Over-the-Door Multi-Hooks:</strong> Instant hanging storage for towels, backpacks, and jackets without requiring adhesive damage to walls.</li>
-      </ul>
-    </section>
-
-    <!-- Internal Linking Box -->
-    <div class="p-6 bg-cream-100 border border-cream-300 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div>
-        <h3 class="text-base font-bold text-navy-900">Track All Items in the Master Checklist</h3>
-        <p class="text-xs sm:text-sm text-navy-600 mt-0.5">Filter by budget, priority need, and print a custom checklist for your shopping run.</p>
-      </div>
-      <a
-        href="/college-dorm-checklist/"
-        class="px-5 py-2.5 rounded-lg bg-forest-800 text-cream-50 text-sm font-semibold hover:bg-forest-900 transition-colors shrink-0"
-      >
-        Open Dorm Checklist &rarr;
-      </a>
-    </div>
+    </VisualCallout>
   </div>
 </GuideLayout>

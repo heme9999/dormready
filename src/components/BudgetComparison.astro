@@ -1,0 +1,145 @@
+---
+interface BudgetPlan {
+  title: string;
+  price: string;
+  badge: string;
+  theme: {
+    border: string;
+    headerBg: string;
+    priceColor: string;
+    buttonBg: string;
+    badgeBg: string;
+  };
+  highlight: string;
+  description: string;
+  slug: string;
+  items: { category: string; item: string; cost: string }[];
+}
+
+const budgetPlans: BudgetPlan[] = [
+  {
+    title: 'Essential Comfort',
+    price: '$300',
+    badge: 'Budget First',
+    theme: {
+      border: 'border-brand-mint-200',
+      headerBg: 'bg-brand-mint-50',
+      priceColor: 'text-brand-mint-700',
+      buttonBg: 'bg-brand-mint-600 hover:bg-brand-mint-700 text-white',
+      badgeBg: 'bg-white text-brand-mint-700 border-brand-mint-200',
+    },
+    highlight: 'Sleep hygiene, shower essentials, and basic power safety.',
+    description: 'Stripped down to absolute physical necessities. No room decor or luxury gadgets.',
+    slug: 'under-300-dorm-setup',
+    items: [
+      { category: 'Bedding', item: 'Twin XL Topper + 2 Sheet Sets', cost: '$95' },
+      { category: 'Hygiene', item: 'Mesh Caddy + Slides + 2 Towels', cost: '$35' },
+      { category: 'Power', item: 'UL Surge Protector + 10ft Cable', cost: '$30' },
+      { category: 'Laundry', item: 'Mesh Hamper + Detergent Sheets', cost: '$25' },
+      { category: 'Storage', item: '2 Under-Bed Clear Storage Bins', cost: '$35' },
+      { category: 'Lighting', item: 'Basic LED Desk Task Lamp', cost: '$20' },
+      { category: 'Buffer', item: 'Command Hooks & Toiletries', cost: '$60' },
+    ],
+  },
+  {
+    title: 'Practical Complete',
+    price: '$500',
+    badge: 'Recommended',
+    theme: {
+      border: 'border-brand-blue-300 ring-2 ring-brand-blue/20',
+      headerBg: 'bg-brand-blue-50',
+      priceColor: 'text-brand-blue',
+      buttonBg: 'bg-brand-blue hover:bg-brand-blue-600 text-white',
+      badgeBg: 'bg-brand-blue text-white border-transparent',
+    },
+    highlight: 'Adds study ergonomics, noise management, and snack prep.',
+    description: 'The sweet spot for 80% of freshmen: high-density 3" foam, cooling fan, and full study setup.',
+    slug: 'under-500-dorm-setup',
+    items: [
+      { category: 'Bedding', item: '3" High-Density Topper + Cotton Sheets', cost: '$140' },
+      { category: 'Hygiene', item: 'Quick-Dry Towels + Full Bath Kit', cost: '$50' },
+      { category: 'Study', item: 'Seat Cushion + Clip Lamp + Organizer', cost: '$65' },
+      { category: 'Climate', item: '9" Oscillating Desk/Bed Fan', cost: '$35' },
+      { category: 'Power', item: 'Dual Surge Protectors + Cable Hub', cost: '$45' },
+      { category: 'Snack Prep', item: 'Electric Kettle (if permitted) + Mugs', cost: '$40' },
+      { category: 'Storage', item: 'Under-Bed Drawers + Over-Door Hangers', cost: '$65' },
+      { category: 'Buffer', item: 'First Aid Kit + Command Strips', cost: '$60' },
+    ],
+  },
+  {
+    title: 'Deluxe Independent',
+    price: '$1,000',
+    badge: 'Maximum Prep',
+    theme: {
+      border: 'border-brand-coral-200',
+      headerBg: 'bg-brand-coral-50',
+      priceColor: 'text-brand-coral-700',
+      buttonBg: 'bg-brand-coral-600 hover:bg-brand-coral-700 text-white',
+      badgeBg: 'bg-white text-brand-coral-700 border-brand-coral-200',
+    },
+    highlight: 'Includes solo-purchased mini fridge, microwave, and premium storage.',
+    description: 'Designed for students who are not splitting appliances with a roommate or out-of-state flyers.',
+    slug: 'under-1000-complete-setup',
+    items: [
+      { category: 'Appliances', item: 'Energy Star Mini Fridge (Solo)', cost: '$210' },
+      { category: 'Bedding', item: 'Premium 4" Memory Foam + 3 Sheet Sets', cost: '$190' },
+      { category: 'Study', item: 'Ergonomic Desk Chair Topper + Monitor Arm', cost: '$120' },
+      { category: 'Audio/Air', item: 'HEPA Air Purifier + White Noise Fan', cost: '$110' },
+      { category: 'Storage', item: '3-Tier Rolling Cart + Closet Cubes', cost: '$90' },
+      { category: 'Bath & Care', item: 'Full Caddy + Robe + Steamer', cost: '$80' },
+      { category: 'Power/Tech', item: 'GaN Fast Chargers + Multi-Port Dock', cost: '$90' },
+      { category: 'Buffer', item: 'Full Medicine Cabinet + Toolkit', cost: '$110' },
+    ],
+  },
+];
+---
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+  {budgetPlans.map((plan) => (
+    <div class={`flex flex-col justify-between bg-white rounded-3xl overflow-hidden border-2 shadow-soft hover:shadow-soft-hover transition-all duration-200 hover:-translate-y-1 ${plan.theme.border}`}>
+      <!-- Header -->
+      <div class={`p-6 ${plan.theme.headerBg} border-b border-black/5`}>
+        <div class="flex items-center justify-between mb-3">
+          <span class={`text-xs font-bold px-3 py-1 rounded-full border shadow-sm ${plan.theme.badgeBg}`}>
+            {plan.badge}
+          </span>
+          <span class="text-xs font-semibold text-navy-500">Fixed Cap</span>
+        </div>
+        <div class="flex items-baseline gap-2 mb-1">
+          <span class={`text-4xl font-black ${plan.theme.priceColor}`}>{plan.price}</span>
+          <span class="text-xs font-bold text-navy-600 uppercase tracking-wider">Total Cap</span>
+        </div>
+        <h3 class="text-lg font-black text-brand-navy">{plan.title}</h3>
+        <p class="text-xs text-navy-600 mt-2 leading-relaxed">{plan.description}</p>
+      </div>
+
+      <!-- Itemized Breakdown -->
+      <div class="p-6 flex-1 flex flex-col justify-between">
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-navy-500 mb-3">Itemized Allocation</h4>
+          <ul class="space-y-2.5 text-xs text-navy-700">
+            {plan.items.map((item) => (
+              <li class="flex items-start justify-between gap-2 pb-2 border-b border-slate-100 last:border-0">
+                <div>
+                  <span class="font-bold text-brand-navy mr-1.5">[{item.category}]</span>
+                  <span>{item.item}</span>
+                </div>
+                <span class="font-bold text-navy-900 shrink-0">{item.cost}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-slate-100">
+          <a
+            href={`/budget/${plan.slug}/`}
+            class={`w-full inline-flex items-center justify-center py-3 px-4 rounded-xl text-xs font-bold transition-colors shadow-sm ${plan.theme.buttonBg}`}
+          >
+            <span>View Full {plan.price} Blueprint</span>
+            <span class="ml-1">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>

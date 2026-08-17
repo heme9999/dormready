@@ -23,15 +23,15 @@ const categories = [
   description="Explore all DormReady college preparation guides, dorm checklists, packing frameworks, technology matrixes, and student discount breakdowns."
   breadcrumbs={breadcrumbs}
 >
-  <div class="bg-cream-100 border-b border-cream-300 py-8 sm:py-12">
+  <div class="bg-gradient-to-b from-brand-blue-50/60 via-brand-blue-50/30 to-white border-b border-slate-200 py-10 sm:py-14">
     <div class="container-custom">
       <Breadcrumbs items={breadcrumbs} />
 
-      <span class="mt-4 inline-block px-2.5 py-1 rounded-full text-xs font-semibold bg-forest-50 text-forest-800 border border-forest-100">
+      <span class="mt-4 badge-blue">
         Knowledge Base
       </span>
 
-      <h1 class="mt-4 text-3xl sm:text-5xl font-bold font-serif text-navy-900 leading-tight">
+      <h1 class="mt-4 text-3xl sm:text-5xl font-black text-brand-navy leading-tight">
         Dorm Preparation Guides Archive
       </h1>
 
@@ -48,10 +48,10 @@ const categories = [
         <button
           type="button"
           data-category={c.key}
-          class={`filter-tab px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-colors border ${
+          class={`filter-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all border ${
             c.key === 'all'
-              ? 'bg-forest-800 text-cream-50 border-forest-800 active-filter'
-              : 'bg-white text-navy-700 border-cream-300 hover:bg-cream-100'
+              ? 'bg-brand-blue text-white border-brand-blue active-filter shadow-sm'
+              : 'bg-white text-navy-700 border-slate-200 hover:bg-slate-50'
           }`}
         >
           {c.label}
@@ -60,9 +60,9 @@ const categories = [
     </div>
 
     <!-- Guides Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="guides-grid">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="guides-grid">
       {EDITORIAL_GUIDES.map((guide) => (
-        <div data-guide-category={guide.category} class="guide-grid-item">
+        <div class="guide-item" data-category={guide.category}>
           <GuideCard guide={guide} />
         </div>
       ))}
@@ -71,25 +71,24 @@ const categories = [
 </BaseLayout>
 
 <script>
-  const buttons = document.querySelectorAll('.filter-tab');
-  const items = document.querySelectorAll('.guide-grid-item');
+  const tabs = document.querySelectorAll('.filter-tab');
+  const items = document.querySelectorAll('.guide-item');
 
-  buttons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const selected = btn.getAttribute('data-category');
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const selectedCategory = tab.getAttribute('data-category');
 
-      // Update button styles
-      buttons.forEach((b) => {
-        b.classList.remove('bg-forest-800', 'text-cream-50', 'border-forest-800', 'active-filter');
-        b.classList.add('bg-white', 'text-navy-700', 'border-cream-300');
+      tabs.forEach((t) => {
+        t.classList.remove('bg-brand-blue', 'text-white', 'border-brand-blue', 'active-filter', 'shadow-sm');
+        t.classList.add('bg-white', 'text-navy-700', 'border-slate-200');
       });
-      btn.classList.add('bg-forest-800', 'text-cream-50', 'border-forest-800', 'active-filter');
-      btn.classList.remove('bg-white', 'text-navy-700', 'border-cream-300');
 
-      // Filter items
+      tab.classList.add('bg-brand-blue', 'text-white', 'border-brand-blue', 'active-filter', 'shadow-sm');
+      tab.classList.remove('bg-white', 'text-navy-700', 'border-slate-200');
+
       items.forEach((item) => {
-        const itemCat = item.getAttribute('data-guide-category');
-        if (selected === 'all' || itemCat === selected) {
+        const itemCategory = item.getAttribute('data-category');
+        if (selectedCategory === 'all' || itemCategory === selectedCategory) {
           (item as HTMLElement).style.display = 'block';
         } else {
           (item as HTMLElement).style.display = 'none';

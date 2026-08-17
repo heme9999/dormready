@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import VisualCallout from '../components/VisualCallout.astro';
 import { SITE_CONFIG } from '../data/site';
 
 const breadcrumbs = [
@@ -13,16 +14,16 @@ const breadcrumbs = [
   description="DormReady's comprehensive editorial standards: research methodology, product selection rules, affiliate disclosure principles, and correction policy."
   breadcrumbs={breadcrumbs}
 >
-  <div class="bg-cream-100 border-b border-cream-300 py-8 sm:py-12">
+  <div class="bg-gradient-to-b from-brand-mint-50/60 via-brand-mint-50/30 to-white border-b border-slate-200 py-10 sm:py-14">
     <div class="container-custom max-w-4xl">
       <Breadcrumbs items={breadcrumbs} />
 
-      <span class="mt-4 inline-block px-2.5 py-1 rounded-full text-xs font-semibold bg-forest-50 text-forest-800 border border-forest-100">
+      <span class="mt-4 badge-mint">
         Editorial Integrity
       </span>
 
-      <h1 class="mt-4 text-3xl sm:text-5xl font-bold font-serif text-navy-900 leading-tight">
-        Editorial Policy & Standards
+      <h1 class="mt-4 text-3xl sm:text-5xl font-black text-brand-navy leading-tight">
+        Editorial Policy &amp; Standards
       </h1>
 
       <p class="mt-4 text-base sm:text-lg text-navy-700 leading-relaxed font-sans">
@@ -31,16 +32,28 @@ const breadcrumbs = [
     </div>
   </div>
 
-  <div class="container-custom max-w-4xl py-10 lg:py-14 space-y-12 text-base leading-relaxed text-navy-800">
+  <div class="container-custom max-w-4xl py-10 lg:py-14 space-y-12 text-xs sm:text-sm leading-relaxed text-navy-800">
+    <!-- Visual Editorial Lifecycle Diagram -->
+    <section class="space-y-4">
+      <h2 class="text-xl sm:text-2xl font-black text-brand-navy">Editorial Review Lifecycle</h2>
+      <img
+        src="/images/diagrams/editorial-flow.svg"
+        alt="DormReady 3-stage editorial review flow: Fire Code Audit, Spatial Reality Check, and Verified Merchant Terms"
+        width="680"
+        height="140"
+        class="w-full h-auto rounded-2xl border-2 border-brand-mint-200 shadow-soft"
+      />
+    </section>
+
     <!-- Section 1: Research Process -->
     <section class="space-y-4">
-      <h2 class="text-2xl font-bold font-serif text-navy-900">1. Our Research Process</h2>
+      <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">1. Our Research Process</h2>
       <p>
         Our editorial team analyzes residence hall life through four primary lenses:
       </p>
-      <ol class="list-decimal list-inside space-y-2 text-navy-700">
+      <ol class="list-decimal list-inside space-y-2 text-navy-700 font-medium">
         <li><strong>Physical Spatial Constraints:</strong> Double rooms average 130–180 sq ft. Products that create clutter or cannot be folded/stacked are filtered out.</li>
-        <li><strong>Institutional Fire & Safety Codes:</strong> We cross-reference typical university residence policies across public, private, and regional colleges to ensure suggested items (e.g. UL-listed surge protectors, auto-shutoff kettles) comply with campus safety standards.</li>
+        <li><strong>Institutional Fire &amp; Safety Codes:</strong> We cross-reference typical university residence policies across public, private, and regional colleges to ensure suggested items (e.g. UL-listed surge protectors, auto-shutoff kettles) comply with campus safety standards.</li>
         <li><strong>Academic Durability:</strong> College gear must withstand 9 months of intensive daily use, frequent moves between semesters, and transport in campus laundry facilities.</li>
         <li><strong>Total Cost of Ownership:</strong> We prioritize products that provide lasting utility across multiple academic years rather than single-use novelties.</li>
       </ol>
@@ -48,7 +61,7 @@ const breadcrumbs = [
 
     <!-- Section 2: Fact-Checking Standards -->
     <section class="space-y-4">
-      <h2 class="text-2xl font-bold font-serif text-navy-900">2. Fact-Checking & Verification</h2>
+      <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">2. Fact-Checking &amp; Verification</h2>
       <p>
         We hold every factual assertion on DormReady to strict standards:
       </p>
@@ -59,62 +72,10 @@ const breadcrumbs = [
       </ul>
     </section>
 
-    <!-- Section 3: Product Selection Principles -->
-    <section class="space-y-4">
-      <h2 class="text-2xl font-bold font-serif text-navy-900">3. Product Selection Principles</h2>
+    <VisualCallout type="tip" title="Submit Corrections &amp; Rule Updates">
       <p>
-        Our editorial team maintains 100% independence when recommending dorm gear:
+        Have a college housing policy update, broken merchant link, or correction? Submit an issue directly on our open <a href={SITE_CONFIG.githubRepoUrl} target="_blank" rel="noopener noreferrer" class="underline font-bold text-brand-blue">GitHub Repository</a>.
       </p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="p-5 bg-white border border-cream-300 rounded-xl space-y-2">
-          <h3 class="font-bold text-navy-900 text-sm">What We Prioritize</h3>
-          <ul class="text-xs sm:text-sm text-navy-600 space-y-1 list-disc list-inside">
-            <li>UL/ETL safety certification</li>
-            <li>Multi-functional utility</li>
-            <li>Washable, durable textiles</li>
-            <li>Compact, collapsible form factors</li>
-          </ul>
-        </div>
-        <div class="p-5 bg-white border border-cream-300 rounded-xl space-y-2">
-          <h3 class="font-bold text-navy-900 text-sm">What We Disqualify</h3>
-          <ul class="text-xs sm:text-sm text-navy-600 space-y-1 list-disc list-inside">
-            <li>Exposed-coil heating elements</li>
-            <li>Unfused multi-plug extension cords</li>
-            <li>Bulky non-collapsible furniture</li>
-            <li>Single-purpose novelty gadgets</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section 4: Affiliate Disclosure Principles -->
-    <section class="space-y-4">
-      <h2 class="text-2xl font-bold font-serif text-navy-900">4. Affiliate Disclosure Principles</h2>
-      <p>
-        DormReady is designed to be reader-supported. In the future, when readers purchase products through links on our site, we may earn an affiliate commission from merchant partners.
-      </p>
-      <div class="p-5 bg-cream-100 border border-cream-300 rounded-xl text-sm space-y-2">
-        <p class="font-semibold text-navy-900">Our Commercial Guardrails:</p>
-        <ul class="space-y-1 list-disc list-inside text-navy-700 text-xs sm:text-sm">
-          <li>We never accept paid inclusion, sponsored rankings, or promotional placement fees.</li>
-          <li>Commercial partnerships have zero influence on whether an item is recommended or cautioned against.</li>
-          <li>All merchant links are clearly distinguished and accompanied by prominent disclosure badges.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Section 5: Correction & Update Policy -->
-    <section class="space-y-4">
-      <h2 class="text-2xl font-bold font-serif text-navy-900">5. Correction & Update Policy</h2>
-      <p>
-        College housing rules, product availability, and student discount terms evolve. We conduct seasonal audits prior to major academic move-in cycles.
-      </p>
-      <p>
-        If an error, expired promotion, or outdated specification is identified, our editorial staff updates the page and records the update in the visible <code>Last updated</code> timestamp.
-      </p>
-      <p class="text-sm">
-        To submit a correction or housing policy update, open an issue on our <a href={SITE_CONFIG.githubRepoUrl} target="_blank" rel="noopener noreferrer" class="underline text-forest-800 font-semibold">GitHub Project Repository</a>.
-      </p>
-    </section>
+    </VisualCallout>
   </div>
 </BaseLayout>

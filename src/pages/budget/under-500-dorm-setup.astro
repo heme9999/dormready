@@ -1,12 +1,13 @@
 ---
 import GuideLayout from '../../layouts/GuideLayout.astro';
+import VisualCallout from '../../components/VisualCallout.astro';
 
 const guide = {
   title: 'The Under $500 Dorm Setup: Balanced Comfort, Organization & Longevity',
   description: 'The sweet spot for dorm comfort: premium high-density foam topper, full laundry system, multi-port GaN charging, and organized storage.',
   category: 'Budget Guide',
   categoryUrl: '/budget/',
-  lastUpdated: '2026-08-10',
+  lastUpdated: '2026-08-17',
   readingTimeMinutes: 8,
   currentSlug: 'under-500-dorm-setup',
 };
@@ -26,33 +27,33 @@ const items = [
 
 <GuideLayout {...guide}>
   <div class="space-y-8 text-base leading-relaxed">
-    <div class="p-6 bg-forest-50 border border-forest-200 rounded-2xl">
-      <h2 class="text-lg font-bold text-forest-950 mb-2">The $500 Setup: The Undergraduate Sweet Spot</h2>
-      <p class="text-sm text-forest-900 leading-relaxed">
+    <div class="p-6 bg-brand-blue-50 border-2 border-brand-blue-200 rounded-3xl shadow-soft">
+      <h2 class="text-lg font-black text-brand-navy mb-2">The $500 Setup: The Undergraduate Sweet Spot</h2>
+      <p class="text-xs sm:text-sm text-navy-700 leading-relaxed">
         A $500 allocation is the optimal balance for 90% of college freshmen. It upgrades your daily sleep quality from "surviving" to "thriving", adds fast 65W GaN multi-device charging, and equips you with durable under-bed storage containers that will survive your sophomore and junior apartment moves.
       </p>
     </div>
 
     <!-- Line item table -->
     <section class="space-y-4">
-      <h2 class="text-2xl font-bold font-serif text-navy-900">Line-Item Spending Breakdown (Target Total: ~$485)</h2>
-      <div class="overflow-x-auto my-4">
-        <table class="w-full text-left text-xs sm:text-sm border border-cream-300 rounded-xl overflow-hidden">
-          <thead class="bg-cream-200 text-navy-900 font-bold">
+      <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">Line-Item Spending Breakdown (Target Total: ~$485)</h2>
+      <div class="overflow-x-auto my-4 rounded-2xl border-2 border-slate-200 shadow-soft">
+        <table class="w-full text-left text-xs sm:text-sm">
+          <thead class="bg-slate-100 text-brand-navy font-black">
             <tr>
-              <th class="p-3 border-b border-cream-300">Category</th>
-              <th class="p-3 border-b border-cream-300">Item</th>
-              <th class="p-3 border-b border-cream-300">Estimated Cost</th>
-              <th class="p-3 border-b border-cream-300">Why It's Worth the Upgrade</th>
+              <th class="p-3.5 border-b border-slate-200">Category</th>
+              <th class="p-3.5 border-b border-slate-200">Item</th>
+              <th class="p-3.5 border-b border-slate-200">Estimated Cost</th>
+              <th class="p-3.5 border-b border-slate-200">Why It's Worth the Upgrade</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-cream-200 bg-white">
+          <tbody class="divide-y divide-slate-100 bg-white">
             {items.map((item) => (
-              <tr>
-                <td class="p-3 font-semibold text-navy-900 text-xs">{item.category}</td>
-                <td class="p-3 font-medium text-navy-900">{item.name}</td>
-                <td class="p-3 text-forest-800 font-bold whitespace-nowrap">{item.cost}</td>
-                <td class="p-3 text-navy-600 text-xs">{item.why}</td>
+              <tr class="hover:bg-slate-50 transition-colors">
+                <td class="p-3.5 font-black text-brand-navy text-xs">{item.category}</td>
+                <td class="p-3.5 font-semibold text-navy-900">{item.name}</td>
+                <td class="p-3.5 text-brand-blue font-black whitespace-nowrap">{item.cost}</td>
+                <td class="p-3.5 text-navy-600 text-xs">{item.why}</td>
               </tr>
             ))}
           </tbody>
@@ -60,43 +61,11 @@ const items = [
       </div>
     </section>
 
-    <!-- Key upgrades compared to $300 -->
-    <section class="space-y-4">
-      <h2 class="text-2xl font-bold font-serif text-navy-900">Key Upgrades in the $500 Tier</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="p-5 bg-white border border-cream-300 rounded-xl space-y-2">
-          <h3 class="font-bold text-navy-900 text-base">3-Inch Foam Mattress Topper</h3>
-          <p class="text-xs text-navy-600 leading-relaxed">
-            The extra inch of high-density cooling foam eliminates pressure points entirely, crucial during stressful midterm and finals weeks.
-          </p>
-        </div>
-        <div class="p-5 bg-white border border-cream-300 rounded-xl space-y-2">
-          <h3 class="font-bold text-navy-900 text-base">65W GaN Multi-Port Charger</h3>
-          <p class="text-xs text-navy-600 leading-relaxed">
-            Replaces 3 bulky power bricks with one compact GaN charger that powers your laptop and phone from a single wall socket.
-          </p>
-        </div>
-        <div class="p-5 bg-white border border-cream-300 rounded-xl space-y-2">
-          <h3 class="font-bold text-navy-900 text-base">Lockbox for Personal Docs</h3>
-          <p class="text-xs text-navy-600 leading-relaxed">
-            Stores social security card, passport, spare debit cards, and prescription meds safely in shared living quarters.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Next steps CTA -->
-    <div class="p-6 bg-cream-100 border border-cream-300 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div>
-        <h3 class="text-base font-bold text-navy-900">Track These Items With Our Checklist</h3>
-        <p class="text-xs text-navy-600 mt-0.5">Use our free interactive tool with local saving and print-ready shopping views.</p>
-      </div>
-      <a
-        href="/college-dorm-checklist/"
-        class="px-5 py-2.5 rounded-lg bg-forest-800 text-cream-50 text-sm font-semibold hover:bg-forest-900 transition-colors shrink-0"
-      >
-        Open Interactive Checklist &rarr;
-      </a>
-    </div>
+    <!-- Visual Callout -->
+    <VisualCallout type="action" title="Prioritize the 3-Inch Mattress Topper">
+      <p>
+        The biggest qualitative difference between the $300 and $500 tier is the 3-inch high-density cooling topper. Good sleep directly correlates with freshman GPA and immune resistance during peak midterm flu seasons.
+      </p>
+    </VisualCallout>
   </div>
 </GuideLayout>

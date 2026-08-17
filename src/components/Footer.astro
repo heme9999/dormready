@@ -1,84 +1,140 @@
 ---
 import { SITE_CONFIG } from '../data/site';
+
+const currentYear = new Date().getFullYear();
 ---
 
-<footer class="mt-auto border-t border-cream-300 bg-cream-100 text-navy-800">
+<footer class="bg-white border-t border-slate-200 mt-20" aria-labelledby="footer-heading">
+  <h2 id="footer-heading" class="sr-only">Footer</h2>
   <div class="container-custom py-12 lg:py-16">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-      <!-- Column 1: Brand & Mission -->
-      <div class="space-y-4">
-        <div class="flex items-center gap-2.5">
-          <div class="w-8 h-8 rounded-lg bg-forest-800 flex items-center justify-center text-cream-50 font-bold text-base">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12">
+      <!-- Col 1: Brand & Mission -->
+      <div class="md:col-span-1 space-y-4">
+        <a href="/" class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-brand-blue flex items-center justify-center text-white font-bold text-lg shadow-sm">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
               <path d="M3 10v11h18V10" />
               <path d="M2 10l10-7 10 7" />
               <path d="M9 21V12h6v9" />
             </svg>
           </div>
-          <span class="font-bold text-xl tracking-tight text-navy-900">DormReady</span>
-        </div>
-        <p class="text-sm text-navy-600 leading-relaxed">
-          {SITE_CONFIG.tagline} Built to give freshmen and their parents clear, realistic guidance without the fluff.
+          <span class="font-black text-xl tracking-tight text-brand-navy">
+            Dorm<span class="text-brand-coral">Ready</span>
+          </span>
+        </a>
+        <p class="text-xs text-navy-600 leading-relaxed">
+          {SITE_CONFIG.description}
         </p>
-        <p class="text-xs text-navy-500">
-          Last site audit: <span class="font-semibold text-navy-700">{SITE_CONFIG.lastSiteUpdate}</span>
-        </p>
-      </div>
-
-      <!-- Column 2: Key Guides -->
-      <div>
-        <h3 class="text-xs font-bold uppercase tracking-wider text-navy-900 mb-3">Core Guides</h3>
-        <ul class="space-y-2.5 text-sm list-none p-0 m-0">
-          {SITE_CONFIG.footerNav.essentials.map((item) => (
-            <li>
-              <a href={item.href} class="text-navy-600 hover:text-forest-800 transition-colors">
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <!-- Column 3: Budget Setups -->
-      <div>
-        <h3 class="text-xs font-bold uppercase tracking-wider text-navy-900 mb-3">Budget Setups</h3>
-        <ul class="space-y-2.5 text-sm list-none p-0 m-0">
-          {SITE_CONFIG.footerNav.budgets.map((item) => (
-            <li>
-              <a href={item.href} class="text-navy-600 hover:text-forest-800 transition-colors">
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <!-- Column 4: Editorial & Standards -->
-      <div>
-        <h3 class="text-xs font-bold uppercase tracking-wider text-navy-900 mb-3">Editorial Standards</h3>
-        <ul class="space-y-2.5 text-sm list-none p-0 m-0">
-          {SITE_CONFIG.footerNav.editorial.map((item) => (
-            <li>
-              <a href={item.href} class="text-navy-600 hover:text-forest-800 transition-colors">
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-        <div class="mt-4 pt-3 border-t border-cream-200 text-xs text-navy-500">
-          Feedback & corrections: <a href={SITE_CONFIG.githubRepoUrl} target="_blank" rel="noopener noreferrer" class="text-navy-700 underline hover:text-forest-800">GitHub Project</a>
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-mint-50 border border-brand-mint-200 text-[11px] font-bold text-brand-mint-700">
+          <span>✓</span>
+          <span>Zero sponsored product rankings</span>
         </div>
+      </div>
+
+      <!-- Col 2: Core Planning Tools -->
+      <div>
+        <h3 class="text-xs font-black uppercase tracking-wider text-brand-navy mb-4">Planning Tools</h3>
+        <ul class="space-y-2.5 text-xs">
+          <li>
+            <a href="/college-dorm-checklist/" class="text-navy-600 hover:text-brand-blue font-medium transition-colors">
+              Interactive 46-Item Checklist
+            </a>
+          </li>
+          <li>
+            <a href="/college-packing-list/" class="text-navy-600 hover:text-brand-blue font-medium transition-colors">
+              Move-in Packing Strategy
+            </a>
+          </li>
+          <li>
+            <a href="/dorm-room-essentials/" class="text-navy-600 hover:text-brand-blue font-medium transition-colors">
+              5 Functional Dorm Zones
+            </a>
+          </li>
+          <li>
+            <a href="/best-laptops-for-college-students/" class="text-navy-600 hover:text-brand-blue font-medium transition-colors">
+              Laptop Spec Finder
+            </a>
+          </li>
+          <li>
+            <a href="/student-discounts/" class="text-navy-600 hover:text-brand-blue font-medium transition-colors">
+              Verified Student Discounts
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Budget Setups -->
+      <div>
+        <h3 class="text-xs font-black uppercase tracking-wider text-brand-navy mb-4">Budget Setups</h3>
+        <ul class="space-y-2.5 text-xs">
+          <li>
+            <a href="/budget/" class="text-navy-600 hover:text-brand-blue font-medium transition-colors">
+              All Budget Blueprints
+            </a>
+          </li>
+          <li>
+            <a href="/budget/under-300-dorm-setup/" class="text-navy-600 hover:text-brand-blue font-medium transition-colors">
+              $300 Essential Setup
+            </a>
+          </li>
+          <li>
+            <a href="/budget/under-500-dorm-setup/" class="text-navy-600 hover:text-brand-blue font-medium transition-colors">
+              $500 Complete Practical
+            </a>
+          </li>
+          <li>
+            <a href="/budget/under-1000-complete-setup/" class="text-navy-600 hover:text-brand-blue font-medium transition-colors">
+              $1,000 Independent Deluxe
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Trust & Transparency -->
+      <div>
+        <h3 class="text-xs font-black uppercase tracking-wider text-brand-navy mb-4">Editorial Trust</h3>
+        <ul class="space-y-2.5 text-xs">
+          <li>
+            <a href="/about/" class="text-navy-600 hover:text-brand-blue font-medium transition-colors">
+              About DormReady
+            </a>
+          </li>
+          <li>
+            <a href="/editorial-policy/" class="text-navy-600 hover:text-brand-blue font-medium transition-colors">
+              Editorial Policy &amp; Auditing
+            </a>
+          </li>
+          <li>
+            <a href="/privacy/" class="text-navy-600 hover:text-brand-blue font-medium transition-colors">
+              Privacy Policy
+            </a>
+          </li>
+          <li>
+            <a href="/terms/" class="text-navy-600 hover:text-brand-blue font-medium transition-colors">
+              Terms of Use
+            </a>
+          </li>
+          <li>
+            <a
+              href={SITE_CONFIG.githubRepoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1 text-brand-blue font-bold hover:underline mt-1"
+            >
+              <span>GitHub Repository</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
 
-    <!-- Bottom Bar -->
-    <div class="mt-12 pt-6 border-t border-cream-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-navy-500">
-      <p>© {new Date().getFullYear()} DormReady. All rights reserved. Not affiliated with any university.</p>
-      <div class="flex items-center gap-4">
-        <a href="/privacy/" class="hover:text-navy-800 underline">Privacy Policy</a>
-        <a href="/terms/" class="hover:text-navy-800 underline">Terms of Use</a>
-        <a href="/editorial-policy/" class="hover:text-navy-800 underline">Editorial Policy</a>
-      </div>
+    <!-- Bottom Notice & Copyright -->
+    <div class="mt-12 pt-8 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-navy-500">
+      <p>© {currentYear} DormReady. Built for U.S. college students and families.</p>
+      <p class="text-center sm:text-right">
+        {SITE_CONFIG.contactNotice}
+      </p>
     </div>
   </div>
 </footer>

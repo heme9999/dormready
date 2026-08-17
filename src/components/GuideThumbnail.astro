@@ -1,0 +1,68 @@
+---
+interface Props {
+  slug: string;
+  title: string;
+  className?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const { slug, title, className = '', loading = 'lazy' } = Astro.props;
+
+// Map guide slugs to their dedicated visual assets
+const thumbnailMap: Record<string, { src: string; alt: string }> = {
+  'college-dorm-checklist': {
+    src: '/images/guides/checklist-box.svg',
+    alt: 'Master college dorm checklist showing an organized moving box and clipboard',
+  },
+  'college-packing-list': {
+    src: '/images/guides/packing-luggage.svg',
+    alt: 'College packing strategy visual with rolling luggage and carry-on backpack',
+  },
+  'dorm-room-essentials': {
+    src: '/images/guides/dorm-essentials.svg',
+    alt: 'Dorm room layout diagram showing sleep, study, storage, hygiene and power zones',
+  },
+  'best-laptops-for-college-students': {
+    src: '/images/guides/laptop-desk.svg',
+    alt: 'College student study desk with laptop, headphones, and major-specific specs',
+  },
+  'under-300-dorm-setup': {
+    src: '/images/guides/budget-planner.svg',
+    alt: 'Budget dorm planning setup with 3 price tiers and calculator',
+  },
+  'under-500-dorm-setup': {
+    src: '/images/guides/budget-planner.svg',
+    alt: 'Practical $500 college dorm room budget plan',
+  },
+  'under-1000-complete-setup': {
+    src: '/images/guides/budget-planner.svg',
+    alt: 'Complete $1,000 college dorm room budget blueprint',
+  },
+  'student-discounts': {
+    src: '/images/guides/student-discounts.svg',
+    alt: 'Verified student discounts directory featuring student ID card and discount tags',
+  },
+  'budget': {
+    src: '/images/guides/budget-planner.svg',
+    alt: 'Side-by-side dorm budget blueprints comparison',
+  },
+};
+
+const defaultThumbnail = {
+  src: '/images/guides/checklist-box.svg',
+  alt: `Editorial guide: ${title}`,
+};
+
+const thumbnail = thumbnailMap[slug] || defaultThumbnail;
+---
+
+<div class={`relative aspect-video w-full overflow-hidden rounded-2xl bg-brand-blue-50 border border-brand-blue-100 ${className}`}>
+  <img
+    src={thumbnail.src}
+    alt={thumbnail.alt}
+    width="640"
+    height="360"
+    loading={loading}
+    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+  />
+</div>

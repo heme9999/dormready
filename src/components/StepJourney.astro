@@ -1,0 +1,105 @@
+---
+interface Step {
+  number: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  badgeColor: string;
+  badgeBg: string;
+  borderAccent: string;
+  icon: string;
+  link: string;
+  linkText: string;
+}
+
+const steps: Step[] = [
+  {
+    number: '01',
+    title: 'Audit Rules',
+    subtitle: 'Campus Restrictions',
+    description: 'Check your university housing fire safety policy before shopping. Wattage limits and forbidden heating coils save you $100+ in confiscated gear.',
+    badgeColor: 'text-brand-blue-700',
+    badgeBg: 'bg-brand-blue-50 border-brand-blue-200',
+    borderAccent: 'border-brand-blue',
+    icon: '📋',
+    link: '/dorm-room-essentials/',
+    linkText: 'Read Essentials Guide',
+  },
+  {
+    number: '02',
+    title: 'Coordinate Roommate',
+    subtitle: 'Avoid Duplicates',
+    description: 'Split bulky appliances (fridge, microwave, rug, full-length mirror). Agree on sleep temperature, guest rules, and cleaning duties early.',
+    badgeColor: 'text-brand-coral-700',
+    badgeBg: 'bg-brand-coral-50 border-brand-coral-200',
+    borderAccent: 'border-brand-coral',
+    icon: '⇄',
+    link: '/college-packing-list/',
+    linkText: 'Coordination Strategy',
+  },
+  {
+    number: '03',
+    title: 'Pick Budget Tier',
+    subtitle: '$300 to $1,000 Plans',
+    description: 'Prioritize Twin XL sleep comfort and study ergonomics first. Buy aesthetic decor only after settling into your assigned square footage.',
+    badgeColor: 'text-brand-mint-700',
+    badgeBg: 'bg-brand-mint-50 border-brand-mint-200',
+    borderAccent: 'border-brand-mint',
+    icon: '💰',
+    link: '/budget/',
+    linkText: 'Explore Budget Setups',
+  },
+  {
+    number: '04',
+    title: 'Pack by Wave',
+    subtitle: 'Move-in Day Ready',
+    description: 'Pack a dedicated Day 1 carry-on backpack with sheets, meds, chargers, and shower shoes so you can sleep comfortably on night one without unboxing 10 boxes.',
+    badgeColor: 'text-amber-800',
+    badgeBg: 'bg-brand-yellow-50 border-brand-yellow-200',
+    borderAccent: 'border-amber-400',
+    icon: '🎒',
+    link: '/college-packing-list/',
+    linkText: 'Move-in Packing List',
+  },
+];
+---
+
+<div class="relative">
+  <!-- Desktop Connected Bridge Line -->
+  <div class="hidden lg:block absolute top-1/2 left-8 right-8 h-1 bg-gradient-to-r from-brand-blue via-brand-coral to-brand-mint -translate-y-12 z-0 rounded-full opacity-40"></div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+    {steps.map((step) => (
+      <div class={`flex flex-col justify-between bg-white rounded-2xl p-6 border-2 border-slate-100 shadow-soft hover:shadow-soft-hover transition-all duration-200 hover:-translate-y-1`}>
+        <div>
+          <!-- Step Number & Icon Header -->
+          <div class="flex items-center justify-between mb-4">
+            <span class={`inline-flex items-center justify-center w-12 h-12 rounded-xl text-lg font-black border ${step.badgeBg} ${step.badgeColor} shadow-sm`}>
+              {step.number}
+            </span>
+            <span class="text-2xl select-none" aria-hidden="true">
+              {step.icon}
+            </span>
+          </div>
+
+          <div class="mb-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-navy-500">{step.subtitle}</span>
+            <h3 class="text-lg font-black text-brand-navy mt-0.5">{step.title}</h3>
+          </div>
+
+          <p class="text-xs text-navy-600 leading-relaxed mb-4">
+            {step.description}
+          </p>
+        </div>
+
+        <a
+          href={step.link}
+          class="inline-flex items-center gap-1 text-xs font-bold text-brand-blue hover:text-brand-blue-700 pt-3 border-t border-slate-100 transition-colors"
+        >
+          <span>{step.linkText}</span>
+          <span>→</span>
+        </a>
+      </div>
+    ))}
+  </div>
+</div>

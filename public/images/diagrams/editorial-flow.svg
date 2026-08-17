@@ -1,0 +1,28 @@
+<svg width="680" height="140" viewBox="0 0 680 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="680" height="140" rx="16" fill="#ECFAF5"/>
+  <!-- Step 1 -->
+  <g transform="translate(30, 25)">
+    <circle cx="30" cy="30" r="24" fill="#3772FF"/>
+    <text x="25" y="36" font-family="system-ui, sans-serif" font-size="16" font-weight="900" fill="#FFFFFF">1</text>
+    <text x="65" y="26" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#14213D">Fire Code Audit</text>
+    <text x="65" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#4E618B">UL listings &amp; wattage caps</text>
+  </g>
+  <path d="M210 55L240 55" stroke="#42C6A5" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Step 2 -->
+  <g transform="translate(255, 25)">
+    <circle cx="30" cy="30" r="24" fill="#FF6B5E"/>
+    <text x="25" y="36" font-family="system-ui, sans-serif" font-size="16" font-weight="900" fill="#FFFFFF">2</text>
+    <text x="65" y="26" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#14213D">Spatial Reality</text>
+    <text x="65" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#4E618B">130–180 sq ft double limits</text>
+  </g>
+  <path d="M435 55L465 55" stroke="#42C6A5" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Step 3 -->
+  <g transform="translate(480, 25)">
+    <circle cx="30" cy="30" r="24" fill="#42C6A5"/>
+    <text x="25" y="36" font-family="system-ui, sans-serif" font-size="16" font-weight="900" fill="#FFFFFF">3</text>
+    <text x="65" y="26" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#14213D">Verified Terms</text>
+    <text x="65" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#4E618B">Logged check dates &amp; rules</text>
+  </g>
+</svg>

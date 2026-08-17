@@ -1,0 +1,151 @@
+---
+interface FrameworkColumn {
+  title: string;
+  badge: string;
+  color: {
+    bg: string;
+    border: string;
+    badgeBg: string;
+    text: string;
+  };
+  icon: string;
+  summary: string;
+  items: string[];
+}
+
+const columns: FrameworkColumn[] = [
+  {
+    title: '1. Pack in Boxes',
+    badge: 'Bring From Home',
+    color: {
+      bg: 'bg-brand-blue-50',
+      border: 'border-brand-blue-200',
+      badgeBg: 'bg-brand-blue text-white',
+      text: 'text-brand-blue-900',
+    },
+    icon: '📦',
+    summary: 'High-value, personal, or pre-tested items you already own.',
+    items: [
+      'Twin XL mattress topper & 2 sheet sets',
+      'Laptop, chargers, and UL surge protector',
+      'Season 1 capsule wardrobe (8–10 outfits)',
+      'Prescription medicines & health insurance cards',
+      'Shower shoes, waffle bath towels, & caddy',
+    ],
+  },
+  {
+    title: '2. Buy Near Campus',
+    badge: 'Destination Pickup',
+    color: {
+      bg: 'bg-brand-mint-50',
+      border: 'border-brand-mint-200',
+      badgeBg: 'bg-brand-mint text-white',
+      text: 'text-emerald-950',
+    },
+    icon: '🛒',
+    summary: 'Bulky, liquid, or low-cost commodities that waste luggage space.',
+    items: [
+      'Full-size laundry detergent & cleaning sprays',
+      'Bottled drinks, bulk snacks, & ramen packs',
+      'Trash can, small broom, & paper towels',
+      'Large plastic laundry basket (stackable)',
+      'Snack storage containers & dish soap',
+    ],
+  },
+  {
+    title: '3. Coordinate Roommate',
+    badge: 'Split 50/50',
+    color: {
+      bg: 'bg-brand-coral-50',
+      border: 'border-brand-coral-200',
+      badgeBg: 'bg-brand-coral text-white',
+      text: 'text-rose-950',
+    },
+    icon: '⇄',
+    summary: 'Shared room amenities where having duplicates ruins usable floor area.',
+    items: [
+      'Energy Star approved mini fridge',
+      'Microwave (verify combined wattage limits)',
+      'Floor rug (4x6 or 5x7 ft standard double)',
+      'Full-length mirror & TV / gaming console',
+      'Electric kettle or single-serve coffee maker',
+    ],
+  },
+  {
+    title: '4. Leave at Home',
+    badge: 'Do Not Bring',
+    color: {
+      bg: 'bg-brand-yellow-50',
+      border: 'border-brand-yellow-200',
+      badgeBg: 'bg-amber-500 text-white',
+      text: 'text-amber-950',
+    },
+    icon: '🚫',
+    summary: 'Prohibited fire hazards, oversized furniture, and off-season clutter.',
+    items: [
+      'Candles, incense, hot plates, & toaster ovens',
+      'Heavy winter parkas (ship before Thanksgiving)',
+      'High school yearbooks & bulky sports trophies',
+      'Full kitchen knife sets & non-UL extension cords',
+      'Ironing boards & excess decorative pillows',
+    ],
+  },
+];
+---
+
+<div class="space-y-8">
+  <!-- 4-Column Framework -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+    {columns.map((col) => (
+      <div class={`flex flex-col justify-between p-6 rounded-2xl border-2 shadow-soft ${col.color.bg} ${col.color.border}`}>
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-2xl" aria-hidden="true">{col.icon}</span>
+            <span class={`text-xs font-bold px-2.5 py-0.5 rounded-full shadow-sm ${col.color.badgeBg}`}>
+              {col.badge}
+            </span>
+          </div>
+
+          <h4 class={`text-base font-black mb-1 ${col.color.text}`}>{col.title}</h4>
+          <p class="text-xs text-navy-600 mb-4">{col.summary}</p>
+
+          <ul class="space-y-2 text-xs text-navy-700">
+            {col.items.map((item) => (
+              <li class="flex items-start gap-2">
+                <span class="text-brand-blue font-bold mt-0.5">•</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Day 1 Move-in Carry-on Bag Diagram -->
+  <div class="p-6 sm:p-8 rounded-3xl bg-white border-2 border-brand-blue-100 shadow-soft">
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+      <div class="space-y-3 max-w-lg">
+        <span class="badge-coral">Night One Survival</span>
+        <h3 class="text-xl font-black text-brand-navy">The Move-in Day Carry-On Bag</h3>
+        <p class="text-xs text-navy-700 leading-relaxed">
+          Move-in day is physically exhausting. Between elevators, stairwells, and heat, you may not finish unpacking until 10 PM. 
+          Keep your <strong>Day 1 Backpack</strong> with you at all times so you can make your bed, take a shower, and collapse without opening 10 taped cardboard boxes.
+        </p>
+        <div class="p-4 rounded-xl bg-brand-coral-50 border border-brand-coral-200 text-xs text-rose-950 font-medium">
+          💡 <strong>Golden Rule:</strong> Never pack IDs, medications, or first-night sheets into the trunk of your car under 8 heavy plastic bins.
+        </div>
+      </div>
+
+      <div class="shrink-0 w-full lg:w-96">
+        <img
+          src="/images/diagrams/carryon-bag.svg"
+          alt="Move-in day carry-on backpack diagram with 6 labeled survival essentials"
+          width="600"
+          height="380"
+          class="w-full h-auto rounded-2xl border border-slate-200 shadow-sm"
+        />
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,6 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
 import LaptopComparison from '../components/LaptopComparison';
+import DecisionFlow from '../components/DecisionFlow.astro';
+import VisualCallout from '../components/VisualCallout.astro';
 
 const breadcrumbs = [
   { name: 'Guides', url: '/guides/' },
@@ -31,82 +33,86 @@ const faqs = [
   breadcrumbs={breadcrumbs}
   faqs={faqs}
   ogType="article"
-  modifiedTime="2026-08-11"
+  modifiedTime="2026-08-17"
 >
-  <div class="bg-cream-100 border-b border-cream-300 py-8 sm:py-12">
+  <div class="bg-gradient-to-b from-brand-blue-50 via-brand-blue-50/50 to-white border-b border-slate-200 py-10 sm:py-14">
     <div class="container-custom">
       <Breadcrumbs items={breadcrumbs} />
 
-      <div class="mt-4 flex flex-wrap items-center gap-3 text-xs sm:text-sm text-navy-600">
-        <span class="px-2.5 py-1 rounded-full font-semibold bg-forest-50 text-forest-800 border border-forest-100">
-          Hardware Matrix
-        </span>
-        <span>•</span>
-        <span>Filterable Comparison</span>
-        <span>•</span>
-        <span>Last updated: <time datetime="2026-08-11" class="font-semibold text-navy-800">August 11, 2026</time></span>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mt-6">
+        <div class="lg:col-span-8 space-y-4">
+          <div class="flex flex-wrap items-center gap-2.5 text-xs font-bold text-navy-600">
+            <span class="badge-blue">
+              Hardware Matrix
+            </span>
+            <span>•</span>
+            <span class="text-brand-navy">Major-Specific Profiles</span>
+            <span>•</span>
+            <span>Last audited: <time datetime="2026-08-17" class="text-brand-blue">August 17, 2026</time></span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl font-black text-brand-navy leading-tight">
+            College Laptop Requirements &amp; Comparison Guide
+          </h1>
+
+          <p class="text-base sm:text-lg text-navy-700 max-w-2xl leading-relaxed">
+            Hardware standards broken down by academic field, battery longevity, and operating system requirements. Use our interactive matrix to identify the right specification profile for your major.
+          </p>
+        </div>
+
+        <div class="lg:col-span-4 hidden lg:block">
+          <img
+            src="/images/guides/laptop-desk.svg"
+            alt="College student study desk with laptop and headphones"
+            width="640"
+            height="360"
+            class="w-full h-auto rounded-3xl border-2 border-brand-blue-100 shadow-soft"
+          />
+        </div>
       </div>
-
-      <h1 class="mt-4 text-3xl sm:text-5xl font-bold font-serif text-navy-900 leading-tight">
-        College Laptop Requirements & Comparison Guide
-      </h1>
-
-      <p class="mt-4 text-base sm:text-lg text-navy-700 max-w-3xl leading-relaxed">
-        Hardware standards broken down by academic field, battery longevity, and operating system requirements. Use our interactive matrix to identify the right specification profile for your major.
-      </p>
     </div>
   </div>
 
   <div class="container-custom py-8 sm:py-12">
     <AffiliateDisclosure compact={true} />
 
-    <!-- Interactive Filter & Comparison Component -->
-    <LaptopComparison client:load />
-
-    <!-- Static Educational Content for Long-Term SEO -->
-    <div class="mt-16 pt-12 border-t border-cream-300 space-y-12">
-      <section class="max-w-4xl space-y-4">
-        <h2 class="text-2xl font-bold font-serif text-navy-900">
-          Key Buying Principles for College Laptops
-        </h2>
-        <div class="prose prose-slate text-sm sm:text-base text-navy-700 leading-relaxed space-y-3">
-          <p>
-            A college laptop is not a desktop replacement for high-end gaming; it is a portable academic workstation carried across campus 5 days a week. Before making a purchase decision, evaluate these four criteria:
-          </p>
-          <ul class="list-disc list-inside space-y-2">
-            <li><strong>Battery Endurance Under Real Workloads:</strong> In lecture halls built decades ago, wall outlets are scarce. Look for laptops that deliver a minimum of 8 to 10 hours of real-world web browsing and document editing on battery power.</li>
-            <li><strong>Weight and Backpack Ergonomics:</strong> A laptop weighing over 4.5 lbs becomes an uncomfortable burden when combined with textbooks, water bottles, and accessories. Target a weight between 2.7 and 3.5 lbs for standard majors.</li>
-            <li><strong>Display Resolution and Brightness:</strong> Aim for at least 300 nits of screen brightness and an IPS or OLED panel. Dim 250-nit screens cause significant eye strain under fluorescent library lighting or outdoor campus tables.</li>
-            <li><strong>Keyboard Travel and Trackpad Precision:</strong> You will type thousands of pages of essays, lab reports, and code. Test key travel and trackpad gesture responsiveness before committing to a daily driver.</li>
-          </ul>
+    <!-- 5-Step Visual Decision Pathway -->
+    <section class="mb-12 space-y-4">
+      <div class="flex items-center justify-between">
+        <div>
+          <span class="badge-coral mb-1">Decision Pathway</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">How to Choose in 5 Steps</h2>
         </div>
-      </section>
+      </div>
+      <DecisionFlow />
+    </section>
 
-      <!-- Department Checklist -->
-      <section class="max-w-4xl space-y-4">
-        <h2 class="text-2xl font-bold font-serif text-navy-900">
-          Before You Buy: The 3-Step Department Verification Checklist
-        </h2>
-        <div class="p-6 bg-cream-100 border border-cream-300 rounded-2xl space-y-3 text-sm text-navy-800">
-          <p class="font-semibold text-navy-900">1. Search Your University IT / College Department Portal:</p>
-          <p class="text-navy-600">Search <code>"[University Name] [College of Engineering / Business] laptop requirements 2026"</code> to check for mandatory software lists.</p>
-          <p class="font-semibold text-navy-900">2. Verify Exam Proctoring Software Compatibility:</p>
-          <p class="text-navy-600">Check whether your institution uses LockDown Browser or Honorlock, which may impose specific webcam and OS requirements.</p>
-          <p class="font-semibold text-navy-900">3. Activate Your Student Discount Portal:</p>
-          <p class="text-navy-600">Always check <a href="/student-discounts/" class="underline text-forest-800 font-semibold">Student Discounts</a> for education storefront pricing and trade-in bonuses before paying retail price.</p>
-        </div>
-      </section>
+    <!-- Interactive Laptop Comparison Client Island -->
+    <section class="space-y-6">
+      <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
+        Major-by-Major Laptop Matrix
+      </h2>
+      <LaptopComparison client:load />
+    </section>
 
-      <!-- FAQ Section -->
+    <!-- Static Educational Guidance & FAQ -->
+    <div class="mt-16 pt-12 border-t border-slate-200 space-y-12">
+      <VisualCallout type="warning" title="Engineering &amp; Architecture Major Disclaimer">
+        <p>
+          Always check your specific university department software syllabus before purchasing a MacBook. While Apple Silicon offers class-leading battery and thermals, programs requiring <strong>SolidWorks, Revit, ANSYS, and specialized CAD/GIS tools</strong> often mandate Windows x86 hardware.
+        </p>
+      </VisualCallout>
+
+      <!-- Frequently Asked Questions -->
       <section class="max-w-4xl space-y-6">
-        <h2 class="text-2xl font-bold font-serif text-navy-900">
-          Frequently Asked Questions About College Laptops
+        <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
+          College Laptop Frequently Asked Questions
         </h2>
         <div class="space-y-4">
           {faqs.map((faq) => (
-            <div class="p-5 bg-white border border-cream-300 rounded-xl">
-              <h3 class="font-bold text-navy-900 text-base mb-2">{faq.question}</h3>
-              <p class="text-sm text-navy-700 leading-relaxed">{faq.answer}</p>
+            <div class="p-6 bg-white border-2 border-slate-200 rounded-2xl shadow-soft">
+              <h3 class="font-bold text-brand-navy text-base mb-2">{faq.question}</h3>
+              <p class="text-xs sm:text-sm text-navy-700 leading-relaxed">{faq.answer}</p>
             </div>
           ))}
         </div>

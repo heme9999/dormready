@@ -48,47 +48,42 @@ export default function LaptopComparison() {
   return (
     <div className="space-y-8">
       {/* Research Methodology & Transparent Notice Banner */}
-      <div className="p-5 sm:p-6 bg-cream-100 border border-cream-300 rounded-2xl text-navy-800 text-sm leading-relaxed space-y-2">
-        <div className="flex items-center gap-2 text-forest-800 font-bold">
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <span className="text-base text-navy-900">How We Structure College Laptop Requirements</span>
+      <div className="p-6 bg-brand-blue-50 border-2 border-brand-blue-200 rounded-3xl text-navy-800 text-xs sm:text-sm leading-relaxed space-y-2 shadow-soft">
+        <div className="flex items-center gap-2 text-brand-blue font-black">
+          <span className="text-xl">💻</span>
+          <span className="text-base text-brand-navy font-black">How We Structure College Laptop Requirements</span>
         </div>
         <p>
           Rather than publishing arbitrary product rankings, DormReady structures laptop recommendations around <strong>departmental software compatibility</strong>, <strong>academic workload demands</strong>, and <strong>hardware longevity</strong>.
         </p>
-        <p className="text-xs text-navy-600">
-          *Note: The hardware entries below are <em>generalized specification reference profiles</em> to help you evaluate current laptop models. Always consult your college department's official hardware requirements before purchasing.
-        </p>
       </div>
 
-      {/* Interactive Filter Matrix */}
-      <div className="bg-white border border-cream-300 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+      {/* Filter Toolbar */}
+      <div className="bg-white border-2 border-slate-200 rounded-3xl p-5 sm:p-6 shadow-soft space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-bold text-navy-900">Filter by Your College Requirements</h2>
+          <h3 className="text-base font-black text-brand-navy">Filter by Major &amp; Specs</h3>
           <button
             type="button"
             onClick={resetFilters}
-            className="text-xs font-semibold text-forest-800 hover:text-forest-900 underline"
+            className="text-xs font-bold text-brand-blue hover:underline"
           >
             Reset Filters
           </button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {/* Major / Field of Study */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+          {/* Major Filter */}
           <div>
-            <label htmlFor="major-select" className="block text-xs font-bold uppercase tracking-wider text-navy-700 mb-1">
-              Field of Study / Major
+            <label htmlFor="major-filter" className="block text-xs font-bold text-navy-700 mb-1">
+              Academic Major
             </label>
             <select
-              id="major-select"
+              id="major-filter"
               value={selectedMajor}
               onChange={(e) => setSelectedMajor(e.target.value as any)}
-              className="w-full px-3 py-2 text-sm bg-cream-50 border border-cream-300 rounded-lg focus:border-forest-800 focus:outline-none"
+              className="w-full px-3 py-2 text-xs sm:text-sm bg-white border-2 border-slate-200 rounded-xl focus:outline-none focus:border-brand-blue font-medium"
             >
-              <option value="all">All Majors / General Use</option>
+              <option value="all">All Majors ({LAPTOP_PROFILES.length})</option>
               {MAJOR_OPTIONS.map((m) => (
                 <option key={m.key} value={m.key}>
                   {m.label}
@@ -99,173 +94,155 @@ export default function LaptopComparison() {
 
           {/* Operating System */}
           <div>
-            <label htmlFor="os-select" className="block text-xs font-bold uppercase tracking-wider text-navy-700 mb-1">
+            <label htmlFor="os-filter" className="block text-xs font-bold text-navy-700 mb-1">
               Operating System
             </label>
             <select
-              id="os-select"
+              id="os-filter"
               value={selectedOS}
               onChange={(e) => setSelectedOS(e.target.value as any)}
-              className="w-full px-3 py-2 text-sm bg-cream-50 border border-cream-300 rounded-lg focus:border-forest-800 focus:outline-none"
+              className="w-full px-3 py-2 text-xs sm:text-sm bg-white border-2 border-slate-200 rounded-xl focus:outline-none focus:border-brand-blue font-medium"
             >
-              <option value="all">Any Operating System</option>
+              <option value="all">Any OS</option>
               <option value="macOS">macOS (Apple Silicon)</option>
-              <option value="Windows">Windows 11</option>
+              <option value="Windows">Windows 11 (x86 / ARM)</option>
+              <option value="ChromeOS">ChromeOS</option>
             </select>
           </div>
 
-          {/* Budget Tier */}
+          {/* Budget Range */}
           <div>
-            <label htmlFor="budget-select" className="block text-xs font-bold uppercase tracking-wider text-navy-700 mb-1">
-              Budget Range
+            <label htmlFor="budget-filter" className="block text-xs font-bold text-navy-700 mb-1">
+              Price Range
             </label>
             <select
-              id="budget-select"
+              id="budget-filter"
               value={selectedBudget}
               onChange={(e) => setSelectedBudget(e.target.value as any)}
-              className="w-full px-3 py-2 text-sm bg-cream-50 border border-cream-300 rounded-lg focus:border-forest-800 focus:outline-none"
+              className="w-full px-3 py-2 text-xs sm:text-sm bg-white border-2 border-slate-200 rounded-xl focus:outline-none focus:border-brand-blue font-medium"
             >
-              <option value="all">Any Budget Tier</option>
-              <option value="budget">Budget ($399 - $649)</option>
-              <option value="midrange">Mid-Range ($799 - $1,299)</option>
-              <option value="premium">Engineering Workstation ($1,300+)</option>
+              <option value="all">Any Budget</option>
+              <option value="budget">Budget (Under $700)</option>
+              <option value="midrange">Mid-Tier ($700–$1,200)</option>
+              <option value="premium">Pro Tier ($1,200+)</option>
             </select>
           </div>
 
           {/* Battery Priority */}
           <div>
-            <label htmlFor="battery-select" className="block text-xs font-bold uppercase tracking-wider text-navy-700 mb-1">
-              Target Battery Capability
+            <label htmlFor="battery-filter" className="block text-xs font-bold text-navy-700 mb-1">
+              Battery Life
             </label>
             <select
-              id="battery-select"
+              id="battery-filter"
               value={selectedBattery}
               onChange={(e) => setSelectedBattery(e.target.value as any)}
-              className="w-full px-3 py-2 text-sm bg-cream-50 border border-cream-300 rounded-lg focus:border-forest-800 focus:outline-none"
+              className="w-full px-3 py-2 text-xs sm:text-sm bg-white border-2 border-slate-200 rounded-xl focus:outline-none focus:border-brand-blue font-medium"
             >
-              <option value="all">Any Battery Capability</option>
-              <option value="all_day">All-Day Class Life (8-12 hrs)</option>
-              <option value="extreme">High Efficiency (14+ hrs)</option>
-              <option value="standard">Standard (4-8 hrs / plugged-in workstation)</option>
+              <option value="all">Any Battery</option>
+              <option value="extreme">All-Day (15+ hrs)</option>
+              <option value="all_day">Standard (10–14 hrs)</option>
+              <option value="standard">Desktop Class (5–8 hrs)</option>
             </select>
           </div>
 
           {/* Portability */}
           <div>
-            <label htmlFor="portability-select" className="block text-xs font-bold uppercase tracking-wider text-navy-700 mb-1">
-              Portability / Weight
+            <label htmlFor="portability-filter" className="block text-xs font-bold text-navy-700 mb-1">
+              Weight &amp; Size
             </label>
             <select
-              id="portability-select"
+              id="portability-filter"
               value={selectedPortability}
               onChange={(e) => setSelectedPortability(e.target.value as any)}
-              className="w-full px-3 py-2 text-sm bg-cream-50 border border-cream-300 rounded-lg focus:border-forest-800 focus:outline-none"
+              className="w-full px-3 py-2 text-xs sm:text-sm bg-white border-2 border-slate-200 rounded-xl focus:outline-none focus:border-brand-blue font-medium"
             >
-              <option value="all">Any Form Factor</option>
-              <option value="ultralight">Ultralight (&lt; 3.0 lbs)</option>
-              <option value="compact">Compact (3.0 - 3.9 lbs)</option>
-              <option value="desktop_replacement">Desktop Replacement (4.0+ lbs)</option>
+              <option value="all">Any Weight</option>
+              <option value="ultralight">Under 3.0 lbs</option>
+              <option value="compact">3.0 to 4.0 lbs</option>
+              <option value="desktop_replacement">4.5+ lbs (Power Rig)</option>
             </select>
           </div>
         </div>
       </div>
 
-      {/* Results Count */}
-      <div className="text-sm font-semibold text-navy-700">
-        Showing {filteredLaptops.length} specification profile{filteredLaptops.length === 1 ? '' : 's'}
-      </div>
-
-      {/* Laptop Profiles List */}
-      <div className="space-y-8">
-        {filteredLaptops.map((profile) => (
-          <article
-            key={profile.id}
-            className="bg-white border border-cream-300 rounded-2xl p-6 sm:p-8 shadow-sm space-y-6"
+      {/* Laptop Profiles Grid */}
+      {filteredLaptops.length === 0 ? (
+        <div className="p-12 text-center bg-white border-2 border-dashed border-slate-300 rounded-3xl space-y-4">
+          <div className="w-14 h-14 mx-auto rounded-2xl bg-brand-blue-50 flex items-center justify-center text-3xl">
+            💻
+          </div>
+          <h3 className="text-lg font-black text-brand-navy">No hardware profiles match your criteria</h3>
+          <p className="text-xs sm:text-sm text-navy-600 max-w-sm mx-auto">
+            Try expanding your budget tier or switching between macOS and Windows.
+          </p>
+          <button
+            type="button"
+            onClick={resetFilters}
+            className="px-5 py-2.5 bg-brand-blue text-white rounded-xl text-xs font-bold hover:bg-brand-blue-600 transition-all shadow-sm"
           >
-            {/* Header & Badges */}
-            <div>
-              <div className="flex flex-wrap items-center gap-2 mb-2">
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-cream-200 text-navy-800 border border-cream-300">
-                  {profile.editorialStatus}
-                </span>
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-cream-100 text-navy-700">
-                  OS: {profile.os}
-                </span>
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-forest-50 text-forest-800 border border-forest-100">
-                  Est. Baseline: {profile.estimatedPriceRange}
-                </span>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-navy-900 font-sans">
-                {profile.name}
-              </h3>
-              <p className="mt-2 text-sm text-navy-700 leading-relaxed font-medium">
-                {profile.whyItFits}
-              </p>
-            </div>
+            Reset All Filters
+          </button>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {filteredLaptops.map((laptop) => (
+            <div
+              key={laptop.id}
+              className="bg-white border-2 border-slate-200 rounded-3xl p-6 shadow-soft hover:shadow-soft-hover transition-all duration-200 flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="badge-blue">
+                    {laptop.os}
+                  </span>
+                  <span className="text-xs font-bold text-navy-900 bg-slate-100 px-3 py-1 rounded-full">
+                    {laptop.estimatedPriceRange}
+                  </span>
+                </div>
 
-            {/* Spec Matrix Table */}
-            <div className="bg-cream-50 rounded-xl p-4 border border-cream-200">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-navy-700 mb-3">Recommended Target Hardware Configuration</h4>
-              <dl className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
-                <div>
-                  <dt className="font-semibold text-navy-500">Processor (CPU)</dt>
-                  <dd className="font-medium text-navy-900 mt-0.5">{profile.recommendedSpecs.cpu}</dd>
-                </div>
-                <div>
-                  <dt className="font-semibold text-navy-500">Memory (RAM)</dt>
-                  <dd className="font-medium text-navy-900 mt-0.5">{profile.recommendedSpecs.ram}</dd>
-                </div>
-                <div>
-                  <dt className="font-semibold text-navy-500">Internal Storage</dt>
-                  <dd className="font-medium text-navy-900 mt-0.5">{profile.recommendedSpecs.storage}</dd>
-                </div>
-                <div>
-                  <dt className="font-semibold text-navy-500">Display & Panel</dt>
-                  <dd className="font-medium text-navy-900 mt-0.5">{profile.recommendedSpecs.display}</dd>
-                </div>
-              </dl>
-            </div>
+                <h4 className="text-xl font-black text-brand-navy mb-1">{laptop.name}</h4>
+                <p className="text-xs font-semibold text-brand-coral mb-3">{laptop.editorialStatus}</p>
+                <p className="text-xs sm:text-sm text-navy-700 leading-relaxed mb-4">{laptop.whyItFits}</p>
 
-            {/* Department Warning if applicable */}
-            {profile.departmentWarning && (
-              <div className="p-3.5 bg-amber-50 border border-amber-200 rounded-lg text-xs sm:text-sm text-amber-950 flex items-start gap-2">
-                <span className="font-bold text-amber-800">⚠️</span>
-                <span><strong>Department Policy Notice:</strong> {profile.departmentWarning}</span>
-              </div>
-            )}
+                {/* Specs Box */}
+                <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-1.5 text-xs text-navy-800 mb-4">
+                  <div className="flex justify-between">
+                    <span className="font-bold text-navy-500">CPU / Platform:</span>
+                    <span className="font-semibold text-right">{laptop.recommendedSpecs.cpu}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-bold text-navy-500">Memory:</span>
+                    <span className="font-semibold">{laptop.recommendedSpecs.ram}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-bold text-navy-500">Storage:</span>
+                    <span className="font-semibold">{laptop.recommendedSpecs.storage}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-bold text-navy-500">Display:</span>
+                    <span className="font-semibold">{laptop.recommendedSpecs.display} ({laptop.screenSize})</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-bold text-navy-500">Est. Weight:</span>
+                    <span className="font-semibold">{laptop.weightEst}</span>
+                  </div>
+                </div>
 
-            {/* Pros & Cons */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
-              <div className="p-4 bg-emerald-50/50 border border-emerald-200 rounded-xl">
-                <h4 className="font-bold text-emerald-950 mb-2">Key Advantages</h4>
-                <ul className="space-y-1.5 list-disc list-inside text-emerald-900">
-                  {profile.pros.map((pro, idx) => (
-                    <li key={idx}>{pro}</li>
-                  ))}
-                </ul>
+                {laptop.departmentWarning && (
+                  <p className="text-xs text-rose-950 bg-brand-coral-50 p-2.5 rounded-xl border border-brand-coral-200 mb-4 font-semibold">
+                    ⚠️ {laptop.departmentWarning}
+                  </p>
+                )}
               </div>
-              <div className="p-4 bg-rose-50/50 border border-rose-200 rounded-xl">
-                <h4 className="font-bold text-rose-950 mb-2">Trade-offs & Considerations</h4>
-                <ul className="space-y-1.5 list-disc list-inside text-rose-900">
-                  {profile.cons.map((con, idx) => (
-                    <li key={idx}>{con}</li>
-                  ))}
-                </ul>
+
+              <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-navy-600">
+                <span>Majors: {laptop.targetMajor.join(', ')}</span>
               </div>
             </div>
-
-            {/* Research Checklist */}
-            <div className="pt-4 border-t border-cream-200 text-xs text-navy-600">
-              <span className="font-bold text-navy-800 block mb-1">Pre-Purchase Verification Checklist:</span>
-              <ul className="space-y-0.5 list-disc list-inside">
-                {profile.researchChecklist.map((item, idx) => (
-                  <li key={idx}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          </article>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

@@ -1,0 +1,119 @@
+<svg width="720" height="520" viewBox="0 0 720 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Soft Backing Card & Floor -->
+  <rect width="720" height="520" rx="28" fill="#EEF5FF"/>
+  <path d="M40 430L680 430" stroke="#DBEAFF" stroke-width="4" stroke-linecap="round"/>
+  <rect x="50" y="432" width="620" height="40" rx="8" fill="#E2EDFC"/>
+
+  <!-- Wall Art / Bulletin Board -->
+  <rect x="90" y="50" width="160" height="110" rx="12" fill="#FFFFFF" stroke="#D4E3F7" stroke-width="2"/>
+  <rect x="105" y="65" width="60" height="45" rx="6" fill="#FFF1EE"/>
+  <circle cx="135" cy="87" r="14" fill="#FF6B5E" fill-opacity="0.8"/>
+  <rect x="175" y="65" width="60" height="35" rx="4" fill="#ECFAF5"/>
+  <rect x="105" y="120" width="130" height="8" rx="4" fill="#E8E4DF"/>
+  <rect x="105" y="134" width="90" height="8" rx="4" fill="#E8E4DF"/>
+  <circle cx="170" cy="58" r="4" fill="#FFD166"/>
+
+  <!-- Twin XL Dorm Bed Setup -->
+  <g id="twin-xl-bed">
+    <!-- Bed Frame & Posts -->
+    <rect x="70" y="240" width="260" height="190" rx="8" fill="#14213D"/>
+    <!-- Headboard Slats -->
+    <rect x="70" y="160" width="18" height="270" rx="6" fill="#14213D"/>
+    <rect x="80" y="175" width="240" height="12" rx="4" fill="#1F2E52"/>
+    <rect x="80" y="195" width="240" height="12" rx="4" fill="#1F2E52"/>
+    <!-- Mattress (Twin XL Deep) -->
+    <rect x="85" y="235" width="245" height="55" rx="10" fill="#FFFFFF" stroke="#E2D9CE" stroke-width="2"/>
+    <!-- Mattress Topper Label Accent -->
+    <rect x="85" y="230" width="245" height="15" rx="6" fill="#ECFAF5" stroke="#42C6A5" stroke-width="1.5"/>
+    <text x="145" y="241" font-family="system-ui, sans-serif" font-size="9" font-weight="700" fill="#1E876E">3" HIGH-DENSITY TOPPER</text>
+    <!-- Comforter / Bedding -->
+    <rect x="120" y="245" width="210" height="110" rx="10" fill="#3772FF"/>
+    <path d="M120 275C160 270 200 280 330 275V355H120V275Z" fill="#255DE0"/>
+    <circle cx="180" cy="315" r="18" fill="#FFFFFF" fill-opacity="0.15"/>
+    <circle cx="270" cy="315" r="24" fill="#FFFFFF" fill-opacity="0.15"/>
+    <!-- Pillows -->
+    <rect x="95" y="215" width="65" height="40" rx="8" fill="#FFFFFF" stroke="#D4E3F7" stroke-width="2"/>
+    <rect x="110" y="222" width="55" height="35" rx="6" fill="#FFE2DE"/>
+    <!-- Under-bed Storage Translucent Bins -->
+    <rect x="90" y="360" width="105" height="65" rx="8" fill="#FFFFFF" fill-opacity="0.9" stroke="#3772FF" stroke-width="2" stroke-dasharray="4 2"/>
+    <rect x="100" y="375" width="85" height="10" rx="3" fill="#DBEAFF"/>
+    <rect x="100" y="392" width="60" height="10" rx="3" fill="#DBEAFF"/>
+    <rect x="210" y="360" width="105" height="65" rx="8" fill="#FFFFFF" fill-opacity="0.9" stroke="#FF6B5E" stroke-width="2" stroke-dasharray="4 2"/>
+    <rect x="220" y="375" width="85" height="10" rx="3" fill="#FFE2DE"/>
+    <rect x="220" y="392" width="70" height="10" rx="3" fill="#FFE2DE"/>
+  </g>
+
+  <!-- Study Desk & Workstation -->
+  <g id="study-desk">
+    <!-- Desk Wood Body -->
+    <rect x="360" y="270" width="290" height="160" rx="10" fill="#FFFFFF" stroke="#14213D" stroke-width="3"/>
+    <rect x="360" y="270" width="290" height="18" fill="#14213D"/>
+    <!-- Desk Drawers -->
+    <rect x="550" y="295" width="90" height="125" rx="6" fill="#F0EAE1" stroke="#D5C8B8" stroke-width="2"/>
+    <rect x="560" y="310" width="70" height="24" rx="4" fill="#FFFFFF"/>
+    <circle cx="595" cy="322" r="3" fill="#14213D"/>
+    <rect x="560" y="345" width="70" height="24" rx="4" fill="#FFFFFF"/>
+    <circle cx="595" cy="357" r="3" fill="#14213D"/>
+    <rect x="560" y="380" width="70" height="30" rx="4" fill="#FFFFFF"/>
+    <circle cx="595" cy="395" r="3" fill="#14213D"/>
+    <!-- Task Lamp -->
+    <path d="M380 270V190L415 205" stroke="#FF6B5E" stroke-width="4" stroke-linecap="round"/>
+    <path d="M405 195L435 210L425 225L395 210Z" fill="#FF6B5E"/>
+    <circle cx="380" cy="270" r="8" fill="#FF6B5E"/>
+    <path d="M420 220L470 270" stroke="#FFD166" stroke-width="2" stroke-dasharray="3 3"/>
+    <!-- Laptop on Desk -->
+    <rect x="420" y="235" width="85" height="50" rx="4" fill="#14213D"/>
+    <rect x="425" y="240" width="75" height="40" rx="2" fill="#3772FF"/>
+    <path d="M445 255L455 265L475 248" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="405" y="283" width="115" height="6" rx="3" fill="#CFC2B4"/>
+    <!-- Notebook & Pen -->
+    <rect x="380" y="275" width="30" height="20" rx="2" fill="#ECFAF5" stroke="#42C6A5" stroke-width="1"/>
+    <line x1="375" y1="280" x2="375" y2="295" stroke="#FF6B5E" stroke-width="2"/>
+    <!-- UL Surge Protector on Floor -->
+    <rect x="360" y="445" width="90" height="18" rx="4" fill="#14213D"/>
+    <circle cx="372" cy="454" r="3" fill="#42C6A5"/>
+    <circle cx="390" cy="454" r="2.5" fill="#FFFFFF"/>
+    <circle cx="405" cy="454" r="2.5" fill="#FFFFFF"/>
+    <circle cx="420" cy="454" r="2.5" fill="#FFFFFF"/>
+    <circle cx="435" cy="454" r="2.5" fill="#FFFFFF"/>
+    <!-- Power Cord -->
+    <path d="M450 454C480 454 480 400 480 288" stroke="#14213D" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Moving Boxes & Shower Caddy Foreground -->
+  <g id="movein-boxes">
+    <!-- Cardboard Moving Box 1 -->
+    <rect x="310" y="390" width="80" height="65" rx="6" fill="#D5C8B8" stroke="#B8A48F" stroke-width="2"/>
+    <path d="M310 405L350 415L390 405" stroke="#B8A48F" stroke-width="2"/>
+    <rect x="325" y="420" width="50" height="16" rx="3" fill="#FFFFFF"/>
+    <text x="332" y="432" font-family="system-ui, sans-serif" font-size="9" font-weight="800" fill="#14213D">BEDDING</text>
+    <!-- Mesh Shower Caddy -->
+    <rect x="475" y="380" width="55" height="50" rx="8" fill="#42C6A5" fill-opacity="0.9" stroke="#1E876E" stroke-width="2"/>
+    <path d="M490 380V365C490 360 515 360 515 365V380" stroke="#1E876E" stroke-width="3" stroke-linecap="round"/>
+    <rect x="483" y="390" width="10" height="25" rx="2" fill="#FFFFFF"/>
+    <rect x="497" y="388" width="12" height="28" rx="2" fill="#FFD166"/>
+    <rect x="513" y="392" width="10" height="22" rx="2" fill="#FF6B5E"/>
+  </g>
+
+  <!-- Interactive Visual Callout Badges -->
+  <g id="badge-pack">
+    <rect x="230" y="110" width="100" height="36" rx="18" fill="#FF6B5E"/>
+    <circle cx="248" cy="128" r="10" fill="#FFFFFF"/>
+    <text x="244" y="132" font-family="system-ui, sans-serif" font-size="12" font-weight="900" fill="#FF6B5E">✓</text>
+    <text x="266" y="132" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#FFFFFF">1. PACK</text>
+  </g>
+
+  <g id="badge-coordinate">
+    <rect x="480" y="70" width="150" height="36" rx="18" fill="#3772FF"/>
+    <circle cx="498" cy="88" r="10" fill="#FFFFFF"/>
+    <text x="494" y="92" font-family="system-ui, sans-serif" font-size="12" font-weight="900" fill="#3772FF">⇄</text>
+    <text x="516" y="92" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#FFFFFF">2. COORDINATE</text>
+  </g>
+
+  <g id="badge-save">
+    <rect x="520" y="170" width="110" height="36" rx="18" fill="#42C6A5"/>
+    <circle cx="538" cy="188" r="10" fill="#FFFFFF"/>
+    <text x="534" y="192" font-family="system-ui, sans-serif" font-size="12" font-weight="900" fill="#42C6A5">$</text>
+    <text x="556" y="192" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#FFFFFF">3. SAVE</text>
+  </g>
+</svg>

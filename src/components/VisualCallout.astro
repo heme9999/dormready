@@ -1,0 +1,65 @@
+---
+interface Props {
+  type?: 'tip' | 'warning' | 'safety' | 'roommate' | 'action';
+  title: string;
+  className?: string;
+}
+
+const { type = 'tip', title, className = '' } = Astro.props;
+
+const styles = {
+  tip: {
+    bg: 'bg-brand-blue-50',
+    border: 'border-brand-blue-200',
+    icon: '💡',
+    badge: 'Practical Tip',
+    badgeBg: 'bg-brand-blue text-white',
+    titleColor: 'text-brand-blue-900',
+  },
+  warning: {
+    bg: 'bg-brand-coral-50',
+    border: 'border-brand-coral-200',
+    icon: '⚠️',
+    badge: 'Prohibited Item Notice',
+    badgeBg: 'bg-brand-coral text-white',
+    titleColor: 'text-rose-950',
+  },
+  safety: {
+    bg: 'bg-brand-yellow-50',
+    border: 'border-brand-yellow-200',
+    icon: '🔥',
+    badge: 'Campus Fire Code',
+    badgeBg: 'bg-amber-500 text-white',
+    titleColor: 'text-amber-950',
+  },
+  roommate: {
+    bg: 'bg-brand-mint-50',
+    border: 'border-brand-mint-200',
+    icon: '⇄',
+    badge: 'Roommate Coordination',
+    badgeBg: 'bg-brand-mint text-white',
+    titleColor: 'text-emerald-950',
+  },
+  action: {
+    bg: 'bg-white',
+    border: 'border-brand-navy ring-1 ring-brand-navy/10',
+    icon: '🎯',
+    badge: 'Do This First',
+    badgeBg: 'bg-brand-navy text-white',
+    titleColor: 'text-brand-navy',
+  },
+}[type];
+---
+
+<div class={`p-5 sm:p-6 rounded-2xl border-2 shadow-soft my-6 ${styles.bg} ${styles.border} ${className}`}>
+  <div class="flex items-center gap-2 mb-2">
+    <span class="text-lg select-none" aria-hidden="true">{styles.icon}</span>
+    <span class={`text-[11px] font-bold px-2 py-0.5 rounded-full shadow-sm ${styles.badgeBg}`}>
+      {styles.badge}
+    </span>
+  </div>
+  <h4 class={`text-base font-black mb-2 ${styles.titleColor}`}>{title}</h4>
+  <div class="text-xs sm:text-sm text-navy-700 leading-relaxed space-y-2">
+    <slot />
+  </div>
+</div>
