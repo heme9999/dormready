@@ -6,14 +6,16 @@ describe('Student Discounts Directory Data Integrity', () => {
     expect(DISCOUNT_CATEGORIES.length).toBeGreaterThanOrEqual(5);
   });
 
-  it('rejects any example.com URL across all student discounts', () => {
+  it('rejects any example.com or unverified aggregator URLs across all student discounts', () => {
     for (const d of STUDENT_DISCOUNTS) {
       expect(d.officialSourceUrl).not.toContain('example.com');
+      expect(d.officialSourceUrl).not.toContain('coupons.com');
+      expect(d.officialSourceUrl).not.toContain('retailmenot.com');
       expect(d.officialSourceUrl).toMatch(/^https:\/\//);
     }
   });
 
-  it('every verified discount must have a valid audit date (checkedAt) and official URL', () => {
+  it('every verified discount must have a valid audit date (checkedAt) and official HTTPS URL', () => {
     for (const d of STUDENT_DISCOUNTS) {
       expect(d.id).toBeTruthy();
       expect(d.brand).toBeTruthy();
@@ -27,6 +29,35 @@ describe('Student Discounts Directory Data Integrity', () => {
       expect(d.officialSourceUrl).toMatch(/^https:\/\//);
       expect(['verified', 'needs_research', 'seasonal']).toContain(d.verificationStatus);
     }
+  });
+
+  it('contains verified Apple Music Student discount as an independent record from Apple Education Store', () => {
+    const appleMusic = STUDENT_DISCOUNTS.find((d) => d.id === 'disc-apple-music');
+    const appleStore = STUDENT_DISCOUNTS.find((d) => d.id === 'disc-apple');
+
+    expect(appleMusic).toBeDefined();
+    expect(appleStore).toBeDefined();
+    expect(appleMusic?.id).not.toBe(appleStore?.id);
+
+    expect(appleMusic?.brand).toBe('Apple Music Student');
+    expect(appleMusic?.category).toBe('streaming');
+    expect(appleMusic?.priceOrDiscount).toBe('$6.99/month');
+    expect(appleMusic?.officialSourceUrl).toBe('https://www.apple.com/apple-music/');
+    expect(appleMusic?.verificationStatus).toBe('verified');
+    expect(appleMusic?.checkedAt).toMatch(/^2026-/);
+
+    expect(appleStore?.category).toBe('hardware');
+  });
+
+  it('contains verified YouTube Premium Student discount with official SheerID verification', () => {
+    const yt = STUDENT_DISCOUNTS.find((d) => d.id === 'disc-youtube-premium');
+    expect(yt).toBeDefined();
+    expect(yt?.brand).toBe('YouTube Premium Student');
+    expect(yt?.category).toBe('streaming');
+    expect(yt?.verificationMethod).toBe('SheerID');
+    expect(yt?.officialSourceUrl).toBe('https://www.youtube.com/premium/student');
+    expect(yt?.verificationStatus).toBe('verified');
+    expect(yt?.checkedAt).toMatch(/^2026-/);
   });
 
   it('correctly names Spotify offer without any Showtime references', () => {
