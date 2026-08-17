@@ -1,0 +1,235 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import PolicyNotice from '../components/PolicyNotice.astro';
+import VisualCallout from '../components/VisualCallout.astro';
+import StorageMeasurementPlanner from '../components/StorageMeasurementPlanner';
+
+const breadcrumbs = [
+  { name: 'Guides', url: '/guides/' },
+  { name: 'Small Dorm Storage Ideas', url: '/small-dorm-room-storage-ideas/' },
+];
+
+const faqs = [
+  {
+    question: 'Why should I wait to buy under-bed storage containers?',
+    answer: 'Clearance under dorm bed frames varies depending on whether bed frames are fixed low, junior-lofted with notches, or fully lofted by maintenance. If you purchase rigid plastic drawers before measuring, they may be an inch too tall to slide under your specific frame.',
+  },
+  {
+    question: 'Are over-the-door shoe organizers allowed in college residence halls?',
+    answer: 'Policies vary by university and residence hall. Some schools permit over-the-door hooks on interior closet doors, while others prohibit them on main entrance doors to prevent damaging fire door latching seals. Always verify your assigned hall manual.',
+  },
+  {
+    question: 'How do I maximize closet storage in a narrow dorm wardrobe?',
+    answer: 'Use slim velvet non-slip hangers to double garment hanging density, add a hanging fabric tiered organizer for folded sweaters, and place a low shoe rack or stackable storage cubes beneath hanging garments.',
+  },
+  {
+    question: 'What storage items easily move out at the end of the school year?',
+    answer: 'Collapsible fabric bins, zippered under-bed bags, and modular stacking bins fold completely flat during May move-out, taking up minimal trunk space compared to heavy, rigid plastic furniture.',
+  },
+];
+---
+
+<BaseLayout
+  title="Small Dorm Room Storage Ideas: Measure First, Buy Second | DormReady"
+  description="Space-saving dorm storage strategy without generic affiliate spam. Use our interactive measurement planner to record bed clearance, closet space, and wall rules before buying."
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  ogType="article"
+  modifiedTime="2026-08-17"
+>
+  <!-- Header Banner -->
+  <div class="bg-gradient-to-b from-purple-50 via-purple-50/30 to-white border-b border-slate-200 py-10 sm:py-14">
+    <div class="container-custom max-w-4xl">
+      <Breadcrumbs items={breadcrumbs} />
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mt-6">
+        <div class="lg:col-span-8 space-y-4">
+          <div class="flex flex-wrap items-center gap-2.5 text-xs font-bold text-navy-600">
+            <span class="badge-purple">Space Planning Blueprint</span>
+            <span>•</span>
+            <span>5 Storage Zones</span>
+            <span>•</span>
+            <span>Interactive Measurement Tool</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-brand-navy tracking-tight leading-tight">
+            Small Dorm Room Storage Ideas
+          </h1>
+
+          <p class="text-base sm:text-lg text-navy-700 leading-relaxed font-medium">
+            The &ldquo;Measure First, Buy Second&rdquo; framework: how to measure bed clearance, closet depth, and desk verticality before spending money on storage furniture.
+          </p>
+        </div>
+
+        <div class="lg:col-span-4 flex justify-center">
+          <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-3xl bg-white border-2 border-purple-200 shadow-soft p-4 flex flex-col items-center justify-center text-center space-y-2">
+            <span class="text-5xl" aria-hidden="true">📐</span>
+            <div class="font-black text-brand-navy text-sm">Measure First</div>
+            <p class="text-[11px] text-navy-600 leading-tight">
+              Log dimensions on move-in day; buy storage organizers second.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Body -->
+  <div class="container-custom max-w-4xl py-8 sm:py-12 space-y-12 text-navy-800 leading-relaxed">
+    <PolicyNotice topic="bed lofting policies, wall mounting fasteners, and permitted room furniture" />
+
+    <!-- Visual Blueprint Diagram -->
+    <section class="space-y-4">
+      <div class="space-y-2">
+        <span class="badge-purple">Measurement Zones</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
+          The 4 Critical Dorm Measurement Zones
+        </h2>
+        <p class="text-xs sm:text-sm text-navy-600">
+          Before ordering storage organizers online, measure these four structural dimensions inside your assigned room:
+        </p>
+      </div>
+
+      <div class="rounded-3xl border-2 border-slate-200 overflow-hidden bg-white shadow-soft p-2 sm:p-4">
+        <img
+          src="/images/diagrams/storage-measurement.svg"
+          alt="4 essential dorm storage measurement zones: bed clearance height, closet interior, study desk vertical clearance, and wall hanging rules"
+          width="960"
+          height="400"
+          class="w-full h-auto rounded-2xl"
+          loading="eager"
+        />
+      </div>
+    </section>
+
+    <!-- Interactive Measurement Planner Island -->
+    <StorageMeasurementPlanner client:load />
+
+    <!-- Section 1: The Measure-First Framework -->
+    <section class="space-y-6">
+      <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
+        The &ldquo;Measure First, Buy Second&rdquo; Framework
+      </h2>
+      <p class="text-xs sm:text-sm text-navy-700 leading-relaxed">
+        Most freshman storage mistakes happen in July when students buy 3-drawer plastic carts or rigid under-bed trunks without knowing their bed height or closet door style. Follow this 3-step decision flow:
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs sm:text-sm">
+        <div class="p-5 rounded-2xl bg-white border-2 border-slate-200 shadow-soft space-y-2">
+          <span class="badge-blue">Step 1</span>
+          <h3 class="font-bold text-brand-navy text-base">Arrive with Flexible Bags</h3>
+          <p class="text-navy-600 leading-relaxed">
+            Pack clothes and supplies in soft duffels or zippered polypropylene bags that collapse flat when emptied.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white border-2 border-slate-200 shadow-soft space-y-2">
+          <span class="badge-mint">Step 2</span>
+          <h3 class="font-bold text-brand-navy text-base">Measure Exact Clearances</h3>
+          <p class="text-navy-600 leading-relaxed">
+            Use a tape measure to record vertical ground clearance under the bed, closet width, and desk hutch dimensions.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white border-2 border-slate-200 shadow-soft space-y-2">
+          <span class="badge-coral">Step 3</span>
+          <h3 class="font-bold text-brand-navy text-base">Purchase Targeted Fits</h3>
+          <p class="text-navy-600 leading-relaxed">
+            Order or buy storage organizers that fit your exact measurements with zero wasted vertical space and zero return hassles.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Items to Postpone -->
+    <VisualCallout type="warning" title="5 Storage Items to Postpone Until After Move-In">
+      <ul class="list-disc list-inside space-y-2 text-xs sm:text-sm font-medium text-navy-800">
+        <li><strong>Rigid plastic 3-drawer units:</strong> Often too tall for low-fixed bed frames or too narrow for deep closets.</li>
+        <li><strong>Over-the-door metal shoe racks:</strong> May prevent fire safety doors or closet bi-fold doors from latching.</li>
+        <li><strong>Adhesive wall shelves &amp; hooks:</strong> Must be verified against your specific hall wall material (cinder block vs sheetrock).</li>
+        <li><strong>Large floor area rugs:</strong> Must be measured alongside your roommate after both beds and desks are positioned.</li>
+        <li><strong>Extra armchairs / futons:</strong> Standard double dorm rooms rarely have floor space for secondary seating.</li>
+      </ul>
+    </VisualCallout>
+
+    <!-- Section 3: Easy Move-Out Storage Principles -->
+    <section class="space-y-6">
+      <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
+        Storage Principles for Easy May Move-Out
+      </h2>
+      <p class="text-xs sm:text-sm text-navy-700 leading-relaxed">
+        Everything you bring into your room in August must be packed into a vehicle or storage locker in May. Prioritize organizational tools that fold, nest, or stack:
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs sm:text-sm">
+        <div class="p-6 rounded-3xl bg-slate-50 border-2 border-slate-200 space-y-3">
+          <h3 class="font-bold text-brand-navy text-base flex items-center gap-2">
+            <span>📦</span>
+            <span>Collapsible &amp; Foldable Organizers</span>
+          </h3>
+          <p class="text-navy-700 leading-relaxed">
+            Fabric storage cubes, hanging sweater organizers, and soft under-bed storage bags collapse completely flat. When moving out, they pack into a single tote bag rather than taking up half your car trunk.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-slate-50 border-2 border-slate-200 space-y-3">
+          <h3 class="font-bold text-brand-navy text-base flex items-center gap-2">
+            <span>🔄</span>
+            <span>Modular Stacking Containers</span>
+          </h3>
+          <p class="text-navy-700 leading-relaxed">
+            Clear, heavy-duty modular plastic totes with secure latching lids double as moving boxes during move-out week. Label them by category for effortless unpacking every academic year.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Official Organization & Campus References -->
+    <section class="p-6 bg-slate-50 border border-slate-200 rounded-2xl space-y-3 text-xs text-navy-700">
+      <h3 class="font-bold text-brand-navy text-sm flex items-center gap-2">
+        <span>📋</span>
+        <span>Storage Principles &amp; Campus Policy References</span>
+      </h3>
+      <p class="text-navy-600">
+        Storage planning references space management principles and university room furnishing guidelines:
+      </p>
+      <ul class="space-y-2 pt-1 pl-1">
+        <li>
+          • <strong>IKEA Small Space Organization Principles:</strong> <a href="https://www.ikea.com/us/en/rooms/bedroom/how-to/storage-across-dorms-pub57a8bf93/" target="_blank" rel="noopener noreferrer" class="underline text-brand-blue font-semibold">Storage Across Dorms (Organizational Concepts)</a> (Checked August 17, 2026)
+        </li>
+        <li>
+          • <strong>University of Illinois Housing:</strong> <a href="https://housing.illinois.edu/MyHousing/move-in-checklist" target="_blank" rel="noopener noreferrer" class="underline text-brand-blue font-semibold">Room Furnishings &amp; Storage Guidelines</a> (Checked August 17, 2026)
+        </li>
+        <li>
+          • <strong>UT Austin Residence Hall Resources:</strong> <a href="https://housing.utexas.edu/housing/residence-halls/residence-hall-resources/mooov-guide/what-bring-and-leave-behind" target="_blank" rel="noopener noreferrer" class="underline text-brand-blue font-semibold">Room Guidelines &amp; Furniture Policies</a> (Checked August 17, 2026)
+        </li>
+      </ul>
+    </section>
+
+    <!-- FAQs Section -->
+    <section class="space-y-6 pt-4 border-t border-slate-200">
+      <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
+        Frequently Asked Questions
+      </h2>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <div class="p-6 bg-white border-2 border-slate-200 rounded-2xl shadow-soft">
+            <h3 class="font-bold text-brand-navy text-base mb-2">{faq.question}</h3>
+            <p class="text-xs sm:text-sm text-navy-700 leading-relaxed">{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Internal Contextual Navigation -->
+    <section class="pt-6 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4 text-xs font-bold text-brand-blue">
+      <a href="/dorm-room-essentials/" class="hover:underline flex items-center gap-1">
+        <span>← 5 Functional Dorm Zones Blueprint</span>
+      </a>
+      <a href="/what-to-buy-before-vs-after-moving-into-dorm/" class="hover:underline flex items-center gap-1">
+        <span>What to Buy Before vs. After Move-In →</span>
+      </a>
+    </section>
+  </div>
+</BaseLayout>

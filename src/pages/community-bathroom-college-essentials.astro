@@ -1,0 +1,275 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import PolicyNotice from '../components/PolicyNotice.astro';
+import VisualCallout from '../components/VisualCallout.astro';
+
+const breadcrumbs = [
+  { name: 'Guides', url: '/guides/' },
+  { name: 'Community Bathroom Essentials', url: '/community-bathroom-college-essentials/' },
+];
+
+const faqs = [
+  {
+    question: 'How do I transport my toiletries to a communal bathroom without dropping anything?',
+    answer: 'Use a sturdy, quick-drying mesh or plastic shower caddy with drainage holes. Keep your room key on a waterproof wrist lanyard so you do not accidentally lock yourself out of your dorm room when heading to the shower.',
+  },
+  {
+    question: 'Why are quick-drying mesh shower caddies recommended over solid plastic bins?',
+    answer: 'Solid plastic caddies trap standing water at the bottom, creating soap scum and mildew build-up. Mesh caddies allow shower water to drain freely through the base and sides, drying rapidly when hung from a hook back in your dorm room.',
+  },
+  {
+    question: 'Who cleans college dorm bathrooms?',
+    answer: 'In traditional communal/hallway residence hall bathrooms, university custodial staff typically cleans and restocks soap and paper products daily or on a scheduled weekly rotation. In suite-style or private bathrooms, residents are usually responsible for cleaning their own shower, sink, and toilet.',
+  },
+  {
+    question: 'How many bath towels should a college freshman bring?',
+    answer: 'Most students find that 2 full bath towels (or 1 quick-dry towel plus 1 spare) and 2 washcloths are sufficient, allowing one towel to dry thoroughly while the other is used or in the laundry rotation.',
+  },
+];
+---
+
+<BaseLayout
+  title="Community Bathroom College Essentials: What to Carry and Keep Dry | DormReady"
+  description="Communal bathroom transit, wet/dry organization, caddy drainage, and hygiene strategies for college freshmen. Practical advice for hall bathrooms vs suite styles."
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  ogType="article"
+  modifiedTime="2026-08-17"
+>
+  <!-- Header Banner -->
+  <div class="bg-gradient-to-b from-brand-mint-50 via-brand-mint-50/30 to-white border-b border-slate-200 py-10 sm:py-14">
+    <div class="container-custom max-w-4xl">
+      <Breadcrumbs items={breadcrumbs} />
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mt-6">
+        <div class="lg:col-span-8 space-y-4">
+          <div class="flex flex-wrap items-center gap-2.5 text-xs font-bold text-navy-600">
+            <span class="badge-mint">Dorm Living Strategy</span>
+            <span>•</span>
+            <span>Dry/Wet Separation</span>
+            <span>•</span>
+            <span>Communal Hygiene</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-brand-navy tracking-tight leading-tight">
+            Community Bathroom College Essentials
+          </h1>
+
+          <p class="text-base sm:text-lg text-navy-700 leading-relaxed font-medium">
+            How to navigate hallway bathroom transit, keep wet gear from mildewing in your room, and organize what to carry on every shower trip.
+          </p>
+        </div>
+
+        <div class="lg:col-span-4 flex justify-center">
+          <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-3xl bg-white border-2 border-brand-mint-200 shadow-soft p-4 flex flex-col items-center justify-center text-center space-y-2">
+            <span class="text-5xl" aria-hidden="true">🚿</span>
+            <div class="font-black text-brand-navy text-sm">Dry/Wet Workflow</div>
+            <p class="text-[11px] text-navy-600 leading-tight">
+              Mesh caddies drain fast; room keys stay on a wrist lanyard.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container-custom max-w-4xl py-8 sm:py-12 space-y-12 text-navy-800 leading-relaxed">
+    <PolicyNotice topic="residence hall bathroom styles, custodial cleaning schedules, and appliance restrictions" />
+
+    <!-- Visual Workflow Diagram -->
+    <section class="space-y-4">
+      <div class="space-y-2">
+        <span class="badge-mint">Transit Routine</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
+          Communal Bathroom Dry/Wet Transit Blueprint
+        </h2>
+        <p class="text-xs sm:text-sm text-navy-600">
+          Managing hallway showers requires separating in-room dry storage from transit essentials and post-shower ventilation:
+        </p>
+      </div>
+
+      <div class="rounded-3xl border-2 border-slate-200 overflow-hidden bg-white shadow-soft p-2 sm:p-4">
+        <img
+          src="/images/diagrams/bathroom-routine.svg"
+          alt="Diagram of college community bathroom workflow: in-room storage, corridor transit carry kit, and post-shower ventilation"
+          width="960"
+          height="400"
+          class="w-full h-auto rounded-2xl"
+          loading="eager"
+        />
+      </div>
+    </section>
+
+    <!-- Section 1: 3 Bathroom Styles -->
+    <section class="space-y-6">
+      <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
+        1. First: Confirm Your Residence Hall Bathroom Style
+      </h2>
+      <p class="text-xs sm:text-sm text-navy-700">
+        What you need to pack depends fundamentally on which of these three layouts your building uses:
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs sm:text-sm">
+        <div class="p-5 rounded-2xl bg-white border-2 border-slate-200 shadow-soft space-y-3">
+          <span class="badge-blue">Most Common</span>
+          <h3 class="font-bold text-brand-navy text-base">Traditional Hall Bath</h3>
+          <p class="text-navy-600 leading-relaxed">
+            Multi-stall bathroom shared by the floor wing. Cleaned daily or on a scheduled rotation by university custodial staff. Requires a portable caddy, shower shoes, and room key on every visit.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white border-2 border-slate-200 shadow-soft space-y-3">
+          <span class="badge-mint">Semi-Private</span>
+          <h3 class="font-bold text-brand-navy text-base">Suite-Style Bathroom</h3>
+          <p class="text-navy-600 leading-relaxed">
+            Adjoining bathroom shared between two double rooms (typically 4 suitemates). Residents are usually responsible for cleaning, toilet paper, and coordinating shower schedules.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white border-2 border-slate-200 shadow-soft space-y-3">
+          <span class="badge-coral">Apartment / Pod</span>
+          <h3 class="font-bold text-brand-navy text-base">Single-User Pod / Private</h3>
+          <p class="text-navy-600 leading-relaxed">
+            Individual lockable shower and toilet rooms located off the hallway. Offers complete privacy inside the room, but still requires hallway transit gear.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Carry vs Keep in Room Matrix -->
+    <section class="space-y-6">
+      <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
+        2. What to Carry on Every Trip vs. What Stays in Your Room
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm">
+        <!-- Carry Kit -->
+        <div class="p-6 rounded-3xl bg-emerald-50/50 border-2 border-emerald-200 shadow-soft space-y-4">
+          <div class="flex items-center gap-2 text-emerald-950 font-black text-base">
+            <span>🎒</span>
+            <span>Carry on Every Shower Trip (Transit Kit)</span>
+          </div>
+          <ul class="space-y-2.5 text-navy-800">
+            <li>• <strong>Quick-drain mesh shower caddy:</strong> Holds shampoo, body wash, and face cleanser without pooling water.</li>
+            <li>• <strong>Quick-drying shower slides / sandals:</strong> Practical footwear for wet shared floor traction.</li>
+            <li>• <strong>Bathrobe or quick-dry bath sheet:</strong> Makes walking down the hall modest and comfortable.</li>
+            <li>• <strong>Room key / digital card on wrist lanyard:</strong> The most crucial item; dorm room doors lock automatically.</li>
+            <li>• <strong>Clean change of clothes / underwear:</strong> Carry in a waterproof pouch or bag pocket.</li>
+          </ul>
+        </div>
+
+        <!-- Keep in Room -->
+        <div class="p-6 rounded-3xl bg-slate-50 border-2 border-slate-200 shadow-soft space-y-4">
+          <div class="flex items-center gap-2 text-brand-navy font-black text-base">
+            <span>🚪</span>
+            <span>Keep in Your Dorm Room (Dry Storage)</span>
+          </div>
+          <ul class="space-y-2.5 text-navy-700">
+            <li>• <strong>Bulk refill bottles &amp; spare soap bars:</strong> Stored under your bed or in closet drawers.</li>
+            <li>• <strong>Prescription medications &amp; skincare serums:</strong> Shared bathroom humidity degrades sensitive products.</li>
+            <li>• <strong>Electric hair styling tools (blowdryers, straighteners):</strong> Outlets in communal baths are limited; style at your desk.</li>
+            <li>• <strong>Jewelry, watches &amp; smartphones:</strong> Never leave valuables on communal sink counters.</li>
+            <li>• <strong>Extra dry towels:</strong> Keep backup linens clean and dry in your closet.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: The Two-Kit Method -->
+    <section class="space-y-6">
+      <VisualCallout type="tip" title="The Practical 'Two-Kit' Organization Method">
+        <div class="text-xs sm:text-sm text-navy-800 space-y-2">
+          <p>
+            Rather than carrying a massive 10-pound shower tote for a 2-minute teeth-brushing run, many college students divide their toiletries into two separate bags:
+          </p>
+          <ol class="list-decimal list-inside space-y-1.5 pt-1 font-medium">
+            <li><strong>The Shower Caddy:</strong> Full-sized shampoo, conditioner, body wash, razor, and loofah (used 1x daily).</li>
+            <li><strong>The Sink / Morning Kit:</strong> Small zippered pouch holding toothbrush, toothpaste, facial cleanser, contact lenses, and deodorant (used 2–3x daily for quick bathroom visits).</li>
+          </ol>
+        </div>
+      </VisualCallout>
+    </section>
+
+    <!-- Section 4: Wet Item Ventilation -->
+    <section class="space-y-6">
+      <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
+        3. How to Prevent Mildew and Musty Odors in a Small Room
+      </h2>
+      <p class="text-xs sm:text-sm text-navy-700 leading-relaxed">
+        Trapping damp towels or wet plastic caddies in unventilated closet corners causes persistent mildew odors. Follow these simple ventilation habits:
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs sm:text-sm">
+        <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2">
+          <span class="font-bold text-brand-navy block text-sm">Spread Towels Wide</span>
+          <p class="text-navy-600 leading-relaxed">
+            Hang towels on a wide over-the-door bar or sturdy adhesive hook spread out flat, rather than bunched on a single small peg.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2">
+          <span class="font-bold text-brand-navy block text-sm">Hang Caddy to Dry</span>
+          <p class="text-navy-600 leading-relaxed">
+            Hang your mesh caddy from a bedpost hook or ventilated shelving unit rather than placing it on carpet or enclosed wardrobe floors.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2">
+          <span class="font-bold text-brand-navy block text-sm">Never Seal Damp Items</span>
+          <p class="text-navy-600 leading-relaxed">
+            Never toss a damp towel directly into a dark plastic laundry hamper. Allow it to air-dry completely before adding it to your laundry bag.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Official Campus & Educational References -->
+    <section class="p-6 bg-slate-50 border border-slate-200 rounded-2xl space-y-3 text-xs text-navy-700">
+      <h3 class="font-bold text-brand-navy text-sm flex items-center gap-2">
+        <span>📋</span>
+        <span>Official Move-In &amp; Packing Reference Sources</span>
+      </h3>
+      <p class="text-navy-600">
+        Bathroom packing suggestions reflect student life guidelines from major university housing programs:
+      </p>
+      <ul class="space-y-2 pt-1 pl-1">
+        <li>
+          • <strong>UT Austin Housing:</strong> <a href="https://housing.utexas.edu/housing/residence-halls/residence-hall-resources/mooov-guide/what-bring-and-leave-behind" target="_blank" rel="noopener noreferrer" class="underline text-brand-blue font-semibold">What to Bring and Leave Behind</a> (Checked August 17, 2026)
+        </li>
+        <li>
+          • <strong>University of Illinois Housing:</strong> <a href="https://housing.illinois.edu/MyHousing/move-in-checklist" target="_blank" rel="noopener noreferrer" class="underline text-brand-blue font-semibold">Move-In Packing Checklist</a> (Checked August 17, 2026)
+        </li>
+        <li>
+          • <strong>ACT College Planning Resources:</strong> <a href="https://www.act.org/content/act/en/students-and-parents/college-planning-resources/college-life/college-packing-list.html" target="_blank" rel="noopener noreferrer" class="underline text-brand-blue font-semibold">ACT College Packing List</a> (Checked August 17, 2026)
+        </li>
+      </ul>
+    </section>
+
+    <!-- FAQs Section -->
+    <section class="space-y-6 pt-4 border-t border-slate-200">
+      <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
+        Frequently Asked Questions
+      </h2>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <div class="p-6 bg-white border-2 border-slate-200 rounded-2xl shadow-soft">
+            <h3 class="font-bold text-brand-navy text-base mb-2">{faq.question}</h3>
+            <p class="text-xs sm:text-sm text-navy-700 leading-relaxed">{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Internal Contextual Navigation -->
+    <section class="pt-6 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4 text-xs font-bold text-brand-blue">
+      <a href="/dorm-room-essentials/" class="hover:underline flex items-center gap-1">
+        <span>← 5 Functional Dorm Zones Blueprint</span>
+      </a>
+      <a href="/college-packing-list/" class="hover:underline flex items-center gap-1">
+        <span>Strategic Move-In Packing Guide →</span>
+      </a>
+    </section>
+  </div>
+</BaseLayout>

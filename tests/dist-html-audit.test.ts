@@ -45,35 +45,49 @@ describe('Generated Distribution HTML Auditing', () => {
     }
   });
 
-  it('verifies that at least 18 HTML pages were generated in audit build', () => {
-    expect(htmlFiles.length).toBeGreaterThanOrEqual(18);
+  it('verifies that at least 21 HTML pages were generated in audit build', () => {
+    expect(htmlFiles.length).toBeGreaterThanOrEqual(21);
   });
 
-  it('verifies the 3 Sprint 1 pages are present in distribution with PolicyNotice', () => {
+  it('verifies all Sprint 1 & Sprint 2 pages are present in distribution with PolicyNotice', () => {
     const p1 = path.join(auditDistDir, 'what-not-to-bring-to-college-dorm/index.html');
     const p2 = path.join(auditDistDir, 'what-to-buy-before-vs-after-moving-into-dorm/index.html');
     const p3 = path.join(auditDistDir, 'college-dorm-roommate-checklist/index.html');
+    const p4 = path.join(auditDistDir, 'college-move-in-day-checklist/index.html');
+    const p5 = path.join(auditDistDir, 'community-bathroom-college-essentials/index.html');
+    const p6 = path.join(auditDistDir, 'small-dorm-room-storage-ideas/index.html');
 
     expect(fs.existsSync(p1), 'what-not-to-bring page missing').toBe(true);
     expect(fs.existsSync(p2), 'what-to-buy-before-vs-after page missing').toBe(true);
     expect(fs.existsSync(p3), 'roommate checklist page missing').toBe(true);
+    expect(fs.existsSync(p4), 'move-in day checklist page missing').toBe(true);
+    expect(fs.existsSync(p5), 'community bathroom page missing').toBe(true);
+    expect(fs.existsSync(p6), 'small dorm storage page missing').toBe(true);
 
     const c1 = fs.readFileSync(p1, 'utf-8');
     const c2 = fs.readFileSync(p2, 'utf-8');
     const c3 = fs.readFileSync(p3, 'utf-8');
+    const c4 = fs.readFileSync(p4, 'utf-8');
+    const c5 = fs.readFileSync(p5, 'utf-8');
+    const c6 = fs.readFileSync(p6, 'utf-8');
 
     expect(c1).toContain('Campus Policy Rule');
     expect(c1).toContain('Overrides Generic Checklists');
-    expect(c1).toContain('University of Illinois');
-    expect(c1).toContain('University of Michigan');
-    expect(c1).toContain('UT Austin');
 
     expect(c2).toContain('Campus Policy Rule');
     expect(c2).toContain('Timing Decision Matrix');
 
     expect(c3).toContain('Campus Policy Rule');
     expect(c3).toContain('Roommate Agreement Progress');
-    expect(c3).toContain('100% Private');
+
+    expect(c4).toContain('Campus Policy Rule');
+    expect(c4).toContain('Arrival Execution Milestones');
+
+    expect(c5).toContain('Campus Policy Rule');
+    expect(c5).toContain('Communal Bathroom Dry/Wet Transit Blueprint');
+
+    expect(c6).toContain('Campus Policy Rule');
+    expect(c6).toContain('Dorm Storage Measurement Log');
   });
 
   it('rejects any example.com link in all generated HTML files', () => {

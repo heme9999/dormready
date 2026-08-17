@@ -53,14 +53,17 @@ describe('Anti-Regression Truth & Factual Integrity Scan', () => {
     expect(violations).toEqual([]);
   });
 
-  it('verifies that all three Sprint 1 pages include the PolicyNotice component', () => {
-    const sprint1Files = [
+  it('verifies that all Sprint 1 and Sprint 2 pages include the PolicyNotice component', () => {
+    const allSprintFiles = [
       path.join(srcDir, 'pages/what-not-to-bring-to-college-dorm.astro'),
       path.join(srcDir, 'pages/what-to-buy-before-vs-after-moving-into-dorm.astro'),
       path.join(srcDir, 'pages/college-dorm-roommate-checklist.astro'),
+      path.join(srcDir, 'pages/college-move-in-day-checklist.astro'),
+      path.join(srcDir, 'pages/community-bathroom-college-essentials.astro'),
+      path.join(srcDir, 'pages/small-dorm-room-storage-ideas.astro'),
     ];
 
-    for (const filePath of sprint1Files) {
+    for (const filePath of allSprintFiles) {
       expect(fs.existsSync(filePath)).toBe(true);
       const content = fs.readFileSync(filePath, 'utf-8');
       expect(content).toContain('<PolicyNotice');

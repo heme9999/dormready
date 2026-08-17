@@ -1,0 +1,225 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import PolicyNotice from '../components/PolicyNotice.astro';
+import VisualCallout from '../components/VisualCallout.astro';
+import MoveInDayChecklistApp from '../components/MoveInDayChecklistApp';
+
+const breadcrumbs = [
+  { name: 'Guides', url: '/guides/' },
+  { name: 'Move-In Day Checklist', url: '/college-move-in-day-checklist/' },
+];
+
+const faqs = [
+  {
+    question: 'What should I do if my flight is delayed and I miss my assigned move-in time slot?',
+    answer: 'Most universities have a designated late-arrival protocol. Contact your campus residence life office or assigned hall front desk immediately. Many schools allow check-in during evening duty hours (typically after 5:00 PM) or the following morning without canceling your room assignment.',
+  },
+  {
+    question: 'Where do I pick up my dorm room key on move-in day?',
+    answer: 'Check your university housing assignment portal before arriving. On peak move-in days, many large universities operate centralized check-in hubs in dining halls, athletic arenas, or student centers rather than at individual dormitory front desks.',
+  },
+  {
+    question: 'Why is a Room Condition Report (RCR) so important on day one?',
+    answer: 'Submitting a detailed Room Condition Report with date-stamped photos of pre-existing wall scuffs, furniture scratches, and window screen tears creates an official baseline that protects your housing deposit and prevents unexpected repair billing when you check out in May.',
+  },
+  {
+    question: 'What is the most efficient order to unpack a dorm room?',
+    answer: 'Set aside your night-one essentials bag first, assemble and make your bed while the floor is clear, plug in your surge protector and fan, hang clothes to empty luggage bags, set up your desk, and finally break down all cardboard boxes to keep the hallway clear.',
+  },
+];
+---
+
+<BaseLayout
+  title="College Move-In Day Checklist: Before, During and After Arrival | DormReady"
+  description="Complete timeline and interactive execution checklist for college move-in day. Coordinate arrival slots, key pickup, damage inspection photos, and night-one setup."
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  ogType="article"
+  modifiedTime="2026-08-17"
+>
+  <!-- Header Banner -->
+  <div class="bg-gradient-to-b from-brand-blue-50 via-brand-blue-50/30 to-white border-b border-slate-200 py-10 sm:py-14">
+    <div class="container-custom max-w-4xl">
+      <Breadcrumbs items={breadcrumbs} />
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mt-6">
+        <div class="lg:col-span-8 space-y-4">
+          <div class="flex flex-wrap items-center gap-2.5 text-xs font-bold text-navy-600">
+            <span class="badge-blue">Arrival Day Execution Guide</span>
+            <span>•</span>
+            <span>6 Arrival Stages</span>
+            <span>•</span>
+            <span>Interactive Tool &amp; Printable</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-brand-navy tracking-tight leading-tight">
+            College Move-In Day Checklist
+          </h1>
+
+          <p class="text-base sm:text-lg text-navy-700 leading-relaxed font-medium">
+            The step-by-step timeline for arrival day: key pickup hubs, date-stamped room condition photos, the correct unpacking order, and night-one essentials.
+          </p>
+        </div>
+
+        <div class="lg:col-span-4 flex justify-center">
+          <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-3xl bg-white border-2 border-brand-blue-200 shadow-soft p-4 flex flex-col items-center justify-center text-center space-y-2">
+            <span class="text-5xl" aria-hidden="true">🔑</span>
+            <div class="font-black text-brand-navy text-sm">Arrival Execution</div>
+            <p class="text-[11px] text-navy-600 leading-tight">
+              Keys first, room photos second, bed made third.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Body -->
+  <div class="container-custom max-w-4xl py-8 sm:py-12 space-y-12 text-navy-800 leading-relaxed">
+    <PolicyNotice topic="move-in appointment scheduling, check-in hub locations, and room inventory submission" />
+
+    <!-- Interactive Move-In Checklist Island -->
+    <MoveInDayChecklistApp client:load />
+
+    <!-- Visual Timeline Diagram -->
+    <section class="space-y-4 pt-6 border-t border-slate-200">
+      <div class="space-y-2">
+        <span class="badge-blue">Execution Blueprint</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
+          Move-In Day 4-Phase Flowchart
+        </h2>
+        <p class="text-xs sm:text-sm text-navy-600">
+          Following this linear sequence prevents hallway gridlock, misplaced key cards, and unpacking exhaustion:
+        </p>
+      </div>
+
+      <div class="rounded-3xl border-2 border-slate-200 overflow-hidden bg-white shadow-soft p-2 sm:p-4">
+        <img
+          src="/images/diagrams/movein-timeline.svg"
+          alt="College move-in day flowchart: Key pickup at central hub, room condition photo inspection, bed and power setup, and staged unloading"
+          width="960"
+          height="400"
+          class="w-full h-auto rounded-2xl"
+          loading="eager"
+        />
+      </div>
+    </section>
+
+    <!-- Deep-Dive Editorial Sections -->
+    <section class="space-y-6">
+      <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
+        The 3 Move-In Day Rules That Save Hours of Stress
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs sm:text-sm">
+        <div class="p-5 rounded-2xl bg-white border-2 border-slate-200 shadow-soft space-y-2">
+          <div class="text-2xl">📸</div>
+          <h3 class="font-bold text-brand-navy text-sm sm:text-base">1. Photograph Everything Before Unpacking</h3>
+          <p class="text-navy-600 leading-relaxed">
+            Take date-stamped wide and close-up photos of window screens, desk surfaces, mattress condition, and wall scuffs. Note them immediately in your school Room Condition Report (RCR) to protect your deposit.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white border-2 border-slate-200 shadow-soft space-y-2">
+          <div class="text-2xl">🛏️</div>
+          <h3 class="font-bold text-brand-navy text-sm sm:text-base">2. Make the Bed While the Room is Empty</h3>
+          <p class="text-navy-600 leading-relaxed">
+            Wrestle mattress encasements, foam toppers, and fitted sheets onto the bed frame before luggage and boxes fill the floor. At 11:00 PM when exhaustion hits, your bed is already made.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white border-2 border-slate-200 shadow-soft space-y-2">
+          <div class="text-2xl">⚡</div>
+          <h3 class="font-bold text-brand-navy text-sm sm:text-base">3. Set Up Airflow &amp; Power Immediately</h3>
+          <p class="text-navy-600 leading-relaxed">
+            Dorm hallways and rooms can get uncomfortably warm during August move-in. Plug your surge protector into a wall receptacle and turn on a portable fan before hauling heavy boxes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visual Callout: Parking and Unloading Etiquette -->
+    <VisualCallout type="warning" title="Unloading Zone Etiquette: The 20-Minute Rule">
+      <p class="text-xs sm:text-sm text-navy-800 leading-relaxed">
+        Campus curb space next to residence halls is strictly designated for active unloading (typically 15 to 30 minutes). Designate one family member or helper to stay with the vehicle, stage all boxes into the ground floor lobby or room, and immediately move the car to assigned long-term parking to avoid campus parking tickets and allow other families to unload.
+      </p>
+    </VisualCallout>
+
+    <!-- Official Campus Policy Examples -->
+    <section class="space-y-6">
+      <div class="space-y-2">
+        <span class="badge-mint">Official Examples</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
+          How Major Universities Structure Move-In Day
+        </h2>
+        <p class="text-xs sm:text-sm text-navy-600">
+          Procedures vary significantly across campuses. Review these verified university examples:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+        <div class="p-5 rounded-2xl border-2 border-brand-blue-200 bg-brand-blue-50/40 space-y-3 flex flex-col justify-between">
+          <div class="space-y-2">
+            <span class="font-black text-brand-navy text-sm block">UT Austin (Mooov-In)</span>
+            <p class="text-navy-700">
+              Operates scheduled check-in slots with centralized digital check-in and curbside unloading permits for designated residence hall areas.
+            </p>
+          </div>
+          <div class="pt-3 border-t border-brand-blue-200/60 text-[11px] text-navy-500">
+            Source: <a href="https://housing.utexas.edu/housing/residence-halls/residence-hall-resources/mooov-guide" target="_blank" rel="noopener noreferrer" class="underline text-brand-blue font-semibold">UT Austin Mooov-In Guide</a> (Checked August 17, 2026)
+          </div>
+        </div>
+
+        <div class="p-5 rounded-2xl border-2 border-brand-coral-200 bg-brand-coral-50/40 space-y-3 flex flex-col justify-between">
+          <div class="space-y-2">
+            <span class="font-black text-brand-navy text-sm block">University of Illinois</span>
+            <p class="text-navy-700">
+              Designates specific check-in hub locations across campus neighborhoods with temporary unloading parking passes and moving cart stations.
+            </p>
+          </div>
+          <div class="pt-3 border-t border-brand-coral-200/60 text-[11px] text-navy-500">
+            Source: <a href="https://housing.illinois.edu/MyHousing/Move-In" target="_blank" rel="noopener noreferrer" class="underline text-brand-coral font-semibold">UIUC Move-In Information</a> (Checked August 17, 2026)
+          </div>
+        </div>
+
+        <div class="p-5 rounded-2xl border-2 border-brand-mint-200 bg-brand-mint-50/40 space-y-3 flex flex-col justify-between">
+          <div class="space-y-2">
+            <span class="font-black text-brand-navy text-sm block">University of Michigan</span>
+            <p class="text-navy-700">
+              Requires digital room inventory review and condition reporting (e.g. allowing up to 48 hours for submission) to establish pre-existing room condition.
+            </p>
+          </div>
+          <div class="pt-3 border-t border-brand-mint-200/60 text-[11px] text-navy-500">
+            Source: <a href="https://housing.umich.edu/undergraduate-rates/" target="_blank" rel="noopener noreferrer" class="underline text-brand-mint-700 font-semibold">UMich Housing Guidelines</a> (Checked August 17, 2026)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section class="space-y-6 pt-4 border-t border-slate-200">
+      <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
+        Frequently Asked Questions
+      </h2>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <div class="p-6 bg-white border-2 border-slate-200 rounded-2xl shadow-soft">
+            <h3 class="font-bold text-brand-navy text-base mb-2">{faq.question}</h3>
+            <p class="text-xs sm:text-sm text-navy-700 leading-relaxed">{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Internal Contextual Navigation -->
+    <section class="pt-6 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4 text-xs font-bold text-brand-blue">
+      <a href="/college-packing-list/" class="hover:underline flex items-center gap-1">
+        <span>← Strategic Packing List Guide</span>
+      </a>
+      <a href="/college-dorm-roommate-checklist/" class="hover:underline flex items-center gap-1">
+        <span>Roommate Coordination Checklist →</span>
+      </a>
+    </section>
+  </div>
+</BaseLayout>
