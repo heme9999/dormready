@@ -1,0 +1,85 @@
+import { describe, it, expect } from 'vitest';
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+
+function getAllSourceFiles(dir: string, fileList: string[] = []): string[] {
+  const files = fs.readdirSync(dir);
+  for (const file of files) {
+    const filePath = path.join(dir, file);
+    const stat = fs.statSync(filePath);
+    if (stat.isDirectory()) {
+      getAllSourceFiles(filePath, fileList);
+    } else if (/\.(astro|tsx|ts|html|css|md)$/.test(file)) {
+      fileList.push(filePath);
+    }
+  }
+  return fileList;
+}
+
+describe('Anti-Regression Truth & Factual Integrity Scan', () => {
+  const srcDir = path.resolve(__dirname, '../src');
+  const sourceFiles = getAllSourceFiles(srcDir);
+
+  const BANNED_PATTERNS = [
+    { pattern: /virtually all U\.S\./i, label: 'virtually all U.S.' },
+    { pattern: /standard 130–180/i, label: 'standard 130–180' },
+    { pattern: /150 sq ft/i, label: '150 sq ft' },
+    { pattern: /10x easier/i, label: '10x easier' },
+    { pattern: /10 to 36 inches/i, label: '10 to 36 inches' },
+    { pattern: /10–12ft/i, label: '10–12ft' },
+    { pattern: /frequently run out/i, label: 'frequently run out' },
+    { pattern: /must remain in carry-on luggage/i, label: 'must remain in carry-on luggage' },
+    { pattern: /original labeled pharmacy bottles; never check/i, label: 'original labeled pharmacy bottles; never check' },
+    { pattern: /Never fly with heavy liquid bottles/i, label: 'Never fly with heavy liquid bottles' },
+    { pattern: /electrical capacity for one mini-fridge/i, label: 'electrical capacity for one mini-fridge' },
+    { pattern: /Generated locally via DormReady \(https:\/\/dormready\.org\)/i, label: 'Generated locally via DormReady (https://dormready.org)' },
+  ];
+
+  it('ensures no banned ungrounded generalizations or unverified assertions exist in src/', () => {
+    const violations: { file: string; match: string }[] = [];
+
+    for (const filePath of sourceFiles) {
+      const content = fs.readFileSync(filePath, 'utf-8');
+      for (const { pattern, label } of BANNED_PATTERNS) {
+        if (pattern.test(content)) {
+          violations.push({ file: path.relative(srcDir, filePath), match: label });
+        }
+      }
+    }
+
+    expect(violations).toEqual([]);
+  });
+
+  it('verifies that all three Sprint 1 pages include the PolicyNotice component', () => {
+    const sprint1Files = [
+      path.join(srcDir, 'pages/what-not-to-bring-to-college-dorm.astro'),
+      path.join(srcDir, 'pages/what-to-buy-before-vs-after-moving-into-dorm.astro'),
+      path.join(srcDir, 'pages/college-dorm-roommate-checklist.astro'),
+    ];
+
+    for (const filePath of sprint1Files) {
+      expect(fs.existsSync(filePath)).toBe(true);
+      const content = fs.readFileSync(filePath, 'utf-8');
+      expect(content).toContain('<PolicyNotice');
+    }
+  });
+
+  it('verifies what-not-to-bring page contains verified university citations with checked dates', () => {
+    const pagePath = path.join(srcDir, 'pages/what-not-to-bring-to-college-dorm.astro');
+    const content = fs.readFileSync(pagePath, 'utf-8');
+
+    expect(content).toContain('University of Illinois');
+    expect(content).toContain('University of Michigan');
+    expect(content).toContain('UT Austin');
+    expect(content).toContain('Checked August 17, 2026');
+  });
+
+  it('verifies what-to-buy-before-vs-after page contains FAA and TSA regulatory references', () => {
+    const pagePath = path.join(srcDir, 'pages/what-to-buy-before-vs-after-moving-into-dorm.astro');
+    const content = fs.readFileSync(pagePath, 'utf-8');
+
+    expect(content).toContain('https://www.faa.gov/hazmat/packsafe/portable-electronic-devices-with-batteries');
+    expect(content).toContain('https://www.tsa.gov/news/press/factsheets/tsa-travel-tips');
+    expect(content).toContain('Checked August 17, 2026');
+  });
+});

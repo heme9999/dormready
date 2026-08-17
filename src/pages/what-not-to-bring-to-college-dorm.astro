@@ -11,30 +11,30 @@ const breadcrumbs = [
 const faqs = [
   {
     question: 'Can I bring an air fryer to a college dorm?',
-    answer: 'In most standard residence halls without full in-unit kitchens, standalone air fryers, hot plates, and deep fryers are prohibited due to high electrical current draw (1400W–1800W) and unattended cooking fire hazards. Some apartment-style dorms with dedicated ventilation permit them. Check your assigned residence hall policy before packing.',
+    answer: 'In many residence halls without private in-unit kitchens, personal air fryers, hot plates, and deep fryers are restricted due to high electrical current draw and unattended cooking risks. Some apartment-style dorms with dedicated kitchens permit them. Check your assigned residence hall policy before packing.',
   },
   {
     question: 'Are candles or wax warmers allowed in residence halls?',
-    answer: 'Open flames, burning candles, and incense are prohibited in college residence halls as primary fire code violations. Many institutions also prohibit plug-in wax melters with exposed heating plates. Flameless battery-operated LED candles or reed diffusers are permitted alternatives.',
+    answer: 'Many university housing policies prohibit open flames, burning candles, and incense. Some schools also restrict wax warmers or other heated fragrance devices. Check your assigned hall’s current prohibited-items policy before packing.',
   },
   {
     question: 'Can I use household extension cords in my dorm room?',
-    answer: 'Standard unfused 2-prong extension cords and multi-plug outlet tap cubes are prohibited by campus fire safety policies. University housing policies typically require UL Listed (or ETL Listed) surge protectors with a grounded 3-prong cord and a built-in on/off circuit breaker switch. Never connect one power strip to another.',
+    answer: 'Electrical rules vary by campus. Some schools prohibit ordinary extension cords or multi-plug adapters and require a listed power strip or surge protector with overcurrent protection. Follow the specifications in your assigned housing policy, plug approved devices directly into a wall receptacle, and never connect one power strip to another.',
   },
   {
     question: 'What size mini fridge is allowed in college dorms?',
-    answer: 'Permitted refrigerator capacities vary by university. For example, the University of Michigan permits refrigerators up to 5.5 cubic feet, while the University of Illinois caps units at 4.4 cubic feet (drawing under 1.5 amps). Check your school housing manual for exact limits.',
+    answer: 'Permitted refrigerator capacities vary by university. For example, the University of Michigan permits refrigerators under 5.5 cubic feet, while the University of Illinois caps units at 4.4 cubic feet (drawing under 1.5 amps). Check your school housing manual for exact limits.',
   },
   {
     question: 'Are microwaves permitted in freshman dorm rooms?',
-    answer: 'Many institutions limit personal microwaves to 800W or require combined energy-management units (MicroFridge). Several universities (such as UT Austin in standard halls) already provide microwave/fridge units in every room. Verify room furnishings before buying.',
+    answer: 'Microwave policies vary significantly. Some institutions limit personal microwaves to 800W or require approved combination units, while others (such as UT Austin in standard residence halls) provide a MicroFridge unit in the room. Verify room furnishings before buying.',
   },
 ];
 ---
 
 <BaseLayout
   title="What Not to Bring to a College Dorm: Check Before You Pack | DormReady"
-  description="Avoid confiscated items, move-in delays, and wasted money. Research-backed guide to commonly restricted dorm appliances, fire codes, and school-specific rules."
+  description="Avoid confiscated items, move-in delays, and wasted money. Research-backed guide to commonly restricted dorm appliances, safety rules, and school-specific policies."
   breadcrumbs={breadcrumbs}
   faqs={faqs}
   ogType="article"
@@ -126,7 +126,7 @@ const faqs = [
           1. Commonly Restricted in Residence Halls
         </h2>
         <p class="text-xs sm:text-sm text-navy-600">
-          While campus codes vary, the following items are restricted across most U.S. college residence halls due to municipal fire safety codes, power grid limitations, or property liability:
+          While campus rules vary, the following items are commonly restricted across many college residence halls due to municipal fire safety standards, electrical limitations, or property liability:
         </p>
       </div>
 
@@ -209,7 +209,15 @@ const faqs = [
         <div class="p-5 bg-white border border-slate-200 rounded-2xl space-y-2">
           <h3 class="font-bold text-brand-navy text-sm">Mini-Fridges and Microwaves</h3>
           <p class="text-xs text-navy-700 leading-relaxed">
-            Some schools permit personal refrigerators up to 5.5 cu ft; others cap them at 4.0 or 4.4 cu ft with strict amperage limits (e.g. max 1.5 amps). Microwave wattage limits (when personal units are permitted) typically cap units between 700W and 1000W. Furthermore, certain campuses mandate that all rooms use leased microfridge units with internal circuit interrupters.
+            Allowed refrigerator sizes and microwave permissions depend on your specific school and hall. Examples include:
+          </p>
+          <ul class="list-disc list-inside text-xs text-navy-700 space-y-1 pl-1">
+            <li><strong>University of Illinois:</strong> Refrigerator max 4.4 cu ft (under 1.5 amps); Microwave up to 800W.</li>
+            <li><strong>University of Michigan:</strong> Refrigerator under 5.5 cu ft; Microwave under 800W.</li>
+            <li><strong>UT Austin:</strong> MicroFridge unit provided in standard rooms; additional personal microwaves prohibited.</li>
+          </ul>
+          <p class="text-xs text-navy-700 leading-relaxed font-semibold pt-1">
+            Policies and provided appliances vary by school and hall. Check your assigned room information before purchasing.
           </p>
         </div>
 
@@ -260,7 +268,7 @@ const faqs = [
             </ul>
           </div>
           <div class="pt-3 border-t border-brand-blue-200/60 text-[11px] text-navy-500">
-            Source: <a href="https://housing.illinois.edu/MyHousing/move-in-checklist" target="_blank" rel="noopener noreferrer" class="underline text-brand-blue font-semibold">UIUC Housing Hallmarks</a> (Checked Aug 17, 2026)
+            Source: <a href="https://housing.illinois.edu/MyHousing/move-in-checklist" target="_blank" rel="noopener noreferrer" class="underline text-brand-blue font-semibold">UIUC Housing Hallmarks</a> (Checked August 17, 2026)
           </div>
         </div>
 
@@ -275,7 +283,7 @@ const faqs = [
             </ul>
           </div>
           <div class="pt-3 border-t border-brand-coral-200/60 text-[11px] text-navy-500">
-            Source: <a href="https://kb.housing.umich.edu/hc/en-us/articles/360005487292-What-to-bring-and-what-to-leave-at-home" target="_blank" rel="noopener noreferrer" class="underline text-brand-coral font-semibold">UMich Housing KB</a> (Checked Aug 17, 2026)
+            Source: <a href="https://kb.housing.umich.edu/hc/en-us/articles/360005487292-What-to-bring-and-what-to-leave-at-home" target="_blank" rel="noopener noreferrer" class="underline text-brand-coral font-semibold">UMich Housing KB</a> (Checked August 17, 2026)
           </div>
         </div>
 
@@ -290,7 +298,7 @@ const faqs = [
             </ul>
           </div>
           <div class="pt-3 border-t border-brand-mint-200/60 text-[11px] text-navy-500">
-            Source: <a href="https://housing.utexas.edu/housing/residence-halls/residence-hall-resources/mooov-guide/what-bring-and-leave-behind" target="_blank" rel="noopener noreferrer" class="underline text-brand-mint-700 font-semibold">UT Austin Mooov-In</a> (Checked Aug 17, 2026)
+            Source: <a href="https://housing.utexas.edu/housing/residence-halls/residence-hall-resources/mooov-guide/what-bring-and-leave-behind" target="_blank" rel="noopener noreferrer" class="underline text-brand-mint-700 font-semibold">UT Austin Mooov-In</a> (Checked August 17, 2026)
           </div>
         </div>
       </div>

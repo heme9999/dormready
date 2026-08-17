@@ -111,7 +111,7 @@ export const EDITORIAL_GUIDES: GuideMeta[] = [
     summaryPoints: [
       'Addressing the Twin XL mattress problem with mattress toppers and encasements',
       'Managing shared bathroom logistics with quick-dry textiles',
-      'Power management: surge protector safety vs fire code violations',
+      'Power management: surge protector safety vs campus electrical rules',
       'Under-bed and vertical storage optimization in small doubles',
     ],
   },
