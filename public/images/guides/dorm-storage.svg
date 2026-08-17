@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" fill="none">
   <rect width="1200" height="675" fill="#fdf4ff"/>
   <rect x="60" y="60" width="1080" height="555" rx="32" fill="#ffffff" stroke="#f5d0fe" stroke-width="4"/>
-  
+
   <rect x="120" y="120" width="220" height="40" rx="20" fill="#f5d0fe"/>
   <text x="230" y="146" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="16" fill="#86198f" letter-spacing="1">STORAGE STRATEGY</text>
-  
+
   <g transform="translate(120, 200)">
     <circle cx="100" cy="100" r="90" fill="#fdf4ff"/>
     <text x="100" y="125" text-anchor="middle" font-size="70">📐</text>
   </g>
-  
+
   <g transform="translate(360, 200)">
     <text x="0" y="50" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="44" fill="#0f172a">Small Dorm Room Storage Ideas</text>
     <text x="0" y="100" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="24" fill="#a21caf">Measure First, Buy Second</text>

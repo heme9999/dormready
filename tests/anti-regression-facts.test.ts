@@ -36,6 +36,18 @@ describe('Anti-Regression Truth & Factual Integrity Scan', () => {
     { pattern: /Mini Scissors \/ Box Cutter/i, label: 'Mini Scissors / Box Cutter' },
     { pattern: /Must be arranged with hometown physician/i, label: 'Must be arranged with hometown physician' },
     { pattern: /Required on Day 1 for campus residence check-in and student employment/i, label: 'Required on Day 1 for campus residence check-in and student employment' },
+    { pattern: /typically 4 suitemates/i, label: 'typically 4 suitemates' },
+    { pattern: /2 full bath towels/i, label: '2 full bath towels' },
+    { pattern: /2 washcloths/i, label: '2 washcloths' },
+    { pattern: /doors lock automatically/i, label: 'doors lock automatically' },
+    { pattern: /outlets in communal baths are limited/i, label: 'outlets in communal baths are limited' },
+    { pattern: /10-pound/i, label: '10-pound' },
+    { pattern: /2-minute/i, label: '2-minute' },
+    { pattern: /used 1x daily/i, label: 'used 1x daily' },
+    { pattern: /used 2–3x daily/i, label: 'used 2–3x daily' },
+    { pattern: /humidity degrades sensitive products/i, label: 'humidity degrades sensitive products' },
+    { pattern: /protects your security deposit/i, label: 'protects your security deposit' },
+    { pattern: /protects your housing deposit/i, label: 'protects your housing deposit' },
   ];
 
   it('ensures no banned ungrounded generalizations or unverified assertions exist in src/', () => {

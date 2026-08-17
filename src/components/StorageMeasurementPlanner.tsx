@@ -129,7 +129,7 @@ export default function StorageMeasurementPlanner() {
                 <h3 className="text-lg sm:text-xl font-black text-brand-navy">
                   1. Under-Bed Storage Zone
                 </h3>
-                <p className="text-xs text-navy-600">Determine maximum tote height and drawer depth</p>
+                <p className="text-xs text-navy-600">Determine maximum tote height, drawer depth, and frame clearance</p>
               </div>
             </div>
             <span
@@ -143,13 +143,15 @@ export default function StorageMeasurementPlanner() {
             </span>
           </div>
 
-          <p className="text-xs text-navy-700">{statuses.underbed.message}</p>
+          <p className="text-xs text-navy-700 leading-relaxed">{statuses.underbed.message}</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
             <div className="space-y-1">
               <label className="font-bold text-brand-navy block">Clearance Height (inches)</label>
               <input
                 type="number"
+                min="1"
+                step="0.5"
                 placeholder="e.g. 14, 28, 32"
                 value={data.underbed.clearanceInches}
                 onChange={(e) =>
@@ -165,6 +167,8 @@ export default function StorageMeasurementPlanner() {
               <label className="font-bold text-brand-navy block">Bed Width (inches)</label>
               <input
                 type="number"
+                min="1"
+                step="0.5"
                 placeholder="e.g. 38 (Twin XL)"
                 value={data.underbed.widthInches}
                 onChange={(e) =>
@@ -180,6 +184,8 @@ export default function StorageMeasurementPlanner() {
               <label className="font-bold text-brand-navy block">Frame Depth (inches)</label>
               <input
                 type="number"
+                min="1"
+                step="0.5"
                 placeholder="e.g. 80"
                 value={data.underbed.depthInches}
                 onChange={(e) =>
@@ -214,10 +220,20 @@ export default function StorageMeasurementPlanner() {
             </div>
           </div>
 
+          {/* Sub-item readiness breakdown */}
+          <div className="p-3 bg-slate-50 rounded-2xl border border-slate-200 text-[11px] space-y-1 text-navy-700">
+            <div className="font-bold text-brand-navy">Item-Specific Measurement Guidance:</div>
+            <ul className="space-y-1">
+              <li>• <strong>Low-profile soft bags:</strong> {statuses.underbed.subDetails?.softBags.ready ? '✓ Clearance recorded' : 'Requires clearance height'}</li>
+              <li>• <strong>Rigid bins &amp; drawer units:</strong> {statuses.underbed.subDetails?.rigidBins.ready ? '✓ Width, depth, and clearance recorded' : 'Requires width, depth, and clearance height'}</li>
+              <li>• <strong>Bed risers / lofting hardware:</strong> Must not be assumed; verify your assigned hall furniture and safety rules before purchasing.</li>
+            </ul>
+          </div>
+
           <div>
             <input
               type="text"
-              placeholder="Under-bed notes (e.g. bed lofted by maintenance, space for 3 plastic bins)..."
+              placeholder="Under-bed notes (e.g. bed adjusted to 2nd highest notch, space for 3 plastic bins)..."
               value={data.underbed.notes}
               onChange={(e) =>
                 setData((prev) => ({
@@ -253,13 +269,15 @@ export default function StorageMeasurementPlanner() {
             </span>
           </div>
 
-          <p className="text-xs text-navy-700">{statuses.closet.message}</p>
+          <p className="text-xs text-navy-700 leading-relaxed">{statuses.closet.message}</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
             <div className="space-y-1">
               <label className="font-bold text-brand-navy block">Closet Width (inches)</label>
               <input
                 type="number"
+                min="1"
+                step="0.5"
                 placeholder="e.g. 36"
                 value={data.closet.widthInches}
                 onChange={(e) =>
@@ -272,9 +290,28 @@ export default function StorageMeasurementPlanner() {
               />
             </div>
             <div className="space-y-1">
+              <label className="font-bold text-brand-navy block">Closet Depth (inches)</label>
+              <input
+                type="number"
+                min="1"
+                step="0.5"
+                placeholder="e.g. 24"
+                value={data.closet.depthInches}
+                onChange={(e) =>
+                  setData((prev) => ({
+                    ...prev,
+                    closet: { ...prev.closet, depthInches: e.target.value },
+                  }))
+                }
+                className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
+              />
+            </div>
+            <div className="space-y-1">
               <label className="font-bold text-brand-navy block">Hanging Bar Height (inches)</label>
               <input
                 type="number"
+                min="1"
+                step="0.5"
                 placeholder="e.g. 64"
                 value={data.closet.hangingBarHeightInches}
                 onChange={(e) =>
@@ -290,6 +327,8 @@ export default function StorageMeasurementPlanner() {
               <label className="font-bold text-brand-navy block">Top Shelf Clearance (inches)</label>
               <input
                 type="number"
+                min="1"
+                step="0.5"
                 placeholder="e.g. 12"
                 value={data.closet.topShelfClearanceInches}
                 onChange={(e) =>
@@ -301,6 +340,9 @@ export default function StorageMeasurementPlanner() {
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
               />
             </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
             <div className="space-y-1">
               <label className="font-bold text-brand-navy block">Door Type</label>
               <select
@@ -323,21 +365,22 @@ export default function StorageMeasurementPlanner() {
                 <option value="open">Open Wardrobe Nook (No Door)</option>
               </select>
             </div>
-          </div>
 
-          <div>
-            <input
-              type="text"
-              placeholder="Closet notes (e.g. 2 drawers built into bottom of wardrobe, requires slim velvet hangers)..."
-              value={data.closet.notes}
-              onChange={(e) =>
-                setData((prev) => ({
-                  ...prev,
-                  closet: { ...prev.closet, notes: e.target.value },
-                }))
-              }
-              className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 text-navy-900 placeholder:text-slate-400"
-            />
+            <div className="space-y-1">
+              <label className="font-bold text-brand-navy block">Closet Notes</label>
+              <input
+                type="text"
+                placeholder="e.g. 2 drawers built into bottom of wardrobe, requires slim velvet hangers..."
+                value={data.closet.notes}
+                onChange={(e) =>
+                  setData((prev) => ({
+                    ...prev,
+                    closet: { ...prev.closet, notes: e.target.value },
+                  }))
+                }
+                className="w-full px-3 py-2 rounded-xl border border-slate-200 text-navy-900 placeholder:text-slate-400"
+              />
+            </div>
           </div>
         </section>
 
@@ -364,13 +407,15 @@ export default function StorageMeasurementPlanner() {
             </span>
           </div>
 
-          <p className="text-xs text-navy-700">{statuses.desk.message}</p>
+          <p className="text-xs text-navy-700 leading-relaxed">{statuses.desk.message}</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
             <div className="space-y-1">
               <label className="font-bold text-brand-navy block">Desk Width (inches)</label>
               <input
                 type="number"
+                min="1"
+                step="0.5"
                 placeholder="e.g. 42"
                 value={data.desk.widthInches}
                 onChange={(e) =>
@@ -386,6 +431,8 @@ export default function StorageMeasurementPlanner() {
               <label className="font-bold text-brand-navy block">Desk Depth (inches)</label>
               <input
                 type="number"
+                min="1"
+                step="0.5"
                 placeholder="e.g. 24"
                 value={data.desk.depthInches}
                 onChange={(e) =>
@@ -401,7 +448,9 @@ export default function StorageMeasurementPlanner() {
               <label className="font-bold text-brand-navy block">Hutch / Shelf Clearance (inches)</label>
               <input
                 type="number"
-                placeholder="e.g. 18 (or 0 if no hutch)"
+                min="0.5"
+                step="0.5"
+                placeholder="e.g. 18 (vertical opening)"
                 value={data.desk.hutchClearanceInches}
                 onChange={(e) =>
                   setData((prev) => ({
@@ -416,7 +465,9 @@ export default function StorageMeasurementPlanner() {
               <label className="font-bold text-brand-navy block">Distance to Outlet (feet)</label>
               <input
                 type="number"
-                placeholder="e.g. 4"
+                min="0.5"
+                step="0.5"
+                placeholder="e.g. 4 (power planning)"
                 value={data.desk.outletDistanceFeet}
                 onChange={(e) =>
                   setData((prev) => ({
@@ -454,7 +505,7 @@ export default function StorageMeasurementPlanner() {
                 <h3 className="text-lg sm:text-xl font-black text-brand-navy">
                   4. Wall Hanging &amp; Door Regulations
                 </h3>
-                <p className="text-xs text-navy-600">Verify permitted fasteners and door hook thickness</p>
+                <p className="text-xs text-navy-600">Verify permitted fasteners and door hook thickness independently</p>
               </div>
             </div>
             <span
@@ -468,7 +519,7 @@ export default function StorageMeasurementPlanner() {
             </span>
           </div>
 
-          <p className="text-xs text-navy-700">{statuses.wallAndDoor.message}</p>
+          <p className="text-xs text-navy-700 leading-relaxed">{statuses.wallAndDoor.message}</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
             <div className="space-y-1">
@@ -533,7 +584,7 @@ export default function StorageMeasurementPlanner() {
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue bg-white"
               >
                 <option value="unconfirmed">Select permission...</option>
-                <option value="yes">Yes (Standard 1.38-inch door)</option>
+                <option value="yes">Yes (Permitted by housing manual)</option>
                 <option value="no">Prohibited (Fire door seal rules)</option>
               </select>
             </div>
@@ -578,13 +629,15 @@ export default function StorageMeasurementPlanner() {
             </span>
           </div>
 
-          <p className="text-xs text-navy-700">{statuses.sharedFloor.message}</p>
+          <p className="text-xs text-navy-700 leading-relaxed">{statuses.sharedFloor.message}</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
             <div className="space-y-1">
               <label className="font-bold text-brand-navy block">Open Center Floor Width (feet)</label>
               <input
                 type="number"
+                min="1"
+                step="0.5"
                 placeholder="e.g. 5"
                 value={data.sharedFloor.openFloorWidthFeet}
                 onChange={(e) =>
@@ -600,6 +653,8 @@ export default function StorageMeasurementPlanner() {
               <label className="font-bold text-brand-navy block">Open Center Floor Length (feet)</label>
               <input
                 type="number"
+                min="1"
+                step="0.5"
                 placeholder="e.g. 7"
                 value={data.sharedFloor.openFloorLengthFeet}
                 onChange={(e) =>

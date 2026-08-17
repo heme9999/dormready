@@ -112,7 +112,7 @@ export const DEFAULT_MOVEIN_STAGES: MoveInStage[] = [
         description: 'Photograph paint chips, wall scuffs, torn window screens, mattress stains, chipped desk edges, and existing scratches before placing items in the room.',
         completed: false,
         notes: '',
-        tip: 'Save these photos to a cloud folder; this protects your security deposit and prevents unfair move-out repair fees in May.',
+        tip: 'Photos can supplement your school required room condition or inventory report by documenting the condition you observed at move-in. Follow the official submission method and deadline published by your housing office.',
       },
       {
         id: 'step-rcf-inventory',
@@ -120,7 +120,7 @@ export const DEFAULT_MOVEIN_STAGES: MoveInStage[] = [
         description: 'Fill out and submit your school online or paper Room Inventory / Condition Form noting all pre-existing flaws.',
         completed: false,
         notes: '',
-        tip: 'Submission deadlines vary (e.g. UMich allows 48 hours for inventory review); check your specific school deadline.',
+        tip: 'Submission deadlines vary (e.g. University of Michigan housing guidelines provide a 48-hour review window example); check your specific institution deadline.',
       },
       {
         id: 'step-work-order',
