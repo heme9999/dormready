@@ -19,7 +19,7 @@ export const TIMING_DATA: TimingItem[] = [
     timingLabel: 'Buy / Pack Before',
     badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-300',
     itemType: 'Health & Medical',
-    reason: 'Must be arranged with hometown physician and pharmacy prior to moving.',
+    reason: 'Arrange necessary refills, prescription transfers, and access to healthcare before moving. Requirements depend on the medication, prescriber, pharmacy, insurance plan, and destination.',
     flyingTip: 'Keep essential medication accessible in carry-on baggage when practical. TSA permits medications in carry-on baggage, including medically necessary liquids above the usual liquid limit, subject to screening. Prescription-label requirements can vary by destination and state, so check applicable rules and your airline before traveling.',
   },
   {
@@ -29,7 +29,7 @@ export const TIMING_DATA: TimingItem[] = [
     timingLabel: 'Buy / Pack Before',
     badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-300',
     itemType: 'Documents',
-    reason: 'Required on Day 1 for campus residence check-in and student employment (I-9 verification).',
+    reason: 'Review the identification and health-document requirements published by your school. Employment eligibility documents are needed only when completing an I-9 for a job.',
     flyingTip: 'Carry in personal backpack; keep in a secure folder.',
   },
   {
