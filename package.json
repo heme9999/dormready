@@ -14,7 +14,8 @@
     "check": "astro check",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "deploy": "wrangler pages deploy dist --project-name=dormready-preview --branch=main"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
