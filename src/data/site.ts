@@ -8,7 +8,7 @@ const siteEnv = (typeof process !== 'undefined' && process.env.PUBLIC_SITE_ENV) 
 const isProduction = siteEnv === 'production';
 const siteUrl = (typeof process !== 'undefined' && process.env.PUBLIC_SITE_URL) || (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.PUBLIC_SITE_URL) || (isProduction ? 'https://dormready.org' : 'https://dormready-preview.pages.dev');
 
-const googleSiteVerification = (typeof process !== 'undefined' && process.env.PUBLIC_GOOGLE_SITE_VERIFICATION) || (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION) || '';
+const googleSiteVerification = (typeof process !== 'undefined' && process.env.PUBLIC_GOOGLE_SITE_VERIFICATION) || (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION) || 'wMz2VDeMwD8R6yiCgJIqFD_wM2wSzrSEauzvCtzKHyw';
 
 export const SITE_CONFIG = {
   name: 'DormReady',
