@@ -1,0 +1,387 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import PolicyNotice from '../components/PolicyNotice.astro';
+
+const breadcrumbs = [
+  { name: 'Guides', url: '/guides/' },
+  { name: 'What Not to Bring to College', url: '/what-not-to-bring-to-college-dorm/' },
+];
+
+const faqs = [
+  {
+    question: 'Can I bring an air fryer to a college dorm?',
+    answer: 'In most standard residence halls without full in-unit kitchens, standalone air fryers, hot plates, and deep fryers are prohibited due to high electrical current draw (1400W–1800W) and unattended cooking fire hazards. Some apartment-style dorms with dedicated ventilation permit them. Check your assigned residence hall policy before packing.',
+  },
+  {
+    question: 'Are candles or wax warmers allowed in residence halls?',
+    answer: 'Open flames, burning candles, and incense are strictly prohibited across virtually all U.S. college residence halls as primary fire code violations. Many institutions also prohibit plug-in wax melters with exposed heating plates. Flameless battery-operated LED candles or reed diffusers are permitted alternatives.',
+  },
+  {
+    question: 'Can I use household extension cords in my dorm room?',
+    answer: 'Standard unfused 2-prong extension cords and multi-plug outlet tap cubes are prohibited by university fire safety policies. Residence life rules generally require UL Listed (or ETL Listed) surge protectors with a heavy-duty grounded 3-prong cord and a built-in on/off circuit breaker switch. Never connect one power strip to another.',
+  },
+  {
+    question: 'What size mini fridge is allowed in college dorms?',
+    answer: 'Permitted refrigerator capacities vary by university. For example, the University of Michigan permits refrigerators up to 5.5 cubic feet, while the University of Illinois caps units at 4.4 cubic feet (drawing under 1.5 amps). Check your school housing manual for exact limits.',
+  },
+  {
+    question: 'Are microwaves permitted in freshman dorm rooms?',
+    answer: 'Many institutions limit personal microwaves to 800W or require combined energy-management units (MicroFridge). Several universities (such as UT Austin in standard halls) already provide microwave/fridge units in every room. Verify room furnishings before buying.',
+  },
+];
+---
+
+<BaseLayout
+  title="What Not to Bring to a College Dorm: Check Before You Pack | DormReady"
+  description="Avoid confiscated items, move-in delays, and wasted money. Research-backed guide to commonly restricted dorm appliances, fire codes, and school-specific rules."
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  ogType="article"
+  modifiedTime="2026-08-17"
+>
+  <!-- Header Banner -->
+  <div class="bg-gradient-to-b from-brand-coral-50 via-brand-coral-50/30 to-white border-b border-slate-200 py-10 sm:py-14">
+    <div class="container-custom max-w-4xl">
+      <Breadcrumbs items={breadcrumbs} />
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mt-6">
+        <div class="lg:col-span-8 space-y-4">
+          <div class="flex flex-wrap items-center gap-2.5 text-xs font-bold text-navy-600">
+            <span class="badge-coral">
+              Campus Safety &amp; Policy
+            </span>
+            <span>•</span>
+            <span class="text-brand-navy">Policy-First Verification</span>
+            <span>•</span>
+            <span>Last audited: <time datetime="2026-08-17" class="text-brand-blue">August 17, 2026</time></span>
+          </div>
+
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-brand-navy leading-tight">
+            What Not to Bring to a College Dorm: Check Before You Pack
+          </h1>
+
+          <p class="text-base sm:text-lg text-navy-700 leading-relaxed font-sans">
+            Avoid confiscated appliances, residence hall safety fines, and wasted luggage space. Learn which items are commonly restricted across universities, how rules differ between campuses, and how to verify your room inventory.
+          </p>
+        </div>
+
+        <div class="lg:col-span-4 hidden lg:block">
+          <img
+            src="/images/guides/what-not-to-bring.svg"
+            alt="Warning graphic illustrating prohibited college dorm items"
+            width="640"
+            height="360"
+            class="w-full h-auto rounded-3xl border-2 border-brand-coral-200 shadow-soft"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-custom max-w-4xl py-8 sm:py-12 space-y-12 text-navy-800 leading-relaxed">
+    <PolicyNotice topic="prohibited items list" />
+
+    <!-- 30-Second Pre-Pack Decision Box -->
+    <section class="bg-brand-yellow-50/70 border-2 border-brand-yellow-200 rounded-3xl p-6 sm:p-8 shadow-soft space-y-4">
+      <div class="flex items-center gap-2.5">
+        <span class="text-2xl" aria-hidden="true">⚡</span>
+        <h2 class="text-xl font-black text-brand-navy">
+          The 30-Second Pre-Pack Rule
+        </h2>
+      </div>
+      <p class="text-xs sm:text-sm text-navy-700 leading-relaxed">
+        Before buying any appliance or decorative accessory, follow these three sequential checkpoints:
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+        <div class="p-4 bg-white rounded-2xl border border-brand-yellow-200 shadow-xs space-y-1.5">
+          <div class="font-bold text-amber-900 flex items-center gap-1.5">
+            <span class="w-5 h-5 rounded-full bg-brand-yellow-100 flex items-center justify-center font-black text-amber-800 text-[11px]">1</span>
+            <span>Check Policy List</span>
+          </div>
+          <p class="text-navy-600">Search your university housing portal for the official "Prohibited Items" or "What to Leave at Home" page.</p>
+        </div>
+        <div class="p-4 bg-white rounded-2xl border border-brand-yellow-200 shadow-xs space-y-1.5">
+          <div class="font-bold text-amber-900 flex items-center gap-1.5">
+            <span class="w-5 h-5 rounded-full bg-brand-yellow-100 flex items-center justify-center font-black text-amber-800 text-[11px]">2</span>
+            <span>Check Room Inventory</span>
+          </div>
+          <p class="text-navy-600">Confirm if your hall already provides microfridges, trash bins, desk lamps, or window blinds.</p>
+        </div>
+        <div class="p-4 bg-white rounded-2xl border border-brand-yellow-200 shadow-xs space-y-1.5">
+          <div class="font-bold text-amber-900 flex items-center gap-1.5">
+            <span class="w-5 h-5 rounded-full bg-brand-yellow-100 flex items-center justify-center font-black text-amber-800 text-[11px]">3</span>
+            <span>Coordinate Roommate</span>
+          </div>
+          <p class="text-navy-600">Coordinate shared appliances using our <a href="/college-dorm-roommate-checklist/" class="text-brand-blue underline font-bold">Roommate Checklist</a> so you don't bring duplicates.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 1: Commonly Restricted Across Many Halls -->
+    <section class="space-y-6">
+      <div class="space-y-2">
+        <span class="badge-coral">Universal Risk Factors</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
+          1. Commonly Restricted in Residence Halls
+        </h2>
+        <p class="text-xs sm:text-sm text-navy-600">
+          While campus codes vary, the following items are restricted across most U.S. college residence halls due to municipal fire safety codes, power grid limitations, or property liability:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm">
+        <div class="p-5 bg-white border-2 border-slate-200 rounded-2xl shadow-soft space-y-2">
+          <div class="flex items-center gap-2 font-black text-brand-navy">
+            <span class="text-brand-coral font-bold text-base">✕</span>
+            <h3>Open Flames, Candles &amp; Incense</h3>
+          </div>
+          <p class="text-navy-600 text-xs leading-relaxed">
+            Candles (even unburned decorative ones at some schools), wax warmers, oil diffusers with burners, and fireworks are universally prohibited.
+          </p>
+        </div>
+
+        <div class="p-5 bg-white border-2 border-slate-200 rounded-2xl shadow-soft space-y-2">
+          <div class="flex items-center gap-2 font-black text-brand-navy">
+            <span class="text-brand-coral font-bold text-base">✕</span>
+            <h3>Exposed Heating Elements &amp; Hot Plates</h3>
+          </div>
+          <p class="text-navy-600 text-xs leading-relaxed">
+            Hot plates, electric skillets, open-coil burners, deep fryers, and toaster ovens are commonly banned in bedrooms without full kitchen ventilation.
+          </p>
+        </div>
+
+        <div class="p-5 bg-white border-2 border-slate-200 rounded-2xl shadow-soft space-y-2">
+          <div class="flex items-center gap-2 font-black text-brand-navy">
+            <span class="text-brand-coral font-bold text-base">✕</span>
+            <h3>Halogen Lamps &amp; High-Heat Bulbs</h3>
+          </div>
+          <p class="text-navy-600 text-xs leading-relaxed">
+            Halogen bulbs reach surface temperatures exceeding 900°F and pose serious fire hazards near curtains or bedding. Choose LED task lamps.
+          </p>
+        </div>
+
+        <div class="p-5 bg-white border-2 border-slate-200 rounded-2xl shadow-soft space-y-2">
+          <div class="flex items-center gap-2 font-black text-brand-navy">
+            <span class="text-brand-coral font-bold text-base">✕</span>
+            <h3>Unapproved Furniture &amp; Bed Lofts</h3>
+          </div>
+          <p class="text-navy-600 text-xs leading-relaxed">
+            Homemade cinder block bed risers, waterbeds, and large upholstered furniture not meeting CAL 133 flame resistance standards are restricted.
+          </p>
+        </div>
+
+        <div class="p-5 bg-white border-2 border-slate-200 rounded-2xl shadow-soft space-y-2">
+          <div class="flex items-center gap-2 font-black text-brand-navy">
+            <span class="text-brand-coral font-bold text-base">✕</span>
+            <h3>Personal Wi-Fi Routers &amp; Repeaters</h3>
+          </div>
+          <p class="text-navy-600 text-xs leading-relaxed">
+            Rogue access points interfere with campus Wi-Fi channel allocation and breach enterprise authentication security policies.
+          </p>
+        </div>
+
+        <div class="p-5 bg-white border-2 border-slate-200 rounded-2xl shadow-soft space-y-2">
+          <div class="flex items-center gap-2 font-black text-brand-navy">
+            <span class="text-brand-coral font-bold text-base">✕</span>
+            <h3>Hoverboards &amp; E-Scooter Batteries</h3>
+          </div>
+          <p class="text-navy-600 text-xs leading-relaxed">
+            Due to uncertified lithium-ion thermal runaway risks, many universities prohibit charging or storing electric rideables inside dorm rooms.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Rules That Vary Widely -->
+    <section class="space-y-6">
+      <div class="space-y-2">
+        <span class="badge-blue">Campus Variations</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
+          2. Rules That Vary Widely by School
+        </h2>
+        <p class="text-xs sm:text-sm text-navy-600">
+          The following categories have significant policy differences across institutions. Always consult your assigned hall manual before purchasing:
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <div class="p-5 bg-white border border-slate-200 rounded-2xl space-y-2">
+          <h3 class="font-bold text-brand-navy text-sm">Mini-Fridges and Microwaves</h3>
+          <p class="text-xs text-navy-700 leading-relaxed">
+            Some schools permit personal refrigerators up to 5.5 cu ft; others cap them at 4.0 or 4.4 cu ft with strict amperage limits (e.g. max 1.5 amps). Microwave wattage limits generally range from 700W to 1000W. Furthermore, certain campuses mandate that all rooms use leased microfridge units with internal circuit interrupters.
+          </p>
+        </div>
+
+        <div class="p-5 bg-white border border-slate-200 rounded-2xl space-y-2">
+          <h3 class="font-bold text-brand-navy text-sm">Coffee Makers &amp; Electric Kettles</h3>
+          <p class="text-xs text-navy-700 leading-relaxed">
+            Single-serve pod machines (e.g. Keurig) and electric kettles with enclosed heating elements and automatic shutoff switches are commonly permitted, while open-carafe drip coffee makers with exposed hot plates are frequently banned.
+          </p>
+        </div>
+
+        <div class="p-5 bg-white border border-slate-200 rounded-2xl space-y-2">
+          <h3 class="font-bold text-brand-navy text-sm">Wall Mounting &amp; Adhesive Strips</h3>
+          <p class="text-xs text-navy-700 leading-relaxed">
+            While some halls encourage damage-free adhesive hooks (Command strips), older residence halls with specific paint or plaster finishes prohibit adhesives and require small pushpins instead to prevent wall damage fees during move-out.
+          </p>
+        </div>
+
+        <div class="p-5 bg-white border border-slate-200 rounded-2xl space-y-2">
+          <h3 class="font-bold text-brand-navy text-sm">Pets and Aquariums</h3>
+          <p class="text-xs text-navy-700 leading-relaxed">
+            Aside from officially registered Service Animals and approved Emotional Support Animals (ESAs), most residence halls restrict pets to small, non-dangerous fish in tanks up to 5 or 10 gallons.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Official Campus Examples -->
+    <section class="space-y-6">
+      <div class="space-y-2">
+        <span class="badge-mint">Institutional Examples</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
+          3. How Policies Differ in Practice (University Examples)
+        </h2>
+        <p class="text-xs sm:text-sm text-navy-600">
+          The table below highlights real-world differences across prominent public universities to demonstrate why generic national checklists cannot guarantee compliance:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+        <div class="p-5 rounded-2xl border-2 border-brand-blue-200 bg-brand-blue-50/40 space-y-3 flex flex-col justify-between">
+          <div class="space-y-2">
+            <span class="font-black text-brand-navy text-sm block">University of Illinois Urbana-Champaign</span>
+            <ul class="space-y-1.5 text-navy-700">
+              <li>• <strong>Fridge limit:</strong> Max 4.4 cu ft, under 1.5 amps</li>
+              <li>• <strong>Microwave:</strong> Max 800 watts</li>
+              <li>• <strong>Prohibited:</strong> Air fryers, hot plates, toaster ovens, candles</li>
+              <li>• <strong>Power:</strong> Grounded UL surge protectors only</li>
+            </ul>
+          </div>
+          <div class="pt-3 border-t border-brand-blue-200/60 text-[11px] text-navy-500">
+            Source: <a href="https://housing.illinois.edu/MyHousing/move-in-checklist" target="_blank" rel="noopener noreferrer" class="underline text-brand-blue font-semibold">UIUC Housing Hallmarks</a> (Checked Aug 17, 2026)
+          </div>
+        </div>
+
+        <div class="p-5 rounded-2xl border-2 border-brand-coral-200 bg-brand-coral-50/40 space-y-3 flex flex-col justify-between">
+          <div class="space-y-2">
+            <span class="font-black text-brand-navy text-sm block">University of Michigan</span>
+            <ul class="space-y-1.5 text-navy-700">
+              <li>• <strong>Fridge limit:</strong> Max 5.5 cu ft</li>
+              <li>• <strong>Microwave:</strong> Under 800 watts</li>
+              <li>• <strong>Prohibited:</strong> Candles, open-flame cooking, space heaters</li>
+              <li>• <strong>Aquariums:</strong> Fish tanks up to 10 gallons allowed</li>
+            </ul>
+          </div>
+          <div class="pt-3 border-t border-brand-coral-200/60 text-[11px] text-navy-500">
+            Source: <a href="https://kb.housing.umich.edu/hc/en-us/articles/360005487292-What-to-bring-and-what-to-leave-at-home" target="_blank" rel="noopener noreferrer" class="underline text-brand-coral font-semibold">UMich Housing KB</a> (Checked Aug 17, 2026)
+          </div>
+        </div>
+
+        <div class="p-5 rounded-2xl border-2 border-brand-mint-200 bg-brand-mint-50/40 space-y-3 flex flex-col justify-between">
+          <div class="space-y-2">
+            <span class="font-black text-brand-navy text-sm block">UT Austin</span>
+            <ul class="space-y-1.5 text-navy-700">
+              <li>• <strong>Provided:</strong> MicroFridge unit included in standard rooms</li>
+              <li>• <strong>Microwave rule:</strong> Additional personal microwaves prohibited</li>
+              <li>• <strong>Prohibited:</strong> Air fryers, hot plates, candles, halogen lamps</li>
+              <li>• <strong>Power:</strong> UL surge protector with circuit breaker</li>
+            </ul>
+          </div>
+          <div class="pt-3 border-t border-brand-mint-200/60 text-[11px] text-navy-500">
+            Source: <a href="https://housing.utexas.edu/housing/residence-halls/residence-hall-resources/mooov-guide/what-bring-and-leave-behind" target="_blank" rel="noopener noreferrer" class="underline text-brand-mint-700 font-semibold">UT Austin Mooov-In</a> (Checked Aug 17, 2026)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: What Is Already Provided? -->
+    <section class="space-y-6">
+      <div class="space-y-2">
+        <span class="badge-yellow">Avoid Buying Twice</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
+          4. Check What Your Residence Hall Already Provides
+        </h2>
+        <p class="text-xs sm:text-sm text-navy-600">
+          Most U.S. dorm rooms include standard institutional furnishings. Do not purchase replacements before checking your hall's provided inventory:
+        </p>
+      </div>
+
+      <div class="p-6 bg-slate-50 border border-slate-200 rounded-3xl space-y-3 text-xs sm:text-sm">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-navy-700">
+          <div class="flex items-center gap-2">
+            <span class="text-brand-mint-700 font-bold">✓</span>
+            <span>Bed frame and mattress (typically Twin XL)</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-brand-mint-700 font-bold">✓</span>
+            <span>Study desk and desk chair</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-brand-mint-700 font-bold">✓</span>
+            <span>Wardrobe closet or built-in closet with hanging bar</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-brand-mint-700 font-bold">✓</span>
+            <span>Dresser drawers (stacked or under-desk)</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-brand-mint-700 font-bold">✓</span>
+            <span>Window blinds or roll-down privacy shades</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-brand-mint-700 font-bold">✓</span>
+            <span>Recycling bin and room trash can (at most schools)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: What to Do If You Already Bought It -->
+    <section class="space-y-4">
+      <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
+        5. What to Do If You Already Purchased a Restricted Item
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+        <div class="p-4 bg-white rounded-2xl border border-slate-200 space-y-1.5">
+          <h3 class="font-bold text-brand-navy text-sm">1. Return to Retailer</h3>
+          <p class="text-navy-600">Most major retailers (Target, Amazon, Bed Bath &amp; Beyond alternatives) offer 30-to-90-day return windows with receipt or order confirmation.</p>
+        </div>
+        <div class="p-4 bg-white rounded-2xl border border-slate-200 space-y-1.5">
+          <h3 class="font-bold text-brand-navy text-sm">2. Leave at Home</h3>
+          <p class="text-navy-600">Items like duplicate appliances, heavy storage trunks, or personal armchairs can remain at home for family or holiday use.</p>
+        </div>
+        <div class="p-4 bg-white rounded-2xl border border-slate-200 space-y-1.5">
+          <h3 class="font-bold text-brand-navy text-sm">3. Ask Your Resident Advisor (RA)</h3>
+          <p class="text-navy-600">If you are uncertain about a specific electrical model or medical exemption (e.g. specialized air filter), email your campus residence life office before move-in.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: FAQs -->
+    <section class="space-y-6 pt-4 border-t border-slate-200">
+      <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
+        Frequently Asked Questions
+      </h2>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <div class="p-6 bg-white border-2 border-slate-200 rounded-2xl shadow-soft">
+            <h3 class="font-bold text-brand-navy text-base mb-2">{faq.question}</h3>
+            <p class="text-xs sm:text-sm text-navy-700 leading-relaxed">{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Related Links -->
+    <section class="pt-6 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4 text-xs font-bold text-brand-blue">
+      <a href="/college-dorm-checklist/" class="hover:underline flex items-center gap-1">
+        <span>← Master College Dorm Checklist</span>
+      </a>
+      <a href="/college-dorm-roommate-checklist/" class="hover:underline flex items-center gap-1">
+        <span>Roommate Coordination Checklist →</span>
+      </a>
+    </section>
+  </div>
+</BaseLayout>

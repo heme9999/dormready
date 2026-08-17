@@ -3,7 +3,7 @@ export interface GuideMeta {
   href: string;
   title: string;
   description: string;
-  category: 'checklists' | 'packing' | 'tech' | 'budget' | 'discounts' | 'roommate';
+  category: 'checklists' | 'packing' | 'tech' | 'budget' | 'discounts' | 'roommate' | 'safety';
   categoryLabel: string;
   lastUpdated: string;
   readingTimeMinutes: number;
@@ -20,7 +20,7 @@ export const EDITORIAL_GUIDES: GuideMeta[] = [
     description: 'An interactive, comprehensive checklist covering all 10 dorm categories with printable progress, local browser storage, and prohibited item warnings.',
     category: 'checklists',
     categoryLabel: 'Interactive Checklist',
-    lastUpdated: '2026-08-15',
+    lastUpdated: '2026-08-17',
     readingTimeMinutes: 8,
     featured: true,
     summaryPoints: [
@@ -31,20 +31,71 @@ export const EDITORIAL_GUIDES: GuideMeta[] = [
     ],
   },
   {
+    slug: 'what-not-to-bring-to-college-dorm',
+    href: '/what-not-to-bring-to-college-dorm/',
+    title: 'What Not to Bring to a College Dorm: Check Before You Pack',
+    description: 'Avoid confiscated appliances, residence hall safety fines, and wasted luggage space. Research-backed guide to commonly restricted items and university comparisons.',
+    category: 'safety',
+    categoryLabel: 'Policy & Safety',
+    lastUpdated: '2026-08-17',
+    readingTimeMinutes: 8,
+    featured: true,
+    summaryPoints: [
+      '30-second decision framework before purchasing electrical appliances',
+      'Commonly restricted items: open flames, exposed heating elements, halogen lamps',
+      'Rules that vary: microwave wattage, mini-fridge cubic capacity, wall mounting',
+      'Specific policy comparison across UIUC, UMich, and UT Austin',
+    ],
+  },
+  {
+    slug: 'what-to-buy-before-vs-after-moving-into-dorm',
+    href: '/what-to-buy-before-vs-after-moving-into-dorm/',
+    title: 'What to Buy Before College vs. After Move-In',
+    description: 'Timing decision matrix for dorm shopping: what to pack before leaving, what to wait on until room assignment, and what to buy locally on campus.',
+    category: 'packing',
+    categoryLabel: 'Timing Strategy',
+    lastUpdated: '2026-08-17',
+    readingTimeMinutes: 9,
+    featured: true,
+    summaryPoints: [
+      'Interactive timing filter: Buy Before vs Wait for Assignment vs Buy After Arrival',
+      'Travel constraints: Flying out of state vs driving to campus',
+      'Night-One Survival Bag essential checklist',
+      'Preventing duplicate appliance purchases with roommates',
+    ],
+  },
+  {
+    slug: 'college-dorm-roommate-checklist',
+    href: '/college-dorm-roommate-checklist/',
+    title: 'College Dorm Roommate Checklist: What to Coordinate Before Move-In',
+    description: 'An interactive coordination tool for incoming roommates covering shared appliances, space allocation, sleep schedules, guest rules, and expense splitting.',
+    category: 'roommate',
+    categoryLabel: 'Roommate Coordination',
+    lastUpdated: '2026-08-17',
+    readingTimeMinutes: 8,
+    featured: true,
+    summaryPoints: [
+      '6 coordination sections: Facts, Purchases, Layout, Habits, Costs, Safety',
+      'Interactive checkboxes and custom note saving with local browser storage',
+      'One-click plain text summary export for roommate group chats',
+      'Print-ready agreement format for move-in day',
+    ],
+  },
+  {
     slug: 'college-packing-list',
     href: '/college-packing-list/',
     title: 'Strategic College Packing List: What to Bring, Buy There & Leave Behind',
     description: 'Practical packing logic for freshmen: carry-on move-in essentials, roommate coordination guidelines, and items you should buy after arriving on campus.',
     category: 'packing',
     categoryLabel: 'Packing Strategy',
-    lastUpdated: '2026-08-14',
+    lastUpdated: '2026-08-17',
     readingTimeMinutes: 10,
     featured: true,
     summaryPoints: [
       'The 5-layer packing system from carry-on to long-term storage',
       'Items to purchase in your college town rather than haul across state lines',
       'Roommate pre-arrival checklist to avoid duplicate microwave and fridge purchases',
-      'Top 7 items freshmen consistently regret bringing',
+      'Top items freshmen consistently regret bringing',
     ],
   },
   {
@@ -54,7 +105,7 @@ export const EDITORIAL_GUIDES: GuideMeta[] = [
     description: 'A realistic, practical room setup guide focusing on sleep hygiene, study ergonomics, and functional storage rather than aesthetic clutter.',
     category: 'checklists',
     categoryLabel: 'Essentials Guide',
-    lastUpdated: '2026-08-12',
+    lastUpdated: '2026-08-17',
     readingTimeMinutes: 9,
     featured: true,
     summaryPoints: [
@@ -71,7 +122,7 @@ export const EDITORIAL_GUIDES: GuideMeta[] = [
     description: 'Hardware requirements broken down by academic major, battery life realities, operating system compatibility, and research-backed buying criteria.',
     category: 'tech',
     categoryLabel: 'Tech & Hardware',
-    lastUpdated: '2026-08-11',
+    lastUpdated: '2026-08-17',
     readingTimeMinutes: 12,
     featured: true,
     summaryPoints: [
@@ -85,10 +136,10 @@ export const EDITORIAL_GUIDES: GuideMeta[] = [
     slug: 'under-300-dorm-setup',
     href: '/budget/under-300-dorm-setup/',
     title: 'The Under $300 Budget Dorm Setup: Survival Essentials on a Strict Budget',
-    description: 'How to get genuine sleep comfort, basic hygiene, and reliable power while spending under $300 total for the entire semester.',
+    description: 'How to prioritize sleep hygiene, basic bathroom gear, and verified power safety while keeping total initial spending under $300.',
     category: 'budget',
     categoryLabel: 'Budget Guide',
-    lastUpdated: '2026-08-10',
+    lastUpdated: '2026-08-17',
     readingTimeMinutes: 7,
     budgetCap: 300,
     featured: true,
@@ -103,10 +154,10 @@ export const EDITORIAL_GUIDES: GuideMeta[] = [
     slug: 'under-500-dorm-setup',
     href: '/budget/under-500-dorm-setup/',
     title: 'The Under $500 Dorm Setup: Balanced Comfort, Organization & Longevity',
-    description: 'The sweet spot for dorm comfort: premium high-density foam topper, full laundry system, multi-port GaN charging, and organized storage.',
+    description: 'A comprehensive, practical setup guide balancing high-density sleep comfort, complete laundry gear, GaN multi-device charging, and modular under-bed storage.',
     category: 'budget',
     categoryLabel: 'Budget Guide',
-    lastUpdated: '2026-08-10',
+    lastUpdated: '2026-08-17',
     readingTimeMinutes: 8,
     budgetCap: 500,
     featured: false,
@@ -124,7 +175,7 @@ export const EDITORIAL_GUIDES: GuideMeta[] = [
     description: 'A comprehensive dorm room investment covering shared mini-fridge/microwave contributions, premium noise isolation, active ergonomics, and year-round climate prep.',
     category: 'budget',
     categoryLabel: 'Budget Guide',
-    lastUpdated: '2026-08-09',
+    lastUpdated: '2026-08-17',
     readingTimeMinutes: 9,
     budgetCap: 1000,
     featured: false,
@@ -142,7 +193,7 @@ export const EDITORIAL_GUIDES: GuideMeta[] = [
     description: 'A transparent directory of student discount programs with required verification platforms, eligibility rules, and explicit research status.',
     category: 'discounts',
     categoryLabel: 'Student Discounts',
-    lastUpdated: '2026-08-12',
+    lastUpdated: '2026-08-17',
     readingTimeMinutes: 6,
     featured: true,
     summaryPoints: [

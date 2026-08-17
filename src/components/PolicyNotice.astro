@@ -1,0 +1,38 @@
+---
+interface Props {
+  className?: string;
+  topic?: string;
+}
+
+const { className = '', topic = 'housing and move-in' } = Astro.props;
+---
+
+<aside
+  class={`bg-brand-coral-50/70 border-2 border-brand-coral-200 rounded-2xl p-4 sm:p-5 shadow-soft ${className}`}
+  aria-label="Campus Housing Policy Notice"
+>
+  <div class="flex items-start gap-3.5">
+    <div class="w-8 h-8 rounded-xl bg-brand-coral-100 text-brand-coral flex items-center justify-center shrink-0 text-base font-bold shadow-xs select-none" aria-hidden="true">
+      ⚠️
+    </div>
+    <div class="space-y-1.5 text-left">
+      <div class="flex flex-wrap items-center gap-2">
+        <h3 class="text-xs font-black uppercase tracking-wider text-brand-coral-700">
+          Campus Policy Rule
+        </h3>
+        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white text-brand-navy border border-brand-coral-200">
+          Overrides Generic Checklists
+        </span>
+      </div>
+      <p class="text-xs sm:text-sm text-navy-800 leading-relaxed font-sans">
+        <strong>Your assigned university's official housing policy always overrides this guide.</strong> Appliance wattage caps, prohibited cooking tools, surge protector specifications, and provided room furnishings vary by campus and hall.
+      </p>
+      <div class="pt-1 flex flex-wrap items-center gap-2 text-xs text-navy-600">
+        <span class="font-bold text-brand-navy">Recommended search template:</span>
+        <code class="px-2 py-1 rounded-md bg-white border border-brand-coral-200 text-brand-navy font-mono text-[11px] select-all">
+          [Your School Name] housing prohibited items {topic !== 'housing and move-in' ? topic : ''}
+        </code>
+      </div>
+    </div>
+  </div>
+</aside>

@@ -2,6 +2,7 @@
 import GuideLayout from '../layouts/GuideLayout.astro';
 import PackingFramework from '../components/PackingFramework.astro';
 import VisualCallout from '../components/VisualCallout.astro';
+import PolicyNotice from '../components/PolicyNotice.astro';
 
 const guide = {
   title: 'Strategic College Packing List: What to Bring, Buy There & Leave Behind',
@@ -20,13 +21,14 @@ const faqs = [
   },
   {
     question: 'What items should I definitely buy after arriving on campus?',
-    answer: 'Buy bulky liquid cleaning products, dish soap, laundry detergent, paper towels, snacks, area rugs, and room trash cans at a local store near campus to save vehicle and luggage space.',
+    answer: 'Bulky liquid cleaning products, dish soap, laundry detergent, paper towels, snacks, area rugs, and room trash cans are often easier to purchase at a local store near campus to save vehicle and luggage space.',
   },
 ];
 ---
 
 <GuideLayout {...guide} faqs={faqs}>
-  <div class="space-y-10 text-base leading-relaxed">
+  <div class="space-y-8 text-base leading-relaxed">
+    <PolicyNotice topic="prohibited items and moving guidelines" />
     <!-- Key Takeaways Box -->
     <div class="p-6 bg-brand-blue-50 border-2 border-brand-blue-200 rounded-3xl shadow-soft">
       <h2 class="text-lg font-black text-brand-navy mb-3 flex items-center gap-2">

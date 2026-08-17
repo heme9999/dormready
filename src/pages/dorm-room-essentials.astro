@@ -2,6 +2,7 @@
 import GuideLayout from '../layouts/GuideLayout.astro';
 import DormZoneDiagram from '../components/DormZoneDiagram.astro';
 import VisualCallout from '../components/VisualCallout.astro';
+import PolicyNotice from '../components/PolicyNotice.astro';
 
 const guide = {
   title: 'Dorm Room Essentials Organized by Real Daily Need',
@@ -20,20 +21,22 @@ const faqs = [
   },
   {
     question: 'How do I optimize storage under a lofted or unlofted dorm bed?',
-    answer: 'Standard dorm beds have 10 to 14 inches of clearance, while lofted or junior-lofted frames offer 28 to 36 inches. Measure clearance during move-in before purchasing rigid plastic drawers; low-profile zippered under-bed bags accommodate variable heights easily.',
+    answer: 'Clearance under dorm beds varies widely depending on whether frames are junior-lofted, fully lofted, or non-adjustable. Measure your clearance during move-in before purchasing rigid plastic drawers; low-profile zippered under-bed bags accommodate variable heights easily.',
   },
 ];
 ---
 
 <GuideLayout {...guide} faqs={faqs}>
-  <div class="space-y-10 text-base leading-relaxed">
+  <div class="space-y-8 text-base leading-relaxed">
+    <PolicyNotice topic="prohibited appliances and room decor" />
+
     <!-- Intro block -->
     <div class="p-6 bg-brand-mint-50 border-2 border-brand-mint-200 rounded-3xl shadow-soft">
       <h2 class="text-lg font-black text-emerald-950 mb-2">
         Why Most "Dorm Essentials" Lists Fail Students
       </h2>
       <p class="text-xs sm:text-sm text-navy-700 leading-relaxed">
-        Typical retail blogs publish bloated 150-item lists packed with novelty gadgets that end up in campus dumpsters by December. Our guide prioritizes items that solve five non-negotiable physical constraints: <strong>mattress hardness, communal bathroom hygiene, electrical outlet scarcity, tight closet space, and study noise</strong>.
+        Typical retail blogs publish bloated lists packed with novelty gadgets that end up discarded by semester end. Our guide prioritizes items that solve practical daily challenges: <strong>mattress firmness, communal bathroom hygiene, electrical safety, closet organization, and study focus</strong>.
       </p>
     </div>
 
@@ -43,7 +46,7 @@ const faqs = [
         The 5 Functional Dorm Zones Blueprint
       </h2>
       <p class="text-xs sm:text-sm text-navy-700">
-        Review the five core functional zones that every standard double dorm room requires for productive living:
+        Review the five core functional zones that residence hall rooms require for organized living:
       </p>
 
       <DormZoneDiagram />
@@ -52,14 +55,14 @@ const faqs = [
     <!-- Visual Callout: Bedding Rule -->
     <VisualCallout type="tip" title="Mattress Topper Selection: 2-Inch vs. 3-Inch Foam">
       <p>
-        University dorm mattresses are institutional-grade, waterproof vinyl slabs designed for durability, not spinal support. A <strong>2-inch topper</strong> provides adequate cushion for back sleepers; a <strong>3-inch high-density topper</strong> is recommended for side sleepers to relieve shoulder and hip pressure points.
+        University dorm mattresses are firm institutional vinyl-covered foam. A <strong>2-inch topper</strong> adds basic cushioning; a <strong>3-inch high-density topper</strong> offers deeper pressure relief. Confirm your bed dimensions (most commonly Twin XL, but check specific hall specifications) before ordering.
       </p>
     </VisualCallout>
 
     <!-- Visual Callout: Electrical Safety Rule -->
     <VisualCallout type="safety" title="Power Strip &amp; Surge Protection Requirements">
       <p>
-        Most residence hall rooms offer only 2 or 4 wall outlets, often positioned behind the bed or heavy desk. Never use ungrounded household extension cords. Purchase a <strong>UL-listed 14-gauge surge protector with a 10–12 foot cord</strong> and built-in circuit breaker reset switch.
+        Wall outlet placement and accessibility vary by building age. Use only a <strong>UL Listed (or ETL Listed) power strip or surge protector with a built-in on/off circuit switch</strong>. Plug it directly into the wall outlet; never daisy-chain power strips or use ungrounded household extension cords.
       </p>
     </VisualCallout>
   </div>

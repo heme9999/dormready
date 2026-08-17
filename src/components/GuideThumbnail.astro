@@ -14,6 +14,18 @@ const thumbnailMap: Record<string, { src: string; alt: string }> = {
     src: '/images/guides/checklist-box.svg',
     alt: 'Master college dorm checklist showing an organized moving box and clipboard',
   },
+  'what-not-to-bring-to-college-dorm': {
+    src: '/images/guides/what-not-to-bring.svg',
+    alt: 'Prohibited dorm items warning graphic and campus safety rules',
+  },
+  'what-to-buy-before-vs-after-moving-into-dorm': {
+    src: '/images/guides/before-vs-after.svg',
+    alt: 'Timing comparison showing what to buy before move-in vs what to buy locally on campus',
+  },
+  'college-dorm-roommate-checklist': {
+    src: '/images/guides/roommate-checklist.svg',
+    alt: 'Illustration of two college roommates coordinating packing and room rules',
+  },
   'college-packing-list': {
     src: '/images/guides/packing-luggage.svg',
     alt: 'College packing strategy visual with rolling luggage and carry-on backpack',
@@ -63,6 +75,6 @@ const thumbnail = thumbnailMap[slug] || defaultThumbnail;
     width="640"
     height="360"
     loading={loading}
-    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 select-none"
   />
 </div>

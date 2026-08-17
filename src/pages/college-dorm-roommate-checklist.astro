@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import PolicyNotice from '../components/PolicyNotice.astro';
+import RoommateChecklistApp from '../components/RoommateChecklistApp';
+import VisualCallout from '../components/VisualCallout.astro';
+
+const breadcrumbs = [
+  { name: 'Guides', url: '/guides/' },
+  { name: 'College Dorm Roommate Checklist', url: '/college-dorm-roommate-checklist/' },
+];
+
+const faqs = [
+  {
+    question: 'When should incoming college roommates first contact each other?',
+    answer: 'Reach out within 1 to 2 weeks of receiving your room and roommate assignment (typically July for Fall freshmen). Introduce yourself, share social handles or phone numbers, and schedule a brief 20-minute video call or messaging chat to review shared appliances and packing plans.',
+  },
+  {
+    question: 'How do roommates split the cost of a mini-fridge or microwave?',
+    answer: 'Two common fair methods: 1) Item Division: One roommate buys the mini-fridge and keeps it after freshman year; the other buys the microwave, floor rug, and vacuum. 2) Cost Sharing: Rent a combined MicroFridge unit from your campus housing service and split the semester fee 50/50.',
+  },
+  {
+    question: 'What if my roommate and I have completely opposite sleep schedules?',
+    answer: 'Establish ground rules early before classes begin. Standard best practices include using silent smartwatch or phone vibration alarms, keeping main overhead lights off after a set hour (e.g. 11:00 PM), using a warm LED desk lamp with a focused beam, and keeping a dedicated pair of noise-cancelling headphones.',
+  },
+  {
+    question: 'Is my roommate checklist data saved privately?',
+    answer: 'Yes. All checklist progress, checkmarks, and notes are saved strictly in your local browser storage. No personal contact information or agreement details are transmitted to any external server.',
+  },
+];
+---
+
+<BaseLayout
+  title="College Dorm Roommate Checklist: What to Coordinate Before Move-In | DormReady"
+  description="Interactive roommate coordination checklist for college freshmen. Coordinate shared appliances, daily habits, space splits, and emergency details locally."
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  ogType="article"
+  modifiedTime="2026-08-17"
+>
+  <!-- Header Banner -->
+  <div class="bg-gradient-to-b from-brand-yellow-50 via-brand-yellow-50/30 to-white border-b border-slate-200 py-10 sm:py-14">
+    <div class="container-custom max-w-4xl">
+      <Breadcrumbs items={breadcrumbs} />
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mt-6">
+        <div class="lg:col-span-8 space-y-4">
+          <div class="flex flex-wrap items-center gap-2.5 text-xs font-bold text-navy-600">
+            <span class="badge-yellow">
+              Roommate Collaboration Tool
+            </span>
+            <span>•</span>
+            <span class="text-brand-navy">Pre-Move-In Agreement</span>
+            <span>•</span>
+            <span>Last audited: <time datetime="2026-08-17" class="text-brand-blue">August 17, 2026</time></span>
+          </div>
+
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-brand-navy leading-tight">
+            College Dorm Roommate Checklist
+          </h1>
+
+          <p class="text-base sm:text-lg text-navy-700 leading-relaxed font-sans">
+            Coordinate shared appliances, align daily habits, divide room zones, and prevent duplicate purchases before arriving on campus. Copy a formatted text summary directly to your roommate chat or print a copy for move-in day.
+          </p>
+        </div>
+
+        <div class="lg:col-span-4 hidden lg:block">
+          <img
+            src="/images/guides/roommate-checklist.svg"
+            alt="Illustration of two college roommates coordinating packing and room rules"
+            width="640"
+            height="360"
+            class="w-full h-auto rounded-3xl border-2 border-brand-yellow-200 shadow-soft"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-custom max-w-4xl py-8 sm:py-12 space-y-12 text-navy-800 leading-relaxed">
+    <PolicyNotice topic="roommate agreement and residence hall rules" />
+
+    <!-- Interactive Roommate Checklist Island -->
+    <RoommateChecklistApp client:load />
+
+    <!-- Strategic Tips Section -->
+    <div class="mt-16 pt-12 border-t border-slate-200 space-y-8">
+      <VisualCallout type="roommate" title="The 3 Principles of Conflict-Free Dorm Living">
+        <ol class="list-decimal list-inside space-y-2 text-xs sm:text-sm font-medium text-navy-800">
+          <li><strong>Discuss uncomfortable topics early:</strong> It is 10x easier to agree on guest policies, alarm snoozing, and cleaning rotations before classes start than in November during midterms.</li>
+          <li><strong>Over-communicate on shared costs:</strong> Establish clear ownership upfront for items that cannot be cut in half at the end of May (like a $200 mini-fridge or a $60 rug).</li>
+          <li><strong>Assume good intentions:</strong> Living in a 150 sq ft room with someone new is an adjustment for both of you. Direct, polite communication prevents passive-aggressive sticky notes.</li>
+        </ol>
+      </VisualCallout>
+
+      <!-- Frequently Asked Questions -->
+      <section class="space-y-6">
+        <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
+          Roommate Coordination Frequently Asked Questions
+        </h2>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <div class="p-6 bg-white border-2 border-slate-200 rounded-2xl shadow-soft">
+              <h3 class="font-bold text-brand-navy text-base mb-2">{faq.question}</h3>
+              <p class="text-xs sm:text-sm text-navy-700 leading-relaxed">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Related Links -->
+      <section class="pt-6 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4 text-xs font-bold text-brand-blue">
+        <a href="/what-not-to-bring-to-college-dorm/" class="hover:underline flex items-center gap-1">
+          <span>← What Not to Bring Guide</span>
+        </a>
+        <a href="/college-packing-list/" class="hover:underline flex items-center gap-1">
+          <span>Strategic Packing List →</span>
+        </a>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

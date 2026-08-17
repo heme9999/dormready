@@ -1,0 +1,22 @@
+<svg width="640" height="360" viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="360" fill="#FFF5F4"/>
+  <circle cx="510" cy="110" r="130" fill="#FFE5E2" fill-opacity="0.7"/>
+  <!-- Warning Shield Graphic -->
+  <path d="M320 70L420 110V200C420 260 370 300 320 315C270 300 220 260 220 200V110L320 70Z" fill="#FFFFFF" stroke="#FF6B5E" stroke-width="4"/>
+  <!-- Prohibited Symbol inside shield -->
+  <circle cx="320" cy="190" r="55" fill="#FFF5F4" stroke="#FF6B5E" stroke-width="4"/>
+  <line x1="281" y1="151" x2="359" y2="229" stroke="#FF6B5E" stroke-width="4" stroke-linecap="round"/>
+  <!-- Candle Graphic in Banned circle -->
+  <rect x="312" y="170" width="16" height="35" rx="3" fill="#14213D"/>
+  <path d="M320 155C323 162 325 166 320 170C315 166 317 162 320 155Z" fill="#FFD166"/>
+  <!-- Decorative Item Cards around Shield -->
+  <rect x="130" y="150" width="70" height="70" rx="12" fill="#FFFFFF" stroke="#FF6B5E" stroke-width="2" stroke-dasharray="4 4"/>
+  <text x="145" y="190" font-family="system-ui, sans-serif" font-size="22" text-anchor="middle">⚡</text>
+  <text x="165" y="210" font-family="system-ui, sans-serif" font-size="9" font-weight="700" fill="#FF6B5E" text-anchor="middle">CORDS</text>
+  <rect x="440" y="150" width="70" height="70" rx="12" fill="#FFFFFF" stroke="#FF6B5E" stroke-width="2" stroke-dasharray="4 4"/>
+  <text x="455" y="190" font-family="system-ui, sans-serif" font-size="22" text-anchor="middle">🍳</text>
+  <text x="475" y="210" font-family="system-ui, sans-serif" font-size="9" font-weight="700" fill="#FF6B5E" text-anchor="middle">COOKING</text>
+  <!-- Badge -->
+  <rect x="40" y="36" width="155" height="36" rx="18" fill="#FF6B5E"/>
+  <text x="56" y="59" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">POLICY FIRST</text>
+</svg>

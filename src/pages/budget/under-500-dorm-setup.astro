@@ -1,10 +1,11 @@
 ---
 import GuideLayout from '../../layouts/GuideLayout.astro';
 import VisualCallout from '../../components/VisualCallout.astro';
+import PolicyNotice from '../../components/PolicyNotice.astro';
 
 const guide = {
   title: 'The Under $500 Dorm Setup: Balanced Comfort, Organization & Longevity',
-  description: 'The sweet spot for dorm comfort: premium high-density foam topper, full laundry system, multi-port GaN charging, and organized storage.',
+  description: 'A comprehensive, practical setup guide balancing high-density sleep comfort, complete laundry gear, GaN multi-device charging, and modular under-bed storage.',
   category: 'Budget Guide',
   categoryUrl: '/budget/',
   lastUpdated: '2026-08-17',
@@ -13,30 +14,35 @@ const guide = {
 };
 
 const items = [
-  { category: 'Bedding Upgrade', name: '3" High-Density Cooling Gel Memory Foam Topper', cost: '$80 - $110', why: 'Transforms stiff institutional vinyl into a comfortable supportive bed.' },
+  { category: 'Bedding Upgrade', name: '3" High-Density Gel Foam Topper', cost: '$80 - $110', why: 'Provides supportive cushioning over institutional firm vinyl mattresses.' },
   { category: 'Bedding', name: 'Waterproof Mattress Encasement & 2 Cotton Twin XL Sheet Sets', cost: '$55 - $70', why: 'Hygiene protection and weekly laundry rotation.' },
-  { category: 'Bedding', name: 'Down-Alternative All-Season Comforter & Dual Pillows', cost: '$45 - $60', why: 'Long-lasting warmth and neck support.' },
+  { category: 'Bedding', name: 'Down-Alternative All-Season Comforter & Dual Pillows', cost: '$45 - $60', why: 'Breathable warmth and washable neck support.' },
   { category: 'Bathroom', name: 'Mesh Shower Caddy, 3 Quick-Dry Towels & Rubber Slides', cost: '$40 - $55', why: 'Fast-drying hygiene essentials for shared bathrooms.' },
-  { category: 'Power & Tech', name: 'Heavy-Duty 10ft Surge Protector + 65W GaN USB-C Hub', cost: '$45 - $60', why: 'Fast charging for laptop, phone, and tablet simultaneously.' },
-  { category: 'Storage & Organization', name: 'Under-Bed Zippered Storage Boxes (2-Pack) & Slim Hangers', cost: '$35 - $45', why: 'Keeps winter gear and seasonal clothes organized and dust-free.' },
-  { category: 'Study & Desk', name: 'Dimmable LED Desk Lamp with USB Port', cost: '$25 - $35', why: 'Adjustable light for late-night studying without waking roommates.' },
+  { category: 'Power & Tech', name: 'Heavy-Duty Surge Protector + 65W GaN USB-C Charger', cost: '$45 - $60', why: 'Fast charging for laptop, phone, and power bank simultaneously.' },
+  { category: 'Storage & Organization', name: 'Under-Bed Storage Totes (2-Pack) & Slim Hangers', cost: '$35 - $45', why: 'Keeps seasonal clothes organized and dust-free; check bed clearance first.' },
+  { category: 'Study & Desk', name: 'Dimmable LED Desk Lamp with USB Port', cost: '$25 - $35', why: 'Adjustable lighting for late-night studying without disturbing roommates.' },
   { category: 'Laundry Care', name: 'Collapsible Drying Rack & Backpack Hamper', cost: '$30 - $40', why: 'Protects delicate clothing and eliminates heavy lifting.' },
-  { category: 'Health & Essentials', name: 'First Aid Kit, Thermometer & Compact Lockbox', cost: '$30 - $40', why: 'Secures personal medications, passport, and emergency credentials.' },
+  { category: 'Health & Essentials', name: 'First Aid Kit, Thermometer & Compact Lockbox', cost: '$30 - $40', why: 'Secures personal medications, passport, and emergency documents.' },
 ];
 ---
 
 <GuideLayout {...guide}>
   <div class="space-y-8 text-base leading-relaxed">
+    <PolicyNotice topic="budget and appliance rules" />
+
     <div class="p-6 bg-brand-blue-50 border-2 border-brand-blue-200 rounded-3xl shadow-soft">
-      <h2 class="text-lg font-black text-brand-navy mb-2">The $500 Setup: The Undergraduate Sweet Spot</h2>
+      <h2 class="text-lg font-black text-brand-navy mb-2">The $500 Setup: Balanced Practical Comfort</h2>
       <p class="text-xs sm:text-sm text-navy-700 leading-relaxed">
-        A $500 allocation is the optimal balance for 90% of college freshmen. It upgrades your daily sleep quality from "surviving" to "thriving", adds fast 65W GaN multi-device charging, and equips you with durable under-bed storage containers that will survive your sophomore and junior apartment moves.
+        A $500 budget offers a balanced option for shoppers seeking enhanced sleep support, multi-device fast charging, and durable under-bed storage bins that can transition into sophomore year living.
       </p>
     </div>
 
     <!-- Line item table -->
     <section class="space-y-4">
-      <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">Line-Item Spending Breakdown (Target Total: ~$485)</h2>
+      <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+        <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">Line-Item Spending Breakdown (Target Total: ~$445–$490)</h2>
+        <span class="text-xs text-navy-500 font-medium">Estimated price ranges checked Aug 17, 2026 across major national retailers</span>
+      </div>
       <div class="overflow-x-auto my-4 rounded-2xl border-2 border-slate-200 shadow-soft">
         <table class="w-full text-left text-xs sm:text-sm">
           <thead class="bg-slate-100 text-brand-navy font-black">
@@ -44,7 +50,7 @@ const items = [
               <th class="p-3.5 border-b border-slate-200">Category</th>
               <th class="p-3.5 border-b border-slate-200">Item</th>
               <th class="p-3.5 border-b border-slate-200">Estimated Cost</th>
-              <th class="p-3.5 border-b border-slate-200">Why It's Worth the Upgrade</th>
+              <th class="p-3.5 border-b border-slate-200">Practical Purpose</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-slate-100 bg-white">
@@ -62,9 +68,9 @@ const items = [
     </section>
 
     <!-- Visual Callout -->
-    <VisualCallout type="action" title="Prioritize the 3-Inch Mattress Topper">
+    <VisualCallout type="tip" title="Coordinate Before Buying Shared Room Upgrades">
       <p>
-        The biggest qualitative difference between the $300 and $500 tier is the 3-inch high-density cooling topper. Good sleep directly correlates with freshman GPA and immune resistance during peak midterm flu seasons.
+        Before investing in larger organizers, full-length mirrors, or floor lamps, coordinate with your roommate to confirm room dimensions and determine which items can be shared.
       </p>
     </VisualCallout>
   </div>

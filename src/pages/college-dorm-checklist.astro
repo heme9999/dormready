@@ -4,6 +4,7 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
 import ChecklistApp from '../components/ChecklistApp';
 import VisualCallout from '../components/VisualCallout.astro';
+import PolicyNotice from '../components/PolicyNotice.astro';
 import { CHECKLIST_ITEMS } from '../data/checklist';
 
 const breadcrumbs = [
@@ -14,11 +15,11 @@ const breadcrumbs = [
 const faqs = [
   {
     question: 'What bed size are standard U.S. college dorm mattresses?',
-    answer: 'The vast majority of 4-year and 2-year residence halls in the U.S. use Twin XL (Extra Long) mattresses, which measure 38 inches wide by 80 inches long (5 inches longer than standard Twin). Standard twin sheets will not fit securely and will constantly pull off.',
+    answer: 'Twin XL (typically 38 by 80 inches) is common in many college residence halls, but dimensions and furnishings vary across institutions. Standard twin fitted sheets (75 inches long) will not fit a Twin XL mattress. Always check your assigned hall housing portal to confirm mattress dimensions before purchasing.',
   },
   {
     question: 'Why are extension cords prohibited in dorm rooms?',
-    answer: 'Standard unfused household extension cords and multi-plug adapters create severe fire hazards when connected to high-draw electronics. University fire codes require UL-listed surge protectors with internal circuit breakers and 14-gauge or heavier cabling.',
+    answer: 'Standard unfused household extension cords and multi-plug tap cubes create electrical fire hazards. Most university housing policies require using only UL Listed (or ETL Listed) surge protectors with internal circuit breakers plugged directly into the wall. Never daisy-chain power strips together.',
   },
   {
     question: 'How do I save my checklist progress?',
@@ -74,7 +75,9 @@ const faqs = [
     </div>
   </div>
 
-  <div class="container-custom py-8 sm:py-12">
+  <div class="container-custom py-8 sm:py-12 space-y-8">
+    <PolicyNotice topic="prohibited items and power rules" />
+
     <AffiliateDisclosure compact={true} />
 
     <!-- Interactive Checklist App Client Island -->
@@ -88,12 +91,12 @@ const faqs = [
         </h2>
         <div class="text-xs sm:text-sm text-navy-700 leading-relaxed space-y-4">
           <p>
-            The biggest mistake incoming freshmen make is treating dorm shopping as a retail splurge. Residence hall double rooms average approximately <strong>130 to 180 square feet</strong> shared between two adults. Every item you bring consumes physical space, air circulation, and cognitive energy.
+            The biggest mistake incoming freshmen make is treating dorm shopping as a retail splurge. Residence hall room dimensions and configurations vary widely across campuses and buildings. Every item you bring consumes physical floor space, closet volume, and daily living room.
           </p>
 
           <VisualCallout type="action" title="Adopt the 3-Wave Purchase Strategy">
             <ol class="list-decimal list-inside space-y-2 font-medium text-navy-800">
-              <li><strong>Wave 1 (Before Arrival):</strong> Twin XL mattress topper, bedding, shower caddy, shower shoes, surge protector, and prescription medical essentials.</li>
+              <li><strong>Wave 1 (Before Arrival):</strong> Twin XL mattress topper, bedding (after verifying bed size), shower caddy, shower shoes, UL-listed surge protector, and prescription medical essentials.</li>
               <li><strong>Wave 2 (Move-in Day Aftermath):</strong> Cleaning supplies, floor rug, trash bin liners, and hanging hooks once you evaluate room dimensions and closet bar height.</li>
               <li><strong>Wave 3 (Month Two):</strong> Specialized organizers, study accessories, and additional storage after experiencing your real academic schedule.</li>
             </ol>

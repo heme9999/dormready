@@ -34,7 +34,7 @@ export interface ChecklistCategory {
 }
 
 export const CHECKLIST_CATEGORIES: ChecklistCategory[] = [
-  { key: 'bedding', name: 'Bedding & Sleep', description: 'Standard Twin XL dimensions and sleep comfort', icon: 'Bed' },
+  { key: 'bedding', name: 'Bedding & Sleep', description: 'Twin XL dimensions and sleep hygiene', icon: 'Bed' },
   { key: 'bathroom', name: 'Bathroom & Shower', description: 'Caddies, quick-dry towels, and shared bath prep', icon: 'ShowerHead' },
   { key: 'laundry', name: 'Laundry & Clothing Care', description: 'Hamper bags, detergent sheets, and drying racks', icon: 'Shirt' },
   { key: 'study', name: 'Desk & Study Essentials', description: 'Ergonomics, task lighting, and academic supplies', icon: 'BookOpen' },
@@ -54,7 +54,7 @@ export const CHECKLIST_ITEMS: ChecklistItem[] = [
     category: 'bedding',
     tier: 'essential',
     budgetTier: 'low',
-    description: 'Most U.S. dorm mattresses are Twin XL (38" x 80"), 5 inches longer than standard Twin. Two sets allow easy laundry rotation.',
+    description: 'Twin XL (typically 38" x 80") is common in many college residence halls, but dimensions and furnishings vary. Check your assigned hall\'s specifications before purchasing.',
     note: 'Check your university housing portal to verify mattress size before purchasing.',
   },
   {
@@ -71,7 +71,7 @@ export const CHECKLIST_ITEMS: ChecklistItem[] = [
     category: 'bedding',
     tier: 'essential',
     budgetTier: 'mid',
-    description: 'Institutional vinyl dorm mattresses are notoriously firm. A high-density 2-3 inch topper dramatically improves sleep quality.',
+    description: 'Adds cushioning over institutional firm vinyl mattresses; comfort preferences vary.',
   },
   {
     id: 'bed-4',
@@ -113,7 +113,7 @@ export const CHECKLIST_ITEMS: ChecklistItem[] = [
     category: 'bathroom',
     tier: 'essential',
     budgetTier: 'low',
-    description: 'Mandatory hygiene protection against communal bathroom floor fungi and plantar warts.',
+    description: 'Hygiene barrier against communal bathroom floor fungi and bacteria.',
   },
   {
     id: 'bath-3',
@@ -121,7 +121,7 @@ export const CHECKLIST_ITEMS: ChecklistItem[] = [
     category: 'bathroom',
     tier: 'essential',
     budgetTier: 'low',
-    description: 'Waffle-weave or Turkish cotton towels dry significantly faster in low-airflow dorm rooms.',
+    description: 'Waffle-weave or lightweight cotton towels dry significantly faster in low-airflow dorm rooms.',
   },
   {
     id: 'bath-4',
@@ -148,7 +148,7 @@ export const CHECKLIST_ITEMS: ChecklistItem[] = [
     category: 'laundry',
     tier: 'essential',
     budgetTier: 'low',
-    description: 'Padded shoulder straps make carrying 20 lbs of clothes down basement stairwells effortless.',
+    description: 'Padded shoulder straps make carrying clothes down basement stairwells easier.',
   },
   {
     id: 'laun-2',
@@ -184,7 +184,7 @@ export const CHECKLIST_ITEMS: ChecklistItem[] = [
     tier: 'essential',
     budgetTier: 'low',
     description: 'Adjustable color temperature lamp allows studying late without waking roommates.',
-    prohibitedWarning: 'Halogen lamps and incandescent bulbs over certain wattages are strictly banned in almost all residence halls.',
+    prohibitedWarning: 'Halogen lamps, multi-head plastic floor lamps, and unapproved high-heat bulbs are commonly restricted by university housing policies; check your assigned hall\'s safety rules.',
   },
   {
     id: 'stu-2',
@@ -214,16 +214,16 @@ export const CHECKLIST_ITEMS: ChecklistItem[] = [
   // Technology
   {
     id: 'tech-1',
-    name: 'UL-Listed Surge Protector with 6-10 ft Cord (1-2)',
+    name: 'UL-Listed Surge Protector with On/Off Switch',
     category: 'technology',
     tier: 'essential',
     budgetTier: 'low',
-    description: 'Dorm outlets are frequently placed in awkward corners far from beds and desks.',
-    prohibitedWarning: 'Unfused extension cords, multi-plug cubes without surge switches, and daisy-chained power strips violate fire codes in residence halls.',
+    description: 'Provides protected outlets near your desk; verify cord length rules with your hall.',
+    prohibitedWarning: 'Unfused extension cords, multi-plug tap cubes without surge switches, and daisy-chained power strips violate residence hall fire safety policies across most campuses.',
   },
   {
     id: 'tech-2',
-    name: 'Laptop & Charger + Spare 65W/100W USB-C Charger',
+    name: 'Laptop & Charger + Spare USB-C Charger',
     category: 'technology',
     tier: 'essential',
     budgetTier: 'high',
@@ -231,11 +231,11 @@ export const CHECKLIST_ITEMS: ChecklistItem[] = [
   },
   {
     id: 'tech-3',
-    name: 'Extra Long (10 ft) Braided Phone Charging Cable',
+    name: 'Extra Long Braided Phone Charging Cable',
     category: 'technology',
     tier: 'essential',
     budgetTier: 'low',
-    description: 'Standard 3 ft cords rarely reach lofted beds from wall sockets.',
+    description: 'Allows charging your phone comfortably if wall outlets are far from your bed.',
   },
   {
     id: 'tech-4',
@@ -243,7 +243,7 @@ export const CHECKLIST_ITEMS: ChecklistItem[] = [
     category: 'technology',
     tier: 'recommended',
     budgetTier: 'mid',
-    description: 'Indispensable for studying in noisy lounges, libraries, and sharing a room with different sleep schedules.',
+    description: 'Helpful for studying in busy lounges, libraries, and sharing a room with different sleep schedules.',
   },
   {
     id: 'tech-5',
@@ -251,7 +251,7 @@ export const CHECKLIST_ITEMS: ChecklistItem[] = [
     category: 'technology',
     tier: 'recommended',
     budgetTier: 'low',
-    description: 'Campus Wi-Fi can get saturated during peak exam hours; dorm wall jacks often deliver stable 500+ Mbps.',
+    description: 'Campus Wi-Fi can experience peak congestion; dorm Ethernet ports often deliver low-latency connections.',
   },
   {
     id: 'tech-6',
@@ -259,7 +259,7 @@ export const CHECKLIST_ITEMS: ChecklistItem[] = [
     category: 'technology',
     tier: 'recommended',
     budgetTier: 'low',
-    description: 'Keeps phone and accessories charged during 10-hour lecture and lab days.',
+    description: 'Keeps phone and accessories charged during long lecture and lab days.',
   },
 
   // Kitchen
@@ -273,11 +273,11 @@ export const CHECKLIST_ITEMS: ChecklistItem[] = [
   },
   {
     id: 'kitch-2',
-    name: 'Microwave-Safe Mug, Bowl, and Spoon/Fork Set',
+    name: 'Microwave-Safe Mug, Bowl, and Utensil Set',
     category: 'kitchen',
     tier: 'essential',
     budgetTier: 'low',
-    description: 'Reusable set for oatmeal, ramen, soup, and reheating leftovers.',
+    description: 'Reusable set for oatmeal, soup, and reheating leftovers.',
   },
   {
     id: 'kitch-3',
@@ -296,7 +296,7 @@ export const CHECKLIST_ITEMS: ChecklistItem[] = [
     budgetTier: 'high',
     description: 'Coordinate with roommate so you do not duplicate appliances.',
     roommateCoordination: true,
-    prohibitedWarning: 'Most colleges restrict wattage (e.g. max 1000W) and capacity (under 4.0 cu ft). Standalone hot plates, toaster ovens, and electric grills with exposed coils are banned.',
+    prohibitedWarning: 'Appliance rules vary by campus. Many institutions specify wattage limits (e.g. max 800W–1000W) or cubic capacity (under 4.0–5.5 cu ft), while others prohibit personal units or provide combined microfridges. Hot plates, open-coil burners, and toaster ovens are commonly prohibited.',
     buyAfterArrival: true,
   },
   {
@@ -306,7 +306,7 @@ export const CHECKLIST_ITEMS: ChecklistItem[] = [
     tier: 'recommended',
     budgetTier: 'low',
     description: 'Fast boiling for tea, pour-over coffee, and instant meals.',
-    prohibitedWarning: 'Check housing policy; models without concealed heating elements or auto-shutoff may be prohibited.',
+    prohibitedWarning: 'Check housing policy; models without concealed heating elements or auto-shutoff are frequently restricted.',
   },
 
   // Clothing & Storage
@@ -316,7 +316,7 @@ export const CHECKLIST_ITEMS: ChecklistItem[] = [
     category: 'clothing',
     tier: 'essential',
     budgetTier: 'low',
-    description: 'Takes 50% less closet bar space than thick wooden or plastic tubular hangers.',
+    description: 'Takes significantly less closet bar space than thick wooden or plastic tubular hangers.',
   },
   {
     id: 'cloth-2',
@@ -324,7 +324,7 @@ export const CHECKLIST_ITEMS: ChecklistItem[] = [
     category: 'clothing',
     tier: 'recommended',
     budgetTier: 'low',
-    description: 'Under-bed clearance is prime storage for out-of-season clothes and winter gear.',
+    description: 'Prime storage for out-of-season clothes; measure your bed clearance after arrival.',
   },
   {
     id: 'cloth-3',
@@ -333,7 +333,7 @@ export const CHECKLIST_ITEMS: ChecklistItem[] = [
     tier: 'recommended',
     budgetTier: 'low',
     description: 'Instant hanging space for damp towels, winter coats, and backpacks.',
-    prohibitedWarning: 'Do not screw hooks into university doors; use padded over-door brackets or damage-free hooks.',
+    prohibitedWarning: 'Do not screw hooks into university doors; use padded over-door brackets or approved damage-free adhesives.',
   },
   {
     id: 'cloth-4',
@@ -341,7 +341,7 @@ export const CHECKLIST_ITEMS: ChecklistItem[] = [
     category: 'clothing',
     tier: 'essential',
     budgetTier: 'low',
-    description: 'You will walk between classes regardless of heavy rain or cold snaps.',
+    description: 'You will walk between classes across campus in varied weather conditions.',
   },
 
   // Health
@@ -359,7 +359,7 @@ export const CHECKLIST_ITEMS: ChecklistItem[] = [
     category: 'health',
     tier: 'essential',
     budgetTier: 'low',
-    description: 'Crucial for assessing fevers before contacting campus health services.',
+    description: 'Useful for assessing fevers before contacting campus health services.',
   },
   {
     id: 'health-3',
@@ -371,7 +371,7 @@ export const CHECKLIST_ITEMS: ChecklistItem[] = [
   },
   {
     id: 'health-4',
-    name: 'Small Personal First Aid / Cold Relief Kit',
+    name: 'Personal Cold Care & First Aid Supplies',
     category: 'health',
     tier: 'recommended',
     budgetTier: 'low',
@@ -385,7 +385,7 @@ export const CHECKLIST_ITEMS: ChecklistItem[] = [
     category: 'documents',
     tier: 'essential',
     budgetTier: 'low',
-    description: 'Required for campus check-in, financial aid verification, employment on campus (Form I-9).',
+    description: 'Required for campus check-in, financial aid verification, and employment on campus (Form I-9).',
   },
   {
     id: 'doc-2',
@@ -401,7 +401,7 @@ export const CHECKLIST_ITEMS: ChecklistItem[] = [
     category: 'documents',
     tier: 'essential',
     budgetTier: 'low',
-    description: 'Stores passport, Social Security card (if needed for work), spare cards, and emergency cash.',
+    description: 'Stores passport, Social Security card (if needed for work), spare cards, and emergency funds.',
   },
   {
     id: 'doc-4',
@@ -419,7 +419,7 @@ export const CHECKLIST_ITEMS: ChecklistItem[] = [
     category: 'optional',
     tier: 'optional',
     budgetTier: 'low',
-    description: 'Softens cold linoleum dorm tile floors. Buy after checking room layout with roommate.',
+    description: 'Adds comfort over linoleum dorm floors. Buy after checking room layout with roommate.',
     roommateCoordination: true,
     buyAfterArrival: true,
   },
@@ -429,7 +429,7 @@ export const CHECKLIST_ITEMS: ChecklistItem[] = [
     category: 'optional',
     tier: 'optional',
     budgetTier: 'low',
-    description: 'Attaches to bed frame rails to hold water, phone, glasses for lofted beds.',
+    description: 'Attaches to bed frame rails to hold water, phone, and glasses for lofted beds.',
   },
   {
     id: 'opt-3',
@@ -437,7 +437,7 @@ export const CHECKLIST_ITEMS: ChecklistItem[] = [
     category: 'optional',
     tier: 'optional',
     budgetTier: 'low',
-    description: 'Over-the-door hanging mirror. Coordinate with roommate.',
+    description: 'Over-the-door hanging mirror. Coordinate with roommate to avoid duplicates.',
     roommateCoordination: true,
     buyAfterArrival: true,
   },
@@ -447,6 +447,6 @@ export const CHECKLIST_ITEMS: ChecklistItem[] = [
     category: 'optional',
     tier: 'recommended',
     budgetTier: 'low',
-    description: 'Essential in older dorms without individual room air conditioning during August/September.',
+    description: 'Helpful in residence halls without individual room climate controls during warm move-in weeks.',
   },
 ];

@@ -1,0 +1,228 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import PolicyNotice from '../components/PolicyNotice.astro';
+import TimingMatrixApp from '../components/TimingMatrixApp';
+import VisualCallout from '../components/VisualCallout.astro';
+
+const breadcrumbs = [
+  { name: 'Guides', url: '/guides/' },
+  { name: 'What to Buy Before vs. After Move-In', url: '/what-to-buy-before-vs-after-moving-into-dorm/' },
+];
+
+const faqs = [
+  {
+    question: 'Should I buy bedding before arriving or at college?',
+    answer: 'Purchase and wash your mattress protector and at least one set of Twin XL sheets before leaving home. Move-in day is physically exhausting, and local campus retail stores frequently run out of popular bedding sizes during move-in week. Having clean sheets ready ensures you can sleep on night one.',
+  },
+  {
+    question: 'What items should out-of-state students flying to campus buy locally?',
+    answer: 'Students flying to campus should purchase bulky, heavy, or cheap-to-replace items locally after arrival: laundry detergent, liquid cleaning supplies, storage bins, trash cans, pillows, and area rugs. Focus your luggage weight on clothing, laptops, electronics, and prescription medications.',
+  },
+  {
+    question: 'Why should I wait to buy under-bed storage containers?',
+    answer: 'Dorm bed clearance varies from 10 inches on fixed low frames up to 36 inches on junior-lofted frames. If you buy rigid plastic drawer units before seeing your room, they may not fit under your specific bed height. Low-profile fabric bags or waiting until move-in prevents returns.',
+  },
+  {
+    question: 'How do my roommate and I avoid buying duplicate appliances?',
+    answer: 'Coordinate before August. Standard dorm rooms only have space and electrical capacity for one mini-fridge, one microwave, and one floor vacuum. Use our dedicated Roommate Coordination Checklist to assign ownership and cost splits.',
+  },
+];
+---
+
+<BaseLayout
+  title="What to Buy Before College vs. After Move-In | DormReady"
+  description="Timing strategy for college dorm shopping. Filter what to buy before move-in, what to hold until room assignment, and what to buy after arrival to save space."
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  ogType="article"
+  modifiedTime="2026-08-17"
+>
+  <!-- Header Banner -->
+  <div class="bg-gradient-to-b from-brand-mint-50 via-brand-mint-50/30 to-white border-b border-slate-200 py-10 sm:py-14">
+    <div class="container-custom max-w-4xl">
+      <Breadcrumbs items={breadcrumbs} />
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mt-6">
+        <div class="lg:col-span-8 space-y-4">
+          <div class="flex flex-wrap items-center gap-2.5 text-xs font-bold text-navy-600">
+            <span class="badge-mint">
+              Purchase Timing Strategy
+            </span>
+            <span>•</span>
+            <span class="text-brand-navy">Space &amp; Logistics Planning</span>
+            <span>•</span>
+            <span>Last audited: <time datetime="2026-08-17" class="text-brand-blue">August 17, 2026</time></span>
+          </div>
+
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-brand-navy leading-tight">
+            What to Buy Before College vs. After Move-In
+          </h1>
+
+          <p class="text-base sm:text-lg text-navy-700 leading-relaxed font-sans">
+            Avoid cramped car rides, overweight luggage fees, and duplicate appliances. Use our decision framework to determine what belongs in your pre-arrival shopping list versus what to buy locally on campus.
+          </p>
+        </div>
+
+        <div class="lg:col-span-4 hidden lg:block">
+          <img
+            src="/images/guides/before-vs-after.svg"
+            alt="Timing comparison illustration showing buy before vs buy after move-in"
+            width="640"
+            height="360"
+            class="w-full h-auto rounded-3xl border-2 border-brand-mint-200 shadow-soft"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-custom max-w-4xl py-8 sm:py-12 space-y-12 text-navy-800 leading-relaxed">
+    <PolicyNotice topic="room appliances and furnishings" />
+
+    <!-- 4-Phase Strategy Framework Summary -->
+    <section class="space-y-6">
+      <div class="space-y-2">
+        <span class="badge-blue">Sequential Logic</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
+          The 4 Purchase Timing Phases
+        </h2>
+        <p class="text-xs sm:text-sm text-navy-600">
+          Shopping in phases prevents overbuying and ensures you only spend money on items that fit your real room:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+        <div class="p-4 bg-emerald-50/70 border-2 border-emerald-200 rounded-2xl space-y-1.5 shadow-xs">
+          <div class="font-black text-emerald-950 flex items-center gap-1.5">
+            <span class="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[11px]">1</span>
+            <span>Buy / Pack Before</span>
+          </div>
+          <p class="text-emerald-900 leading-relaxed">Personal medical prescriptions, laptop/chargers, government IDs, and night-one bedding.</p>
+        </div>
+
+        <div class="p-4 bg-sky-50/70 border-2 border-sky-200 rounded-2xl space-y-1.5 shadow-xs">
+          <div class="font-black text-sky-950 flex items-center gap-1.5">
+            <span class="w-5 h-5 rounded-full bg-sky-600 text-white flex items-center justify-center text-[11px]">2</span>
+            <span>Wait for Assignment</span>
+          </div>
+          <p class="text-sky-900 leading-relaxed">Under-bed storage bins, long Ethernet/power cords, and window privacy curtains.</p>
+        </div>
+
+        <div class="p-4 bg-amber-50/70 border-2 border-amber-200 rounded-2xl space-y-1.5 shadow-xs">
+          <div class="font-black text-amber-950 flex items-center gap-1.5">
+            <span class="w-5 h-5 rounded-full bg-amber-600 text-white flex items-center justify-center text-[11px]">3</span>
+            <span>Buy After Arrival</span>
+          </div>
+          <p class="text-amber-950 leading-relaxed">Heavy liquid cleaning detergents, floor area rugs, trash bags, and bulk bottled beverages.</p>
+        </div>
+
+        <div class="p-4 bg-purple-50/70 border-2 border-purple-200 rounded-2xl space-y-1.5 shadow-xs">
+          <div class="font-black text-purple-950 flex items-center gap-1.5">
+            <span class="w-5 h-5 rounded-full bg-purple-600 text-white flex items-center justify-center text-[11px]">4</span>
+            <span>Coordinate Roommate</span>
+          </div>
+          <p class="text-purple-950 leading-relaxed">Mini-fridge, microwave, full-length mirror, TV, and shared floor cleaning vacuums.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Filterable Table Island -->
+    <section class="space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+        <div>
+          <span class="badge-mint mb-1">Interactive Filter</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
+            Timing Decision Matrix
+          </h2>
+        </div>
+        <span class="text-xs text-navy-500 font-medium">Filter by phase or search specific items</span>
+      </div>
+
+      <TimingMatrixApp client:load />
+    </section>
+
+    <!-- Flying vs. Driving Branching Logic -->
+    <section class="p-6 sm:p-8 bg-brand-blue-50/50 border-2 border-brand-blue-200 rounded-3xl space-y-6 shadow-soft">
+      <div class="space-y-2">
+        <span class="badge-blue">Travel Strategy</span>
+        <h2 class="text-xl sm:text-2xl font-black text-brand-navy">
+          Travel Constraints: Flying Out of State vs. Driving to Campus
+        </h2>
+        <p class="text-xs sm:text-sm text-navy-700 leading-relaxed">
+          Your travel mode fundamentally dictates your move-in packing limits:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm">
+        <div class="p-5 bg-white rounded-2xl border border-brand-blue-200 shadow-xs space-y-3">
+          <h3 class="font-black text-brand-navy text-base flex items-center gap-2">
+            <span>✈️</span>
+            <span>If You Are Flying Out of State</span>
+          </h3>
+          <ul class="space-y-2 text-navy-700">
+            <li>• <strong>Airline Weight Caps:</strong> Standard checked bags are limited to 50 lbs (23 kg). Overweight bag fees easily reach $100+ each way.</li>
+            <li>• <strong>Ship Ahead or Store Pick-up:</strong> Order large items (mattress topper, drying rack, hangers) for free in-store pickup at a Target or Walmart near your campus.</li>
+            <li>• <strong>Carry-On Priorities:</strong> Keep all electronics, laptop chargers, essential medications, and government IDs in your personal backpack.</li>
+          </ul>
+        </div>
+
+        <div class="p-5 bg-white rounded-2xl border border-brand-blue-200 shadow-xs space-y-3">
+          <h3 class="font-black text-brand-navy text-base flex items-center gap-2">
+            <span>🚗</span>
+            <span>If You Are Driving with Family</span>
+          </h3>
+          <ul class="space-y-2 text-navy-700">
+            <li>• <strong>Use Flexible Moving Bags:</strong> Pack in zippered blue polypropylene bags (IKEA FRAKTA style) rather than rigid boxes to maximize car trunk tetris.</li>
+            <li>• <strong>Unpack Before Heading to Stores:</strong> Move all personal bins into the room, meet your roommate, and measure open floor space before making a big local shopping run.</li>
+            <li>• <strong>Leave Returnable Items in Vehicle:</strong> Keep backup organizers in the trunk until you verify they fit your wardrobe and closet configuration.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Night-One Survival Bag Checklist Callout -->
+    <VisualCallout type="action" title="The Essential 'Night-One Carry-On' Checklist">
+      <div class="text-xs sm:text-sm text-navy-800 space-y-2">
+        <p>
+          Move-in day frequently involves long elevator queues, campus traffic, and late-night room arranging. Keep these items in a single separate backpack or tote bag so you don't have to unpack 5 taped boxes to sleep on night one:
+        </p>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 font-medium pt-2">
+          <li>✓ 1 Twin XL Sheet Set &amp; Pillow</li>
+          <li>✓ Waterproof Mattress Protector</li>
+          <li>✓ Shower Shoes &amp; Mesh Toiletry Caddy</li>
+          <li>✓ Bath Towel &amp; Change of Clothes</li>
+          <li>✓ Phone Charger &amp; Power Bank</li>
+          <li>✓ Prescription Meds &amp; Government ID</li>
+          <li>✓ Refillable Water Bottle &amp; Snacks</li>
+          <li>✓ Mini Scissors / Box Cutter &amp; Tape</li>
+        </ul>
+      </div>
+    </VisualCallout>
+
+    <!-- Section: FAQs -->
+    <section class="space-y-6 pt-4 border-t border-slate-200">
+      <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">
+        Frequently Asked Questions
+      </h2>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <div class="p-6 bg-white border-2 border-slate-200 rounded-2xl shadow-soft">
+            <h3 class="font-bold text-brand-navy text-base mb-2">{faq.question}</h3>
+            <p class="text-xs sm:text-sm text-navy-700 leading-relaxed">{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Internal Navigation Links -->
+    <section class="pt-6 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4 text-xs font-bold text-brand-blue">
+      <a href="/college-packing-list/" class="hover:underline flex items-center gap-1">
+        <span>← Strategic Packing List Guide</span>
+      </a>
+      <a href="/budget/" class="hover:underline flex items-center gap-1">
+        <span>Compare Budget Blueprints ($300 / $500 / $1K) →</span>
+      </a>
+    </section>
+  </div>
+</BaseLayout>

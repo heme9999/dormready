@@ -1,0 +1,32 @@
+<svg width="640" height="360" viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="360" fill="#FBF7EE"/>
+  <circle cx="520" cy="100" r="120" fill="#FBEFC9" fill-opacity="0.6"/>
+  <!-- Two Roommates Silhouette/Checklist Cards -->
+  <rect x="130" y="80" width="170" height="210" rx="16" fill="#FFFFFF" stroke="#3772FF" stroke-width="3"/>
+  <rect x="145" y="95" width="140" height="30" rx="6" fill="#EEF5FF"/>
+  <text x="215" y="115" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#1D4ED8" text-anchor="middle">ROOMMATE 1</text>
+  <rect x="145" y="140" width="16" height="16" rx="4" fill="#3772FF"/>
+  <text x="170" y="153" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#14213D">Mini-Fridge</text>
+  <rect x="145" y="170" width="16" height="16" rx="4" fill="#3772FF"/>
+  <text x="170" y="183" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#14213D">Floor Vacuum</text>
+  <rect x="145" y="200" width="16" height="16" rx="4" fill="#3772FF"/>
+  <text x="170" y="213" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#14213D">Sleep: 11 PM</text>
+
+  <rect x="340" y="80" width="170" height="210" rx="16" fill="#FFFFFF" stroke="#FF6B5E" stroke-width="3"/>
+  <rect x="355" y="95" width="140" height="30" rx="6" fill="#FFF5F4"/>
+  <text x="425" y="115" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#DC2626" text-anchor="middle">ROOMMATE 2</text>
+  <rect x="355" y="140" width="16" height="16" rx="4" fill="#FF6B5E"/>
+  <text x="380" y="153" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#14213D">Microwave</text>
+  <rect x="355" y="170" width="16" height="16" rx="4" fill="#FF6B5E"/>
+  <text x="380" y="183" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#14213D">Floor Area Rug</text>
+  <rect x="355" y="200" width="16" height="16" rx="4" fill="#FF6B5E"/>
+  <text x="380" y="213" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#14213D">Study: Quiet</text>
+
+  <!-- Connect Icon -->
+  <circle cx="320" cy="185" r="20" fill="#14213D"/>
+  <text x="320" y="191" font-family="system-ui, sans-serif" font-size="14" font-weight="900" fill="#FFD166" text-anchor="middle">⇄</text>
+
+  <!-- Badge -->
+  <rect x="40" y="36" width="175" height="36" rx="18" fill="#FFD166"/>
+  <text x="56" y="59" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#14213D">ROOMMATE SYNC</text>
+</svg>

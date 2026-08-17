@@ -1,6 +1,7 @@
 ---
 import GuideLayout from '../../layouts/GuideLayout.astro';
 import VisualCallout from '../../components/VisualCallout.astro';
+import PolicyNotice from '../../components/PolicyNotice.astro';
 
 const guide = {
   title: 'The Under $1,000 Complete Dorm Setup: All-Inclusive Comfort & Workstation',
@@ -13,29 +14,34 @@ const guide = {
 };
 
 const items = [
-  { category: 'Bedding Suite', name: '3" High-Density Gel Foam Topper, 2 Organic Cotton Sheet Sets & Duvet Insert', cost: '$180 - $220', why: 'Maximum sleep quality and breathable temperature regulation.' },
-  { category: 'Shared Appliances', name: '50% Contribution to Shared Mini-Fridge / Microwave Combo', cost: '$120 - $160', why: 'Fresh grocery storage, meal prep, and cold drink access.' },
-  { category: 'Focus & Study Audio', name: 'Active Noise-Cancelling (ANC) Over-Ear Headphones', cost: '$130 - $180', why: 'Block hallway noise, roommate gaming, and busy library chatter.' },
-  { category: 'Desk & Workstation', name: 'Ergonomic Seat Cushion, Laptop Stand & LED Task Light', cost: '$70 - $95', why: 'Prevents neck and lower back strain during 6-hour essay sessions.' },
-  { category: 'Power & Charging', name: '100W GaN Charging Station + 2 Heavy-Duty Surge Strips', cost: '$65 - $85', why: 'Powers multi-device setup without tripping dorm circuit breakers.' },
-  { category: 'Climate & Air', name: 'Compact HEPA Air Purifier & Clip-On Bed Fan', cost: '$60 - $85', why: 'Removes dorm dust, pollen, and provides essential airflow in un-airconditioned halls.' },
+  { category: 'Bedding Suite', name: '3" High-Density Gel Foam Topper, 2 Cotton Sheet Sets & Duvet Insert', cost: '$180 - $220', why: 'Supportive sleep comfort and washable temperature regulation.' },
+  { category: 'Shared Appliances', name: '50% Contribution to Shared Mini-Fridge / Microwave Combo', cost: '$120 - $160', why: 'Fresh grocery storage, meal prep, and cold drink access (if permitted and not already supplied).' },
+  { category: 'Focus & Study Audio', name: 'Active Noise-Cancelling (ANC) Over-Ear Headphones', cost: '$130 - $180', why: 'Helps maintain focus in busy floor lounges and study rooms.' },
+  { category: 'Desk & Workstation', name: 'Ergonomic Seat Cushion, Laptop Stand & LED Task Light', cost: '$70 - $95', why: 'Supports posture during extended computer study sessions.' },
+  { category: 'Power & Charging', name: '100W GaN Charging Station + UL-Listed Surge Strip', cost: '$65 - $85', why: 'Safely powers laptops and mobile devices with built-in circuit protection.' },
+  { category: 'Climate & Air', name: 'Compact HEPA Air Purifier & Clip-On Bed Fan', cost: '$60 - $85', why: 'Aids air filtration and provides focused airflow in halls without individual A/C.' },
   { category: 'Hygiene & Laundry', name: 'Premium Quick-Dry Towels, Mesh Caddy, Drying Rack & Hamper', cost: '$75 - $95', why: 'Complete durable laundry and communal bathroom system.' },
-  { category: 'Storage & Floor', name: 'Plush 4x6 Area Rug, Under-Bed Rolling Totes & Over-Door Hooks', cost: '$80 - $110', why: 'Softens linoleum floors and maximizes tight room storage.' },
+  { category: 'Storage & Floor', name: 'Small Area Rug, Under-Bed Storage Totes & Over-Door Hooks', cost: '$80 - $110', why: 'Adds floor comfort and organizes storage; measure clearance after arrival.' },
 ];
 ---
 
 <GuideLayout {...guide}>
   <div class="space-y-8 text-base leading-relaxed">
+    <PolicyNotice topic="appliances and electronics" />
+
     <div class="p-6 bg-brand-coral-50 border-2 border-brand-coral-200 rounded-3xl shadow-soft">
-      <h2 class="text-lg font-black text-rose-950 mb-2">The $1,000 Setup: The Complete College Sanctuary</h2>
+      <h2 class="text-lg font-black text-rose-950 mb-2">The $1,000 Setup: Complete Ergonomics and Workstation Prep</h2>
       <p class="text-xs sm:text-sm text-navy-700 leading-relaxed">
-        With a $1,000 budget, you can fully equip your residence hall room for top-tier academic productivity, high-grade sleep recovery, and healthy meal storage. Every item is selected for multi-year durability so it transitions smoothly to sophomore off-campus housing.
+        With a larger budget, you can invest in durable study ergonomics, active noise cancellation, and room climate accessories. Items in this tier are selected for multi-year durability so they transition smoothly to sophomore and off-campus housing.
       </p>
     </div>
 
     <!-- Line item table -->
     <section class="space-y-4">
-      <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">Line-Item Spending Breakdown (Target Total: ~$940)</h2>
+      <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+        <h2 class="text-2xl sm:text-3xl font-black text-brand-navy">Line-Item Spending Breakdown (Target Total: ~$780–$930)</h2>
+        <span class="text-xs text-navy-500 font-medium">Estimated price ranges checked Aug 17, 2026 across major national retailers</span>
+      </div>
       <div class="overflow-x-auto my-4 rounded-2xl border-2 border-slate-200 shadow-soft">
         <table class="w-full text-left text-xs sm:text-sm">
           <thead class="bg-slate-100 text-brand-navy font-black">
@@ -43,7 +49,7 @@ const items = [
               <th class="p-3.5 border-b border-slate-200">Category</th>
               <th class="p-3.5 border-b border-slate-200">Item</th>
               <th class="p-3.5 border-b border-slate-200">Estimated Cost</th>
-              <th class="p-3.5 border-b border-slate-200">Why It's Worth the Investment</th>
+              <th class="p-3.5 border-b border-slate-200">Practical Purpose</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-slate-100 bg-white">
@@ -61,9 +67,9 @@ const items = [
     </section>
 
     <!-- Visual Callout -->
-    <VisualCallout type="roommate" title="Coordinating Shared Appliance Costs">
+    <VisualCallout type="warning" title="Confirm Provided Amenities Before Purchasing Appliances">
       <p>
-        The single largest saving opportunity in the $1,000 tier comes from splitting the mini-fridge and microwave combo 50/50 with your roommate. Always agree on who keeps or sells the appliance at the end of the spring term.
+        Several universities (such as UT Austin in standard halls) already provide a combination microwave/refrigerator unit in every dorm room. Verify your room's furnished inventory list before buying or renting large appliances.
       </p>
     </VisualCallout>
   </div>
