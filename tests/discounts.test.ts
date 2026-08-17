@@ -31,7 +31,7 @@ describe('Student Discounts Directory Data Integrity', () => {
     }
   });
 
-  it('contains verified Apple Music Student discount as an independent record from Apple Education Store', () => {
+  it('contains verified Apple Music Student discount with Apple Student Verification', () => {
     const appleMusic = STUDENT_DISCOUNTS.find((d) => d.id === 'disc-apple-music');
     const appleStore = STUDENT_DISCOUNTS.find((d) => d.id === 'disc-apple');
 
@@ -42,6 +42,11 @@ describe('Student Discounts Directory Data Integrity', () => {
     expect(appleMusic?.brand).toBe('Apple Music Student');
     expect(appleMusic?.category).toBe('streaming');
     expect(appleMusic?.priceOrDiscount).toBe('$6.99/month');
+    expect(appleMusic?.verificationMethod).toBe('Apple Student Verification');
+    expect(appleMusic?.verificationMethod).not.toBe('UNiDAYS');
+    expect(appleMusic?.verificationMethod).not.toBe('SheerID');
+    expect(appleMusic?.notes).not.toContain('through UNiDAYS');
+    expect(appleMusic?.notes).toContain('Follow Apple’s onscreen student-verification process');
     expect(appleMusic?.officialSourceUrl).toBe('https://www.apple.com/apple-music/');
     expect(appleMusic?.verificationStatus).toBe('verified');
     expect(appleMusic?.checkedAt).toMatch(/^2026-/);

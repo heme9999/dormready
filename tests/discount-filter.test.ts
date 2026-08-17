@@ -66,6 +66,18 @@ describe('Discount Filter Logic & Pure Function Tests', () => {
     expect(appleHardware[0].id).toBe('disc-apple');
   });
 
+  it('filters correctly when selecting specific status like needs_research or seasonal', () => {
+    const needsResearch = filterStudentDiscounts(STUDENT_DISCOUNTS, {
+      status: 'needs_research',
+    });
+    expect(needsResearch).toBeInstanceOf(Array);
+
+    const seasonal = filterStudentDiscounts(STUDENT_DISCOUNTS, {
+      status: 'seasonal',
+    });
+    expect(seasonal).toBeInstanceOf(Array);
+  });
+
   it('returns empty array when query does not match any items', () => {
     const results = filterStudentDiscounts(STUDENT_DISCOUNTS, {
       query: 'nonexistent-service-xyz',
@@ -73,19 +85,20 @@ describe('Discount Filter Logic & Pure Function Tests', () => {
     expect(results).toEqual([]);
   });
 
-  it('verifies that DiscountDirectory component source contains zero-results state and accessibility attributes', () => {
+  it('verifies that DiscountDirectory component source contains neutral listings wording and zero-results state', () => {
     const componentPath = path.resolve(__dirname, '../src/components/DiscountDirectory.tsx');
     const content = fs.readFileSync(componentPath, 'utf-8');
 
-    // Zero-results title and reset buttons
-    expect(content).toContain('No verified discounts match these filters');
+    // Neutral zero-results title and reset buttons
+    expect(content).toContain('No student discount listings match these filters');
+    expect(content).not.toContain('No verified discounts match these filters');
     expect(content).toContain('Clear Search');
     expect(content).toContain('Show All Categories');
     expect(content).toContain('Clear All Filters');
 
-    // Results feedback counter
-    expect(content).toContain('Showing');
-    expect(content).toContain('verified offers');
+    // Results feedback counter does not hardcode "verified offers"
+    expect(content).toContain('Showing {filteredDiscounts.length} of {STUDENT_DISCOUNTS.length} offers');
+    expect(content).not.toContain('verified offers</span>');
 
     // Accessibility attributes
     expect(content).toContain('aria-live="polite"');

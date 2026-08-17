@@ -124,7 +124,7 @@ export default function DiscountDirectory() {
         {/* Results Feedback Counter */}
         <div className="pt-2 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-xs font-semibold text-navy-600">
           <div>
-            <span>Showing {filteredDiscounts.length} of {STUDENT_DISCOUNTS.length} verified offers</span>
+            <span>Showing {filteredDiscounts.length} of {STUDENT_DISCOUNTS.length} offers</span>
             {trimmedQuery !== '' && (
               <span className="text-brand-navy font-bold"> • Results for &ldquo;{trimmedQuery}&rdquo;</span>
             )}
@@ -155,16 +155,16 @@ export default function DiscountDirectory() {
             </div>
             <div className="space-y-2 max-w-md mx-auto">
               <h3 className="text-lg sm:text-xl font-black text-brand-navy">
-                No verified discounts match these filters
+                No student discount listings match these filters
               </h3>
               <p className="text-xs sm:text-sm text-navy-600 leading-relaxed">
                 {trimmedQuery !== '' ? (
                   <>
-                    We do not currently have a verified listing matching &ldquo;<strong>{trimmedQuery}</strong>&rdquo; within <strong>{selectedCategoryLabel}</strong>. Try all categories or clear the active filters.
+                    We do not currently have a listing matching &ldquo;<strong>{trimmedQuery}</strong>&rdquo; within <strong>{selectedCategoryLabel}</strong>. Try all categories or clear the active filters.
                   </>
                 ) : (
                   <>
-                    No verified listings currently match the active filters within <strong>{selectedCategoryLabel}</strong>. Try clearing filters to see all available student deals.
+                    No listings currently match the active filters within <strong>{selectedCategoryLabel}</strong>. Try clearing filters to see all available student deals.
                   </>
                 )}
               </p>

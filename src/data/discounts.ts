@@ -9,7 +9,7 @@ export interface StudentDiscount {
   discountDescription: string;
   priceOrDiscount: string;
   eligibilitySummary: string;
-  verificationMethod: 'UNiDAYS' | 'SheerID' | 'Student Beans' | '.edu Email' | 'In-store ID' | 'Pending Verification';
+  verificationMethod: 'UNiDAYS' | 'SheerID' | 'Student Beans' | '.edu Email' | 'In-store ID' | 'Apple Student Verification' | 'Pending Verification';
   checkedAt: string;
   expirationDate?: string;
   officialSourceUrl: string;
@@ -35,11 +35,11 @@ export const STUDENT_DISCOUNTS: StudentDiscount[] = [
     discountDescription: 'Apple offers qualifying higher-education students discounted monthly access to Apple Music bundled with Apple TV for a limited time.',
     priceOrDiscount: '$6.99/month',
     eligibilitySummary: 'Verified college or university students. Student pricing may be used for up to four years while eligibility continues.',
-    verificationMethod: 'UNiDAYS',
+    verificationMethod: 'Apple Student Verification',
     checkedAt: '2026-08-17',
     officialSourceUrl: 'https://www.apple.com/apple-music/',
     verificationStatus: 'verified',
-    notes: 'Requires periodic student-status reverification through UNiDAYS. Subscription changes to the standard individual rate when student eligibility ends.',
+    notes: 'Follow Apple’s onscreen student-verification process. Apple states that verification may involve a verification partner, and student status must be reverified annually. The subscription changes to the individual rate when eligibility ends or after 48 months.',
   },
   {
     id: 'disc-youtube-premium',
