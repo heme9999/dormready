@@ -4,6 +4,7 @@ import GuideCard from '../components/GuideCard.astro';
 import { EDITORIAL_GUIDES } from '../data/guides';
 import { CHECKLIST_CATEGORIES } from '../data/checklist';
 
+// Google Search Console enabled: 2026-08-17
 const featuredGuides = EDITORIAL_GUIDES.filter((g) => g.featured);
 const recentGuides = [...EDITORIAL_GUIDES].sort(
   (a, b) => new Date(b.lastUpdated).getTime() - new Date(a.lastUpdated).getTime()
