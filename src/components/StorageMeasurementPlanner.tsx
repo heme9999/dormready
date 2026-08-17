@@ -5,6 +5,7 @@ import {
   getDefaultMeasurements,
   checkZoneStatuses,
   generateMeasurementSummary,
+  validateMeasurement,
 } from '../lib/storagePlanner';
 
 export default function StorageMeasurementPlanner() {
@@ -66,6 +67,26 @@ export default function StorageMeasurementPlanner() {
     window.print();
   };
 
+  // Helper to render inline input sanity check messages
+  const renderInputValidation = (val: string, unit: 'inches' | 'feet' = 'inches') => {
+    const validation = validateMeasurement(val, unit);
+    if (validation.status === 'review') {
+      return (
+        <p className="text-[10px] text-amber-700 font-semibold mt-1">
+          ⚠️ {validation.message}
+        </p>
+      );
+    }
+    if (validation.status === 'invalid') {
+      return (
+        <p className="text-[10px] text-red-600 font-semibold mt-1">
+          ❌ {validation.message}
+        </p>
+      );
+    }
+    return null;
+  };
+
   return (
     <div className="space-y-8">
       {/* Overview & Action Toolbar Card */}
@@ -77,7 +98,7 @@ export default function StorageMeasurementPlanner() {
               Dorm Storage Measurement Log
             </h2>
             <p className="text-xs text-navy-600">
-              {statuses.overallReadyCount} of 5 functional zones confirmed ready for shopping
+              {statuses.overallReadyCount} of 6 planning areas confirmed ready for shopping
             </p>
           </div>
 
@@ -113,12 +134,12 @@ export default function StorageMeasurementPlanner() {
             <span>Why Measure First?</span>
           </div>
           <p className="text-navy-700 leading-relaxed">
-            Dorm bed heights, closet door types, and wall materials vary between residence halls. Fill in measurements when you arrive to avoid buying storage bins that cannot fit or wall hooks that peel dorm paint.
+            Dorm bed heights, closet door styles, and wall materials vary between residence halls. Fill in measurements when you arrive to avoid buying storage bins that cannot fit or wall hooks that damage paint.
           </p>
         </div>
       </div>
 
-      {/* 5 Zone Measurement Form Cards */}
+      {/* Zone Measurement Form Cards */}
       <div className="space-y-8">
         {/* Zone 1: Under-Bed */}
         <section className="bg-white border-2 border-slate-200 rounded-3xl p-6 sm:p-8 shadow-soft space-y-5">
@@ -152,7 +173,7 @@ export default function StorageMeasurementPlanner() {
                 type="number"
                 min="1"
                 step="0.5"
-                placeholder="e.g. 14, 28, 32"
+                placeholder="e.g. 14, 28"
                 value={data.underbed.clearanceInches}
                 onChange={(e) =>
                   setData((prev) => ({
@@ -162,6 +183,7 @@ export default function StorageMeasurementPlanner() {
                 }
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
               />
+              {renderInputValidation(data.underbed.clearanceInches, 'inches')}
             </div>
             <div className="space-y-1">
               <label className="font-bold text-brand-navy block">Bed Width (inches)</label>
@@ -169,7 +191,7 @@ export default function StorageMeasurementPlanner() {
                 type="number"
                 min="1"
                 step="0.5"
-                placeholder="e.g. 38 (Twin XL)"
+                placeholder="e.g. 38"
                 value={data.underbed.widthInches}
                 onChange={(e) =>
                   setData((prev) => ({
@@ -179,6 +201,7 @@ export default function StorageMeasurementPlanner() {
                 }
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
               />
+              {renderInputValidation(data.underbed.widthInches, 'inches')}
             </div>
             <div className="space-y-1">
               <label className="font-bold text-brand-navy block">Frame Depth (inches)</label>
@@ -196,6 +219,7 @@ export default function StorageMeasurementPlanner() {
                 }
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
               />
+              {renderInputValidation(data.underbed.depthInches, 'inches')}
             </div>
             <div className="space-y-1">
               <label className="font-bold text-brand-navy block">Lofting Setting</label>
@@ -213,9 +237,9 @@ export default function StorageMeasurementPlanner() {
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue bg-white"
               >
                 <option value="unconfirmed">Select loft status...</option>
-                <option value="fixed-low">Fixed Low Frame (~10-14 in)</option>
-                <option value="adjustable">Junior Loft / Adjustable (~20-30 in)</option>
-                <option value="lofted">Full High Loft (Desk Underneath)</option>
+                <option value="fixed-low">Fixed Low Frame</option>
+                <option value="adjustable">Junior Loft / Adjustable</option>
+                <option value="lofted">Full High Loft</option>
               </select>
             </div>
           </div>
@@ -288,6 +312,7 @@ export default function StorageMeasurementPlanner() {
                 }
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
               />
+              {renderInputValidation(data.closet.widthInches, 'inches')}
             </div>
             <div className="space-y-1">
               <label className="font-bold text-brand-navy block">Closet Depth (inches)</label>
@@ -305,6 +330,7 @@ export default function StorageMeasurementPlanner() {
                 }
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
               />
+              {renderInputValidation(data.closet.depthInches, 'inches')}
             </div>
             <div className="space-y-1">
               <label className="font-bold text-brand-navy block">Hanging Bar Height (inches)</label>
@@ -322,6 +348,7 @@ export default function StorageMeasurementPlanner() {
                 }
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
               />
+              {renderInputValidation(data.closet.hangingBarHeightInches, 'inches')}
             </div>
             <div className="space-y-1">
               <label className="font-bold text-brand-navy block">Top Shelf Clearance (inches)</label>
@@ -339,6 +366,7 @@ export default function StorageMeasurementPlanner() {
                 }
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
               />
+              {renderInputValidation(data.closet.topShelfClearanceInches, 'inches')}
             </div>
           </div>
 
@@ -426,6 +454,7 @@ export default function StorageMeasurementPlanner() {
                 }
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
               />
+              {renderInputValidation(data.desk.widthInches, 'inches')}
             </div>
             <div className="space-y-1">
               <label className="font-bold text-brand-navy block">Desk Depth (inches)</label>
@@ -443,6 +472,7 @@ export default function StorageMeasurementPlanner() {
                 }
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
               />
+              {renderInputValidation(data.desk.depthInches, 'inches')}
             </div>
             <div className="space-y-1">
               <label className="font-bold text-brand-navy block">Hutch / Shelf Clearance (inches)</label>
@@ -460,6 +490,7 @@ export default function StorageMeasurementPlanner() {
                 }
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
               />
+              {renderInputValidation(data.desk.hutchClearanceInches, 'inches')}
             </div>
             <div className="space-y-1">
               <label className="font-bold text-brand-navy block">Distance to Outlet (feet)</label>
@@ -477,6 +508,7 @@ export default function StorageMeasurementPlanner() {
                 }
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
               />
+              {renderInputValidation(data.desk.outletDistanceFeet, 'feet')}
             </div>
           </div>
 
@@ -496,104 +528,135 @@ export default function StorageMeasurementPlanner() {
           </div>
         </section>
 
-        {/* Zone 4: Wall & Door */}
-        <section className="bg-white border-2 border-slate-200 rounded-3xl p-6 sm:p-8 shadow-soft space-y-5">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-4">
+        {/* Zone 4: Wall & Door (Separated Policies) */}
+        <section className="bg-white border-2 border-slate-200 rounded-3xl p-6 sm:p-8 shadow-soft space-y-6">
+          <div className="border-b border-slate-100 pb-4">
             <div className="flex items-center gap-2.5">
               <span className="text-2xl" aria-hidden="true">📌</span>
               <div>
                 <h3 className="text-lg sm:text-xl font-black text-brand-navy">
-                  4. Wall Hanging &amp; Door Regulations
+                  4. Wall Fasteners &amp; Door Hanging Policies
                 </h3>
-                <p className="text-xs text-navy-600">Verify permitted fasteners and door hook thickness independently</p>
+                <p className="text-xs text-navy-600">Wall mounting and door hook permissions evaluated independently</p>
               </div>
             </div>
-            <span
-              className={`text-xs font-bold px-3 py-1.5 rounded-full border self-start sm:self-auto ${
-                statuses.wallAndDoor.status === 'ready'
-                  ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
-                  : 'bg-amber-50 text-amber-900 border-amber-300'
-              }`}
-            >
-              {statuses.wallAndDoor.badgeLabel}
-            </span>
           </div>
 
-          <p className="text-xs text-navy-700 leading-relaxed">{statuses.wallAndDoor.message}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* 4A: Wall Policy */}
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-4 flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="font-bold text-brand-navy text-sm">4A. Wall Mounting Rules</span>
+                  <span
+                    className={`text-[11px] font-bold px-2.5 py-1 rounded-full border ${
+                      statuses.wall.status === 'ready'
+                        ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
+                        : 'bg-amber-50 text-amber-900 border-amber-300'
+                    }`}
+                  >
+                    {statuses.wall.badgeLabel}
+                  </span>
+                </div>
+                <p className="text-xs text-navy-600 leading-relaxed">{statuses.wall.message}</p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
-            <div className="space-y-1">
-              <label className="font-bold text-brand-navy block">Wall Material</label>
-              <select
-                value={data.wallAndDoor.wallMaterial}
-                onChange={(e) =>
-                  setData((prev) => ({
-                    ...prev,
-                    wallAndDoor: {
-                      ...prev.wallAndDoor,
-                      wallMaterial: e.target.value as DormMeasurements['wallAndDoor']['wallMaterial'],
-                    },
-                  }))
-                }
-                className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue bg-white"
-              >
-                <option value="unconfirmed">Select wall type...</option>
-                <option value="drywall">Standard Drywall / Sheetrock</option>
-                <option value="cinder-block">Painted Cinder Block</option>
-                <option value="brick">Exposed Brick</option>
-                <option value="plaster">Older Plaster</option>
-              </select>
+                <div className="space-y-3 text-xs">
+                  <div className="space-y-1">
+                    <label className="font-bold text-brand-navy block">Wall Material</label>
+                    <select
+                      value={data.wallAndDoor.wallMaterial}
+                      onChange={(e) =>
+                        setData((prev) => ({
+                          ...prev,
+                          wallAndDoor: {
+                            ...prev.wallAndDoor,
+                            wallMaterial: e.target.value as DormMeasurements['wallAndDoor']['wallMaterial'],
+                          },
+                        }))
+                      }
+                      className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue bg-white"
+                    >
+                      <option value="unconfirmed">Select wall type...</option>
+                      <option value="drywall">Standard Drywall / Sheetrock</option>
+                      <option value="cinder-block">Painted Cinder Block</option>
+                      <option value="brick">Exposed Brick</option>
+                      <option value="plaster">Older Plaster</option>
+                    </select>
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="font-bold text-brand-navy block">School Mounting Policy</label>
+                    <select
+                      value={data.wallAndDoor.mountingPolicy}
+                      onChange={(e) =>
+                        setData((prev) => ({
+                          ...prev,
+                          wallAndDoor: {
+                            ...prev.wallAndDoor,
+                            mountingPolicy: e.target.value as DormMeasurements['wallAndDoor']['mountingPolicy'],
+                          },
+                        }))
+                      }
+                      className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue bg-white"
+                    >
+                      <option value="unconfirmed">Check housing rule...</option>
+                      <option value="adhesive-allowed">Adhesive Strips Allowed (Command hooks)</option>
+                      <option value="pushpins-only">Small Pushpins / Thumb Tacks Only</option>
+                      <option value="t-pins-only">T-Pins (for fabric wall panels)</option>
+                      <option value="no-adhesives">No Adhesives or Nails Allowed</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="space-y-1">
-              <label className="font-bold text-brand-navy block">School Mounting Policy</label>
-              <select
-                value={data.wallAndDoor.mountingPolicy}
-                onChange={(e) =>
-                  setData((prev) => ({
-                    ...prev,
-                    wallAndDoor: {
-                      ...prev.wallAndDoor,
-                      mountingPolicy: e.target.value as DormMeasurements['wallAndDoor']['mountingPolicy'],
-                    },
-                  }))
-                }
-                className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue bg-white"
-              >
-                <option value="unconfirmed">Check housing rule...</option>
-                <option value="adhesive-allowed">Adhesive Strips Allowed (Command hooks)</option>
-                <option value="pushpins-only">Small Pushpins / Thumb Tacks Only</option>
-                <option value="t-pins-only">T-Pins (for fabric wall panels)</option>
-                <option value="no-adhesives">No Adhesives or Nails Allowed</option>
-              </select>
-            </div>
+            {/* 4B: Door Hook Policy */}
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-4 flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="font-bold text-brand-navy text-sm">4B. Over-the-Door Hooks</span>
+                  <span
+                    className={`text-[11px] font-bold px-2.5 py-1 rounded-full border ${
+                      statuses.door.badgeLabel.includes('Prohibited')
+                        ? 'bg-red-50 text-red-800 border-red-300'
+                        : statuses.door.status === 'ready'
+                        ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
+                        : 'bg-amber-50 text-amber-900 border-amber-300'
+                    }`}
+                  >
+                    {statuses.door.badgeLabel}
+                  </span>
+                </div>
+                <p className="text-xs text-navy-600 leading-relaxed">{statuses.door.message}</p>
 
-            <div className="space-y-1">
-              <label className="font-bold text-brand-navy block">Over-the-Door Hooks Allowed?</label>
-              <select
-                value={data.wallAndDoor.overDoorHookPermitted}
-                onChange={(e) =>
-                  setData((prev) => ({
-                    ...prev,
-                    wallAndDoor: {
-                      ...prev.wallAndDoor,
-                      overDoorHookPermitted: e.target.value as DormMeasurements['wallAndDoor']['overDoorHookPermitted'],
-                    },
-                  }))
-                }
-                className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue bg-white"
-              >
-                <option value="unconfirmed">Select permission...</option>
-                <option value="yes">Yes (Permitted by housing manual)</option>
-                <option value="no">Prohibited (Fire door seal rules)</option>
-              </select>
+                <div className="space-y-1 text-xs">
+                  <label className="font-bold text-brand-navy block">Over-the-Door Hooks Allowed?</label>
+                  <select
+                    value={data.wallAndDoor.overDoorHookPermitted}
+                    onChange={(e) =>
+                      setData((prev) => ({
+                        ...prev,
+                        wallAndDoor: {
+                          ...prev.wallAndDoor,
+                          overDoorHookPermitted: e.target.value as DormMeasurements['wallAndDoor']['overDoorHookPermitted'],
+                        },
+                      }))
+                    }
+                    className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue bg-white"
+                  >
+                    <option value="unconfirmed">Select permission...</option>
+                    <option value="yes">Yes (Permitted by housing manual)</option>
+                    <option value="no">Prohibited (Fire door seal rules)</option>
+                  </select>
+                </div>
+              </div>
             </div>
           </div>
 
           <div>
             <input
               type="text"
-              placeholder="Wall notes (e.g. command strips allowed on sheetrock but not on cinder block walls)..."
+              placeholder="Wall and door notes (e.g. command strips allowed on sheetrock but not on cinder block walls)..."
               value={data.wallAndDoor.notes}
               onChange={(e) =>
                 setData((prev) => ({
@@ -648,6 +711,7 @@ export default function StorageMeasurementPlanner() {
                 }
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
               />
+              {renderInputValidation(data.sharedFloor.openFloorWidthFeet, 'feet')}
             </div>
             <div className="space-y-1">
               <label className="font-bold text-brand-navy block">Open Center Floor Length (feet)</label>
@@ -665,6 +729,7 @@ export default function StorageMeasurementPlanner() {
                 }
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
               />
+              {renderInputValidation(data.sharedFloor.openFloorLengthFeet, 'feet')}
             </div>
           </div>
 

@@ -48,6 +48,10 @@ describe('Anti-Regression Truth & Factual Integrity Scan', () => {
     { pattern: /humidity degrades sensitive products/i, label: 'humidity degrades sensitive products' },
     { pattern: /protects your security deposit/i, label: 'protects your security deposit' },
     { pattern: /protects your housing deposit/i, label: 'protects your housing deposit' },
+    { pattern: /~10-14 in/i, label: '~10-14 in' },
+    { pattern: /~20-30 in/i, label: '~20-30 in' },
+    { pattern: /standard bed clearance/i, label: 'standard bed clearance' },
+    { pattern: /typical bed clearance/i, label: 'typical bed clearance' },
   ];
 
   it('ensures no banned ungrounded generalizations or unverified assertions exist in src/', () => {

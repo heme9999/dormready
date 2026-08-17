@@ -5,6 +5,7 @@ import {
   getDefaultMeasurements,
   checkZoneStatuses,
   generateMeasurementSummary,
+  validateMeasurement,
   isValidPositiveNumber,
 } from '../src/lib/storagePlanner';
 
@@ -29,30 +30,61 @@ class MockLocalStorage {
   }
 }
 
-describe('Storage Planner Readiness, Granular Validation & Summary (Shared Module)', () => {
+describe('Storage Planner Readiness, Granular Validation & Sanity Checks (Shared Module)', () => {
   let localStorageMock: MockLocalStorage;
 
   beforeEach(() => {
     localStorageMock = new MockLocalStorage();
   });
 
-  describe('Input number validation (isValidPositiveNumber)', () => {
-    it('accepts valid finite positive numbers and decimals', () => {
-      expect(isValidPositiveNumber('14')).toBe(true);
-      expect(isValidPositiveNumber('28.5')).toBe(true);
-      expect(isValidPositiveNumber(' 36 ')).toBe(true);
-      expect(isValidPositiveNumber('0.5')).toBe(true);
+  describe('Input number validation & sanity checks (validateMeasurement)', () => {
+    it('accepts valid finite positive numbers within realistic unit bounds', () => {
+      const clearanceVal = validateMeasurement('14', 'inches');
+      expect(clearanceVal.status).toBe('valid');
+      if (clearanceVal.status === 'valid') {
+        expect(clearanceVal.value).toBe(14);
+      }
+
+      const floorVal = validateMeasurement('8.5', 'feet');
+      expect(floorVal.status).toBe('valid');
+      if (floorVal.status === 'valid') {
+        expect(floorVal.value).toBe(8.5);
+      }
+
+      expect(isValidPositiveNumber('28.5', 'inches')).toBe(true);
+      expect(isValidPositiveNumber(' 36 ', 'inches')).toBe(true);
     });
 
-    it('rejects empty strings, zero, negative numbers, NaN, and Infinity', () => {
-      expect(isValidPositiveNumber('')).toBe(false);
-      expect(isValidPositiveNumber('   ')).toBe(false);
-      expect(isValidPositiveNumber('0')).toBe(false);
-      expect(isValidPositiveNumber('-5')).toBe(false);
-      expect(isValidPositiveNumber('abc')).toBe(false);
-      expect(isValidPositiveNumber('NaN')).toBe(false);
-      expect(isValidPositiveNumber('Infinity')).toBe(false);
-      expect(isValidPositiveNumber('-Infinity')).toBe(false);
+    it('rejects empty strings, zero, negative numbers, NaN, and Infinity as invalid', () => {
+      expect(validateMeasurement('', 'inches').status).toBe('empty');
+      expect(validateMeasurement('   ', 'inches').status).toBe('empty');
+      expect(validateMeasurement('0', 'inches').status).toBe('invalid');
+      expect(validateMeasurement('-5', 'inches').status).toBe('invalid');
+      expect(validateMeasurement('abc', 'inches').status).toBe('invalid');
+      expect(validateMeasurement('NaN', 'inches').status).toBe('invalid');
+      expect(validateMeasurement('Infinity', 'inches').status).toBe('invalid');
+      expect(validateMeasurement('-Infinity', 'inches').status).toBe('invalid');
+    });
+
+    it('flags unreasonably large measurements for review to prevent unit or typing mistakes', () => {
+      // Inches over 120 (e.g. 999999999 or 500)
+      const reviewInches = validateMeasurement('999999999', 'inches');
+      expect(reviewInches.status).toBe('review');
+      if (reviewInches.status === 'review') {
+        expect(reviewInches.message).toContain('typing or unit mistake');
+        expect(reviewInches.value).toBe(999999999);
+      }
+
+      // Feet over 40 (e.g. entering 150 inches in a feet input)
+      const reviewFeet = validateMeasurement('150', 'feet');
+      expect(reviewFeet.status).toBe('review');
+      if (reviewFeet.status === 'review') {
+        expect(reviewFeet.message).toContain('typing or unit mistake');
+      }
+
+      // Review status does not qualify as isValidPositiveNumber
+      expect(isValidPositiveNumber('999999999', 'inches')).toBe(false);
+      expect(isValidPositiveNumber('150', 'feet')).toBe(false);
     });
   });
 
@@ -66,7 +98,8 @@ describe('Storage Planner Readiness, Granular Validation & Summary (Shared Modul
       expect(statuses.underbed.badgeLabel).toContain('More measurements needed');
       expect(statuses.closet.status).toBe('wait');
       expect(statuses.desk.status).toBe('wait');
-      expect(statuses.wallAndDoor.status).toBe('wait');
+      expect(statuses.wall.status).toBe('wait');
+      expect(statuses.door.status).toBe('wait');
       expect(statuses.sharedFloor.status).toBe('wait');
     });
 
@@ -135,21 +168,32 @@ describe('Storage Planner Readiness, Granular Validation & Summary (Shared Modul
       expect(statuses.desk.status).toBe('ready');
     });
 
-    it('evaluates Wall and Door zone independently and rejects prohibited door hooks from ready', () => {
+    it('truly separates Wall and Door readiness', () => {
       const data = getDefaultMeasurements();
+
+      // Confirm wall mounting rule only
       data.wallAndDoor.mountingPolicy = 'adhesive-allowed';
-      data.wallAndDoor.overDoorHookPermitted = 'no'; // Prohibited by hall policy
-
       let statuses = checkZoneStatuses(data);
-      expect(statuses.wallAndDoor.status).toBe('wait');
-      expect(statuses.wallAndDoor.badgeLabel).toContain('Prohibited');
-      expect(statuses.wallAndDoor.message).toContain('Over-the-door hooks are prohibited');
+      expect(statuses.wall.status).toBe('ready');
+      expect(statuses.wall.badgeLabel).toContain('Wall Rules Verified');
+      expect(statuses.door.status).toBe('wait');
+      expect(statuses.door.badgeLabel).toContain('Door Policy Needed');
+      expect(statuses.overallReadyCount).toBe(1);
 
-      // Change door hook to permitted
+      // Door hook prohibited
+      data.wallAndDoor.overDoorHookPermitted = 'no';
+      statuses = checkZoneStatuses(data);
+      expect(statuses.wall.status).toBe('ready');
+      expect(statuses.door.status).toBe('wait');
+      expect(statuses.door.badgeLabel).toContain('Prohibited');
+      expect(statuses.overallReadyCount).toBe(1);
+
+      // Door hook permitted
       data.wallAndDoor.overDoorHookPermitted = 'yes';
       statuses = checkZoneStatuses(data);
-      expect(statuses.wallAndDoor.status).toBe('ready');
-      expect(statuses.wallAndDoor.badgeLabel).toContain('Policies Verified');
+      expect(statuses.wall.status).toBe('ready');
+      expect(statuses.door.status).toBe('ready');
+      expect(statuses.overallReadyCount).toBe(2);
     });
 
     it('keeps Shared Floor as wait if only notes are present, and requires both positive width and length', () => {
@@ -168,11 +212,11 @@ describe('Storage Planner Readiness, Granular Validation & Summary (Shared Modul
       expect(statuses.sharedFloor.status).toBe('ready');
     });
 
-    it('rejects 0, negative values, and non-numeric inputs from triggering ready status', () => {
+    it('rejects 0, negative values, and abnormal numbers from triggering ready status', () => {
       const data = getDefaultMeasurements();
       data.underbed.clearanceInches = '0';
       data.underbed.widthInches = '-38';
-      data.underbed.depthInches = 'NaN';
+      data.underbed.depthInches = '999999999';
       data.underbed.loftingSetting = 'adjustable';
 
       const statuses = checkZoneStatuses(data);
@@ -181,7 +225,7 @@ describe('Storage Planner Readiness, Granular Validation & Summary (Shared Modul
   });
 
   describe('Summary generation, local storage & immutability', () => {
-    it('generates formatted Markdown summary without unpurchased domain', () => {
+    it('generates formatted Markdown summary with separated wall and door policies without unpurchased domain', () => {
       const custom = getDefaultMeasurements();
       custom.underbed.clearanceInches = '26';
       custom.underbed.widthInches = '38';
@@ -189,15 +233,15 @@ describe('Storage Planner Readiness, Granular Validation & Summary (Shared Modul
       custom.underbed.loftingSetting = 'adjustable';
       custom.underbed.notes = 'Space for 3 plastic bins';
 
+      custom.wallAndDoor.mountingPolicy = 'adhesive-allowed';
+      custom.wallAndDoor.overDoorHookPermitted = 'yes';
+
       const summary = generateMeasurementSummary(custom);
 
       expect(summary).toContain('# 📐 DormReady Storage Measurement Summary');
       expect(summary).toContain('## 1. Under-Bed Zone [✓ Core Dimensions Ready]');
-      expect(summary).toContain('- Vertical Clearance: 26 in');
-      expect(summary).toContain('- Bed Frame Width: 38 in');
-      expect(summary).toContain('- Frame Depth: 80 in');
-      expect(summary).toContain('- Lofting Setting: adjustable');
-      expect(summary).toContain('- Notes: Space for 3 plastic bins');
+      expect(summary).toContain('## 4. Wall Mounting Policy [✓ Wall Rules Verified]');
+      expect(summary).toContain('## 5. Over-Door Hanging Policy [✓ Door Hooks Permitted]');
       expect(summary).toContain('Generated locally with DormReady');
 
       expect(summary).not.toContain('dormready.org');
