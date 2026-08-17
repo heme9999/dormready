@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 interface ChecklistField {
   id: string;
@@ -86,7 +86,7 @@ const DEFAULT_SECTIONS: ChecklistSection[] = [
       {
         id: 'f-clean',
         title: 'Floor Cleaning Tool (Cordless Stick Vac / Swiffer)',
-        description: 'One cleaning tool is plenty for a 150 sq ft room.',
+        description: 'One cleaning tool is sufficient for a shared room.',
         checked: false,
         notes: '',
         suggestedAgreement: 'One roommate provides the cleaning tool; both share replacement pads/filters.',

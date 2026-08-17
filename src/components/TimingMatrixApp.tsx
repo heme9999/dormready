@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 
 export type TimingCategory = 'all' | 'before' | 'assignment' | 'after' | 'coordinate';
 
@@ -80,7 +80,7 @@ const TIMING_DATA: TimingItem[] = [
     timingLabel: 'Wait for Room Assignment',
     badgeColor: 'bg-sky-100 text-sky-800 border-sky-300',
     itemType: 'Storage',
-    reason: 'Clearance under dorm beds ranges from 10 to 36 inches depending on junior-loft vs fixed frames.',
+    reason: 'Clearance under dorm beds varies depending on whether bed frames are fixed or lofted.',
     flyingTip: 'Do not pack rigid bins on flights; buy collapsible fabric totes or purchase locally.',
   },
   {
