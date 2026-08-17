@@ -2,20 +2,23 @@
   <rect width="640" height="360" fill="#ECFAF5"/>
   <circle cx="500" cy="260" r="110" fill="#D4F5EC" fill-opacity="0.8"/>
   <!-- Mini Dorm Room Blueprint -->
-  <rect x="180" y="80" width="280" height="210" rx="14" fill="#FFFFFF" stroke="#42C6A5" stroke-width="3"/>
-  <!-- Sleep Zone -->
-  <rect x="195" y="95" width="80" height="110" rx="6" fill="#3772FF"/>
-  <text x="205" y="150" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#FFFFFF">SLEEP</text>
-  <!-- Study Zone -->
-  <rect x="365" y="95" width="80" height="70" rx="6" fill="#FF6B5E"/>
-  <text x="375" y="135" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#FFFFFF">STUDY</text>
-  <!-- Storage Zone -->
-  <rect x="195" y="220" width="120" height="55" rx="6" fill="#FFD166"/>
-  <text x="215" y="252" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#14213D">STORAGE</text>
-  <!-- Hygiene & Power -->
-  <rect x="330" y="185" width="115" height="90" rx="6" fill="#42C6A5"/>
-  <text x="345" y="235" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#FFFFFF">HYGIENE &amp; POWER</text>
+  <rect x="170" y="75" width="300" height="220" rx="14" fill="#FFFFFF" stroke="#42C6A5" stroke-width="3"/>
+  <!-- Zone 1: Sleep -->
+  <rect x="185" y="90" width="75" height="95" rx="6" fill="#3772FF"/>
+  <text x="195" y="142" font-family="system-ui, sans-serif" font-size="10" font-weight="800" fill="#FFFFFF">1. SLEEP</text>
+  <!-- Zone 2: Study -->
+  <rect x="375" y="90" width="80" height="60" rx="6" fill="#FF6B5E"/>
+  <text x="385" y="125" font-family="system-ui, sans-serif" font-size="10" font-weight="800" fill="#FFFFFF">2. STUDY</text>
+  <!-- Zone 3: Storage -->
+  <rect x="185" y="195" width="105" height="85" rx="6" fill="#FFD166"/>
+  <text x="195" y="242" font-family="system-ui, sans-serif" font-size="10" font-weight="800" fill="#14213D">3. STORAGE</text>
+  <!-- Zone 4: Hygiene -->
+  <rect x="300" y="195" width="75" height="85" rx="6" fill="#42C6A5"/>
+  <text x="306" y="242" font-family="system-ui, sans-serif" font-size="9" font-weight="800" fill="#FFFFFF">4. HYGIENE</text>
+  <!-- Zone 5: Power & Safety -->
+  <rect x="385" y="160" width="70" height="120" rx="6" fill="#14213D"/>
+  <text x="390" y="225" font-family="system-ui, sans-serif" font-size="9" font-weight="800" fill="#42C6A5">5. POWER</text>
   <!-- Badge -->
-  <rect x="40" y="40" width="140" height="36" rx="18" fill="#42C6A5"/>
-  <text x="60" y="63" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#FFFFFF">4 ROOM ZONES</text>
+  <rect x="40" y="36" width="180" height="36" rx="18" fill="#42C6A5"/>
+  <text x="56" y="59" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">5 FUNCTIONAL ZONES</text>
 </svg>

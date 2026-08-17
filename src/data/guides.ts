@@ -17,7 +17,7 @@ export const EDITORIAL_GUIDES: GuideMeta[] = [
     slug: 'college-dorm-checklist',
     href: '/college-dorm-checklist/',
     title: 'The Master College Dorm Checklist: Category-by-Category Guide',
-    description: 'An interactive, comprehensive checklist covering all 9 dorm zones with printable progress, local browser storage, and prohibited item warnings.',
+    description: 'An interactive, comprehensive checklist covering all 10 dorm categories with printable progress, local browser storage, and prohibited item warnings.',
     category: 'checklists',
     categoryLabel: 'Interactive Checklist',
     lastUpdated: '2026-08-15',

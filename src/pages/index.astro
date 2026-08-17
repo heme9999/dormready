@@ -12,7 +12,7 @@ import { CHECKLIST_CATEGORIES } from '../data/checklist';
 const featuredGuides = EDITORIAL_GUIDES.filter((g) => g.featured);
 const recentGuides = [...EDITORIAL_GUIDES].sort(
   (a, b) => new Date(b.lastUpdated).getTime() - new Date(a.lastUpdated).getTime()
-).slice(0, 4);
+).slice(0, 5);
 
 const trustPoints = [
   {
@@ -50,30 +50,38 @@ const trustPoints = [
   title="DormReady | Practical College Dorm Checklists, Packing & Tech Guides"
   description="Bright, optimistic, and practical college dorm planning for U.S. freshmen and parents. Master 46-item interactive checklist, verified student discounts, and realistic $300-$1000 budget plans."
 >
-  <!-- Hero Section: Desktop Split Layout -->
-  <section class="relative bg-gradient-to-b from-brand-blue-50/60 via-white to-white border-b border-slate-200 pt-10 pb-16 lg:pt-16 lg:pb-24 overflow-hidden">
+  <!-- Hero Section: Desktop Split Layout / Mobile Linear Sequence -->
+  <section class="relative bg-gradient-to-b from-brand-blue-50/60 via-white to-white border-b border-slate-200 pt-8 pb-14 lg:pt-16 lg:pb-24 overflow-hidden">
     <div class="container-custom">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-        <!-- Hero Left Column: Headline & Actions -->
-        <div class="lg:col-span-7 space-y-6">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-white text-brand-blue-700 border border-brand-blue-200 shadow-sm">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <!-- Hero Column: Flex ordering for mobile (1. Badge, 2. H1, 3. Illustration, 4. Paragraph, 5. CTAs, 6. Budget link) -->
+        <div class="lg:col-span-7 flex flex-col space-y-4 sm:space-y-6">
+          <!-- 1. Edition Badge -->
+          <div class="order-1 self-start inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-white text-brand-blue-700 border border-brand-blue-200 shadow-sm">
             <span class="w-2.5 h-2.5 rounded-full bg-brand-coral animate-pulse"></span>
             <span>Fall 2026 Freshman Move-in Edition</span>
           </div>
 
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-brand-navy tracking-tight leading-[1.1]">
+          <!-- 2. H1 Headline -->
+          <h1 class="order-2 text-3xl sm:text-5xl lg:text-6xl font-black text-brand-navy tracking-tight leading-[1.1]">
             Bright, practical dorm prep <span class="text-brand-blue">without the fluff</span> or wasted money.
           </h1>
 
-          <p class="text-base sm:text-lg text-navy-700 leading-relaxed font-sans max-w-2xl">
+          <!-- 3. Mobile Hero Illustration (Order 3 on mobile < lg, hidden on desktop lg:) -->
+          <div class="order-3 lg:hidden my-2">
+            <HeroVisual />
+          </div>
+
+          <!-- 4. Supporting Paragraph -->
+          <p class="order-4 text-sm sm:text-base lg:text-lg text-navy-700 leading-relaxed font-sans max-w-2xl">
             The honest guide for U.S. college freshmen and parents. No 50-item luxury wishlists—just realistic Twin XL bedding, fire-code safety rules, roommate coordination strategies, and verified student discounts.
           </p>
 
-          <!-- CTAs -->
-          <div class="flex flex-wrap items-center gap-3.5 pt-2">
+          <!-- 5. Primary & Secondary CTAs -->
+          <div class="order-5 flex flex-wrap items-center gap-3 pt-1">
             <a
               href="/college-dorm-checklist/"
-              class="inline-flex items-center gap-2 px-6 py-4 rounded-2xl bg-brand-blue text-white font-black text-base hover:bg-brand-blue-600 transition-all shadow-md hover:shadow-glow-blue hover:-translate-y-0.5"
+              class="inline-flex items-center gap-2 px-5 sm:px-6 py-3.5 sm:py-4 rounded-2xl bg-brand-blue text-white font-black text-sm sm:text-base hover:bg-brand-blue-600 transition-all shadow-md hover:shadow-glow-blue hover:-translate-y-0.5"
             >
               <span>Open 46-Item Checklist</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -83,22 +91,25 @@ const trustPoints = [
 
             <a
               href="/college-packing-list/"
-              class="inline-flex items-center gap-2 px-5 py-4 rounded-2xl bg-white border-2 border-slate-200 text-brand-navy font-bold text-base hover:border-brand-coral hover:text-brand-coral hover:bg-brand-coral-50/50 transition-all shadow-sm"
+              class="inline-flex items-center gap-2 px-4 sm:px-5 py-3.5 sm:py-4 rounded-2xl bg-white border-2 border-slate-200 text-brand-navy font-bold text-sm sm:text-base hover:border-brand-coral hover:text-brand-coral hover:bg-brand-coral-50/50 transition-all shadow-sm"
             >
               <span>Packing Strategy</span>
             </a>
+          </div>
 
+          <!-- 6. Budget Plans Link -->
+          <div class="order-6 pt-0.5">
             <a
               href="/budget/"
-              class="inline-flex items-center gap-1.5 px-4 py-4 rounded-2xl text-navy-700 hover:text-brand-blue font-bold text-sm hover:underline"
+              class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-navy-700 hover:text-brand-blue hover:underline"
             >
-              <span>Budget Plans ($300 / $500 / $1K) →</span>
+              <span>Explore Budget Blueprints ($300 / $500 / $1,000) →</span>
             </a>
           </div>
         </div>
 
-        <!-- Hero Right Column: Prominent Dorm Scene Visual -->
-        <div class="lg:col-span-5">
+        <!-- Hero Right Column (Desktop Only lg:) -->
+        <div class="hidden lg:block lg:col-span-5">
           <HeroVisual />
         </div>
       </div>
@@ -180,7 +191,7 @@ const trustPoints = [
           href="/guides/"
           class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-brand-blue hover:text-brand-blue-700 hover:underline"
         >
-          <span>View All 16 Guides & Blueprints</span>
+          <span>View All {EDITORIAL_GUIDES.length} Guides &amp; Blueprints</span>
           <span>→</span>
         </a>
       </div>
@@ -236,7 +247,7 @@ const trustPoints = [
     </div>
   </section>
 
-  <!-- Recently Updated Audit Trail -->
+  <!-- Recently Updated Editorial Content: Compact Text-based Update List (No Thumbnail Repetition) -->
   <section class="py-14 sm:py-20 bg-white">
     <div class="container-custom">
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
@@ -245,13 +256,36 @@ const trustPoints = [
           <h2 class="text-xl sm:text-2xl font-black text-brand-navy">Recently Updated Editorial Content</h2>
         </div>
         <a href="/editorial-policy/" class="text-xs font-bold text-navy-600 hover:text-brand-blue">
-          Editorial & Fact-Checking Process →
+          Editorial &amp; Fact-Checking Process →
         </a>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="divide-y divide-slate-200 border-y border-slate-200 bg-white">
         {recentGuides.map((guide) => (
-          <GuideCard guide={guide} />
+          <div class="py-4 sm:py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 group hover:bg-slate-50/60 px-2 sm:px-3 rounded-xl transition-colors">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2 text-xs">
+                <span class="font-bold text-brand-blue">{guide.categoryLabel}</span>
+                <span class="text-slate-300">•</span>
+                <span class="text-navy-500">{guide.readingTimeMinutes} min read</span>
+                <span class="text-slate-300">•</span>
+                <span class="text-navy-500">Updated <time datetime={guide.lastUpdated}>{guide.lastUpdated}</time></span>
+              </div>
+              <a href={guide.href} class="block font-black text-brand-navy text-sm sm:text-base group-hover:text-brand-blue transition-colors">
+                {guide.title}
+              </a>
+              <p class="text-xs text-navy-600 line-clamp-1 max-w-3xl">
+                {guide.description}
+              </p>
+            </div>
+            <a
+              href={guide.href}
+              class="shrink-0 text-xs font-bold text-brand-blue group-hover:translate-x-1 transition-all inline-flex items-center gap-1 self-start sm:self-center"
+            >
+              <span>Read Guide</span>
+              <span>→</span>
+            </a>
+          </div>
         ))}
       </div>
     </div>
