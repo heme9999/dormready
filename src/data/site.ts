@@ -4,18 +4,23 @@ export interface NavItem {
   badge?: string;
 }
 
+const siteEnv = (typeof process !== 'undefined' && process.env.PUBLIC_SITE_ENV) || (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.PUBLIC_SITE_ENV) || 'preview';
+const isProduction = siteEnv === 'production';
+const siteUrl = (typeof process !== 'undefined' && process.env.PUBLIC_SITE_URL) || (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.PUBLIC_SITE_URL) || (isProduction ? 'https://dormready.org' : 'https://dormready-preview.pages.dev');
+
 export const SITE_CONFIG = {
   name: 'DormReady',
   tagline: 'Practical, honest dorm planning for U.S. college freshmen and families.',
   description: 'Evidence-based dorm checklists, packing strategies, tech buying guides, and verified student discounts. No affiliate fluff, no inflated lists.',
-  url: 'https://dormready-preview.pages.dev',
-  env: (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.PUBLIC_SITE_ENV) || 'preview',
-  isNoIndex: (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.PUBLIC_SITE_ENV) !== 'production',
-  editorialEmail: 'editorial@dormready.org',
-  lastSiteUpdate: '2026-08-15',
+  url: siteUrl,
+  env: siteEnv,
+  isNoIndex: !isProduction,
+  githubRepoUrl: 'https://github.com/heme9999/dormready',
+  contactNotice: 'For questions, policy updates, or corrections, submit an issue via our GitHub repository.',
+  lastSiteUpdate: '2026-08-17',
   author: {
     name: 'DormReady Editorial Team',
-    url: 'https://dormready-preview.pages.dev/about',
+    url: `${siteUrl}/about/`,
   },
   nav: [
     { label: 'Checklist', href: '/college-dorm-checklist/' },

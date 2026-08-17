@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { SITE_CONFIG } from '../data/site';
 
 const breadcrumbs = [
   { name: 'Terms of Use', url: '/terms/' },
@@ -25,7 +26,7 @@ const breadcrumbs = [
       </h1>
 
       <p class="mt-4 text-base sm:text-lg text-navy-700 leading-relaxed font-sans">
-        Last updated: August 15, 2026. Please read these starter terms carefully before using DormReady.
+        Last updated: August 17, 2026. Please read these starter terms carefully before using DormReady.
       </p>
     </div>
   </div>
@@ -62,7 +63,7 @@ const breadcrumbs = [
     <section class="space-y-3">
       <h2 class="text-xl font-bold font-serif text-navy-900">4. Contact Information</h2>
       <p>
-        For inquiries regarding these terms, please contact <a href="mailto:editorial@dormready.org" class="underline text-forest-800">editorial@dormready.org</a>.
+        For inquiries regarding these terms, please visit our <a href={SITE_CONFIG.githubRepoUrl} target="_blank" rel="noopener noreferrer" class="underline text-forest-800">GitHub Project</a>.
       </p>
     </section>
   </div>

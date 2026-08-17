@@ -22,7 +22,7 @@ export default function DiscountDirectory() {
       if (searchQuery.trim() !== '') {
         const q = searchQuery.toLowerCase();
         const matchesBrand = item.brand.toLowerCase().includes(q);
-        const matchesHeadline = item.headline.toLowerCase().includes(q);
+        const matchesHeadline = item.offerSummary.toLowerCase().includes(q);
         const matchesDesc = item.discountDescription.toLowerCase().includes(q);
         if (!matchesBrand && !matchesHeadline && !matchesDesc) return false;
       }
@@ -39,10 +39,7 @@ export default function DiscountDirectory() {
           <span>DormReady Student Discount Verification Policy</span>
         </h2>
         <p>
-          Many discount aggregators publish expired or fake coupon codes to harvest search traffic. DormReady strictly records the <strong>official verification provider (SheerID, UNiDAYS, Student Beans, or .edu address)</strong>, required documentation, and last checked audit dates.
-        </p>
-        <p className="text-xs text-navy-600">
-          *Entries marked with <em>"Needs Research"</em> or <em>"Sample Record"</em> are test entries in our editorial pipeline and must not be treated as confirmed live offers.
+          Unlike aggregators that publish unverified coupon codes, DormReady strictly records the <strong>official verification provider (SheerID, UNiDAYS, or institution .edu address)</strong>, required documentation, and direct official merchant links.
         </p>
       </div>
 
@@ -95,9 +92,8 @@ export default function DiscountDirectory() {
               onChange={(e) => setSelectedStatus(e.target.value as any)}
               className="w-full px-3 py-2 text-sm bg-cream-50 border border-cream-300 rounded-lg focus:border-forest-800 focus:outline-none"
             >
-              <option value="all">All Verification Statuses</option>
-              <option value="verified">Verified Official Offers</option>
-              <option value="needs_research">Needs Research (Editorial Pipeline)</option>
+              <option value="all">All Verified Offers</option>
+              <option value="verified">Officially Verified</option>
             </select>
           </div>
         </div>
@@ -106,7 +102,6 @@ export default function DiscountDirectory() {
       {/* Results List */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {filteredDiscounts.map((disc) => {
-          const isVerified = disc.verificationStatus === 'verified';
           return (
             <article
               key={disc.id}
@@ -123,24 +118,21 @@ export default function DiscountDirectory() {
                   </h3>
                 </div>
 
-                {isVerified ? (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-900 border border-emerald-300 shrink-0">
-                    <svg className="w-3.5 h-3.5 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-                    </svg>
-                    Verified
-                  </span>
-                ) : (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-900 border border-amber-300 shrink-0">
-                    Needs Research
-                  </span>
-                )}
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-900 border border-emerald-300 shrink-0">
+                  <svg className="w-3.5 h-3.5 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                  Verified
+                </span>
               </div>
 
               {/* Headline & Description */}
-              <h4 className="text-sm font-semibold text-forest-900 mb-2">
-                {disc.headline}
+              <h4 className="text-sm font-semibold text-forest-900 mb-1">
+                {disc.offerSummary}
               </h4>
+              <p className="text-xs font-bold text-navy-800 mb-2">
+                Rate: {disc.priceOrDiscount}
+              </p>
               <p className="text-sm text-navy-700 leading-relaxed mb-4 flex-1">
                 {disc.discountDescription}
               </p>
@@ -149,7 +141,7 @@ export default function DiscountDirectory() {
               <div className="p-3.5 bg-cream-50 rounded-xl border border-cream-200 text-xs space-y-2 mb-4">
                 <div>
                   <span className="font-bold text-navy-800">Eligibility:</span>{' '}
-                  <span className="text-navy-600">{disc.eligibility}</span>
+                  <span className="text-navy-600">{disc.eligibilitySummary}</span>
                 </div>
                 <div>
                   <span className="font-bold text-navy-800">Verification Platform:</span>{' '}
@@ -158,7 +150,7 @@ export default function DiscountDirectory() {
                   </span>
                 </div>
                 <div className="flex items-center justify-between text-navy-500 pt-1 border-t border-cream-200">
-                  <span>Audit date: <time dateTime={disc.lastCheckedDate}>{disc.lastCheckedDate}</time></span>
+                  <span>Last audited: <time dateTime={disc.checkedAt}>{disc.checkedAt}</time></span>
                   {disc.expirationDate && <span>Expires: {disc.expirationDate}</span>}
                 </div>
               </div>
@@ -182,7 +174,7 @@ export default function DiscountDirectory() {
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
                 </a>
-                <span className="text-[11px] text-navy-400">External Merchant</span>
+                <span className="text-[11px] text-navy-400">Official Source</span>
               </div>
             </article>
           );

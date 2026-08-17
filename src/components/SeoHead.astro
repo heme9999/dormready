@@ -38,6 +38,8 @@ const {
 const fullTitle = title.includes('DormReady') ? title : `${title} | DormReady`;
 const finalCanonical = canonicalUrl || new URL(Astro.url.pathname, SITE_CONFIG.url).href;
 const shouldNoIndex = noindex || SITE_CONFIG.isNoIndex;
+const ogImageUrl = `${SITE_CONFIG.url}/images/dormready-og.png`;
+const ogImageAlt = 'DormReady - Practical, Honest College Dorm Planning and Checklists';
 
 // JSON-LD schemas
 const orgSchema = {
@@ -54,11 +56,7 @@ const websiteSchema = {
   '@type': 'WebSite',
   name: 'DormReady',
   url: SITE_CONFIG.url,
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: `${SITE_CONFIG.url}/guides/?q={search_term_string}`,
-    'query-input': 'required name=search_term_string',
-  },
+  description: SITE_CONFIG.description,
 };
 
 let breadcrumbSchema = null;
@@ -82,6 +80,7 @@ if (ogType === 'article') {
     '@type': 'Article',
     headline: title,
     description: description,
+    image: ogImageUrl,
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': finalCanonical,
@@ -143,6 +142,10 @@ if (faqs.length > 0) {
 <meta property="og:url" content={finalCanonical} />
 <meta property="og:site_name" content="DormReady" />
 <meta property="og:locale" content="en_US" />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={ogImageAlt} />
 {publishedTime && <meta property="article:published_time" content={publishedTime} />}
 {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
 
@@ -150,6 +153,8 @@ if (faqs.length > 0) {
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={fullTitle} />
 <meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
+<meta name="twitter:image:alt" content={ogImageAlt} />
 
 <!-- Structured Data -->
 <script is:inline type="application/ld+json" set:html={JSON.stringify(orgSchema)} />

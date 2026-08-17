@@ -11,10 +11,10 @@ describe('Laptop Comparison Data', () => {
     }
   });
 
-  it('all laptop profiles should be marked as placeholders needing research', () => {
+  it('all laptop profiles should be marked as specification targets for college research', () => {
     for (const profile of LAPTOP_PROFILES) {
       expect(profile.isPlaceholder).toBe(true);
-      expect(profile.editorialStatus).toContain('PLACEHOLDER');
+      expect(profile.editorialStatus).toContain('SPECIFICATION TARGET');
       expect(profile.recommendedSpecs.cpu).toBeTruthy();
       expect(profile.recommendedSpecs.ram).toBeTruthy();
       expect(profile.recommendedSpecs.storage).toBeTruthy();

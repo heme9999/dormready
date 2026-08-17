@@ -56,10 +56,10 @@ export default function LaptopComparison() {
           <span className="text-base text-navy-900">How We Structure College Laptop Requirements</span>
         </div>
         <p>
-          Unlike generic review websites that fabricate benchmarks or push affiliate kickbacks, DormReady evaluates laptops through <strong>departmental software compatibility</strong>, <strong>battery longevity during 8-hour classroom days</strong>, and <strong>repairability</strong>.
+          Rather than publishing arbitrary product rankings, DormReady structures laptop recommendations around <strong>departmental software compatibility</strong>, <strong>academic workload demands</strong>, and <strong>hardware longevity</strong>.
         </p>
         <p className="text-xs text-navy-600">
-          *Note: The hardware entries below are <em>structured specification reference profiles</em> designed to guide your university shopping. Always check your university department's mandatory spec sheet before purchasing.
+          *Note: The hardware entries below are <em>generalized specification reference profiles</em> to help you evaluate current laptop models. Always consult your college department's official hardware requirements before purchasing.
         </p>
       </div>
 
@@ -135,7 +135,7 @@ export default function LaptopComparison() {
           {/* Battery Priority */}
           <div>
             <label htmlFor="battery-select" className="block text-xs font-bold uppercase tracking-wider text-navy-700 mb-1">
-              Battery Endurance
+              Target Battery Capability
             </label>
             <select
               id="battery-select"
@@ -143,9 +143,9 @@ export default function LaptopComparison() {
               onChange={(e) => setSelectedBattery(e.target.value as any)}
               className="w-full px-3 py-2 text-sm bg-cream-50 border border-cream-300 rounded-lg focus:border-forest-800 focus:outline-none"
             >
-              <option value="all">Any Battery Endurance</option>
+              <option value="all">Any Battery Capability</option>
               <option value="all_day">All-Day Class Life (8-12 hrs)</option>
-              <option value="extreme">Extreme Efficiency (14+ hrs)</option>
+              <option value="extreme">High Efficiency (14+ hrs)</option>
               <option value="standard">Standard (4-8 hrs / plugged-in workstation)</option>
             </select>
           </div>
@@ -185,14 +185,14 @@ export default function LaptopComparison() {
             {/* Header & Badges */}
             <div>
               <div className="flex flex-wrap items-center gap-2 mb-2">
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-900 border border-amber-300">
+                <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-cream-200 text-navy-800 border border-cream-300">
                   {profile.editorialStatus}
                 </span>
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-cream-200 text-navy-800">
+                <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-cream-100 text-navy-700">
                   OS: {profile.os}
                 </span>
                 <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-forest-50 text-forest-800 border border-forest-100">
-                  Est: {profile.estimatedPriceRange}
+                  Est. Baseline: {profile.estimatedPriceRange}
                 </span>
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-navy-900 font-sans">
@@ -245,7 +245,7 @@ export default function LaptopComparison() {
                 </ul>
               </div>
               <div className="p-4 bg-rose-50/50 border border-rose-200 rounded-xl">
-                <h4 className="font-bold text-rose-950 mb-2">Trade-offs & Limitations</h4>
+                <h4 className="font-bold text-rose-950 mb-2">Trade-offs & Considerations</h4>
                 <ul className="space-y-1.5 list-disc list-inside text-rose-900">
                   {profile.cons.map((con, idx) => (
                     <li key={idx}>{con}</li>
@@ -256,7 +256,7 @@ export default function LaptopComparison() {
 
             {/* Research Checklist */}
             <div className="pt-4 border-t border-cream-200 text-xs text-navy-600">
-              <span className="font-bold text-navy-800 block mb-1">Our Testing & Verification Criteria:</span>
+              <span className="font-bold text-navy-800 block mb-1">Pre-Purchase Verification Checklist:</span>
               <ul className="space-y-0.5 list-disc list-inside">
                 {profile.researchChecklist.map((item, idx) => (
                   <li key={idx}>{item}</li>

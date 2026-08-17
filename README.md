@@ -2,19 +2,20 @@
 
 > Practical, trustworthy, and budget-conscious college dorm planning, packing strategies, tech buying guides, and verified student discounts for U.S. college freshmen and parents.
 
-DormReady is a production-grade, fast, accessible static editorial platform built with Astro, TypeScript in strict mode, and Tailwind CSS. It is architected for long-term organic search authority, zero-database simplicity, and seamless deployment to Cloudflare Pages.
+DormReady is a fast, accessible static editorial platform built with Astro 7.x, TypeScript in strict mode, and Tailwind CSS. It is architected for long-term organic search authority, zero-database simplicity, and seamless deployment to Cloudflare Pages.
 
 ---
 
-## 🚀 Technology Stack
+## 🚀 Technology Stack & Runtime
 
-- **Framework**: [Astro 5.x](https://astro.build/) (Static Site Generation `output: 'static'`)
+- **Framework**: [Astro 7.x](https://astro.build/) (Static Site Generation `output: 'static'`)
+- **Runtime**: Node.js `>=22.12.0` (Pinned via `.nvmrc` to Node 22 LTS)
 - **Language**: [TypeScript](https://www.typescriptlang.org/) (Strict mode enabled)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/) with accessible custom warm palette
 - **Interactive Islands**: [React 18](https://react.dev/) (Used strictly for the interactive checklist, filter matrices, and search)
-- **Testing**: [Vitest](https://vitest.dev/) for unit & data integrity testing
-- **SEO & Structured Data**: Native JSON-LD (Organization, WebSite, BreadcrumbList, Article, FAQPage), `@astrojs/sitemap`, OpenGraph & Twitter Cards
-- **Deployment**: [Cloudflare Pages](https://pages.cloudflare.com/) with static asset caching and preview-mode indexing protection
+- **Testing**: [Vitest](https://vitest.dev/) for unit, integration, and build artifact auditing
+- **SEO & Structured Data**: Native JSON-LD (Organization, WebSite, BreadcrumbList, Article, FAQPage), `@astrojs/sitemap`, OpenGraph (1200×630) & Twitter Cards
+- **Deployment**: [Cloudflare Pages](https://pages.cloudflare.com/) with dynamic build-time indexing and security headers
 
 ---
 
@@ -23,9 +24,9 @@ DormReady is a production-grade, fast, accessible static editorial platform buil
 ```text
 dormready/
 ├── public/
-│   ├── _headers                    # Cloudflare Pages security & noindex headers
 │   ├── favicon.svg                 # Scalable brand vector icon
-│   └── robots.txt                  # Robots directive (Disallow in preview mode)
+│   └── images/
+│       └── dormready-og.png        # 1200x630 Open Graph sharing image
 ├── src/
 │   ├── components/
 │   │   ├── AffiliateDisclosure.astro # Reusable FTC-compliant disclosure banner
@@ -35,11 +36,11 @@ dormready/
 │   │   ├── LaptopComparison.tsx    # Major-by-major laptop filter matrix island
 │   │   ├── GuideCard.astro         # Card component for guide archives
 │   │   ├── Header.astro            # Responsive navigation bar with mobile drawer
-│   │   ├── Footer.astro            # Structured footer with last-audit timestamps
+│   │   ├── Footer.astro            # Structured footer with audit timestamps & repo links
 │   │   └── SeoHead.astro           # Dynamic metadata, canonical, OpenGraph & JSON-LD
 │   ├── data/
 │   │   ├── checklist.ts            # Typed dorm checklist items across 10 categories
-│   │   ├── discounts.ts            # Verified & pending student discount records
+│   │   ├── discounts.ts            # Audited student discount records
 │   │   ├── laptops.ts              # Hardware comparison reference profiles
 │   │   ├── guides.ts               # Editorial metadata, categories, and reading times
 │   │   └── site.ts                 # Global metadata, navigation & env config
@@ -69,11 +70,16 @@ dormready/
 │       └── global.css              # Global styles, variables, focus rings & print media
 ├── tests/
 │   ├── checklist.test.ts           # Checklist data integrity & fire safety tests
-│   ├── discounts.test.ts           # Discount verification tests
-│   ├── laptops.test.ts             # Laptop specification tests
+│   ├── checklist-logic.test.ts     # Checklist math, filtering & state tests
+│   ├── discounts.test.ts           # Discount verification tests (no example.com, audited fields)
+│   ├── dist-html-audit.test.ts     # Rendered HTML audit (internal links, no fake alert, OG tags)
+│   ├── indexing-build.test.ts      # Preview vs production build output verification
+│   ├── laptops.test.ts             # Laptop specification target tests
 │   └── site.test.ts                # Route & slug validation
-├── astro.config.mjs
+├── .nvmrc                          # Pinned to Node 22 LTS (22.23.1)
+├── astro.config.mjs                # Astro configuration with build-time indexing hook
 ├── package.json
+├── postcss.config.cjs
 ├── tailwind.config.mjs
 ├── tsconfig.json
 └── vitest.config.ts
@@ -84,17 +90,12 @@ dormready/
 ## 💻 Local Development
 
 ### 1. Prerequisites
-- **Node.js**: v20.x or v22.x LTS
-- **npm**: v10.x or newer
+- **Node.js**: `v22.12.0+` (Run `nvm use` to activate `.nvmrc`)
+- **npm**: `v10.x` or newer
 
-### 2. Installation
+### 2. Clean Installation
 ```bash
-# Clone the repository
-git clone https://github.com/heme9999/dormready.git
-cd dormready
-
-# Install dependencies cleanly
-npm install
+npm ci
 ```
 
 ### 3. Running the Dev Server
@@ -105,7 +106,7 @@ Open [http://localhost:4321](http://localhost:4321) in your browser.
 
 ### 4. Running Quality Checks
 ```bash
-# Run Vitest test suite
+# Run Vitest automated test suite (24 tests)
 npm run test
 
 # Run TypeScript strict type checking
@@ -114,8 +115,11 @@ npm run typecheck
 # Run Astro project diagnostics
 npm run check
 
-# Run production build
+# Run production static build
 npm run build
+
+# Run security audit (0 vulnerabilities)
+npm run audit
 ```
 
 ---
@@ -130,56 +134,50 @@ When connecting the GitHub repository to Cloudflare Pages:
 | **Framework preset** | `Astro` |
 | **Build command** | `npm run build` |
 | **Build output directory** | `dist` |
-| **Node.js Version** | `20` (or `22`) |
 | **Root directory** | `/` |
 
 ### Environment Variables
-- `PUBLIC_SITE_ENV=preview` (Default for preview deployments; activates `noindex, nofollow`, `robots.txt Disallow: /`, and `X-Robots-Tag` header)
+Set the following environment variables in Cloudflare Pages (**Settings > Environment variables**):
+
+| Variable | Preview Value | Production Value | Purpose |
+| :--- | :--- | :--- | :--- |
+| `NODE_VERSION` | `22` | `22` | Sets Cloudflare build environment to Node 22 LTS |
+| `PUBLIC_SITE_ENV` | `preview` | `production` | **Single source of truth** for robots, headers & meta indexing |
+| `PUBLIC_SITE_URL` | `https://dormready-preview.pages.dev` | `https://dormready.org` | Sets canonical URLs and XML sitemap |
 
 ---
 
-## 🔒 Indexing Protection & Production Switch Instructions
+## 🔒 Indexing Protection & Launch Instructions
 
-### Preview Mode (Current Status)
-To prevent search engines from indexing the temporary `*.pages.dev` preview domain:
-1. `PUBLIC_SITE_ENV` defaults to `preview`.
-2. `public/_headers` serves `X-Robots-Tag: noindex, nofollow`.
-3. `public/robots.txt` specifies `Disallow: /`.
-4. `SeoHead.astro` injects `<meta name="robots" content="noindex, nofollow" />`.
+### Preview Mode (Default)
+When `PUBLIC_SITE_ENV=preview` (or unset), the build hook automatically generates:
+1. `dist/robots.txt` containing `User-agent: *\nDisallow: /`
+2. `dist/_headers` containing `X-Robots-Tag: noindex, nofollow`
+3. HTML `<meta name="robots" content="noindex, nofollow" />` on every page
 
 ### Switching to Public Production Mode (Custom Domain Launch)
-When ready to launch on your official custom domain (e.g., `https://dormready.org`):
+To switch the site to indexable production, **no manual code edits are required across files**:
 
-1. **Cloudflare Pages Environment Variable**:
-   Set `PUBLIC_SITE_ENV=production` in the Cloudflare Pages project settings (Production environment).
-2. **Update `public/robots.txt`**:
-   ```txt
-   User-agent: *
-   Allow: /
-
-   Sitemap: https://dormready.org/sitemap-index.xml
+1. In the Cloudflare Pages dashboard for the production environment, set:
+   ```env
+   PUBLIC_SITE_ENV=production
+   PUBLIC_SITE_URL=https://dormready.org
+   NODE_VERSION=22
    ```
-3. **Update `public/_headers`**:
-   Remove the `X-Robots-Tag: noindex, nofollow` line from `/*`.
-4. **Update `astro.config.mjs`**:
-   Set `site: 'https://dormready.org'`.
+2. Trigger a production build.
+3. The build hook will automatically output:
+   - `dist/robots.txt` with `User-agent: *\nAllow: /\n\nSitemap: https://dormready.org/sitemap-index.xml`
+   - `dist/_headers` with NO `X-Robots-Tag` header
+   - HTML `<meta name="robots" content="index, follow..." />`
 
 ---
 
 ## 📝 Content Editing Workflow
 
-1. **Adding/Editing Checklist Items**: Edit [`src/data/checklist.ts`](file:///src/data/checklist.ts). Each item supports category, need tier (`essential` | `recommended` | `optional`), budget tier (`low` | `mid` | `high`), prohibited item warnings, and roommate coordination tags.
-2. **Updating Student Discounts**: Edit [`src/data/discounts.ts`](file:///src/data/discounts.ts). Include brand, verification method (e.g. SheerID, UNiDAYS, .edu), last checked date, and official URL.
-3. **Adding Editorial Guides**: Add metadata to [`src/data/guides.ts`](file:///src/data/guides.ts) and create the corresponding page in `src/pages/` using `<GuideLayout>`.
-
----
-
-## 🔍 Known Placeholders & Items Awaiting Research
-
-In accordance with our [Editorial Policy](file:///src/pages/editorial-policy.astro), no fake specifications, ratings, or testing claims are published:
-- **Laptop Hardware Profiles**: Marked as `SPECIFICATION PLACEHOLDER — Pending 2026-2027 Model Testing` with hardware reference baselines.
-- **Sample Retail Discounts**: Discount entries `disc-7` and `disc-8` are flagged as `needs_research` for testing the verification workflow.
-- **Privacy Policy & Terms**: Starter templates clearly flagged `Starter Policy — Pending Legal Review`.
+1. **Checklist Items**: Edit [`src/data/checklist.ts`](file:///src/data/checklist.ts).
+2. **Student Discounts**: Edit [`src/data/discounts.ts`](file:///src/data/discounts.ts). All entries must include `checkedAt`, `officialSourceUrl`, `offerSummary`, `priceOrDiscount`, and `eligibilitySummary`.
+3. **Hardware Profiles**: Edit [`src/data/laptops.ts`](file:///src/data/laptops.ts). Profiles are labeled as specification targets for student research.
+4. **Editorial Guides**: Add metadata to [`src/data/guides.ts`](file:///src/data/guides.ts) and create the corresponding page in `src/pages/`.
 
 ---
 

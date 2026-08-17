@@ -4,6 +4,7 @@ import Breadcrumbs, { type BreadcrumbItem } from '../components/Breadcrumbs.astr
 import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
 import type { FaqItem } from '../components/SeoHead.astro';
 import { EDITORIAL_GUIDES } from '../data/guides';
+import { SITE_CONFIG } from '../data/site';
 
 export interface Props {
   title: string;
@@ -98,7 +99,7 @@ const relatedGuides = EDITORIAL_GUIDES.filter(
         DormReady does not publish sponsored reviews, artificial rankings, or manufacturer-supplied marketing copy. Every dorm guideline is vetted against real residence hall fire codes, communal living constraints, and budget practicalities.
       </p>
       <p class="text-xs text-navy-500">
-        Have a correction or college housing policy change? Email <a href="mailto:editorial@dormready.org" class="underline text-forest-800">editorial@dormready.org</a>.
+        Have a correction or college housing policy change? Submit an issue on our <a href={SITE_CONFIG.githubRepoUrl} target="_blank" rel="noopener noreferrer" class="underline text-forest-800">GitHub Project</a>.
       </p>
     </div>
 
