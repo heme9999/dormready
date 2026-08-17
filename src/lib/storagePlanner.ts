@@ -116,10 +116,58 @@ export function isValidPositiveNumber(val: string, unit: MeasurementUnit = 'inch
   return result.status === 'valid';
 }
 
+/**
+ * Formats a measurement value for Markdown / text export.
+ * Distinguishes Unmeasured, Invalid, and Needs review states.
+ */
+export function formatMeasurementForSummary(value: string, unit: MeasurementUnit): string {
+  const result = validateMeasurement(value, unit);
+  switch (result.status) {
+    case 'empty':
+      return 'Unmeasured';
+    case 'invalid':
+      return value.trim() ? `${value.trim()} — Invalid` : 'Invalid';
+    case 'review':
+      return `${result.value} ${unit === 'inches' ? 'in' : 'ft'} — Needs review`;
+    case 'valid':
+      return `${result.value} ${unit === 'inches' ? 'in' : 'ft'}`;
+  }
+}
+
+/**
+ * Returns accessibility props and validation message metadata for a numeric measurement input.
+ */
+export function getMeasurementAccessibility(
+  inputId: string,
+  value: string,
+  unit: MeasurementUnit = 'inches'
+) {
+  const validation = validateMeasurement(value, unit);
+  const isInvalid = validation.status === 'invalid';
+  const isReview = validation.status === 'review';
+  const hasProblem = isInvalid || isReview;
+  const message = hasProblem ? validation.message : undefined;
+
+  return {
+    validation,
+    isInvalid,
+    isReview,
+    hasProblem,
+    message,
+    messageId: `${inputId}-message`,
+    inputProps: {
+      id: inputId,
+      'aria-invalid': isInvalid ? (true as const) : undefined,
+      'aria-describedby': hasProblem ? `${inputId}-message` : undefined,
+    },
+  };
+}
+
 export interface ZoneStatus {
   status: 'ready' | 'wait';
   badgeLabel: string;
   message: string;
+  outcome?: 'allowed' | 'prohibited' | 'unconfirmed';
   subDetails?: {
     [key: string]: {
       ready: boolean;
@@ -173,19 +221,20 @@ export function checkZoneStatuses(data: DormMeasurements): {
   const deskReady = deskWidthValid && deskDepthValid && deskHutchValid;
   if (deskReady) overallReadyCount++;
 
-  // 4. Wall Zone (Separated)
-  const wallMountingConfirmed = data.wallAndDoor.mountingPolicy !== 'unconfirmed';
-  const wallReady = wallMountingConfirmed;
-  if (wallReady) overallReadyCount++;
+  // 4. Wall Zone (Requires BOTH wall material and mounting policy)
+  const wallMaterialConfirmed = data.wallAndDoor.wallMaterial !== 'unconfirmed';
+  const wallMountingPolicyConfirmed = data.wallAndDoor.mountingPolicy !== 'unconfirmed';
+  const wallPolicyComplete = wallMaterialConfirmed && wallMountingPolicyConfirmed;
+  if (wallPolicyComplete) overallReadyCount++;
 
-  // 5. Door Zone (Separated)
-  const doorHookProhibited = data.wallAndDoor.overDoorHookPermitted === 'no';
-  const doorHookPermitted = data.wallAndDoor.overDoorHookPermitted === 'yes';
-  const doorReady = doorHookPermitted;
-  if (doorReady) overallReadyCount++;
+  // 5. Door Zone (Policy is complete if yes or no; unconfirmed is wait)
+  const doorPolicyComplete = data.wallAndDoor.overDoorHookPermitted !== 'unconfirmed';
+  const doorHooksAllowed = data.wallAndDoor.overDoorHookPermitted === 'yes';
+  const doorHooksProhibited = data.wallAndDoor.overDoorHookPermitted === 'no';
+  if (doorPolicyComplete) overallReadyCount++;
 
   // Combined Wall & Door for backward compatibility
-  const wallAndDoorReady = wallReady && doorReady;
+  const wallAndDoorComplete = wallPolicyComplete && doorPolicyComplete;
 
   // 6. Shared Floor Zone
   const floorWidthValid = isValidPositiveNumber(data.sharedFloor.openFloorWidthFeet, 'feet');
@@ -251,35 +300,36 @@ export function checkZoneStatuses(data: DormMeasurements): {
         : 'Measure desk width, surface depth, and vertical hutch clearance before purchasing desktop organizers or risers.',
     },
     wall: {
-      status: wallReady ? 'ready' : 'wait',
-      badgeLabel: wallReady ? '✓ Wall Rules Verified' : '⏳ Wall Policy Needed',
-      message: wallReady
-        ? 'Wall mounting policy confirmed with your assigned residence hall rules.'
-        : 'Confirm permitted wall fasteners (e.g. pushpins vs adhesives) in your housing manual.',
+      status: wallPolicyComplete ? 'ready' : 'wait',
+      badgeLabel: wallPolicyComplete ? '✓ Wall policy check complete' : '⏳ More wall details needed',
+      message: wallPolicyComplete
+        ? 'Wall material and the school’s permitted mounting method are both recorded.'
+        : 'Confirm both the wall material and your housing policy’s permitted mounting method.',
     },
     door: {
-      status: doorReady ? 'ready' : 'wait',
-      badgeLabel: doorHookProhibited
-        ? '⚠️ Over-Door Hooks Prohibited'
-        : doorReady
-        ? '✓ Door Hooks Permitted'
-        : '⏳ Door Policy Needed',
-      message: doorHookProhibited
+      status: doorPolicyComplete ? 'ready' : 'wait',
+      outcome: doorHooksAllowed ? 'allowed' : doorHooksProhibited ? 'prohibited' : 'unconfirmed',
+      badgeLabel: doorHooksProhibited
+        ? '⚠️ Door hooks prohibited'
+        : doorHooksAllowed
+        ? '✓ Door hooks allowed'
+        : '⏳ Door policy needed',
+      message: doorHooksProhibited
         ? 'Over-the-door hooks are prohibited by your hall policy (e.g. fire door latch rules).'
-        : doorReady
+        : doorHooksAllowed
         ? 'Over-the-door hook use permitted by your residence hall.'
         : 'Confirm whether over-the-door hooks are permitted on your room or closet doors.',
     },
     wallAndDoor: {
-      status: wallAndDoorReady ? 'ready' : 'wait',
-      badgeLabel: doorHookProhibited
-        ? '⚠️ Over-Door Hooks Prohibited'
-        : wallAndDoorReady
+      status: wallAndDoorComplete ? 'ready' : 'wait',
+      badgeLabel: doorHooksProhibited
+        ? (wallPolicyComplete ? '✓ Wall complete / ⚠️ Door hooks prohibited' : '⚠️ Door hooks prohibited')
+        : wallAndDoorComplete
         ? '✓ Policies Verified'
         : '⏳ More policies needed',
-      message: doorHookProhibited
+      message: doorHooksProhibited
         ? 'Over-the-door hooks are prohibited by your assigned hall policy. Wall mounting may still be used if compliant with rules.'
-        : wallAndDoorReady
+        : wallAndDoorComplete
         ? 'Wall mounting and door hanging rules confirmed with your assigned residence hall policy.'
         : 'Confirm permitted wall fasteners (e.g. pushpins vs adhesives) and over-the-door hook rules before buying.',
     },
@@ -298,35 +348,35 @@ export function generateMeasurementSummary(data: DormMeasurements): string {
   const statuses = checkZoneStatuses(data);
   const lines: string[] = [
     '# 📐 DormReady Storage Measurement Summary',
-    `Zones Measured: ${statuses.overallReadyCount} of 6 areas ready\n`,
+    `Planning Areas Completed: ${statuses.overallReadyCount} of 6 areas recorded or policy-checked\n`,
     'Note: Recorded locally before purchasing rigid storage furniture or wall organizers.\n',
   ];
 
   // Under-bed
   lines.push(`## 1. Under-Bed Zone [${statuses.underbed.badgeLabel}]`);
-  lines.push(`- Vertical Clearance: ${isValidPositiveNumber(data.underbed.clearanceInches, 'inches') ? `${data.underbed.clearanceInches} in` : 'Unmeasured'}`);
-  lines.push(`- Bed Frame Width: ${isValidPositiveNumber(data.underbed.widthInches, 'inches') ? `${data.underbed.widthInches} in` : 'Unmeasured'}`);
-  lines.push(`- Frame Depth: ${isValidPositiveNumber(data.underbed.depthInches, 'inches') ? `${data.underbed.depthInches} in` : 'Unmeasured'}`);
+  lines.push(`- Vertical Clearance: ${formatMeasurementForSummary(data.underbed.clearanceInches, 'inches')}`);
+  lines.push(`- Bed Frame Width: ${formatMeasurementForSummary(data.underbed.widthInches, 'inches')}`);
+  lines.push(`- Frame Depth: ${formatMeasurementForSummary(data.underbed.depthInches, 'inches')}`);
   lines.push(`- Lofting Setting: ${data.underbed.loftingSetting}`);
   if (data.underbed.notes.trim()) lines.push(`- Notes: ${data.underbed.notes.trim()}`);
   lines.push('');
 
   // Closet
   lines.push(`## 2. Closet Zone [${statuses.closet.badgeLabel}]`);
-  lines.push(`- Width: ${isValidPositiveNumber(data.closet.widthInches, 'inches') ? `${data.closet.widthInches} in` : 'Unmeasured'}`);
-  lines.push(`- Depth: ${isValidPositiveNumber(data.closet.depthInches, 'inches') ? `${data.closet.depthInches} in` : 'Unmeasured'}`);
-  lines.push(`- Hanging Bar Height: ${isValidPositiveNumber(data.closet.hangingBarHeightInches, 'inches') ? `${data.closet.hangingBarHeightInches} in` : 'Unmeasured'}`);
-  lines.push(`- Top Shelf Clearance: ${isValidPositiveNumber(data.closet.topShelfClearanceInches, 'inches') ? `${data.closet.topShelfClearanceInches} in` : 'Unmeasured'}`);
+  lines.push(`- Width: ${formatMeasurementForSummary(data.closet.widthInches, 'inches')}`);
+  lines.push(`- Depth: ${formatMeasurementForSummary(data.closet.depthInches, 'inches')}`);
+  lines.push(`- Hanging Bar Height: ${formatMeasurementForSummary(data.closet.hangingBarHeightInches, 'inches')}`);
+  lines.push(`- Top Shelf Clearance: ${formatMeasurementForSummary(data.closet.topShelfClearanceInches, 'inches')}`);
   lines.push(`- Door Style: ${data.closet.doorType}`);
   if (data.closet.notes.trim()) lines.push(`- Notes: ${data.closet.notes.trim()}`);
   lines.push('');
 
   // Desk
   lines.push(`## 3. Desk & Study Zone [${statuses.desk.badgeLabel}]`);
-  lines.push(`- Surface Width: ${isValidPositiveNumber(data.desk.widthInches, 'inches') ? `${data.desk.widthInches} in` : 'Unmeasured'}`);
-  lines.push(`- Surface Depth: ${isValidPositiveNumber(data.desk.depthInches, 'inches') ? `${data.desk.depthInches} in` : 'Unmeasured'}`);
-  lines.push(`- Vertical / Hutch Clearance: ${isValidPositiveNumber(data.desk.hutchClearanceInches, 'inches') ? `${data.desk.hutchClearanceInches} in` : 'Unmeasured'}`);
-  lines.push(`- Distance to Outlet: ${isValidPositiveNumber(data.desk.outletDistanceFeet, 'feet') ? `${data.desk.outletDistanceFeet} ft` : 'Unmeasured'}`);
+  lines.push(`- Surface Width: ${formatMeasurementForSummary(data.desk.widthInches, 'inches')}`);
+  lines.push(`- Surface Depth: ${formatMeasurementForSummary(data.desk.depthInches, 'inches')}`);
+  lines.push(`- Vertical / Hutch Clearance: ${formatMeasurementForSummary(data.desk.hutchClearanceInches, 'inches')}`);
+  lines.push(`- Distance to Outlet: ${formatMeasurementForSummary(data.desk.outletDistanceFeet, 'feet')}`);
   if (data.desk.notes.trim()) lines.push(`- Notes: ${data.desk.notes.trim()}`);
   lines.push('');
 
@@ -344,7 +394,8 @@ export function generateMeasurementSummary(data: DormMeasurements): string {
 
   // Shared Floor
   lines.push(`## 6. Roommate Shared Floor Zone [${statuses.sharedFloor.badgeLabel}]`);
-  lines.push(`- Open Floor Space: ${isValidPositiveNumber(data.sharedFloor.openFloorWidthFeet, 'feet') && isValidPositiveNumber(data.sharedFloor.openFloorLengthFeet, 'feet') ? `${data.sharedFloor.openFloorWidthFeet} x ${data.sharedFloor.openFloorLengthFeet} ft` : 'Unmeasured'}`);
+  lines.push(`- Open Floor Width: ${formatMeasurementForSummary(data.sharedFloor.openFloorWidthFeet, 'feet')}`);
+  lines.push(`- Open Floor Length: ${formatMeasurementForSummary(data.sharedFloor.openFloorLengthFeet, 'feet')}`);
   if (data.sharedFloor.roommateAgreementNotes.trim()) lines.push(`- Roommate Coordination: ${data.sharedFloor.roommateAgreementNotes.trim()}`);
   lines.push('');
 

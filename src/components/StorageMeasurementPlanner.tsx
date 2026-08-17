@@ -5,7 +5,7 @@ import {
   getDefaultMeasurements,
   checkZoneStatuses,
   generateMeasurementSummary,
-  validateMeasurement,
+  getMeasurementAccessibility,
 } from '../lib/storagePlanner';
 
 export default function StorageMeasurementPlanner() {
@@ -67,25 +67,23 @@ export default function StorageMeasurementPlanner() {
     window.print();
   };
 
-  // Helper to render inline input sanity check messages
-  const renderInputValidation = (val: string, unit: 'inches' | 'feet' = 'inches') => {
-    const validation = validateMeasurement(val, unit);
-    if (validation.status === 'review') {
-      return (
-        <p className="text-[10px] text-amber-700 font-semibold mt-1">
-          ⚠️ {validation.message}
-        </p>
-      );
-    }
-    if (validation.status === 'invalid') {
-      return (
-        <p className="text-[10px] text-red-600 font-semibold mt-1">
-          ❌ {validation.message}
-        </p>
-      );
-    }
-    return null;
-  };
+  // Accessibility objects for each numeric input
+  const a11yUnderbedClearance = getMeasurementAccessibility('underbed-clearance', data.underbed.clearanceInches, 'inches');
+  const a11yUnderbedWidth = getMeasurementAccessibility('underbed-width', data.underbed.widthInches, 'inches');
+  const a11yUnderbedDepth = getMeasurementAccessibility('underbed-depth', data.underbed.depthInches, 'inches');
+
+  const a11yClosetWidth = getMeasurementAccessibility('closet-width', data.closet.widthInches, 'inches');
+  const a11yClosetDepth = getMeasurementAccessibility('closet-depth', data.closet.depthInches, 'inches');
+  const a11yClosetBarHeight = getMeasurementAccessibility('closet-bar-height', data.closet.hangingBarHeightInches, 'inches');
+  const a11yClosetShelfClearance = getMeasurementAccessibility('closet-shelf-clearance', data.closet.topShelfClearanceInches, 'inches');
+
+  const a11yDeskWidth = getMeasurementAccessibility('desk-width', data.desk.widthInches, 'inches');
+  const a11yDeskDepth = getMeasurementAccessibility('desk-depth', data.desk.depthInches, 'inches');
+  const a11yDeskHutchClearance = getMeasurementAccessibility('desk-hutch-clearance', data.desk.hutchClearanceInches, 'inches');
+  const a11yDeskOutletDistance = getMeasurementAccessibility('desk-outlet-distance', data.desk.outletDistanceFeet, 'feet');
+
+  const a11yFloorWidth = getMeasurementAccessibility('floor-width', data.sharedFloor.openFloorWidthFeet, 'feet');
+  const a11yFloorLength = getMeasurementAccessibility('floor-length', data.sharedFloor.openFloorLengthFeet, 'feet');
 
   return (
     <div className="space-y-8">
@@ -98,7 +96,7 @@ export default function StorageMeasurementPlanner() {
               Dorm Storage Measurement Log
             </h2>
             <p className="text-xs text-navy-600">
-              {statuses.overallReadyCount} of 6 planning areas confirmed ready for shopping
+              {statuses.overallReadyCount} of 6 planning areas measured or policy-checked
             </p>
           </div>
 
@@ -168,12 +166,15 @@ export default function StorageMeasurementPlanner() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
             <div className="space-y-1">
-              <label className="font-bold text-brand-navy block">Clearance Height (inches)</label>
+              <label htmlFor="underbed-clearance" className="font-bold text-brand-navy block">
+                Clearance Height (inches)
+              </label>
               <input
                 type="number"
                 min="1"
                 step="0.5"
                 placeholder="e.g. 14, 28"
+                {...a11yUnderbedClearance.inputProps}
                 value={data.underbed.clearanceInches}
                 onChange={(e) =>
                   setData((prev) => ({
@@ -183,15 +184,27 @@ export default function StorageMeasurementPlanner() {
                 }
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
               />
-              {renderInputValidation(data.underbed.clearanceInches, 'inches')}
+              {a11yUnderbedClearance.hasProblem && (
+                <p
+                  id={a11yUnderbedClearance.messageId}
+                  role="status"
+                  className={a11yUnderbedClearance.isReview ? 'text-[10px] text-amber-700 font-semibold mt-1' : 'text-[10px] text-red-600 font-semibold mt-1'}
+                >
+                  {a11yUnderbedClearance.isReview ? '⚠️ ' : '❌ '}
+                  {a11yUnderbedClearance.message}
+                </p>
+              )}
             </div>
             <div className="space-y-1">
-              <label className="font-bold text-brand-navy block">Bed Width (inches)</label>
+              <label htmlFor="underbed-width" className="font-bold text-brand-navy block">
+                Bed Width (inches)
+              </label>
               <input
                 type="number"
                 min="1"
                 step="0.5"
                 placeholder="e.g. 38"
+                {...a11yUnderbedWidth.inputProps}
                 value={data.underbed.widthInches}
                 onChange={(e) =>
                   setData((prev) => ({
@@ -201,15 +214,27 @@ export default function StorageMeasurementPlanner() {
                 }
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
               />
-              {renderInputValidation(data.underbed.widthInches, 'inches')}
+              {a11yUnderbedWidth.hasProblem && (
+                <p
+                  id={a11yUnderbedWidth.messageId}
+                  role="status"
+                  className={a11yUnderbedWidth.isReview ? 'text-[10px] text-amber-700 font-semibold mt-1' : 'text-[10px] text-red-600 font-semibold mt-1'}
+                >
+                  {a11yUnderbedWidth.isReview ? '⚠️ ' : '❌ '}
+                  {a11yUnderbedWidth.message}
+                </p>
+              )}
             </div>
             <div className="space-y-1">
-              <label className="font-bold text-brand-navy block">Frame Depth (inches)</label>
+              <label htmlFor="underbed-depth" className="font-bold text-brand-navy block">
+                Frame Depth (inches)
+              </label>
               <input
                 type="number"
                 min="1"
                 step="0.5"
                 placeholder="e.g. 80"
+                {...a11yUnderbedDepth.inputProps}
                 value={data.underbed.depthInches}
                 onChange={(e) =>
                   setData((prev) => ({
@@ -219,7 +244,16 @@ export default function StorageMeasurementPlanner() {
                 }
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
               />
-              {renderInputValidation(data.underbed.depthInches, 'inches')}
+              {a11yUnderbedDepth.hasProblem && (
+                <p
+                  id={a11yUnderbedDepth.messageId}
+                  role="status"
+                  className={a11yUnderbedDepth.isReview ? 'text-[10px] text-amber-700 font-semibold mt-1' : 'text-[10px] text-red-600 font-semibold mt-1'}
+                >
+                  {a11yUnderbedDepth.isReview ? '⚠️ ' : '❌ '}
+                  {a11yUnderbedDepth.message}
+                </p>
+              )}
             </div>
             <div className="space-y-1">
               <label className="font-bold text-brand-navy block">Lofting Setting</label>
@@ -297,12 +331,15 @@ export default function StorageMeasurementPlanner() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
             <div className="space-y-1">
-              <label className="font-bold text-brand-navy block">Closet Width (inches)</label>
+              <label htmlFor="closet-width" className="font-bold text-brand-navy block">
+                Closet Width (inches)
+              </label>
               <input
                 type="number"
                 min="1"
                 step="0.5"
                 placeholder="e.g. 36"
+                {...a11yClosetWidth.inputProps}
                 value={data.closet.widthInches}
                 onChange={(e) =>
                   setData((prev) => ({
@@ -312,15 +349,27 @@ export default function StorageMeasurementPlanner() {
                 }
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
               />
-              {renderInputValidation(data.closet.widthInches, 'inches')}
+              {a11yClosetWidth.hasProblem && (
+                <p
+                  id={a11yClosetWidth.messageId}
+                  role="status"
+                  className={a11yClosetWidth.isReview ? 'text-[10px] text-amber-700 font-semibold mt-1' : 'text-[10px] text-red-600 font-semibold mt-1'}
+                >
+                  {a11yClosetWidth.isReview ? '⚠️ ' : '❌ '}
+                  {a11yClosetWidth.message}
+                </p>
+              )}
             </div>
             <div className="space-y-1">
-              <label className="font-bold text-brand-navy block">Closet Depth (inches)</label>
+              <label htmlFor="closet-depth" className="font-bold text-brand-navy block">
+                Closet Depth (inches)
+              </label>
               <input
                 type="number"
                 min="1"
                 step="0.5"
                 placeholder="e.g. 24"
+                {...a11yClosetDepth.inputProps}
                 value={data.closet.depthInches}
                 onChange={(e) =>
                   setData((prev) => ({
@@ -330,15 +379,27 @@ export default function StorageMeasurementPlanner() {
                 }
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
               />
-              {renderInputValidation(data.closet.depthInches, 'inches')}
+              {a11yClosetDepth.hasProblem && (
+                <p
+                  id={a11yClosetDepth.messageId}
+                  role="status"
+                  className={a11yClosetDepth.isReview ? 'text-[10px] text-amber-700 font-semibold mt-1' : 'text-[10px] text-red-600 font-semibold mt-1'}
+                >
+                  {a11yClosetDepth.isReview ? '⚠️ ' : '❌ '}
+                  {a11yClosetDepth.message}
+                </p>
+              )}
             </div>
             <div className="space-y-1">
-              <label className="font-bold text-brand-navy block">Hanging Bar Height (inches)</label>
+              <label htmlFor="closet-bar-height" className="font-bold text-brand-navy block">
+                Hanging Bar Height (inches)
+              </label>
               <input
                 type="number"
                 min="1"
                 step="0.5"
                 placeholder="e.g. 64"
+                {...a11yClosetBarHeight.inputProps}
                 value={data.closet.hangingBarHeightInches}
                 onChange={(e) =>
                   setData((prev) => ({
@@ -348,15 +409,27 @@ export default function StorageMeasurementPlanner() {
                 }
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
               />
-              {renderInputValidation(data.closet.hangingBarHeightInches, 'inches')}
+              {a11yClosetBarHeight.hasProblem && (
+                <p
+                  id={a11yClosetBarHeight.messageId}
+                  role="status"
+                  className={a11yClosetBarHeight.isReview ? 'text-[10px] text-amber-700 font-semibold mt-1' : 'text-[10px] text-red-600 font-semibold mt-1'}
+                >
+                  {a11yClosetBarHeight.isReview ? '⚠️ ' : '❌ '}
+                  {a11yClosetBarHeight.message}
+                </p>
+              )}
             </div>
             <div className="space-y-1">
-              <label className="font-bold text-brand-navy block">Top Shelf Clearance (inches)</label>
+              <label htmlFor="closet-shelf-clearance" className="font-bold text-brand-navy block">
+                Top Shelf Clearance (inches)
+              </label>
               <input
                 type="number"
                 min="1"
                 step="0.5"
                 placeholder="e.g. 12"
+                {...a11yClosetShelfClearance.inputProps}
                 value={data.closet.topShelfClearanceInches}
                 onChange={(e) =>
                   setData((prev) => ({
@@ -366,7 +439,16 @@ export default function StorageMeasurementPlanner() {
                 }
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
               />
-              {renderInputValidation(data.closet.topShelfClearanceInches, 'inches')}
+              {a11yClosetShelfClearance.hasProblem && (
+                <p
+                  id={a11yClosetShelfClearance.messageId}
+                  role="status"
+                  className={a11yClosetShelfClearance.isReview ? 'text-[10px] text-amber-700 font-semibold mt-1' : 'text-[10px] text-red-600 font-semibold mt-1'}
+                >
+                  {a11yClosetShelfClearance.isReview ? '⚠️ ' : '❌ '}
+                  {a11yClosetShelfClearance.message}
+                </p>
+              )}
             </div>
           </div>
 
@@ -439,12 +521,15 @@ export default function StorageMeasurementPlanner() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
             <div className="space-y-1">
-              <label className="font-bold text-brand-navy block">Desk Width (inches)</label>
+              <label htmlFor="desk-width" className="font-bold text-brand-navy block">
+                Desk Width (inches)
+              </label>
               <input
                 type="number"
                 min="1"
                 step="0.5"
                 placeholder="e.g. 42"
+                {...a11yDeskWidth.inputProps}
                 value={data.desk.widthInches}
                 onChange={(e) =>
                   setData((prev) => ({
@@ -454,15 +539,27 @@ export default function StorageMeasurementPlanner() {
                 }
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
               />
-              {renderInputValidation(data.desk.widthInches, 'inches')}
+              {a11yDeskWidth.hasProblem && (
+                <p
+                  id={a11yDeskWidth.messageId}
+                  role="status"
+                  className={a11yDeskWidth.isReview ? 'text-[10px] text-amber-700 font-semibold mt-1' : 'text-[10px] text-red-600 font-semibold mt-1'}
+                >
+                  {a11yDeskWidth.isReview ? '⚠️ ' : '❌ '}
+                  {a11yDeskWidth.message}
+                </p>
+              )}
             </div>
             <div className="space-y-1">
-              <label className="font-bold text-brand-navy block">Desk Depth (inches)</label>
+              <label htmlFor="desk-depth" className="font-bold text-brand-navy block">
+                Desk Depth (inches)
+              </label>
               <input
                 type="number"
                 min="1"
                 step="0.5"
                 placeholder="e.g. 24"
+                {...a11yDeskDepth.inputProps}
                 value={data.desk.depthInches}
                 onChange={(e) =>
                   setData((prev) => ({
@@ -472,15 +569,27 @@ export default function StorageMeasurementPlanner() {
                 }
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
               />
-              {renderInputValidation(data.desk.depthInches, 'inches')}
+              {a11yDeskDepth.hasProblem && (
+                <p
+                  id={a11yDeskDepth.messageId}
+                  role="status"
+                  className={a11yDeskDepth.isReview ? 'text-[10px] text-amber-700 font-semibold mt-1' : 'text-[10px] text-red-600 font-semibold mt-1'}
+                >
+                  {a11yDeskDepth.isReview ? '⚠️ ' : '❌ '}
+                  {a11yDeskDepth.message}
+                </p>
+              )}
             </div>
             <div className="space-y-1">
-              <label className="font-bold text-brand-navy block">Hutch / Shelf Clearance (inches)</label>
+              <label htmlFor="desk-hutch-clearance" className="font-bold text-brand-navy block">
+                Hutch / Shelf Clearance (inches)
+              </label>
               <input
                 type="number"
                 min="0.5"
                 step="0.5"
                 placeholder="e.g. 18 (vertical opening)"
+                {...a11yDeskHutchClearance.inputProps}
                 value={data.desk.hutchClearanceInches}
                 onChange={(e) =>
                   setData((prev) => ({
@@ -490,15 +599,27 @@ export default function StorageMeasurementPlanner() {
                 }
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
               />
-              {renderInputValidation(data.desk.hutchClearanceInches, 'inches')}
+              {a11yDeskHutchClearance.hasProblem && (
+                <p
+                  id={a11yDeskHutchClearance.messageId}
+                  role="status"
+                  className={a11yDeskHutchClearance.isReview ? 'text-[10px] text-amber-700 font-semibold mt-1' : 'text-[10px] text-red-600 font-semibold mt-1'}
+                >
+                  {a11yDeskHutchClearance.isReview ? '⚠️ ' : '❌ '}
+                  {a11yDeskHutchClearance.message}
+                </p>
+              )}
             </div>
             <div className="space-y-1">
-              <label className="font-bold text-brand-navy block">Distance to Outlet (feet)</label>
+              <label htmlFor="desk-outlet-distance" className="font-bold text-brand-navy block">
+                Distance to Outlet (feet)
+              </label>
               <input
                 type="number"
                 min="0.5"
                 step="0.5"
                 placeholder="e.g. 4 (power planning)"
+                {...a11yDeskOutletDistance.inputProps}
                 value={data.desk.outletDistanceFeet}
                 onChange={(e) =>
                   setData((prev) => ({
@@ -508,7 +629,16 @@ export default function StorageMeasurementPlanner() {
                 }
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
               />
-              {renderInputValidation(data.desk.outletDistanceFeet, 'feet')}
+              {a11yDeskOutletDistance.hasProblem && (
+                <p
+                  id={a11yDeskOutletDistance.messageId}
+                  role="status"
+                  className={a11yDeskOutletDistance.isReview ? 'text-[10px] text-amber-700 font-semibold mt-1' : 'text-[10px] text-red-600 font-semibold mt-1'}
+                >
+                  {a11yDeskOutletDistance.isReview ? '⚠️ ' : '❌ '}
+                  {a11yDeskOutletDistance.message}
+                </p>
+              )}
             </div>
           </div>
 
@@ -617,11 +747,11 @@ export default function StorageMeasurementPlanner() {
                   <span className="font-bold text-brand-navy text-sm">4B. Over-the-Door Hooks</span>
                   <span
                     className={`text-[11px] font-bold px-2.5 py-1 rounded-full border ${
-                      statuses.door.badgeLabel.includes('Prohibited')
-                        ? 'bg-red-50 text-red-800 border-red-300'
-                        : statuses.door.status === 'ready'
+                      statuses.door.outcome === 'prohibited'
+                        ? 'bg-amber-50 text-amber-900 border-amber-300'
+                        : statuses.door.outcome === 'allowed'
                         ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
-                        : 'bg-amber-50 text-amber-900 border-amber-300'
+                        : 'bg-slate-100 text-slate-700 border-slate-300'
                     }`}
                   >
                     {statuses.door.badgeLabel}
@@ -696,12 +826,15 @@ export default function StorageMeasurementPlanner() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
             <div className="space-y-1">
-              <label className="font-bold text-brand-navy block">Open Center Floor Width (feet)</label>
+              <label htmlFor="floor-width" className="font-bold text-brand-navy block">
+                Open Center Floor Width (feet)
+              </label>
               <input
                 type="number"
                 min="1"
                 step="0.5"
                 placeholder="e.g. 5"
+                {...a11yFloorWidth.inputProps}
                 value={data.sharedFloor.openFloorWidthFeet}
                 onChange={(e) =>
                   setData((prev) => ({
@@ -711,15 +844,27 @@ export default function StorageMeasurementPlanner() {
                 }
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
               />
-              {renderInputValidation(data.sharedFloor.openFloorWidthFeet, 'feet')}
+              {a11yFloorWidth.hasProblem && (
+                <p
+                  id={a11yFloorWidth.messageId}
+                  role="status"
+                  className={a11yFloorWidth.isReview ? 'text-[10px] text-amber-700 font-semibold mt-1' : 'text-[10px] text-red-600 font-semibold mt-1'}
+                >
+                  {a11yFloorWidth.isReview ? '⚠️ ' : '❌ '}
+                  {a11yFloorWidth.message}
+                </p>
+              )}
             </div>
             <div className="space-y-1">
-              <label className="font-bold text-brand-navy block">Open Center Floor Length (feet)</label>
+              <label htmlFor="floor-length" className="font-bold text-brand-navy block">
+                Open Center Floor Length (feet)
+              </label>
               <input
                 type="number"
                 min="1"
                 step="0.5"
                 placeholder="e.g. 7"
+                {...a11yFloorLength.inputProps}
                 value={data.sharedFloor.openFloorLengthFeet}
                 onChange={(e) =>
                   setData((prev) => ({
@@ -729,7 +874,16 @@ export default function StorageMeasurementPlanner() {
                 }
                 className="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue"
               />
-              {renderInputValidation(data.sharedFloor.openFloorLengthFeet, 'feet')}
+              {a11yFloorLength.hasProblem && (
+                <p
+                  id={a11yFloorLength.messageId}
+                  role="status"
+                  className={a11yFloorLength.isReview ? 'text-[10px] text-amber-700 font-semibold mt-1' : 'text-[10px] text-red-600 font-semibold mt-1'}
+                >
+                  {a11yFloorLength.isReview ? '⚠️ ' : '❌ '}
+                  {a11yFloorLength.message}
+                </p>
+              )}
             </div>
           </div>
 
