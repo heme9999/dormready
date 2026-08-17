@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { SITE_CONFIG } from '../data/site';
+
+const breadcrumbs = [
+  { name: 'Editorial Policy', url: '/editorial-policy/' },
+];
+---
+
+<BaseLayout
+  title="Editorial Policy & Fact-Checking Standards | DormReady"
+  description="DormReady's comprehensive editorial standards: research methodology, product selection rules, affiliate disclosure principles, and correction policy."
+  breadcrumbs={breadcrumbs}
+>
+  <div class="bg-cream-100 border-b border-cream-300 py-8 sm:py-12">
+    <div class="container-custom max-w-4xl">
+      <Breadcrumbs items={breadcrumbs} />
+
+      <span class="mt-4 inline-block px-2.5 py-1 rounded-full text-xs font-semibold bg-forest-50 text-forest-800 border border-forest-100">
+        Editorial Integrity
+      </span>
+
+      <h1 class="mt-4 text-3xl sm:text-5xl font-bold font-serif text-navy-900 leading-tight">
+        Editorial Policy & Standards
+      </h1>
+
+      <p class="mt-4 text-base sm:text-lg text-navy-700 leading-relaxed font-sans">
+        Trust is our core asset. This policy outlines how DormReady researches dorm gear, verifies student discounts, handles affiliate relationships, and corrects errors.
+      </p>
+    </div>
+  </div>
+
+  <div class="container-custom max-w-4xl py-10 lg:py-14 space-y-12 text-base leading-relaxed text-navy-800">
+    <!-- Section 1: Research Process -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold font-serif text-navy-900">1. Our Research Process</h2>
+      <p>
+        Our editorial team analyzes residence hall life through four primary lenses:
+      </p>
+      <ol class="list-decimal list-inside space-y-2 text-navy-700">
+        <li><strong>Physical Spatial Constraints:</strong> Double rooms average 130–180 sq ft. Products that create clutter or cannot be folded/stacked are filtered out.</li>
+        <li><strong>Institutional Fire & Safety Codes:</strong> We cross-reference university residence policies across public, private, and regional colleges to ensure suggested items (e.g. UL-listed surge protectors, auto-shutoff kettles) comply with campus safety standards.</li>
+        <li><strong>Academic Durability:</strong> College gear must withstand 9 months of intensive daily use, frequent moves between semesters, and transport in campus laundry facilities.</li>
+        <li><strong>Total Cost of Ownership:</strong> We prioritize products that provide lasting utility across multiple academic years rather than single-use novelties.</li>
+      </ol>
+    </section>
+
+    <!-- Section 2: Fact-Checking Standards -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold font-serif text-navy-900">2. Fact-Checking & Verification</h2>
+      <p>
+        We hold every factual assertion on DormReady to strict standards:
+      </p>
+      <ul class="list-disc list-inside space-y-2 text-navy-700">
+        <li><strong>No Fabricated Ratings or Testimonials:</strong> We never generate artificial star ratings, fake student quotes, or synthetic lab scores.</li>
+        <li><strong>Explicit Research Status:</strong> All mock data, preliminary specifications, or items awaiting lab confirmation are clearly tagged with <code>verification_status: "needs_research"</code> or prominent editorial warning badges.</li>
+        <li><strong>Discount Verification:</strong> Student discounts must be verified against official vendor terms (e.g., SheerID, UNiDAYS, Apple Education) with logged audit dates.</li>
+      </ul>
+    </section>
+
+    <!-- Section 3: Product Selection Principles -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold font-serif text-navy-900">3. Product Selection Principles</h2>
+      <p>
+        Our editorial team maintains 100% independence when recommending dorm gear:
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="p-5 bg-white border border-cream-300 rounded-xl space-y-2">
+          <h3 class="font-bold text-navy-900 text-sm">What We Prioritize</h3>
+          <ul class="text-xs sm:text-sm text-navy-600 space-y-1 list-disc list-inside">
+            <li>UL/ETL safety certification</li>
+            <li>Multi-functional utility</li>
+            <li>Breathable, washable textiles</li>
+            <li>Compact, collapsible form factors</li>
+          </ul>
+        </div>
+        <div class="p-5 bg-white border border-cream-300 rounded-xl space-y-2">
+          <h3 class="font-bold text-navy-900 text-sm">What We Disqualify</h3>
+          <ul class="text-xs sm:text-sm text-navy-600 space-y-1 list-disc list-inside">
+            <li>Exposed-coil heating elements</li>
+            <li>Unfused multi-plug extension cords</li>
+            <li>Bulky non-collapsible furniture</li>
+            <li>Single-purpose novelty gadgets</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Affiliate Disclosure Principles -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold font-serif text-navy-900">4. Affiliate Disclosure Principles</h2>
+      <p>
+        DormReady is designed to be reader-supported. In the future, when readers purchase products through links on our site, we may earn an affiliate commission from merchant partners (such as Amazon, Apple, or retail partners).
+      </p>
+      <div class="p-5 bg-cream-100 border border-cream-300 rounded-xl text-sm space-y-2">
+        <p class="font-semibold text-navy-900">Our Commercial Guardrails:</p>
+        <ul class="space-y-1 list-disc list-inside text-navy-700 text-xs sm:text-sm">
+          <li>We never accept paid inclusion, sponsored rankings, or promotional placement fees.</li>
+          <li>Affiliate relationships have zero influence on whether an item is recommended or warned against.</li>
+          <li>All affiliate links are clearly distinguished and accompanied by prominent disclosure badges.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Section 5: Correction & Update Policy -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold font-serif text-navy-900">5. Correction & Update Policy</h2>
+      <p>
+        College housing rules, product availability, and student discount terms evolve. We conduct systematic seasonal audits in <strong>May, July, and December</strong> prior to major academic move-in cycles.
+      </p>
+      <p>
+        If an error, expired promotion, or outdated specification is identified, our editorial staff updates the page immediately and records the update in the visible <code>Last updated</code> timestamp.
+      </p>
+      <p class="text-sm">
+        To submit a correction request or policy change, contact: <a href={`mailto:${SITE_CONFIG.editorialEmail}`} class="underline text-forest-800 font-semibold">{SITE_CONFIG.editorialEmail}</a>.
+      </p>
+    </section>
+  </div>
+</BaseLayout>

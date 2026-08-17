@@ -1,0 +1,101 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+
+const guide = {
+  title: 'The Under $300 Budget Dorm Setup: Survival Essentials on a Strict Budget',
+  description: 'How to get genuine sleep comfort, basic hygiene, and reliable power while spending under $300 total for the entire semester.',
+  category: 'Budget Guide',
+  categoryUrl: '/budget/',
+  lastUpdated: '2026-08-10',
+  readingTimeMinutes: 7,
+  currentSlug: 'under-300-dorm-setup',
+};
+
+const items = [
+  { category: 'Bedding & Sleep', name: 'High-Density 2" Memory Foam Topper (Twin XL)', cost: '$45 - $60', why: 'Eliminates back pain from hard vinyl institutional mattresses.' },
+  { category: 'Bedding & Sleep', name: 'Waterproof Zippered Mattress Protector', cost: '$18 - $25', why: 'Essential hygiene barrier for multi-year dorm beds.' },
+  { category: 'Bedding & Sleep', name: 'Twin XL Microfiber/Cotton Sheet Sets (2-Pack)', cost: '$25 - $35', why: 'Allows weekly laundry rotation without sleeping on bare mattress.' },
+  { category: 'Bedding & Sleep', name: 'Bed Pillow with Washable Protector', cost: '$15 - $20', why: 'Basic neck support with washable hygiene cover.' },
+  { category: 'Bedding & Sleep', name: 'Microfiber Comforter / Fleece Blanket', cost: '$25 - $35', why: 'Lightweight warmth for drafty dorm rooms.' },
+  { category: 'Bathroom & Hygiene', name: 'Quick-Drying Mesh Shower Caddy', cost: '$10 - $14', why: 'Drains water instantly and avoids mold buildup.' },
+  { category: 'Bathroom & Hygiene', name: 'Textured Rubber Shower Slides', cost: '$10 - $15', why: 'Mandatory protection against floor fungi.' },
+  { category: 'Bathroom & Hygiene', name: 'Quick-Dry Bath Towels (2-Pack)', cost: '$16 - $22', why: 'Waffle or Turkish weave dries in tight spaces.' },
+  { category: 'Laundry', name: 'Backpack Laundry Bag with Drawstring', cost: '$12 - $16', why: 'Easy transport down basement stairs.' },
+  { category: 'Power & Tech', name: 'UL-Listed Surge Protector (8ft Cord)', cost: '$15 - $20', why: 'Residence-life approved power distribution.' },
+  { category: 'Power & Tech', name: 'Extra-Long 10ft Braided Phone Cable', cost: '$8 - $12', why: 'Reaches lofted beds from awkward wall outlets.' },
+  { category: 'Storage & Health', name: 'Slim Velvet Hangers (30-Pack)', cost: '$14 - $18', why: 'Doubles tight closet capacity.' },
+  { category: 'Storage & Health', name: 'Basic First Aid Kit & OTC Meds', cost: '$15 - $20', why: 'Ibuprofen, thermometer, bandages.' },
+];
+---
+
+<GuideLayout {...guide}>
+  <div class="space-y-8 text-base leading-relaxed">
+    <!-- Intro box -->
+    <div class="p-6 bg-cream-100 border border-cream-300 rounded-2xl">
+      <h2 class="text-lg font-bold text-navy-900 mb-2">The $300 Philosophy: Focus on Physical Biology</h2>
+      <p class="text-sm text-navy-700 leading-relaxed">
+        When your budget is capped at $300, <strong>80% of your dollars must go toward sleep, hygiene, and fire safety</strong>. Cut all aesthetic tapestries, decorative throw pillows, and novelty appliances. Every dollar below is allocated to items that directly impact your health and academic stamina.
+      </p>
+    </div>
+
+    <!-- Line Item Breakdown Table -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold font-serif text-navy-900">Line-Item Spending Breakdown (Target Total: ~$265)</h2>
+      <div class="overflow-x-auto my-4">
+        <table class="w-full text-left text-xs sm:text-sm border border-cream-300 rounded-xl overflow-hidden">
+          <thead class="bg-cream-200 text-navy-900 font-bold">
+            <tr>
+              <th class="p-3 border-b border-cream-300">Category</th>
+              <th class="p-3 border-b border-cream-300">Item</th>
+              <th class="p-3 border-b border-cream-300">Estimated Cost</th>
+              <th class="p-3 border-b border-cream-300">Why It's Non-Negotiable</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-cream-200 bg-white">
+            {items.map((item) => (
+              <tr>
+                <td class="p-3 font-semibold text-navy-900 text-xs">{item.category}</td>
+                <td class="p-3 font-medium text-navy-900">{item.name}</td>
+                <td class="p-3 text-forest-800 font-bold whitespace-nowrap">{item.cost}</td>
+                <td class="p-3 text-navy-600 text-xs">{item.why}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Where to Save Money -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold font-serif text-navy-900">How to Keep Your Spend Under $300</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="p-4 bg-white border border-cream-300 rounded-xl">
+          <h3 class="font-bold text-navy-900 text-sm mb-1.5">1. Use Campus Resources Instead of Buying</h3>
+          <p class="text-xs text-navy-600 leading-relaxed">
+            Do not buy an electric kettle, iron, or printer. University libraries offer free printing credits, floor lounges feature microwave stations, and campus recreation centers provide iron lending.
+          </p>
+        </div>
+        <div class="p-4 bg-white border border-cream-300 rounded-xl">
+          <h3 class="font-bold text-navy-900 text-sm mb-1.5">2. Take Advantage of Student Discount Portals</h3>
+          <p class="text-xs text-navy-600 leading-relaxed">
+            Use your active .edu email on our <a href="/student-discounts/" class="underline text-forest-800 font-semibold">Student Discounts</a> directory to save 10%–20% on retail bedding and storage during summer promos.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Next steps -->
+    <div class="p-6 bg-cream-100 border border-cream-300 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <h3 class="text-base font-bold text-navy-900">Compare With Other Spending Tiers</h3>
+        <p class="text-xs text-navy-600 mt-0.5">Explore our balanced $500 setup and all-inclusive $1,000 setup.</p>
+      </div>
+      <a
+        href="/budget/"
+        class="px-5 py-2.5 rounded-lg bg-forest-800 text-cream-50 text-sm font-semibold hover:bg-forest-900 transition-colors shrink-0"
+      >
+        View All Budget Setups &rarr;
+      </a>
+    </div>
+  </div>
+</GuideLayout>

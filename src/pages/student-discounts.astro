@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
+import DiscountDirectory from '../components/DiscountDirectory';
+import { STUDENT_DISCOUNTS } from '../data/discounts';
+
+const breadcrumbs = [
+  { name: 'Guides', url: '/guides/' },
+  { name: 'Student Discounts Directory', url: '/student-discounts/' },
+];
+
+const faqs = [
+  {
+    question: 'How do third-party student verification platforms like SheerID and UNiDAYS work?',
+    answer: 'Platforms like SheerID and UNiDAYS verify your active student status by connecting directly to the National Student Clearinghouse or by validating your institution-issued .edu email and student ID document. Once verified, they generate a single-use promo code or unlock education storefront pricing.',
+  },
+  {
+    question: 'Can incoming freshmen get student discounts before school starts in August?',
+    answer: 'Yes. As soon as you receive your official university .edu email address or admission acceptance letter, you can register for GitHub Student Developer Pack, Apple Education pricing, Spotify Student, and Amazon Prime Student.',
+  },
+];
+---
+
+<BaseLayout
+  title="Verified Student Discounts Directory: Tech, Software & Services"
+  description="Transparent directory of student discounts with verified verification methods (UNiDAYS, SheerID, .edu), eligibility rules, and audit trail dates."
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  ogType="article"
+  modifiedTime="2026-08-12"
+>
+  <div class="bg-cream-100 border-b border-cream-300 py-8 sm:py-12">
+    <div class="container-custom">
+      <Breadcrumbs items={breadcrumbs} />
+
+      <div class="mt-4 flex flex-wrap items-center gap-3 text-xs sm:text-sm text-navy-600">
+        <span class="px-2.5 py-1 rounded-full font-semibold bg-forest-50 text-forest-800 border border-forest-100">
+          Discount Directory
+        </span>
+        <span>•</span>
+        <span>{STUDENT_DISCOUNTS.length} Listed Programs</span>
+        <span>•</span>
+        <span>Last audited: <time datetime="2026-08-12" class="font-semibold text-navy-800">August 12, 2026</time></span>
+      </div>
+
+      <h1 class="mt-4 text-3xl sm:text-5xl font-bold font-serif text-navy-900 leading-tight">
+        Verified Student Discounts Directory
+      </h1>
+
+      <p class="mt-4 text-base sm:text-lg text-navy-700 max-w-3xl leading-relaxed">
+        A transparent, audited collection of genuine student discounts across software development tools, streaming services, hardware, and everyday student subscriptions.
+      </p>
+    </div>
+  </div>
+
+  <div class="container-custom py-8 sm:py-12">
+    <AffiliateDisclosure compact={true} />
+
+    <!-- Interactive Directory Component -->
+    <DiscountDirectory client:load />
+
+    <!-- Static Educational Content -->
+    <div class="mt-16 pt-12 border-t border-cream-300 space-y-12">
+      <section class="max-w-4xl space-y-4">
+        <h2 class="text-2xl font-bold font-serif text-navy-900">
+          How to Maximize Your College Student Benefits
+        </h2>
+        <div class="prose prose-slate text-sm sm:text-base text-navy-700 leading-relaxed space-y-3">
+          <p>
+            Your college student status grants you access to thousands of dollars in complimentary software and subsidized digital tools. Here is how to take advantage:
+          </p>
+          <ul class="list-disc list-inside space-y-2">
+            <li><strong>Check Your Campus Software Portal Before Buying:</strong> Most major universities provide complimentary licenses for Microsoft Office 365, MATLAB, Adobe Creative Cloud, and Zoom Pro through institutional site licenses. Check with your university IT service desk before purchasing software independently.</li>
+            <li><strong>Keep Your .edu Email Active:</strong> Set up email forwarding from your university account to your primary inbox so you never miss annual renewal re-verification emails from SheerID or UNiDAYS.</li>
+            <li><strong>Verify In-Store With Physical Student ID:</strong> Many local coffee shops, museums, transit systems, and apparel stores offer 10%–15% student discounts at checkout upon displaying your student ID card.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="max-w-4xl space-y-6">
+        <h2 class="text-2xl font-bold font-serif text-navy-900">
+          Student Discount Frequently Asked Questions
+        </h2>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <div class="p-5 bg-white border border-cream-300 rounded-xl">
+              <h3 class="font-bold text-navy-900 text-base mb-2">{faq.question}</h3>
+              <p class="text-sm text-navy-700 leading-relaxed">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

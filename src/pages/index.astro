@@ -1,0 +1,338 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GuideCard from '../components/GuideCard.astro';
+import { EDITORIAL_GUIDES } from '../data/guides';
+import { CHECKLIST_CATEGORIES } from '../data/checklist';
+
+const featuredGuides = EDITORIAL_GUIDES.filter((g) => g.featured);
+const recentGuides = [...EDITORIAL_GUIDES].sort(
+  (a, b) => new Date(b.lastUpdated).getTime() - new Date(a.lastUpdated).getTime()
+).slice(0, 4);
+
+const startHereSteps = [
+  {
+    step: '01',
+    title: 'Check Your Housing Portal Rules',
+    desc: 'Before spending a dime, download your residence hall rulebook. Confirm Twin XL bed sizing, microwave/fridge wattage limits, and strictly banned items.',
+    linkText: 'Read Essentials Guide',
+    href: '/dorm-room-essentials/',
+  },
+  {
+    step: '02',
+    title: 'Track With the Interactive Checklist',
+    desc: 'Use our 9-zone checklist with built-in browser saving to organize bedding, bathroom gear, laundry, and documents without forgetting essentials.',
+    linkText: 'Open Free Checklist',
+    href: '/college-dorm-checklist/',
+  },
+  {
+    step: '03',
+    title: 'Coordinate Big Items With Roommates',
+    desc: 'Prevent ending up with two mini-fridges and zero trash cans. Discover the exact 4 appliances you should split or assign before move-in day.',
+    linkText: 'View Packing Strategy',
+    href: '/college-packing-list/',
+  },
+  {
+    step: '04',
+    title: 'Claim Verified Student Perks First',
+    desc: 'Unlock hundreds of dollars in free software, cloud tools, hardware discounts, and streaming bundles with your official university .edu email.',
+    linkText: 'Browse Discounts',
+    href: '/student-discounts/',
+  },
+];
+---
+
+<BaseLayout
+  title="DormReady | Honest College Dorm Checklists, Packing & Tech Guides"
+  description="Practical, budget-conscious dorm essentials, college packing checklists, technology comparisons, and verified student discounts for U.S. freshmen and parents."
+>
+  <!-- Hero Section -->
+  <section class="bg-cream-100 border-b border-cream-300 py-12 sm:py-16 lg:py-20">
+    <div class="container-custom">
+      <div class="max-w-3xl space-y-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-forest-50 text-forest-800 border border-forest-200">
+          <span class="w-2 h-2 rounded-full bg-forest-700"></span>
+          <span>Updated for the 2026–2027 Academic Year</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold font-serif text-navy-900 tracking-tight leading-[1.15]">
+          Dorm prep without the fluff, clutter, or wasted money.
+        </h1>
+
+        <p class="text-lg sm:text-xl text-navy-700 leading-relaxed font-sans">
+          The practical guide for U.S. college freshmen and parents. No 150-item sponsored junk lists—just verified dorm essentials, roommate coordination strategies, student discount directories, and realistic budget setups.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-3.5 pt-2">
+          <a
+            href="/college-dorm-checklist/"
+            class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-forest-800 text-cream-50 font-semibold text-base hover:bg-forest-900 transition-all shadow-sm hover:shadow"
+          >
+            <span>Interactive Dorm Checklist</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+
+          <a
+            href="/college-packing-list/"
+            class="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white border border-cream-300 text-navy-900 font-semibold text-base hover:bg-cream-200 transition-colors shadow-sm"
+          >
+            <span>Packing Guide</span>
+          </a>
+
+          <a
+            href="/budget/"
+            class="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-transparent text-navy-700 hover:text-navy-900 font-semibold text-base hover:underline"
+          >
+            <span>Budget Setups ($300 / $500 / $1K)</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Start Here For Freshmen Section -->
+  <section class="py-12 sm:py-16 border-b border-cream-300">
+    <div class="container-custom">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-forest-800 block mb-1">New To Campus Life?</span>
+          <h2 class="text-2xl sm:text-3xl font-bold font-serif text-navy-900">
+            Start Here: The 4-Step Freshmen Gameplan
+          </h2>
+        </div>
+        <p class="text-sm text-navy-600 max-w-md">
+          Avoid the common mistakes freshmen make in July and August before arriving on campus.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {startHereSteps.map((s) => (
+          <div class="bg-white border border-cream-300 rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+            <div>
+              <span class="text-2xl font-black font-serif text-forest-800/40 block mb-2">{s.step}</span>
+              <h3 class="text-lg font-bold text-navy-900 mb-2 font-sans">{s.title}</h3>
+              <p class="text-sm text-navy-600 leading-relaxed mb-4">{s.desc}</p>
+            </div>
+            <a
+              href={s.href}
+              class="inline-flex items-center gap-1 text-xs font-bold text-forest-800 hover:text-forest-900 group"
+            >
+              <span>{s.linkText}</span>
+              <span class="group-hover:translate-x-0.5 transition-transform" aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Categories Grid -->
+  <section class="py-12 sm:py-16 bg-cream-100/50 border-b border-cream-300">
+    <div class="container-custom">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="text-xs font-bold uppercase tracking-wider text-forest-800 block mb-1">Core Exploration</span>
+        <h2 class="text-2xl sm:text-3xl font-bold font-serif text-navy-900">
+          Dorm Planning by Key Category
+        </h2>
+        <p class="text-sm text-navy-600 mt-2">
+          Structured checklists and buying advice tailored to the physical constraints of dorm rooms.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+        {CHECKLIST_CATEGORIES.map((cat) => (
+          <a
+            href={`/college-dorm-checklist/`}
+            class="p-4 sm:p-5 bg-white border border-cream-300 rounded-xl hover:border-forest-700 hover:shadow-sm transition-all text-center group flex flex-col items-center justify-center"
+          >
+            <div class="w-10 h-10 rounded-lg bg-cream-100 flex items-center justify-center text-forest-800 font-bold text-sm mb-2 group-hover:bg-forest-50 transition-colors">
+              ★
+            </div>
+            <h3 class="text-sm font-bold text-navy-900 group-hover:text-forest-800 transition-colors">
+              {cat.name}
+            </h3>
+            <p class="text-[11px] text-navy-500 line-clamp-1 mt-1">
+              {cat.description}
+            </p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Editorial Guides -->
+  <section class="py-12 sm:py-16 border-b border-cream-300">
+    <div class="container-custom">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-forest-800 block mb-1">In-Depth Guides</span>
+          <h2 class="text-2xl sm:text-3xl font-bold font-serif text-navy-900">Featured Preparation Guides</h2>
+        </div>
+        <a href="/guides/" class="text-sm font-semibold text-forest-800 hover:text-forest-900 hover:underline">
+          View all guides &rarr;
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {featuredGuides.map((guide) => (
+          <GuideCard guide={guide} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Budget Entry Points Section -->
+  <section class="py-12 sm:py-16 bg-cream-100 border-b border-cream-300">
+    <div class="container-custom">
+      <div class="max-w-2xl mb-10">
+        <span class="text-xs font-bold uppercase tracking-wider text-forest-800 block mb-1">Smart Spending</span>
+        <h2 class="text-2xl sm:text-3xl font-bold font-serif text-navy-900">
+          Complete Dorm Setups by Budget
+        </h2>
+        <p class="text-sm text-navy-600 mt-2">
+          You don't need to spend $2,000 on boutique decor. Choose your budget tier for complete line-item breakdown guides.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Tier 1 */}
+        <div class="bg-white border border-cream-300 rounded-2xl p-6 sm:p-7 flex flex-col justify-between shadow-sm">
+          <div>
+            <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-cream-200 text-navy-800">Survival Baseline</span>
+            <h3 class="text-2xl font-bold text-navy-900 font-serif mt-3 mb-1">Under $300 Setup</h3>
+            <p class="text-sm text-navy-600 leading-relaxed mb-4">
+              Focuses 100% on hygiene, sleep ergonomics, and essential electrical safety. Zero decorative waste.
+            </p>
+            <ul class="text-xs text-navy-600 space-y-1.5 list-disc list-inside mb-6">
+              <li>Mattress topper + waterproof protector</li>
+              <li>2 Twin XL sheet sets + pillow</li>
+              <li>UL-listed surge protector</li>
+              <li>Mesh shower caddy + slides</li>
+            </ul>
+          </div>
+          <a
+            href="/budget/under-300-dorm-setup/"
+            class="w-full py-2.5 px-4 rounded-lg bg-forest-800 text-cream-50 text-center text-sm font-semibold hover:bg-forest-900 transition-colors"
+          >
+            View $300 Breakdown &rarr;
+          </a>
+        </div>
+
+        {/* Tier 2 */}
+        <div class="bg-white border-2 border-forest-800 rounded-2xl p-6 sm:p-7 flex flex-col justify-between shadow-md relative">
+          <div class="absolute -top-3 right-6 bg-forest-800 text-cream-50 text-[11px] font-bold uppercase tracking-wider px-3 py-0.5 rounded-full">
+            Most Popular
+          </div>
+          <div>
+            <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-forest-50 text-forest-800">Balanced Sweet Spot</span>
+            <h3 class="text-2xl font-bold text-navy-900 font-serif mt-3 mb-1">Under $500 Setup</h3>
+            <p class="text-sm text-navy-600 leading-relaxed mb-4">
+              High-density foam mattress topper, dual sheet sets, multi-port GaN charging hub, and long-term storage bins.
+            </p>
+            <ul class="text-xs text-navy-600 space-y-1.5 list-disc list-inside mb-6">
+              <li>Premium 3-inch mattress topper</li>
+              <li>Under-bed rolling storage drawers</li>
+              <li>65W USB-C fast charging hub</li>
+              <li>Collapsible drying rack + hamper</li>
+            </ul>
+          </div>
+          <a
+            href="/budget/under-500-dorm-setup/"
+            class="w-full py-2.5 px-4 rounded-lg bg-forest-800 text-cream-50 text-center text-sm font-semibold hover:bg-forest-900 transition-colors"
+          >
+            View $500 Breakdown &rarr;
+          </a>
+        </div>
+
+        {/* Tier 3 */}
+        <div class="bg-white border border-cream-300 rounded-2xl p-6 sm:p-7 flex flex-col justify-between shadow-sm">
+          <div>
+            <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-cream-200 text-navy-800">All-Inclusive Prep</span>
+            <h3 class="text-2xl font-bold text-navy-900 font-serif mt-3 mb-1">Under $1,000 Setup</h3>
+            <p class="text-sm text-navy-600 leading-relaxed mb-4">
+              Includes shared mini-fridge/microwave contribution, active noise isolation headphones, and ergonomic desk accessories.
+            </p>
+            <ul class="text-xs text-navy-600 space-y-1.5 list-disc list-inside mb-6">
+              <li>Appliance split contribution</li>
+              <li>Noise-cancelling study audio</li>
+              <li>HEPA air purifier & clip fan</li>
+              <li>Complete micro-kitchen setup</li>
+            </ul>
+          </div>
+          <a
+            href="/budget/under-1000-complete-setup/"
+            class="w-full py-2.5 px-4 rounded-lg bg-forest-800 text-cream-50 text-center text-sm font-semibold hover:bg-forest-900 transition-colors"
+          >
+            View $1,000 Breakdown &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Email Signup Section (Concise Newsletter Placeholder) -->
+  <section class="py-12 sm:py-16 border-b border-cream-300 email-signup-section">
+    <div class="container-custom max-w-3xl">
+      <div class="bg-white border border-cream-300 rounded-2xl p-8 sm:p-10 text-center shadow-sm space-y-4">
+        <span class="text-xs font-bold uppercase tracking-wider text-forest-800">Freshmen Moving Bulletin</span>
+        <h2 class="text-2xl sm:text-3xl font-bold font-serif text-navy-900">
+          Get Our 1-Page Move-In Day Survival Sheet
+        </h2>
+        <p class="text-sm text-navy-600 max-w-xl mx-auto leading-relaxed">
+          A printable, distraction-free summary of Day 1 carry-on essentials, campus check-in protocols, and common freshman mistakes. No spam, ever.
+        </p>
+
+        <form id="bulletin-form" class="flex flex-col sm:flex-row gap-2 max-w-md mx-auto pt-2">
+          <input
+            type="email"
+            required
+            placeholder="Enter your email address"
+            class="flex-1 px-4 py-2.5 text-sm bg-cream-50 border border-cream-300 rounded-lg focus:outline-none focus:border-forest-800"
+            aria-label="Email address for moving bulletin"
+          />
+          <button
+            type="submit"
+            class="px-5 py-2.5 bg-forest-800 text-cream-50 text-sm font-semibold rounded-lg hover:bg-forest-900 transition-colors shrink-0"
+          >
+            Subscribe Free
+          </button>
+        </form>
+        <p class="text-[11px] text-navy-400">
+          We respect your privacy. Read our <a href="/privacy/" class="underline hover:text-navy-700">Privacy Policy</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recently Updated Guides -->
+  <section class="py-12 sm:py-16">
+    <div class="container-custom">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-forest-800 block mb-1">Audit Trail</span>
+          <h2 class="text-2xl sm:text-3xl font-bold font-serif text-navy-900">Recently Updated Guides</h2>
+        </div>
+        <a href="/editorial-policy/" class="text-xs font-semibold text-navy-600 hover:text-forest-800">
+          Editorial & Fact-Checking Process &rarr;
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {recentGuides.map((guide) => (
+          <GuideCard guide={guide} />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const form = document.getElementById('bulletin-form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thank you for subscribing! Moving bulletin updates will arrive in your inbox.');
+    });
+  }
+</script>

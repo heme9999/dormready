@@ -1,0 +1,126 @@
+---
+import { SITE_CONFIG } from '../data/site';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-40 bg-cream-50/95 backdrop-blur-md border-b border-cream-300">
+  <div class="container-custom">
+    <div class="flex items-center justify-between h-16 sm:h-20">
+      <!-- Brand Logo -->
+      <a href="/" class="flex items-center gap-2.5 group focus-visible:ring-2 focus-visible:ring-forest-800 rounded-md py-1 px-1.5 -ml-1.5" aria-label="DormReady Home">
+        <div class="w-9 h-9 rounded-lg bg-forest-800 flex items-center justify-center text-cream-50 font-bold text-lg shadow-sm group-hover:bg-forest-900 transition-colors">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 10v11h18V10" />
+            <path d="M2 10l10-7 10 7" />
+            <path d="M9 21V12h6v9" />
+          </svg>
+        </div>
+        <div>
+          <span class="font-bold text-xl sm:text-2xl tracking-tight text-navy-900 font-sans block leading-none">
+            Dorm<span class="text-forest-800">Ready</span>
+          </span>
+          <span class="text-[10px] text-navy-500 uppercase tracking-wider font-semibold block mt-0.5">U.S. College Prep</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center gap-1" aria-label="Main Navigation">
+        {SITE_CONFIG.nav.map((item) => {
+          const isActive = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href));
+          return (
+            <a
+              href={item.href}
+              class={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                isActive
+                  ? 'bg-cream-200 text-forest-900 font-semibold'
+                  : 'text-navy-700 hover:text-navy-900 hover:bg-cream-100'
+              }`}
+            >
+              {item.label}
+            </a>
+          );
+        })}
+      </nav>
+
+      <!-- CTA & Mobile Toggle Button -->
+      <div class="flex items-center gap-3">
+        <a
+          href="/college-dorm-checklist/"
+          class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-forest-800 text-cream-50 text-sm font-semibold hover:bg-forest-900 transition-colors shadow-sm"
+        >
+          <span>Dorm Checklist</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobile-menu-btn"
+          type="button"
+          class="lg:hidden p-2 rounded-md text-navy-700 hover:bg-cream-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest-800"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="mobile-nav-panel"
+        >
+          <svg class="w-6 h-6 block menu-open-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg class="w-6 h-6 hidden menu-close-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation Dropdown -->
+  <div id="mobile-nav-panel" class="hidden lg:hidden border-t border-cream-300 bg-cream-50 px-4 pt-3 pb-6 space-y-2">
+    <div class="grid grid-cols-1 gap-1">
+      {SITE_CONFIG.nav.map((item) => {
+        const isActive = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href));
+        return (
+          <a
+            href={item.href}
+            class={`block px-3 py-2.5 rounded-lg text-base font-medium transition-colors ${
+              isActive
+                ? 'bg-cream-200 text-forest-900 font-semibold'
+                : 'text-navy-800 hover:bg-cream-100'
+            }`}
+          >
+            {item.label}
+          </a>
+        );
+      })}
+    </div>
+    <div class="pt-3 border-t border-cream-200">
+      <a
+        href="/college-dorm-checklist/"
+        class="flex items-center justify-center gap-2 w-full py-3 rounded-lg bg-forest-800 text-cream-50 text-base font-semibold hover:bg-forest-900"
+      >
+        <span>Open Interactive Checklist</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const panel = document.getElementById('mobile-nav-panel');
+  const openIcon = document.querySelector('.menu-open-icon');
+  const closeIcon = document.querySelector('.menu-close-icon');
+
+  if (btn && panel && openIcon && closeIcon) {
+    btn.addEventListener('click', () => {
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!isExpanded));
+      panel.classList.toggle('hidden');
+      openIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    });
+  }
+</script>

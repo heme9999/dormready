@@ -1,0 +1,127 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs, { type BreadcrumbItem } from '../components/Breadcrumbs.astro';
+import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
+import type { FaqItem } from '../components/SeoHead.astro';
+import { EDITORIAL_GUIDES } from '../data/guides';
+
+export interface Props {
+  title: string;
+  description: string;
+  category: string;
+  categoryUrl?: string;
+  lastUpdated: string;
+  readingTimeMinutes: number;
+  breadcrumbs?: BreadcrumbItem[];
+  faqs?: FaqItem[];
+  currentSlug?: string;
+}
+
+const {
+  title,
+  description,
+  category,
+  categoryUrl = '/guides/',
+  lastUpdated,
+  readingTimeMinutes,
+  breadcrumbs = [],
+  faqs = [],
+  currentSlug,
+} = Astro.props;
+
+const defaultBreadcrumbs: BreadcrumbItem[] = [
+  { name: 'Guides', url: '/guides/' },
+  { name: category, url: categoryUrl },
+  { name: title, url: Astro.url.pathname },
+];
+
+const finalBreadcrumbs = breadcrumbs.length > 0 ? breadcrumbs : defaultBreadcrumbs;
+
+const relatedGuides = EDITORIAL_GUIDES.filter(
+  (g) => g.slug !== currentSlug && (g.category === category.toLowerCase() || g.featured)
+).slice(0, 3);
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  ogType="article"
+  modifiedTime={lastUpdated}
+  breadcrumbs={finalBreadcrumbs}
+  faqs={faqs}
+>
+  <div class="bg-cream-100 border-b border-cream-300 py-8 lg:py-12">
+    <div class="container-custom max-w-4xl">
+      <Breadcrumbs items={finalBreadcrumbs} />
+
+      <div class="mt-4 flex flex-wrap items-center gap-3 text-xs sm:text-sm text-navy-600">
+        <a href={categoryUrl} class="px-2.5 py-1 rounded-full font-semibold bg-forest-50 text-forest-800 border border-forest-100 hover:bg-forest-100 transition-colors">
+          {category}
+        </a>
+        <span>•</span>
+        <span>{readingTimeMinutes} min read</span>
+        <span>•</span>
+        <span>Last reviewed: <time datetime={lastUpdated} class="font-semibold text-navy-800">{lastUpdated}</time></span>
+      </div>
+
+      <h1 class="mt-4 text-2xl sm:text-4xl lg:text-5xl font-bold font-serif text-navy-900 leading-tight tracking-tight">
+        {title}
+      </h1>
+
+      <p class="mt-4 text-base sm:text-lg text-navy-700 leading-relaxed font-sans">
+        {description}
+      </p>
+
+      <div class="mt-6 flex items-center gap-3 pt-6 border-t border-cream-300/80 text-xs sm:text-sm text-navy-600">
+        <div class="w-8 h-8 rounded-full bg-forest-800 text-cream-50 flex items-center justify-center font-bold text-xs">
+          DR
+        </div>
+        <div>
+          <span class="font-medium text-navy-900">Researched & Maintained by DormReady Editorial</span>
+          <span class="block text-xs text-navy-500">Fact-checked according to our <a href="/editorial-policy/" class="underline text-forest-800 hover:text-forest-900">Editorial Policy</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-custom max-w-4xl py-8 lg:py-12">
+    <AffiliateDisclosure compact={true} />
+
+    <article class="prose prose-slate max-w-none text-navy-800 leading-relaxed space-y-6">
+      <slot />
+    </article>
+
+    <!-- Post-article editorial commitment -->
+    <div class="mt-12 p-6 bg-cream-100 border border-cream-300 rounded-xl text-sm text-navy-700">
+      <h3 class="font-bold text-base text-navy-900 mb-2">Our Editorial Commitment</h3>
+      <p class="leading-relaxed mb-3">
+        DormReady does not publish sponsored reviews, artificial rankings, or manufacturer-supplied marketing copy. Every dorm guideline is vetted against real residence hall fire codes, communal living constraints, and budget practicalities.
+      </p>
+      <p class="text-xs text-navy-500">
+        Have a correction or college housing policy change? Email <a href="mailto:editorial@dormready.org" class="underline text-forest-800">editorial@dormready.org</a>.
+      </p>
+    </div>
+
+    {relatedGuides.length > 0 && (
+      <div class="mt-14 pt-10 border-t border-cream-300">
+        <h2 class="text-xl sm:text-2xl font-bold text-navy-900 mb-6">Related Preparation Guides</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {relatedGuides.map((guide) => (
+            <a
+              href={guide.href}
+              class="block p-5 bg-white border border-cream-300 rounded-xl hover:border-forest-700 hover:shadow-sm transition-all group"
+            >
+              <span class="text-xs font-semibold text-forest-800 block mb-1">{guide.categoryLabel}</span>
+              <h4 class="font-bold text-navy-900 text-sm group-hover:text-forest-800 transition-colors line-clamp-2 mb-2">
+                {guide.title}
+              </h4>
+              <p class="text-xs text-navy-600 line-clamp-2">
+                {guide.description}
+              </p>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</BaseLayout>

@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { SITE_CONFIG } from '../data/site';
+
+const breadcrumbs = [
+  { name: 'About Us', url: '/about/' },
+];
+---
+
+<BaseLayout
+  title="About DormReady | Mission, Standards & Research Process"
+  description="Learn about the DormReady editorial mission, our target audience of college freshmen and parents, and our commitment to honest, unbloated dorm preparation guidance."
+  breadcrumbs={breadcrumbs}
+>
+  <div class="bg-cream-100 border-b border-cream-300 py-8 sm:py-12">
+    <div class="container-custom max-w-4xl">
+      <Breadcrumbs items={breadcrumbs} />
+
+      <span class="mt-4 inline-block px-2.5 py-1 rounded-full text-xs font-semibold bg-forest-50 text-forest-800 border border-forest-100">
+        About DormReady
+      </span>
+
+      <h1 class="mt-4 text-3xl sm:text-5xl font-bold font-serif text-navy-900 leading-tight">
+        Honest, Evidence-Based Dorm Preparation
+      </h1>
+
+      <p class="mt-4 text-base sm:text-lg text-navy-700 leading-relaxed font-sans">
+        DormReady was created to solve a pervasive problem on the modern web: bloated, affiliate-driven "college dorm checklists" that pressure freshmen and families into purchasing hundreds of dollars of useless plastic clutter.
+      </p>
+    </div>
+  </div>
+
+  <div class="container-custom max-w-4xl py-10 lg:py-14 space-y-10 text-base leading-relaxed text-navy-800">
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold font-serif text-navy-900">Our Core Mission</h2>
+      <p>
+        Moving into a college residence hall represents a major life transition. Between tuition bills, housing contracts, and academic orientation, students and parents face intense decision fatigue.
+      </p>
+      <p>
+        Our mission is to provide <strong>clarity, restraint, and practical utility</strong>. We believe the best dorm room is not the one with the most decorative gadgets, but the one that maximizes restful sleep, maintains clean communal hygiene, and supports healthy academic focus.
+      </p>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold font-serif text-navy-900">Who We Build For</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="p-5 bg-white border border-cream-300 rounded-xl space-y-2">
+          <h3 class="font-bold text-navy-900 text-base">Incoming U.S. College Freshmen</h3>
+          <p class="text-xs sm:text-sm text-navy-600 leading-relaxed">
+            First-time residence hall occupants seeking realistic advice on what to pack, how to coordinate with roommates, and how to navigate university fire regulations.
+          </p>
+        </div>
+        <div class="p-5 bg-white border border-cream-300 rounded-xl space-y-2">
+          <h3 class="font-bold text-navy-900 text-base">Parents & Families</h3>
+          <p class="text-xs sm:text-sm text-navy-600 leading-relaxed">
+            Budget-conscious parents managing back-to-school expenses who want to avoid spending money on items their student will never use.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold font-serif text-navy-900">Our Content Standards</h2>
+      <ul class="space-y-3 list-disc list-inside text-navy-700">
+        <li><strong>No Fabricated Testing or Fake Ratings:</strong> We do not publish simulated star ratings or make claims about testing that did not occur.</li>
+        <li><strong>Fire Code & Safety Adherence:</strong> Every electrical and appliance recommendation is vetted against standard residence hall fire codes.</li>
+        <li><strong>Institutional Independence:</strong> We are not affiliated with, funded by, or endorsing any specific university or retail brand.</li>
+        <li><strong>Transparent Research Status:</strong> Placeholders and pending research entries are explicitly labeled across our directories and hardware profiles.</li>
+      </ul>
+    </section>
+
+    <section class="p-6 bg-cream-100 border border-cream-300 rounded-2xl space-y-3">
+      <h3 class="text-lg font-bold text-navy-900">Have Questions or Corrections?</h3>
+      <p class="text-sm text-navy-700">
+        We actively maintain our checklists and policy guides. If you are a campus residence life director or student with updated housing guidance, please reach out to our editorial team at <a href={`mailto:${SITE_CONFIG.editorialEmail}`} class="underline text-forest-800 font-medium">{SITE_CONFIG.editorialEmail}</a>.
+      </p>
+      <div class="pt-2">
+        <a href="/editorial-policy/" class="text-xs font-bold text-forest-800 hover:underline">
+          Read Our Complete Editorial & Fact-Checking Policy &rarr;
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

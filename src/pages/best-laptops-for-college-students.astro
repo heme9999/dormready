@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
+import LaptopComparison from '../components/LaptopComparison';
+
+const breadcrumbs = [
+  { name: 'Guides', url: '/guides/' },
+  { name: 'College Laptop Guide & Comparison', url: '/best-laptops-for-college-students/' },
+];
+
+const faqs = [
+  {
+    question: 'How much RAM do college students really need in 2026–2027?',
+    answer: 'For a 4-year undergraduate lifecycle, 16GB of RAM is now the practical recommended minimum. Modern operating systems, web-based LMS platforms with dozens of research tabs, digital textbooks, and Zoom multitasking rapidly exceed 8GB of memory.',
+  },
+  {
+    question: 'Can engineering students use a MacBook for college?',
+    answer: 'Many engineering disciplines (Mechanical, Civil, Aerospace) require Windows-native engineering packages such as SolidWorks, AutoCAD, ANSYS, and Revit that do not run natively on Apple Silicon without complex emulation or virtual machines. Consult your specific department requirements before buying.',
+  },
+  {
+    question: 'How do student education discounts work on college laptops?',
+    answer: 'Major manufacturers (Apple, Dell, Lenovo, HP) offer education pricing year-round, typically saving 5% to 15% off standard MSRP. During summer back-to-school promotional windows (June–September), brands often include gift cards or accessory bundles.',
+  },
+];
+---
+
+<BaseLayout
+  title="College Laptop Buying Guide & Major-by-Major Comparison Matrix"
+  description="How to choose a college laptop based on your major, operating system, and budget. Filter hardware profiles with transparent testing guidelines."
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  ogType="article"
+  modifiedTime="2026-08-11"
+>
+  <div class="bg-cream-100 border-b border-cream-300 py-8 sm:py-12">
+    <div class="container-custom">
+      <Breadcrumbs items={breadcrumbs} />
+
+      <div class="mt-4 flex flex-wrap items-center gap-3 text-xs sm:text-sm text-navy-600">
+        <span class="px-2.5 py-1 rounded-full font-semibold bg-forest-50 text-forest-800 border border-forest-100">
+          Hardware Matrix
+        </span>
+        <span>•</span>
+        <span>Filterable Comparison</span>
+        <span>•</span>
+        <span>Last updated: <time datetime="2026-08-11" class="font-semibold text-navy-800">August 11, 2026</time></span>
+      </div>
+
+      <h1 class="mt-4 text-3xl sm:text-5xl font-bold font-serif text-navy-900 leading-tight">
+        College Laptop Requirements & Comparison Guide
+      </h1>
+
+      <p class="mt-4 text-base sm:text-lg text-navy-700 max-w-3xl leading-relaxed">
+        Hardware standards broken down by academic field, battery longevity, and operating system requirements. Use our interactive matrix to identify the right specification profile for your major.
+      </p>
+    </div>
+  </div>
+
+  <div class="container-custom py-8 sm:py-12">
+    <AffiliateDisclosure compact={true} />
+
+    <!-- Interactive Filter & Comparison Component -->
+    <LaptopComparison client:load />
+
+    <!-- Static Educational Content for Long-Term SEO -->
+    <div class="mt-16 pt-12 border-t border-cream-300 space-y-12">
+      <section class="max-w-4xl space-y-4">
+        <h2 class="text-2xl font-bold font-serif text-navy-900">
+          Key Buying Principles for College Laptops
+        </h2>
+        <div class="prose prose-slate text-sm sm:text-base text-navy-700 leading-relaxed space-y-3">
+          <p>
+            A college laptop is not a desktop replacement for high-end gaming; it is a portable academic workstation carried across campus 5 days a week. Before making a purchase decision, evaluate these four criteria:
+          </p>
+          <ul class="list-disc list-inside space-y-2">
+            <li><strong>Battery Endurance Under Real Workloads:</strong> In lecture halls built decades ago, wall outlets are scarce. Look for laptops that deliver a minimum of 8 to 10 hours of real-world web browsing and document editing on battery power.</li>
+            <li><strong>Weight and Backpack Ergonomics:</strong> A laptop weighing over 4.5 lbs becomes an uncomfortable burden when combined with textbooks, water bottles, and accessories. Target a weight between 2.7 and 3.5 lbs for standard majors.</li>
+            <li><strong>Display Resolution and Brightness:</strong> Aim for at least 300 nits of screen brightness and an IPS or OLED panel. Dim 250-nit screens cause significant eye strain under fluorescent library lighting or outdoor campus tables.</li>
+            <li><strong>Keyboard Travel and Trackpad Precision:</strong> You will type thousands of pages of essays, lab reports, and code. Test key travel and trackpad gesture responsiveness before committing to a daily driver.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Department Checklist -->
+      <section class="max-w-4xl space-y-4">
+        <h2 class="text-2xl font-bold font-serif text-navy-900">
+          Before You Buy: The 3-Step Department Verification Checklist
+        </h2>
+        <div class="p-6 bg-cream-100 border border-cream-300 rounded-2xl space-y-3 text-sm text-navy-800">
+          <p class="font-semibold text-navy-900">1. Search Your University IT / College Department Portal:</p>
+          <p class="text-navy-600">Search <code>"[University Name] [College of Engineering / Business] laptop requirements 2026"</code> to check for mandatory software lists.</p>
+          <p class="font-semibold text-navy-900">2. Verify Exam Proctoring Software Compatibility:</p>
+          <p class="text-navy-600">Check whether your institution uses LockDown Browser or Honorlock, which may impose specific webcam and OS requirements.</p>
+          <p class="font-semibold text-navy-900">3. Activate Your Student Discount Portal:</p>
+          <p class="text-navy-600">Always check <a href="/student-discounts/" class="underline text-forest-800 font-semibold">Student Discounts</a> for education storefront pricing and trade-in bonuses before paying retail price.</p>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="max-w-4xl space-y-6">
+        <h2 class="text-2xl font-bold font-serif text-navy-900">
+          Frequently Asked Questions About College Laptops
+        </h2>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <div class="p-5 bg-white border border-cream-300 rounded-xl">
+              <h3 class="font-bold text-navy-900 text-base mb-2">{faq.question}</h3>
+              <p class="text-sm text-navy-700 leading-relaxed">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

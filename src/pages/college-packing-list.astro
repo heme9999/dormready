@@ -1,0 +1,181 @@
+---
+import GuideLayout from '../layouts/GuideLayout.astro';
+
+const guide = {
+  title: 'Strategic College Packing List: What to Bring, Buy There & Leave Behind',
+  description: 'A realistic freshman packing strategy covering move-in carry-on essentials, roommate coordination rules, and the top items students consistently overpack.',
+  category: 'Packing Strategy',
+  categoryUrl: '/college-packing-list/',
+  lastUpdated: '2026-08-14',
+  readingTimeMinutes: 10,
+  currentSlug: 'college-packing-list',
+};
+
+const faqs = [
+  {
+    question: 'How many suitcases or boxes should a college freshman bring?',
+    answer: 'Aim for 2 large checked duffels or plastic storage totes plus 1 backpack for move-in day. Packing in collapsible duffels or zippered storage bags is far superior to rigid hard-shell suitcases, which consume massive closet floor space all semester.',
+  },
+  {
+    question: 'What items should I definitely buy after arriving on campus?',
+    answer: 'Buy bulky liquid cleaning products, dish soap, laundry detergent, paper towels, snacks, area rugs, and room trash cans at a local store near campus to save vehicle and luggage space.',
+  },
+];
+---
+
+<GuideLayout {...guide} faqs={faqs}>
+  <div class="space-y-10 text-base leading-relaxed">
+    <!-- Key Takeaways Box -->
+    <div class="p-6 bg-forest-50 border border-forest-200 rounded-2xl">
+      <h2 class="text-lg font-bold text-forest-950 mb-3 flex items-center gap-2">
+        <span>📌</span>
+        <span>The Golden Rules of College Packing</span>
+      </h2>
+      <ul class="space-y-2 text-sm text-forest-900 list-disc list-inside">
+        <li><strong>Pack for the current semester only:</strong> Do not pack heavy winter parkas and snow boots in August if you are traveling home for Thanksgiving break.</li>
+        <li><strong>Ditch rigid luggage:</strong> Pack in blue zippered moving bags or collapsible duffels that fold completely flat under a bed.</li>
+        <li><strong>Move-in Day is chaos:</strong> Keep your first-night bedding, shower shoes, medications, and phone chargers in one dedicated "Day 1 Carry-On".</li>
+      </ul>
+    </div>
+
+    <!-- Section 1: The Move-In Day Carry-On Bag -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold font-serif text-navy-900">
+        1. The Move-In Day Carry-On (Your Day 1 Lifeline)
+      </h2>
+      <p>
+        Move-in day is physically exhausting. Between navigating campus check-in lines, unlofted bed frames, and humid stairwells, you will not want to tear open 10 taped cardboard boxes at 10 PM just to find your toothbrush and phone charger.
+      </p>
+      <p>
+        Pack one backpack or small duffel that stays with you at all times containing:
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+        <div class="p-4 bg-white border border-cream-300 rounded-xl">
+          <h3 class="font-bold text-navy-900 text-sm mb-2">Essential Access & Tech</h3>
+          <ul class="text-xs sm:text-sm text-navy-700 space-y-1.5 list-disc list-inside">
+            <li>Government ID, campus ID & student housing barcode</li>
+            <li>Laptop, phone & 10ft braided charger cord</li>
+            <li>UL-listed surge protector</li>
+            <li>Prescription medications (clearly labeled)</li>
+            <li>Basic toolkit (screwdriver, scissors/box cutter, tape)</li>
+          </ul>
+        </div>
+        <div class="p-4 bg-white border border-cream-300 rounded-xl">
+          <h3 class="font-bold text-navy-900 text-sm mb-2">First-Night Comfort</h3>
+          <ul class="text-xs sm:text-sm text-navy-700 space-y-1.5 list-disc list-inside">
+            <li>Twin XL fitted sheet & 1 pillow in a pillowcase</li>
+            <li>Mesh shower caddy, soap, shampoo & toothbrush</li>
+            <li>Waterproof shower slides</li>
+            <li>Quick-dry bath towel & change of clothes</li>
+            <li>Refillable water bottle & high-protein snacks</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: What to Coordinate With Your Roommate -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold font-serif text-navy-900">
+        2. What to Coordinate With Your Roommate (Before Ordering)
+      </h2>
+      <p>
+        Do not duplicate large footprint appliances. Contact your assigned roommate via email or social media in July to divide responsibilities for shared assets:
+      </p>
+
+      <div class="overflow-x-auto my-4">
+        <table class="w-full text-left text-xs sm:text-sm border border-cream-300 rounded-xl overflow-hidden">
+          <thead class="bg-cream-200 text-navy-900 font-bold">
+            <tr>
+              <th class="p-3 border-b border-cream-300">Item</th>
+              <th class="p-3 border-b border-cream-300">Recommended Allocation</th>
+              <th class="p-3 border-b border-cream-300">Coordination Advice</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-cream-200 bg-white">
+            <tr>
+              <td class="p-3 font-semibold text-navy-900">Mini-Fridge / Microwave</td>
+              <td class="p-3 text-navy-700">One student brings fridge, one brings microwave (or rent a MicroFridge unit)</td>
+              <td class="p-3 text-navy-600">Check university cubic-foot & wattage restrictions first.</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-navy-900">Floor Rug (4x6 or 5x7)</td>
+              <td class="p-3 text-navy-700">Split cost or buy together after move-in</td>
+              <td class="p-3 text-navy-600">Measure available open floor space after beds and desks are positioned.</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-navy-900">Full-Length Mirror</td>
+              <td class="p-3 text-navy-700">One student provides</td>
+              <td class="p-3 text-navy-600">Use over-the-door hanging brackets rather than adhesive pads.</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-navy-900">Electric Kettle / Coffee Maker</td>
+              <td class="p-3 text-navy-700">One student provides</td>
+              <td class="p-3 text-navy-600">Ensure auto-shutoff safety certification.</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-navy-900">Cleaning Supplies (Vacuum/Broom)</td>
+              <td class="p-3 text-navy-700">One brings cordless stick vacuum or Swiffer</td>
+              <td class="p-3 text-navy-600">Stick vacuums take zero closet space and keep floors grit-free.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 3: What to Buy After Arrival -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold font-serif text-navy-900">
+        3. Items to Buy in Your College Town (Not at Home)
+      </h2>
+      <p>
+        Transporting heavy liquids and bulky plastic containers across state highways or on airplanes is unnecessary stress. Schedule a Target, Walmart, or grocery run 24–48 hours after arriving on campus for:
+      </p>
+      <ul class="space-y-1.5 list-disc list-inside text-navy-700 text-sm sm:text-base">
+        <li><strong>Cleaning liquids & paper products:</strong> Disinfectant wipes, dish soap, paper towels, and trash bags.</li>
+        <li><strong>Laundry detergent bottles/sheets:</strong> Prevents detergent leaks inside your clothing duffels.</li>
+        <li><strong>Perishable & dry groceries:</strong> Bottled beverages, cereal boxes, fruit, and snacks.</li>
+        <li><strong>Plastic drawer organizers:</strong> Measure your actual desk drawers and closet shelves before purchasing organizers that don't fit.</li>
+      </ul>
+    </section>
+
+    <!-- Section 4: What Students Consistently Overpack -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold font-serif text-navy-900">
+        4. What Students Commonly Overpack (Leave These Behind)
+      </h2>
+      <div class="space-y-3">
+        <div class="p-4 bg-red-50 border border-red-200 rounded-xl text-xs sm:text-sm text-red-950">
+          <h3 class="font-bold text-red-900 mb-1">❌ 1. More Than 2 Weeks of Clothing</h3>
+          <p>Dorm closets average only 24 to 36 inches of hanging bar space. Bring two weeks of versatile everyday clothing, 1–2 semi-formal outfits, workout gear, and outerwear suitable for August through October. Swap winter coats during Thanksgiving break.</p>
+        </div>
+        <div class="p-4 bg-red-50 border border-red-200 rounded-xl text-xs sm:text-sm text-red-950">
+          <h3 class="font-bold text-red-900 mb-1">❌ 2. Full Kitchen Dinnerware Sets</h3>
+          <p>You do not need a 16-piece ceramic dish set. You need 1 microwaveable bowl, 1 plate, 1 insulated tumbler/mug, and 1 set of stainless or reusable cutlery.</p>
+        </div>
+        <div class="p-4 bg-red-50 border border-red-200 rounded-xl text-xs sm:text-sm text-red-950">
+          <h3 class="font-bold text-red-900 mb-1">❌ 3. Full Heavy Iron & Full-Size Ironing Board</h3>
+          <p>Bulky ironing boards consume huge closet room. Use a compact garment steamer or anti-wrinkle fabric spray instead.</p>
+        </div>
+        <div class="p-4 bg-red-50 border border-red-200 rounded-xl text-xs sm:text-sm text-red-950">
+          <h3 class="font-bold text-red-900 mb-1">❌ 4. Excessive High School Mementos & Heavy Hardcover Books</h3>
+          <p>Bring 2–3 framed photos or small keepsakes. Dorm desks cannot accommodate stacks of non-academic reading material.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to action -->
+    <div class="p-6 bg-cream-100 border border-cream-300 rounded-2xl text-center space-y-3">
+      <h3 class="text-xl font-bold text-navy-900">Ready to Start Packing?</h3>
+      <p class="text-sm text-navy-600 max-w-lg mx-auto">
+        Track every item in our interactive checklist with automatic browser progress saving and print-ready format.
+      </p>
+      <a
+        href="/college-dorm-checklist/"
+        class="inline-block px-6 py-3 rounded-xl bg-forest-800 text-cream-50 font-semibold text-sm hover:bg-forest-900 transition-colors"
+      >
+        Open Interactive Dorm Checklist &rarr;
+      </a>
+    </div>
+  </div>
+</GuideLayout>

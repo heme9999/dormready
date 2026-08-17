@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const breadcrumbs = [
+  { name: 'Privacy Policy', url: '/privacy/' },
+];
+---
+
+<BaseLayout
+  title="Privacy Policy | DormReady"
+  description="DormReady Privacy Policy. Explains information collection, cookie usage, analytics, and data protection practices."
+  breadcrumbs={breadcrumbs}
+>
+  <div class="bg-cream-100 border-b border-cream-300 py-8 sm:py-12">
+    <div class="container-custom max-w-4xl">
+      <Breadcrumbs items={breadcrumbs} />
+
+      <span class="mt-4 inline-block px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-900 border border-amber-200">
+        Starter Policy — Pending Legal Review
+      </span>
+
+      <h1 class="mt-4 text-3xl sm:text-5xl font-bold font-serif text-navy-900 leading-tight">
+        Privacy Policy
+      </h1>
+
+      <p class="mt-4 text-base sm:text-lg text-navy-700 leading-relaxed font-sans">
+        Last updated: August 15, 2026. This starter privacy document outlines how DormReady collects, uses, and safeguards information when you visit our website.
+      </p>
+    </div>
+  </div>
+
+  <div class="container-custom max-w-4xl py-10 lg:py-14 space-y-8 text-base leading-relaxed text-navy-800">
+    <div class="p-4 bg-amber-50 border border-amber-300 rounded-xl text-xs sm:text-sm text-amber-950">
+      <strong>Notice:</strong> This document is a foundational starter privacy policy template provided for development and preview purposes. It must undergo formal review by qualified legal counsel prior to full commercial operation.
+    </div>
+
+    <section class="space-y-3">
+      <h2 class="text-xl font-bold font-serif text-navy-900">1. Information We Collect</h2>
+      <p>
+        <strong>Local Browser Storage:</strong> Our interactive dorm checklist saves your checked items exclusively within your browser's <code>localStorage</code>. This data never leaves your device and is not transmitted to our servers.
+      </p>
+      <p>
+        <strong>Voluntary Submissions:</strong> When you subscribe to our email newsletter or submit feedback, we collect your email address and any message content you provide.
+      </p>
+      <p>
+        <strong>Automated Log Data:</strong> Like most web services, our hosting infrastructure automatically collects standard server logs (IP address, browser type, referral URL, and request timestamp) for security and performance monitoring.
+      </p>
+    </section>
+
+    <section class="space-y-3">
+      <h2 class="text-xl font-bold font-serif text-navy-900">2. Cookies and Tracking Technologies</h2>
+      <p>
+        DormReady uses minimal essential cookies to maintain site security and performance. When third-party analytics or affiliate tracking is enabled, standard cookies may be used by those respective providers according to their privacy policies.
+      </p>
+    </section>
+
+    <section class="space-y-3">
+      <h2 class="text-xl font-bold font-serif text-navy-900">3. Third-Party Links & Outbound Merchants</h2>
+      <p>
+        Our site contains links to third-party merchant and university websites (e.g., Apple, Amazon, GitHub, university housing portals). We have no control over the privacy practices of external websites. We encourage you to review their policies when visiting them.
+      </p>
+    </section>
+
+    <section class="space-y-3">
+      <h2 class="text-xl font-bold font-serif text-navy-900">4. Data Retention & Your Rights</h2>
+      <p>
+        You can clear your checklist data at any time using the "Reset" button in the interactive checklist or by clearing your browser's site data. To request removal of your email from our newsletter, use the unsubscribe link in our emails or contact <a href="mailto:editorial@dormready.org" class="underline text-forest-800">editorial@dormready.org</a>.
+      </p>
+    </section>
+  </div>
+</BaseLayout>

@@ -1,0 +1,6 @@
+# Temporary Preview Environment
+# When launching on a final custom domain with PUBLIC_SITE_ENV=production, change Disallow: / to Allow: / and specify sitemap.
+User-agent: *
+Disallow: /
+
+# Sitemap: https://dormready-preview.pages.dev/sitemap-index.xml

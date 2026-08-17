@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
+import ChecklistApp from '../components/ChecklistApp';
+import { CHECKLIST_ITEMS } from '../data/checklist';
+
+const breadcrumbs = [
+  { name: 'Guides', url: '/guides/' },
+  { name: 'Interactive College Dorm Checklist', url: '/college-dorm-checklist/' },
+];
+
+const faqs = [
+  {
+    question: 'What bed size are standard U.S. college dorm mattresses?',
+    answer: 'The vast majority of 4-year and 2-year residence halls in the U.S. use Twin XL (Extra Long) mattresses, which measure 38 inches wide by 80 inches long (5 inches longer than standard Twin). Standard twin sheets will not fit securely and will constantly pull off.',
+  },
+  {
+    question: 'Why are extension cords prohibited in dorm rooms?',
+    answer: 'Standard unfused household extension cords and multi-plug adapters create severe fire hazards when connected to high-draw electronics. University fire codes require UL-listed surge protectors with internal circuit breakers and 14-gauge or heavier cabling.',
+  },
+  {
+    question: 'How do I save my checklist progress?',
+    answer: 'Checklist progress on DormReady automatically saves to your browser local storage. You can close this tab and return at any time to resume tracking.',
+  },
+];
+---
+
+<BaseLayout
+  title="The Ultimate College Dorm Checklist (Interactive & Printable)"
+  description="Free interactive college dorm checklist for freshmen. 9 essential categories, local browser saving, essentials-only filter, and print-ready shopping format."
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  ogType="article"
+  modifiedTime="2026-08-15"
+>
+  <div class="bg-cream-100 border-b border-cream-300 py-8 sm:py-12">
+    <div class="container-custom">
+      <Breadcrumbs items={breadcrumbs} />
+
+      <div class="mt-4 flex flex-wrap items-center gap-3 text-xs sm:text-sm text-navy-600">
+        <span class="px-2.5 py-1 rounded-full font-semibold bg-forest-50 text-forest-800 border border-forest-100">
+          Interactive Tool
+        </span>
+        <span>•</span>
+        <span>{CHECKLIST_ITEMS.length} Total Items</span>
+        <span>•</span>
+        <span>Last updated: <time datetime="2026-08-15" class="font-semibold text-navy-800">August 15, 2026</time></span>
+      </div>
+
+      <h1 class="mt-4 text-3xl sm:text-5xl font-bold font-serif text-navy-900 leading-tight">
+        Master College Dorm Checklist
+      </h1>
+
+      <p class="mt-4 text-base sm:text-lg text-navy-700 max-w-3xl leading-relaxed">
+        Everything you genuinely need for your first year in a residence hall. Check off items as you pack or shop—your progress is automatically preserved in your browser.
+      </p>
+    </div>
+  </div>
+
+  <div class="container-custom py-8 sm:py-12">
+    <AffiliateDisclosure compact={true} />
+
+    <!-- Interactive Checklist App Client Island -->
+    <ChecklistApp client:load />
+
+    <!-- Static Educational Content for SEO and Fallback -->
+    <div class="mt-16 pt-12 border-t border-cream-300 space-y-12">
+      <section class="max-w-4xl space-y-4">
+        <h2 class="text-2xl font-bold font-serif text-navy-900">
+          How to Use This Checklist Strategically
+        </h2>
+        <div class="prose prose-slate text-sm sm:text-base text-navy-700 leading-relaxed space-y-3">
+          <p>
+            The biggest mistake incoming freshmen make is treating dorm shopping as a retail splurge. Residence hall double rooms average approximately <strong>130 to 180 square feet</strong> shared between two adults. Every item you bring consumes physical space, air circulation, and cognitive energy.
+          </p>
+          <p>
+            We recommend adopting the <strong>3-Wave Purchase Strategy</strong>:
+          </p>
+          <ol class="list-decimal list-inside space-y-2 font-medium text-navy-800">
+            <li><strong>Wave 1 (Before Arrival):</strong> Twin XL mattress topper, bedding, shower caddy, shower shoes, surge protector, and prescription medical essentials.</li>
+            <li><strong>Wave 2 (Move-in Day Aftermath):</strong> Cleaning supplies, floor rug, trash bin liners, and hanging hooks once you evaluate room dimensions and closet bar height.</li>
+            <li><strong>Wave 3 (Month Two):</strong> Specialized organizers, study accessories, and additional storage after experiencing your real academic schedule.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Frequently Asked Questions -->
+      <section class="max-w-4xl space-y-6">
+        <h2 class="text-2xl font-bold font-serif text-navy-900">
+          Dorm Packing Frequently Asked Questions
+        </h2>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <div class="p-5 bg-white border border-cream-300 rounded-xl">
+              <h3 class="font-bold text-navy-900 text-base mb-2">{faq.question}</h3>
+              <p class="text-sm text-navy-700 leading-relaxed">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

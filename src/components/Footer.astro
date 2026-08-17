@@ -1,0 +1,84 @@
+---
+import { SITE_CONFIG } from '../data/site';
+---
+
+<footer class="mt-auto border-t border-cream-300 bg-cream-100 text-navy-800">
+  <div class="container-custom py-12 lg:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      <!-- Column 1: Brand & Mission -->
+      <div class="space-y-4">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-forest-800 flex items-center justify-center text-cream-50 font-bold text-base">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 10v11h18V10" />
+              <path d="M2 10l10-7 10 7" />
+              <path d="M9 21V12h6v9" />
+            </svg>
+          </div>
+          <span class="font-bold text-xl tracking-tight text-navy-900">DormReady</span>
+        </div>
+        <p class="text-sm text-navy-600 leading-relaxed">
+          {SITE_CONFIG.tagline} Built to give freshmen and their parents clear, realistic guidance without the fluff.
+        </p>
+        <p class="text-xs text-navy-500">
+          Last site audit: <span class="font-semibold text-navy-700">{SITE_CONFIG.lastSiteUpdate}</span>
+        </p>
+      </div>
+
+      <!-- Column 2: Key Guides -->
+      <div>
+        <h3 class="text-xs font-bold uppercase tracking-wider text-navy-900 mb-3">Core Guides</h3>
+        <ul class="space-y-2.5 text-sm list-none p-0 m-0">
+          {SITE_CONFIG.footerNav.essentials.map((item) => (
+            <li>
+              <a href={item.href} class="text-navy-600 hover:text-forest-800 transition-colors">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Column 3: Budget Setups -->
+      <div>
+        <h3 class="text-xs font-bold uppercase tracking-wider text-navy-900 mb-3">Budget Setups</h3>
+        <ul class="space-y-2.5 text-sm list-none p-0 m-0">
+          {SITE_CONFIG.footerNav.budgets.map((item) => (
+            <li>
+              <a href={item.href} class="text-navy-600 hover:text-forest-800 transition-colors">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Column 4: Editorial & Standards -->
+      <div>
+        <h3 class="text-xs font-bold uppercase tracking-wider text-navy-900 mb-3">Editorial Standards</h3>
+        <ul class="space-y-2.5 text-sm list-none p-0 m-0">
+          {SITE_CONFIG.footerNav.editorial.map((item) => (
+            <li>
+              <a href={item.href} class="text-navy-600 hover:text-forest-800 transition-colors">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <div class="mt-4 pt-3 border-t border-cream-200 text-xs text-navy-500">
+          Contact: <a href="mailto:editorial@dormready.org" class="text-navy-700 underline hover:text-forest-800">{SITE_CONFIG.editorialEmail}</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="mt-12 pt-6 border-t border-cream-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-navy-500">
+      <p>© {new Date().getFullYear()} DormReady. All rights reserved. Not affiliated with any university.</p>
+      <div class="flex items-center gap-4">
+        <a href="/privacy/" class="hover:text-navy-800 underline">Privacy Policy</a>
+        <a href="/terms/" class="hover:text-navy-800 underline">Terms of Use</a>
+        <a href="/editorial-policy/" class="hover:text-navy-800 underline">Editorial & Affiliate Disclosure</a>
+      </div>
+    </div>
+  </div>
+</footer>

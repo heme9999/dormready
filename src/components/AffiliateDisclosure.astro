@@ -1,0 +1,27 @@
+---
+export interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+{compact ? (
+  <div class="text-xs text-navy-500 border-l-2 border-navy-300 pl-3 py-1 my-4 bg-cream-100 rounded-r">
+    <span>
+      <strong>Editorial Independence:</strong> DormReady is reader-supported. When you purchase through links on our site, we may earn an affiliate commission at zero additional cost to you. We do not accept paid product placements. <a href="/editorial-policy/" class="underline hover:text-forest-800">Read our policy</a>.
+    </span>
+  </div>
+) : (
+  <aside class="bg-cream-100 border border-cream-300 rounded-lg p-4 text-xs sm:text-sm text-navy-700 my-6">
+    <div class="flex items-start gap-2.5">
+      <div class="text-forest-800 font-bold mt-0.5">ℹ️</div>
+      <div class="space-y-1">
+        <p class="font-semibold text-navy-900">Editorial Independence & Reader Support</p>
+        <p class="leading-relaxed">
+          DormReady publishes honest, practical guidance designed to save college students and families time and money. Our recommendations are determined independently based on dorm safety rules, durability, and practical utility. In the future, when you follow certain links to retailer websites and complete a purchase, we may earn an affiliate commission at no extra cost to you. We never accept compensation for favorable reviews. Learn more in our <a href="/editorial-policy/" class="underline text-forest-800 font-medium hover:text-forest-900">Editorial Policy</a>.
+        </p>
+      </div>
+    </div>
+  </aside>
+)}
