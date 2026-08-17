@@ -8,6 +8,8 @@ const siteEnv = (typeof process !== 'undefined' && process.env.PUBLIC_SITE_ENV) 
 const isProduction = siteEnv === 'production';
 const siteUrl = (typeof process !== 'undefined' && process.env.PUBLIC_SITE_URL) || (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.PUBLIC_SITE_URL) || (isProduction ? 'https://dormready.org' : 'https://dormready-preview.pages.dev');
 
+const googleSiteVerification = (typeof process !== 'undefined' && process.env.PUBLIC_GOOGLE_SITE_VERIFICATION) || (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION) || '';
+
 export const SITE_CONFIG = {
   name: 'DormReady',
   tagline: 'Practical, honest dorm planning for U.S. college freshmen and families.',
@@ -15,6 +17,7 @@ export const SITE_CONFIG = {
   url: siteUrl,
   env: siteEnv,
   isNoIndex: !isProduction,
+  googleSiteVerification,
   githubRepoUrl: 'https://github.com/heme9999/dormready',
   contactNotice: 'For questions, policy updates, or corrections, submit an issue via our GitHub repository.',
   lastSiteUpdate: '2026-08-17',

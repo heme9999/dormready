@@ -135,6 +135,10 @@ if (faqs.length > 0) {
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 )}
 
+{SITE_CONFIG.googleSiteVerification && (
+  <meta name="google-site-verification" content={SITE_CONFIG.googleSiteVerification} />
+)}
+
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={ogType} />
 <meta property="og:title" content={fullTitle} />

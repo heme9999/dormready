@@ -26,4 +26,8 @@ describe('Site & Navigation Architecture', () => {
       expect(g.lastUpdated).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     }
   });
+
+  it('supports optional googleSiteVerification configuration', () => {
+    expect(SITE_CONFIG).toHaveProperty('googleSiteVerification');
+  });
 });
